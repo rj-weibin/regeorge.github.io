@@ -1,10 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-20T10:07:02.098Z",
+  "generatedAt": "2026-07-20T11:06:55.626Z",
   "counts": {
     "concepts": 62,
     "books": 220,
     "collisionCards": 61,
+    "mobileCards": 20,
     "projects": 9
   }
 }

@@ -30,10 +30,12 @@ fs.mkdirSync(path.join(pages, 'data'), { recursive: true });
 const graph = readJson('data/knowledge-graph.json');
 const books = readJson('data/books/books.json');
 const cards = readJson('data/concepts/collisions.json');
+const mobileCards = readJson('data/concepts/mobile-cards.json');
 const projects = readJson('data/projects/projects.json');
 fs.writeFileSync(path.join(pages, 'data', 'knowledge-graph.json'), JSON.stringify(graph, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'books.json'), JSON.stringify(books, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'philosophy-cards.json'), JSON.stringify(cards, null, 2) + '\n');
+fs.writeFileSync(path.join(pages, 'data', 'cards.json'), JSON.stringify(mobileCards, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'projects.json'), JSON.stringify(projects, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'books-data.js'), `window.READING_SHELF_BOOKS = ${JSON.stringify(books, null, 2)};\n`);
 
@@ -44,6 +46,7 @@ const registry = {
     concepts: graph.nodes?.length ?? 0,
     books: books.length,
     collisionCards: cards.length,
+    mobileCards: mobileCards.cards?.length ?? 0,
     projects: projects.length,
   },
 };

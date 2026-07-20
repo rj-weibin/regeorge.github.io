@@ -28,6 +28,7 @@ function duplicateIds(items, label, getId = item => item.id) {
 const graph = readJson('data/knowledge-graph.json');
 const books = readJson('data/books/books.json');
 const cards = readJson('data/concepts/collisions.json');
+const mobileCards = readJson('data/concepts/mobile-cards.json');
 const projects = readJson('data/projects/projects.json');
 duplicateIds(graph?.nodes, 'concept');
 duplicateIds(books, 'book', item => item.bookId ?? item.id ?? item.title);
@@ -35,13 +36,14 @@ duplicateIds(projects, 'project');
 cards?.forEach((card, index) => {
   if (!card.tag && !card.id) errors.push(`collision card ${index + 1}: missing tag/id`);
 });
+duplicateIds(mobileCards?.cards, 'mobile card');
 
 const pending = path.join(root, 'inbox', 'pending');
 if (fs.existsSync(pending) && fs.readdirSync(pending).length > 0) {
   console.warn('warning: inbox/pending contains unprocessed intake files');
 }
 
-for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/projects.json']) {
+for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/cards.json', 'pages/data/projects.json']) {
   if (!fs.existsSync(path.join(root, relative))) errors.push(`missing build output: ${relative}`);
 }
 
