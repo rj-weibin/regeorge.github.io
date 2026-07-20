@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>莉莉丝的可爱角色收藏</title>
+    <style>
+        :root {
+            --ink: #2d2a43;
+            --muted: rgba(45, 42, 67, 0.68);
+            --paper: rgba(255, 255, 255, 0.82);
+            --line: rgba(45, 42, 67, 0.1);
+            --shadow: 0 18px 38px rgba(87, 75, 125, 0.16);
+            --pink: #ff8fb8;
+            --yellow: #ffd76d;
+            --blue: #89d8ff;
+            --green: #9ee6a0;
+            --violet: #bfa9ff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--ink);
+            font-family: "Trebuchet MS", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background:
+                radial-gradient(circle at 12% 12%, rgba(255, 244, 165, 0.72), transparent 28%),
+                radial-gradient(circle at 84% 8%, rgba(137, 216, 255, 0.58), transparent 30%),
+                radial-gradient(circle at 86% 82%, rgba(191, 169, 255, 0.38), transparent 32%),
+                linear-gradient(135deg, #fff6df 0%, #eaf8ff 45%, #fff1f7 100%);
+            overflow-x: hidden;
+        }
+
+        .page-shell {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 24px 0 52px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            color: var(--muted);
+            font-size: 0.94rem;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: var(--ink);
+        }
+
+        .hero {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 18px;
+            align-items: end;
+            margin-bottom: 28px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border: 1px solid rgba(255, 143, 184, 0.26);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.62);
+            color: rgba(45, 42, 67, 0.72);
+            font-size: 0.84rem;
+        }
+
+        h1 {
+            max-width: 760px;
+            margin: 14px 0 10px;
+            font-size: clamp(2.2rem, 7vw, 5.4rem);
+            line-height: 0.94;
+        }
+
+        .subtitle {
+            max-width: 560px;
+            margin: 0;
+            color: var(--muted);
+            font-size: clamp(1rem, 2vw, 1.18rem);
+            line-height: 1.7;
+        }
+
+        .music-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 168px;
+            min-height: 48px;
+            padding: 12px 16px;
+            border: 0;
+            border-radius: 999px;
+            color: var(--ink);
+            background: linear-gradient(180deg, #ffffff, #fff5cf);
+            box-shadow: inset 0 0 0 1px var(--line), 0 12px 24px rgba(255, 167, 96, 0.18);
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .music-button:hover {
+            transform: translateY(-2px);
+            box-shadow: inset 0 0 0 1px var(--line), 0 16px 30px rgba(255, 167, 96, 0.24);
+        }
+
+        .music-note {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 25px;
+            height: 25px;
+            margin-right: 8px;
+            border-radius: 50%;
+            background: rgba(255, 143, 184, 0.24);
+        }
+
+        .music-note.is-playing {
+            animation: note-bounce 0.9s ease-in-out infinite;
+        }
+
+        .sticker {
+            position: absolute;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: inset 0 0 0 1px var(--line);
+            color: rgba(45, 42, 67, 0.58);
+            font-weight: 800;
+            animation: float-soft 3.4s ease-in-out infinite;
+        }
+
+        .sticker.one {
+            top: 16px;
+            right: 222px;
+            background: rgba(255, 216, 109, 0.42);
+        }
+
+        .sticker.two {
+            right: 70px;
+            bottom: 6px;
+            background: rgba(137, 216, 255, 0.34);
+            animation-delay: -1.2s;
+        }
+
+        .album-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .character-card {
+            position: relative;
+            min-height: 430px;
+            padding: 14px;
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            background: var(--paper);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .character-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 24px 48px rgba(87, 75, 125, 0.22);
+        }
+
+        .character-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.8) 0 6px, transparent 7px),
+                radial-gradient(circle at 86% 12%, rgba(255, 255, 255, 0.7) 0 5px, transparent 6px),
+                radial-gradient(circle at 78% 78%, rgba(255, 255, 255, 0.54) 0 8px, transparent 9px);
+            pointer-events: none;
+        }
+
+        .card-art {
+            position: relative;
+            display: grid;
+            place-items: center;
+            min-height: 252px;
+            border-radius: 18px;
+            background: linear-gradient(145deg, var(--card-a), var(--card-b));
+            overflow: hidden;
+        }
+
+        .card-art::before,
+        .card-art::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.32);
+        }
+
+        .card-art::before {
+            width: 150px;
+            height: 150px;
+            left: -48px;
+            top: -34px;
+        }
+
+        .card-art::after {
+            width: 104px;
+            height: 104px;
+            right: -28px;
+            bottom: -18px;
+        }
+
+        .card-art.has-image {
+            background: linear-gradient(145deg, #fff4f8, #ffe1ec);
+        }
+
+        .blue .card-art.has-image {
+            background: linear-gradient(145deg, #e8f8ff, #c7ecff);
+        }
+
+        .card-art.has-image::before,
+        .card-art.has-image::after {
+            display: none;
+        }
+
+        .card-image {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            border-radius: 18px;
+            object-fit: cover;
+            filter: drop-shadow(0 16px 24px rgba(87, 75, 125, 0.16));
+        }
+
+        .placeholder-character {
+            position: relative;
+            z-index: 1;
+            width: 156px;
+            height: 156px;
+            border-radius: 50%;
+            background: var(--face);
+            box-shadow:
+                inset -12px -16px 0 rgba(45, 42, 67, 0.08),
+                0 16px 28px rgba(45, 42, 67, 0.16);
+        }
+
+        .placeholder-character::before,
+        .placeholder-character::after {
+            content: "";
+            position: absolute;
+            top: 58px;
+            width: 16px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--ink);
+        }
+
+        .placeholder-character::before {
+            left: 46px;
+        }
+
+        .placeholder-character::after {
+            right: 46px;
+        }
+
+        .mouth {
+            position: absolute;
+            left: 50%;
+            top: 92px;
+            width: 28px;
+            height: 14px;
+            border-bottom: 4px solid rgba(45, 42, 67, 0.72);
+            border-radius: 0 0 999px 999px;
+            transform: translateX(-50%);
+        }
+
+        .cheek {
+            position: absolute;
+            top: 86px;
+            width: 24px;
+            height: 14px;
+            border-radius: 999px;
+            background: rgba(255, 112, 145, 0.34);
+        }
+
+        .cheek.left {
+            left: 24px;
+        }
+
+        .cheek.right {
+            right: 24px;
+        }
+
+        .ears,
+        .wings,
+        .rays,
+        .bow {
+            position: absolute;
+            inset: 0;
+        }
+
+        .ears::before,
+        .ears::after {
+            content: "";
+            position: absolute;
+            top: -24px;
+            width: 44px;
+            height: 74px;
+            border-radius: 50% 50% 45% 45%;
+            background: var(--face);
+            box-shadow: inset -8px -10px 0 rgba(45, 42, 67, 0.08);
+        }
+
+        .ears::before {
+            left: 20px;
+            transform: rotate(-18deg);
+        }
+
+        .ears::after {
+            right: 20px;
+            transform: rotate(18deg);
+        }
+
+        .wings::before,
+        .wings::after {
+            content: "";
+            position: absolute;
+            top: 54px;
+            width: 58px;
+            height: 82px;
+            border-radius: 60% 40% 60% 40%;
+            background: rgba(255, 255, 255, 0.72);
+        }
+
+        .wings::before {
+            left: -44px;
+            transform: rotate(-22deg);
+        }
+
+        .wings::after {
+            right: -44px;
+            transform: rotate(22deg) scaleX(-1);
+        }
+
+        .rays::before,
+        .rays::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 206px;
+            height: 24px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.34);
+            transform: translate(-50%, -50%) rotate(24deg);
+        }
+
+        .rays::after {
+            transform: translate(-50%, -50%) rotate(-34deg);
+        }
+
+        .bow::before,
+        .bow::after {
+            content: "";
+            position: absolute;
+            top: -8px;
+            width: 38px;
+            height: 28px;
+            border-radius: 50% 50% 50% 8px;
+            background: #ff6f9c;
+        }
+
+        .bow::before {
+            left: 48px;
+            transform: rotate(22deg);
+        }
+
+        .bow::after {
+            right: 48px;
+            transform: rotate(-22deg) scaleX(-1);
+        }
+
+        .card-copy {
+            position: relative;
+            padding: 16px 4px 2px;
+        }
+
+        .card-topline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .character-card h2 {
+            margin: 0;
+            font-size: 1.42rem;
+            line-height: 1.2;
+        }
+
+        .tag {
+            flex: 0 0 auto;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.74);
+            box-shadow: inset 0 0 0 1px var(--line);
+            color: rgba(45, 42, 67, 0.72);
+            font-size: 0.84rem;
+            font-weight: 700;
+        }
+
+        .description {
+            min-height: 52px;
+            margin: 0 0 14px;
+            color: var(--muted);
+            font-size: 0.98rem;
+            line-height: 1.65;
+        }
+
+        .collect-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(45, 42, 67, 0.58);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--dot);
+        }
+
+        .pink {
+            --card-a: #ffe4ef;
+            --card-b: #ffd56d;
+            --face: #ff95bb;
+            --dot: var(--pink);
+        }
+
+        .blue {
+            --card-a: #dff6ff;
+            --card-b: #a8e6ff;
+            --face: #72c9ff;
+            --dot: var(--blue);
+        }
+
+        .cream {
+            --card-a: #fff2ca;
+            --card-b: #ffd9a1;
+            --face: #f2c17f;
+            --dot: var(--yellow);
+        }
+
+        .rainbow {
+            --card-a: #e7f7d5;
+            --card-b: #f7d7ff;
+            --face: #a9df7a;
+            --dot: var(--green);
+        }
+
+        .violet {
+            --card-a: #eee6ff;
+            --card-b: #ccecff;
+            --face: #b79dff;
+            --dot: var(--violet);
+        }
+
+        .peach {
+            --card-a: #ffe9d8;
+            --card-b: #ffd5e6;
+            --face: #ffad82;
+            --dot: #ffad82;
+        }
+
+        .status {
+            margin-top: 22px;
+            padding: 14px 16px;
+            border: 1px dashed rgba(45, 42, 67, 0.14);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.58);
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        @keyframes note-bounce {
+            0%, 100% { transform: translateY(0) rotate(-6deg); }
+            50% { transform: translateY(-3px) rotate(8deg); }
+        }
+
+        @keyframes float-soft {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-8px) rotate(6deg); }
+        }
+
+        @media (max-width: 920px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .sticker.one {
+                right: 16px;
+                top: 22px;
+            }
+
+            .sticker.two {
+                display: none;
+            }
+
+            .album-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 620px) {
+            .page-shell {
+                width: min(100% - 20px, 1120px);
+                padding-top: 16px;
+            }
+
+            .hero {
+                margin-bottom: 20px;
+            }
+
+            h1 {
+                max-width: 92%;
+            }
+
+            .album-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .character-card {
+                min-height: 0;
+                padding: 12px;
+                border-radius: 20px;
+            }
+
+            .card-art {
+                min-height: 220px;
+            }
+
+            .placeholder-character {
+                width: 138px;
+                height: 138px;
+            }
+
+            .placeholder-character::before,
+            .placeholder-character::after {
+                top: 50px;
+            }
+
+            .mouth {
+                top: 82px;
+            }
+
+            .cheek {
+                top: 76px;
+            }
+
+            .card-topline {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page-shell">
+        <a href="../../index.html" class="back-link" aria-label="返回首页">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
+            返回首页
+        </a>
+
+        <header class="hero">
+            <div>
+                <span class="eyebrow">原创角色图册</span>
+                <h1>莉莉丝的可爱角色收藏</h1>
+                <p class="subtitle">今天想和哪个小伙伴一起玩？先用占位插画搭好图册，之后可以换成小朋友自己的画或原创角色图片。</p>
+            </div>
+            <button class="music-button" type="button" id="musicBtn" aria-pressed="false">
+                <span class="music-note" id="musicNote" aria-hidden="true">♪</span>
+                <span id="musicLabel">播放音乐</span>
+            </button>
+            <span class="sticker one" aria-hidden="true">☆</span>
+            <span class="sticker two" aria-hidden="true">♡</span>
+        </header>
+
+        <section class="album-grid" aria-label="可爱角色卡片图册">
+            <article class="character-card pink">
+                <div class="card-art has-image">
+                    <img class="card-image" src="pics/0b7fb131-5610-4188-b2b3-fa9197b13a73.png" alt="卡卡小狗在天空中飞过彩色小镇的角色图片">
+                </div>
+                <div class="card-copy">
+                    <div class="card-topline">
+                        <h2>卡卡</h2>
+                        <span class="tag">会打招呼</span>
+                    </div>
+                    <p class="description">一只笑眯眯的小狗，戴着小铃铛，最喜欢飞奔过来和你打招呼。</p>
+                    <div class="collect-row"><span class="dot"></span><span>收藏编号 01</span></div>
+                </div>
+            </article>
+
+            <article class="character-card blue">
+                <div class="card-art has-image">
+                    <img class="card-image" src="pics/ChatGPT Image 2026年4月26日 23_03_00.png" alt="蓝莓飞飞在天空中飞过彩色小镇的角色图片">
+                </div>
+                <div class="card-copy">
+                    <div class="card-topline">
+                        <h2>蓝莓飞飞</h2>
+                        <span class="tag">会飞</span>
+                    </div>
+                    <p class="description">带着轻轻的小翅膀，飞过彩色屋顶，最喜欢发现新朋友。</p>
+                    <div class="collect-row"><span class="dot"></span><span>收藏编号 02</span></div>
+                </div>
+            </article>
+
+            <article class="character-card rainbow">
+                <div class="card-art has-image">
+                    <img class="card-image" src="pics/256480b2-44aa-4dad-9725-d4ec967bf59e.png" alt="彩色勇士飞越星光小镇的角色图片">
+                </div>
+                <div class="card-copy">
+                    <div class="card-topline">
+                        <h2>彩色勇士</h2>
+                        <span class="tag">持长矛</span>
+                    </div>
+                    <p class="description">戴着蓝头巾，举着星光长矛，在彩虹和星星之间飞翔。</p>
+                    <div class="collect-row"><span class="dot"></span><span>收藏编号 03</span></div>
+                </div>
+            </article>
+
+            <article class="character-card pink">
+                <div class="card-art has-image">
+                    <img class="card-image" src="pics/a03cf1c7-cf82-4c55-9a02-53671b61e2a6.png" alt="粉色Kirby飞越彩色城堡小镇的角色图片">
+                </div>
+                <div class="card-copy">
+                    <div class="card-topline">
+                        <h2>粉色Kirby</h2>
+                        <span class="tag">会飞</span>
+                    </div>
+                    <p class="description">粉粉圆圆，飞过城堡屋顶，最喜欢追着金色星星跑。</p>
+                    <div class="collect-row"><span class="dot"></span><span>收藏编号 04</span></div>
+                </div>
+            </article>
+        </section>
+
+        <p class="status" id="sceneMessage">图册收录了 4 位小伙伴，随时可以继续加入新的角色。</p>
+    </main>
+
+    <script>
+        const musicBtn = document.getElementById("musicBtn");
+        const musicLabel = document.getElementById("musicLabel");
+        const musicNote = document.getElementById("musicNote");
+        const sceneMessage = document.getElementById("sceneMessage");
+        const melody = [
+            { note: 523.25, beat: 0 },
+            { note: 587.33, beat: 1 },
+            { note: 659.25, beat: 2 },
+            { note: 783.99, beat: 3 },
+            { note: 659.25, beat: 4 },
+            { note: 587.33, beat: 5 },
+            { note: 523.25, beat: 6 },
+            { note: 392.00, beat: 7 },
+            { note: 440.00, beat: 8 },
+            { note: 523.25, beat: 9 },
+            { note: 587.33, beat: 10 },
+            { note: 659.25, beat: 11 },
+            { note: 587.33, beat: 12 },
+            { note: 523.25, beat: 13 },
+            { note: 440.00, beat: 14 },
+            { note: 392.00, beat: 15 }
+        ];
+        const beatLength = 0.42;
+        let audioContext = null;
+        let musicGain = null;
+        let musicTimer = null;
+        let isMusicPlaying = false;
+        let nextMelodyStart = 0;
+
+        function createMusicNote(frequency, startTime, duration) {
+            const oscillator = audioContext.createOscillator();
+            const noteGain = audioContext.createGain();
+            const tremolo = audioContext.createOscillator();
+            const tremoloGain = audioContext.createGain();
+
+            oscillator.type = "triangle";
+            oscillator.frequency.setValueAtTime(frequency, startTime);
+            tremolo.type = "sine";
+            tremolo.frequency.setValueAtTime(5.5, startTime);
+            tremoloGain.gain.setValueAtTime(0.05, startTime);
+
+            noteGain.gain.setValueAtTime(0.0001, startTime);
+            noteGain.gain.exponentialRampToValueAtTime(0.16, startTime + 0.04);
+            noteGain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+
+            tremolo.connect(tremoloGain);
+            tremoloGain.connect(oscillator.frequency);
+            oscillator.connect(noteGain);
+            noteGain.connect(musicGain);
+
+            oscillator.start(startTime);
+            tremolo.start(startTime);
+            oscillator.stop(startTime + duration + 0.04);
+            tremolo.stop(startTime + duration + 0.04);
+        }
+
+        function scheduleMelodyLoop() {
+            if (!isMusicPlaying) {
+                return;
+            }
+
+            const now = audioContext.currentTime;
+            while (nextMelodyStart < now + 1.2) {
+                melody.forEach(({ note, beat }) => {
+                    createMusicNote(note, nextMelodyStart + beat * beatLength, beatLength * 0.82);
+                });
+                nextMelodyStart += melody.length * beatLength;
+            }
+        }
+
+        function updateMusicButton() {
+            musicBtn.setAttribute("aria-pressed", String(isMusicPlaying));
+            musicLabel.textContent = isMusicPlaying ? "暂停音乐" : "播放音乐";
+            musicNote.classList.toggle("is-playing", isMusicPlaying);
+        }
+
+        function startMusic() {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContextClass) {
+                sceneMessage.textContent = "这个浏览器暂时不支持音乐播放。";
+                return;
+            }
+
+            audioContext = audioContext || new AudioContextClass();
+            if (!musicGain) {
+                musicGain = audioContext.createGain();
+                musicGain.connect(audioContext.destination);
+            }
+            musicGain.gain.cancelScheduledValues(audioContext.currentTime);
+            musicGain.gain.setValueAtTime(0.18, audioContext.currentTime);
+
+            audioContext.resume();
+            isMusicPlaying = true;
+            nextMelodyStart = audioContext.currentTime + 0.08;
+            scheduleMelodyLoop();
+            musicTimer = window.setInterval(scheduleMelodyLoop, 450);
+            updateMusicButton();
+            sceneMessage.textContent = "轻轻跳跳的图册音乐开始啦。";
+        }
+
+        function stopMusic() {
+            isMusicPlaying = false;
+            window.clearInterval(musicTimer);
+            musicTimer = null;
+            if (musicGain) {
+                musicGain.gain.setTargetAtTime(0.0001, audioContext.currentTime, 0.05);
+            }
+            updateMusicButton();
+            sceneMessage.textContent = "音乐先休息一下，角色卡片还在这里。";
+        }
+
+        musicBtn.addEventListener("click", () => {
+            if (isMusicPlaying) {
+                stopMusic();
+                return;
+            }
+            startMusic();
+        });
+    </script>
+</body>
+</html>

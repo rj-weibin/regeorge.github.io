@@ -1,0 +1,16 @@
+# Obsidian笔记自动推送配置
+# 将此行添加到你的crontab中：
+
+# 每天00:00自动推送Obsidian笔记到GitHub
+0 0 * * * /Users/regeorge/Documents/codeStore/obsidian/auto-push.sh >> /Users/regeorge/Documents/codeStore/obsidian/push.log 2>&1
+
+# 添加方法：
+# 1. 打开终端，输入: crontab -e
+# 2. 将上面的行粘贴进去
+# 3. 保存并退出
+
+# 检查crontab是否已设置：
+# crontab -l
+
+# 查看日志：
+# cat /Users/regeorge/Documents/codeStore/obsidian/push.log

@@ -1,0 +1,1911 @@
+{
+  "meta": {
+    "title": "Knowledge Atlas",
+    "subtitle": "从整体到局部，从快速审阅到深度理解",
+    "lastUpdated": "2026-06-22",
+    "reviewStatus": "已回顾 — 36 Active / 16 NIPoison / 7 合并 / 3 降级/研究",
+    "sourceOfTruth": "data",
+    "generatedFrom": "data/memory"
+  },
+  "categories": [
+    {
+      "id": "ai-workflow",
+      "title": "AI 工作流",
+      "icon": "🤖",
+      "color": "#4A90D9",
+      "description": "人机协作、认知升级、工具流"
+    },
+    {
+      "id": "thinking",
+      "title": "思考系统",
+      "icon": "🧠",
+      "color": "#7B61FF",
+      "description": "清晰思考、决策框架、快思考觉察"
+    },
+    {
+      "id": "mental-models",
+      "title": "认知模型",
+      "icon": "📚",
+      "color": "#2ECC71",
+      "description": "从书籍中提炼的跨域认知框架"
+    },
+    {
+      "id": "growth",
+      "title": "个人成长",
+      "icon": "🌱",
+      "color": "#F39C12",
+      "description": "方向、状态、执行的操作系统"
+    },
+    {
+      "id": "life-philosophy",
+      "title": "生活哲学",
+      "icon": "💡",
+      "color": "#E74C3C",
+      "description": "焦急与平静、当下体验、万物相通"
+    },
+    {
+      "id": "sports",
+      "title": "运动系统",
+      "icon": "🏓",
+      "color": "#1ABC9C",
+      "description": "乒乓球技术体系与训练方法",
+      "external": "../project-table-tennis/index.html"
+    },
+    {
+      "id": "output",
+      "title": "输出实验",
+      "icon": "🔧",
+      "color": "#95A5A6",
+      "description": "页面实验、交互原型、工具构建",
+      "external": "../../index.html"
+    }
+  ],
+  "topics": [
+    {
+      "id": "human-in-the-loop",
+      "categoryId": "ai-workflow",
+      "title": "Human-in-the-loop",
+      "oneLiner": "人不退出流程，而是从执行者变成判断者、验收者和方向控制者。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-05-01",
+      "keyTakeaways": [
+        "输出格式决定审核效率",
+        "AI推理 + 人决策 = 最优分工",
+        "交互文档是人机协作的核心接口"
+      ]
+    },
+    {
+      "id": "cognitive-upgrade",
+      "categoryId": "ai-workflow",
+      "title": "认知升级",
+      "oneLiner": "从执行层升级到定义边界层——碳基到硅基的思维跃迁。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-14",
+      "keyTakeaways": [
+        "硅基思维是写概要交AI复刻",
+        "AI产出的唯一意义指向自己",
+        "密度优先 + 思维还原 + 精力卸载"
+      ]
+    },
+    {
+      "id": "iteration-drive",
+      "categoryId": "ai-workflow",
+      "title": "迭代与驱动",
+      "oneLiner": "300次迭代的认知：持续做就会变好，驱动力要来自内在。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-15",
+      "keyTakeaways": [
+        "持续迭代本身就是能力",
+        "自发驱动比外部激励更持久",
+        "迭代不是重复，是每次更好一点"
+      ]
+    },
+    {
+      "id": "clear-thinking",
+      "categoryId": "thinking",
+      "title": "清晰思考",
+      "oneLiner": "想清楚比做决定更重要。先穷尽选项空间，再聚焦最重要的。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-05-06",
+      "keyTakeaways": [
+        "否定不产生洞见，深度选择才产生洞见",
+        "焦急时的决策往往是噪音驱动的",
+        "想清楚和做决定是两个独立能力维度"
+      ]
+    },
+    {
+      "id": "fast-thinking-awareness",
+      "categoryId": "thinking",
+      "title": "快思考觉察",
+      "oneLiner": "6个潜意识模式不是缺点，是大脑的保护机制。看见它们就是手动接管。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-23",
+      "keyTakeaways": [
+        "保护过度就变成天花板",
+        "万能锚点：我的快思考现在最想说什么？",
+        "自我安顿后才能看见盲点"
+      ]
+    },
+    {
+      "id": "info-asymmetry",
+      "categoryId": "thinking",
+      "title": "信息与人性",
+      "oneLiner": "信息不对称是人际交往的底色，可预测性比善恶更决定结果。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-01",
+      "keyTakeaways": [
+        "蠢人是混沌系统中的不可约项",
+        "社交默认不是心理缺陷",
+        "信息不对称可以是正向的"
+      ]
+    },
+    {
+      "id": "jobs-biography",
+      "categoryId": "mental-models",
+      "title": "乔布斯传",
+      "oneLiner": "偏执不是性格天赋，是经历锻造的结果。简洁、过程、编码标准、死亡标尺。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "keyTakeaways": [
+        "真正的密度是删到不能再删",
+        "过程中的投入本身就是意义",
+        "把标准编码成自运转系统"
+      ]
+    },
+    {
+      "id": "duan-yongping",
+      "categoryId": "mental-models",
+      "title": "段永平",
+      "oneLiner": "本分就是平静过滤器的哲学名字。先做对的事，再把事做对。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "keyTakeaways": [
+        "本分 = 在有诱惑时排除干扰回到事物本质",
+        "不懂不碰，最坏结果可接受才算懂",
+        "伟大的人是造钟人，不是报时人"
+      ]
+    },
+    {
+      "id": "compound-effect",
+      "categoryId": "mental-models",
+      "title": "复利效应",
+      "oneLiner": "焦急往往出现在复利即将显现的前夜。持续性是复利的前提，幅度是次要变量。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-09",
+      "keyTakeaways": [
+        "记录是行为的镜子，也是认知的防腐剂",
+        "打破自动驾驶需要三层防线",
+        "先做对的事情，再把事情做对"
+      ]
+    },
+    {
+      "id": "naval-almanack",
+      "categoryId": "mental-models",
+      "title": "纳瓦尔宝典",
+      "oneLiner": "硅基杠杆是2026年普通人的杠杆。平静是幸福的操作系统。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "keyTakeaways": [
+        "专长不在工具里，在你用了工具之后的你里",
+        "阅读和记录是认知复利的双螺旋",
+        "资源匮乏不是快乐的敌人，欲望才是"
+      ]
+    },
+    {
+      "id": "direction-state-execution",
+      "categoryId": "growth",
+      "title": "方向·状态·执行",
+      "oneLiner": "乔布斯管方向，段永平管状态，曾国藩管执行。三者缺一不可。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-26",
+      "keyTakeaways": [
+        "方向对抗焦虑，状态接纳起伏，笨功夫穿越时间",
+        "方法论经得起番茄钟压缩测试才有效",
+        "粗糙的开始胜过周全的计划"
+      ]
+    },
+    {
+      "id": "knowledge-work",
+      "categoryId": "growth",
+      "title": "认知管理",
+      "oneLiner": "知识管理不是建仓库，是建提取通道。记忆资产 = 经历 × 串联 × 演绎。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-09",
+      "keyTakeaways": [
+        "面试买断的不是过去式，是未来式",
+        "测试的本质是自我审计系统",
+        "IPO原则 + 微习惯 + 断舍离"
+      ]
+    },
+    {
+      "id": "anxiety-peace",
+      "categoryId": "life-philosophy",
+      "title": "焦急与平静",
+      "oneLiner": "焦急的底层燃料是对死亡和失去的恐惧。平静不是不作为，是对时间有信心。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-22",
+      "keyTakeaways": [
+        "焦急是相变前奏，是系统在跨越能垒",
+        "除了呼吸和心跳，没什么是必须做的",
+        "事缓则圆——平静不是不作为"
+      ]
+    },
+    {
+      "id": "present-moment",
+      "categoryId": "life-philosophy",
+      "title": "当下体验",
+      "oneLiner": "感受阳光，闻着花香——幸福不在远方，在你能感知的当下。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-09",
+      "keyTakeaways": [
+        "正念书写：只是写，不关注目的",
+        "10块钱点卡时代的快乐 vs 现在的焦虑",
+        "一紧一松的重复不是惩罚，是训练"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "interactive-doc",
+      "topicId": "human-in-the-loop",
+      "title": "交互式文档是人机协作的核心接口",
+      "bookBadge": null,
+      "oneLiner": "让AI输出交互式文档，人通过一键否决和批阅偏差来校正——双向协作的核心价值。",
+      "philosophyNote": "交互式文档：不是产出，是人机协作的接口。核心功能是\"可审计\"。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-09",
+      "source": "data/memory/work/2026-04-09-交互式文档人机协作.md",
+      "keyTakeaways": [
+        "可审计性是核心",
+        "从被动阅读变成主动审查",
+        "AI读取结构化修正信号"
+      ],
+      "relations": [
+        {
+          "type": "enables",
+          "target": "ai-usage-tips"
+        },
+        {
+          "type": "part_of",
+          "target": "human-in-the-loop"
+        },
+        {
+          "type": "related",
+          "target": "ai-tool-validation"
+        }
+      ]
+    },
+    {
+      "id": "ai-usage-tips",
+      "topicId": "human-in-the-loop",
+      "title": "AI擅长推理和执行，人擅长决策",
+      "bookBadge": null,
+      "oneLiner": "碎片化一步一问导致信息损耗，交互文档让双方在同一页上。",
+      "philosophyNote": "人机协作 = AI推理 + 人决策 + 交互文档降低损耗。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-14",
+      "source": "data/memory/work/2026-04-14-AI使用心得.md",
+      "keyTakeaways": [
+        "AI是推理引擎，人是决策节点",
+        "全局视角让人做人的事",
+        "一步一问是战术勤奋掩盖战略懒惰"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "interactive-doc"
+        },
+        {
+          "type": "part_of",
+          "target": "human-in-the-loop"
+        }
+      ]
+    },
+    {
+      "id": "ai-tool-validation",
+      "topicId": "human-in-the-loop",
+      "title": "AI工具流的双向检验",
+      "bookBadge": null,
+      "oneLiner": "效率检验（解放重复劳动）+ 意义检验（产出与自己强关联且具启发性）。",
+      "philosophyNote": "望远镜模型：落点不在AI身上，在你身上。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-01",
+      "source": "data/memory/atlas/2026-04-01-AI工具流双向检验.md",
+      "absorbedFrom": [
+        "naval-tool-judgment"
+      ],
+      "keyTakeaways": [
+        "效率检验是第一道",
+        "意义检验是第二道",
+        "落点在人身上",
+        "判断力检验=刀快+厨师变好"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "interactive-doc"
+        },
+        {
+          "type": "related",
+          "target": "naval-tool-judgment"
+        }
+      ]
+    },
+    {
+      "id": "ai-metacognition",
+      "topicId": "cognitive-upgrade",
+      "title": "AI元认知",
+      "bookBadge": null,
+      "mergedInto": "carbon-silicon",
+      "oneLiner": "密度优先 + 思维还原 + 精力卸载。结构化的语言是信息密度最高的提示词。",
+      "philosophyNote": "AI元认知的核心不是\"用AI\"，而是\"知道什么时候用AI，什么时候不用\"。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-03-21",
+      "source": "data/memory/atlas/2026-03-21-AI元认知.md",
+      "keyTakeaways": [
+        "区分高阶意识任务和体力劳动任务",
+        "结构化语言是最好的提示词",
+        "精力卸载不是偷懒是优化"
+      ],
+      "relations": [
+        {
+          "type": "enables",
+          "target": "carbon-silicon"
+        },
+        {
+          "type": "part_of",
+          "target": "cognitive-upgrade"
+        }
+      ]
+    },
+    {
+      "id": "carbon-silicon",
+      "topicId": "cognitive-upgrade",
+      "title": "碳基 vs 硅基思维",
+      "bookBadge": null,
+      "oneLiner": "从写详档到写≤20字概要交AI复刻。关键能力从执行层转向定义边界层。",
+      "philosophyNote": "从喂生肉升级到喂操作协议。这才是人肉 vs 硅肉的真正分水岭。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-03-31",
+      "source": "data/memory/work/2026-03-31-碳基与硅基思维.md",
+      "absorbedFrom": [
+        "ai-metacognition"
+      ],
+      "keyTakeaways": [
+        "碳基：写详档扒图分享",
+        "硅基：写概要交AI复刻",
+        "核心：能不能写硅基友好的流程概要",
+        "元认知=知道什么时候用AI/不用AI"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "ai-metacognition"
+        },
+        {
+          "type": "related",
+          "target": "ai-meaning"
+        }
+      ]
+    },
+    {
+      "id": "ai-meaning",
+      "topicId": "cognitive-upgrade",
+      "title": "AI时代的意义指向",
+      "bookBadge": null,
+      "oneLiner": "AI产出完全不重要。唯一的意义必须指向自己——服务自己的决策、成长、生活质量。",
+      "philosophyNote": "Output不是终点，Output改变了我才是。没有落地到自身改变的产出是数字垃圾。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-03-31",
+      "source": "data/memory/work/2026-03-31-AI时代的意义指向.md",
+      "absorbedFrom": [
+        "naval-ai-expertise"
+      ],
+      "keyTakeaways": [
+        "产出的唯一意义指向自己",
+        "杠杆 + 指向自我 = 飞轮加速",
+        "AI最大化服务自己的决策",
+        "专长不在工具在用的你→内化率"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "carbon-silicon"
+        },
+        {
+          "type": "related",
+          "target": "naval-ai-expertise"
+        }
+      ]
+    },
+    {
+      "id": "iteration-300",
+      "topicId": "iteration-drive",
+      "title": "300次迭代认知",
+      "bookBadge": null,
+      "oneLiner": "300次迭代后的认知：持续做就会变好，关键是不停下来。",
+      "philosophyNote": "迭代不是重复，是每次更好一点。300次之后量变引发质变。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-15",
+      "source": "data/memory/work/2026-04-15-300次迭代认知.md",
+      "keyTakeaways": [
+        "持续做就会变好",
+        "不停下来是关键",
+        "量变引发质变"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "compound-iteration"
+        },
+        {
+          "type": "related",
+          "target": "self-driven"
+        }
+      ]
+    },
+    {
+      "id": "self-driven",
+      "topicId": "iteration-drive",
+      "title": "自发驱动",
+      "bookBadge": null,
+      "oneLiner": "真正的驱动力来自内在——不是外部激励，是你自己想做。",
+      "philosophyNote": "自发驱动是最持久的燃料。外部激励会耗竭，内在动机自己续航。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-14",
+      "source": "data/memory/life/2026-04-14-自发驱动.md",
+      "keyTakeaways": [
+        "内在动机自己续航",
+        "外部激励会耗竭",
+        "做让你忘记时间的事"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "iteration-300"
+        },
+        {
+          "type": "related",
+          "target": "do-important-things"
+        }
+      ]
+    },
+    {
+      "id": "denial-vs-selection",
+      "topicId": "clear-thinking",
+      "title": "否定排除 vs 深度选择",
+      "bookBadge": "📖 清晰思考",
+      "oneLiner": "否定排除法不会带来新洞见。先穷尽再聚焦，排除是选择的结果。",
+      "philosophyNote": "拎得清：否定不产生洞见，深度选择才产生洞见。先穷尽再聚焦，排除是选择的结果而不是选择本身。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-05-06",
+      "source": "data/memory/life/2026-05-06-否定排除与深度选择.md",
+      "keyTakeaways": [
+        "否定是最廉价的减法",
+        "深度选择需要先穷尽选项",
+        "排除是聚焦的结果"
+      ],
+      "relations": [
+        {
+          "type": "part_of",
+          "target": "clear-thinking"
+        },
+        {
+          "type": "related",
+          "target": "think-vs-decide"
+        }
+      ]
+    },
+    {
+      "id": "memory-asset-clear",
+      "topicId": "clear-thinking",
+      "title": "你是你自己的信息源头",
+      "bookBadge": "📖 清晰思考",
+      "oneLiner": "未经记录的记忆会被大脑不断改写。记录是对大脑篡改权的剥夺。",
+      "philosophyNote": "你不是在接近源头，你就是源头。记录是对大脑篡改权的剥夺。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-清晰思考-记忆资产.md",
+      "keyTakeaways": [
+        "未经记录的记忆会被改写",
+        "记录是防止篡改的工具",
+        "你就是信息源头"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "memory-asset-protection"
+        },
+        {
+          "type": "related",
+          "target": "naval-memory-asset"
+        }
+      ]
+    },
+    {
+      "id": "universal-connection",
+      "topicId": "clear-thinking",
+      "title": "万物都是哲学的饲料",
+      "bookBadge": "📖 清晰思考",
+      "oneLiner": "不找特定的人当灯塔，把整个海岸线都变成灯塔——万物都是哲学的饲料。",
+      "philosophyNote": "不找特定的人当灯塔，把整个海岸线都变成了灯塔。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-清晰思考-万物相通.md",
+      "keyTakeaways": [
+        "万物都是老师",
+        "生活本身变成素材",
+        "海岸线都是灯塔"
+      ],
+      "relations": [
+        {
+          "type": "part_of",
+          "target": "clear-thinking"
+        },
+        {
+          "type": "related",
+          "target": "universal-philosophy"
+        }
+      ]
+    },
+    {
+      "id": "info-asymmetry-social",
+      "topicId": "clear-thinking",
+      "title": "社交默认的底层因果",
+      "bookBadge": "📖 清晰思考",
+      "mergedInto": "fast-thinking-anchors",
+      "oneLiner": "社交默认不是心理缺陷，是信息不对称制造的被动服从。治浮萍不是捞浮萍，是改水流。",
+      "philosophyNote": "社交默认不是心理缺陷，是信息不对称制造的被动服从。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-清晰思考-信息不对称.md",
+      "keyTakeaways": [
+        "信息不对称制造被动服从",
+        "善良者透明是放弃防御",
+        "改水流而不是捞浮萍"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "info-asymmetry-three-types"
+        },
+        {
+          "type": "part_of",
+          "target": "clear-thinking"
+        }
+      ]
+    },
+    {
+      "id": "think-vs-decide",
+      "topicId": "clear-thinking",
+      "title": "想清楚与做决定是两件事",
+      "bookBadge": "📖 清晰思考",
+      "oneLiner": "认知工具是雷达，决策流程是发射按钮——两者必须分开处理。",
+      "philosophyNote": "想清楚和做决定是两个独立的能力维度。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-清晰思考-想清楚与做决定.md",
+      "keyTakeaways": [
+        "认知工具解决如何想清楚",
+        "决策流程解决何时行动",
+        "两者独立不可混淆"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "anxiety-decision"
+        },
+        {
+          "type": "related",
+          "target": "denial-vs-selection"
+        }
+      ]
+    },
+    {
+      "id": "anxiety-decision",
+      "topicId": "clear-thinking",
+      "title": "焦急的决策框架",
+      "bookBadge": "📖 清晰思考",
+      "oneLiner": "焦急不是错误是信号。行动是让思维\"落地\"的唯一方式。",
+      "philosophyNote": "焦虑的本质是思维在两种可能性之间跳跃，行动是让思维落地的唯一方式。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-清晰思考-焦急的决策框架.md",
+      "keyTakeaways": [
+        "焦急不是错误是信号",
+        "有没有能力做慢思考是关键判断",
+        "事情落地了焦虑自然解开"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "think-vs-decide"
+        },
+        {
+          "type": "related",
+          "target": "anxiety-cosmos"
+        }
+      ]
+    },
+    {
+      "id": "fast-thinking-patterns",
+      "topicId": "fast-thinking-awareness",
+      "title": "6个快思考潜意识模式",
+      "bookBadge": null,
+      "oneLiner": "①\"我不行\"前置滤镜 ②固化自我标签 ③且战且退 ④辩解替代复盘 ⑤完美主义伪努力 ⑥情绪保护色",
+      "philosophyNote": "6个潜意识模式不是缺点，是大脑的保护机制。保护过度就变成天花板。看见本身就是手动接管。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-23",
+      "source": "data/memory/atlas/2026-04-23-快思考潜意识模式.md",
+      "keyTakeaways": [
+        "不是缺点是保护机制",
+        "保护过度变成天花板",
+        "看见就是接管"
+      ],
+      "relations": [
+        {
+          "type": "enables",
+          "target": "fast-thinking-anchors"
+        },
+        {
+          "type": "related",
+          "target": "self-settle"
+        }
+      ]
+    },
+    {
+      "id": "fast-thinking-anchors",
+      "topicId": "fast-thinking-awareness",
+      "title": "6个快思考觉察锚点",
+      "bookBadge": null,
+      "oneLiner": "万能锚点——\"我的快思考现在最想说什么？\"一个问题打断自动运行。",
+      "philosophyNote": "万能锚点——一个问题打断快思考的自动运行，让你从自动驾驶切换到手动接管。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-23",
+      "source": "data/memory/atlas/2026-04-23-快思考觉察锚点.md",
+      "absorbedFrom": [
+        "info-asymmetry-social"
+      ],
+      "keyTakeaways": [
+        "赛前问快思考想说什么",
+        "失误后3秒问复盘还是辩解",
+        "看见本身就是力量",
+        "社交锚点:沉默是选择还是信息不对称？"
+      ],
+      "relations": [
+        {
+          "type": "depends_on",
+          "target": "fast-thinking-patterns"
+        },
+        {
+          "type": "related",
+          "target": "self-settle"
+        }
+      ]
+    },
+    {
+      "id": "self-settle",
+      "topicId": "fast-thinking-awareness",
+      "title": "自我安顿，才能看见自己的缺点",
+      "bookBadge": null,
+      "oneLiner": "情绪是自我欺骗的保护色——沉浸在失落里时，没空审视哪里做错了。",
+      "philosophyNote": "自我安顿不是坚强，是想看见真相。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-23",
+      "source": "data/memory/atlas/2026-04-23-自我安顿与察觉缺点.md",
+      "keyTakeaways": [
+        "情绪遮蔽盲点",
+        "安顿后真相浮现",
+        "不是坚强是想看见"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "in-but-not-trapped"
+        },
+        {
+          "type": "related",
+          "target": "fast-thinking-patterns"
+        }
+      ]
+    },
+    {
+      "id": "in-but-not-trapped",
+      "topicId": "fast-thinking-awareness",
+      "title": "置身其中，但又不陷进去",
+      "bookBadge": null,
+      "oneLiner": "情况既没那么糟也没那么好。全身心参与，但保留不会被吞噬的观察者视角。",
+      "philosophyNote": "置身其中但不陷进去——全身心参与，但保留一个不会被情绪吞噬的观察者视角。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-23",
+      "source": "data/memory/atlas/2026-04-23-置身其中但不陷进去.md",
+      "keyTakeaways": [
+        "不是冷眼旁观是参与",
+        "保持观察者视角",
+        "平常心应对好坏"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "self-settle"
+        },
+        {
+          "type": "related",
+          "target": "naval-peace-filter"
+        }
+      ]
+    },
+    {
+      "id": "info-asymmetry-three-types",
+      "topicId": "info-asymmetry",
+      "title": "信息不对称与人性的三类变量",
+      "bookBadge": null,
+      "oneLiner": "善良者透明，恶人精准操控，蠢人是最大不可控变量——不是有意为之，是不知道自己在做什么。",
+      "philosophyNote": "三类玩家模型：可预测性比善恶更决定结果。蠢人不是道德问题，是混沌系统中的不可约项。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-01",
+      "source": "data/memory/atlas/2026-04-01-信息不对称与人性的三类变量.md",
+      "keyTakeaways": [
+        "可预测性比善恶更重要",
+        "蠢人是不可约的混沌变量",
+        "信息不对称是底色"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "info-asymmetry-social"
+        },
+        {
+          "type": "related",
+          "target": "jobs-visionary"
+        }
+      ]
+    },
+    {
+      "id": "jobs-simplicity",
+      "topicId": "jobs-biography",
+      "title": "真正的密度不是堆砌，是删到不能再删",
+      "bookBadge": "📖 乔布斯传",
+      "oneLiner": "乔布斯说简洁是最高设计原则——真正的密度不是堆砌，是删到不能再删之后剩下的东西。",
+      "philosophyNote": "真正的密度不是堆砌，是删到不能再删之后剩下的东西。你留的越少，每一克就越重。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-乔布斯传-大道至简.md",
+      "keyTakeaways": [
+        "简洁是最高设计原则",
+        "密度 = 删到不能再删",
+        "你留的越少每一克越重"
+      ],
+      "relations": [
+        {
+          "type": "part_of",
+          "target": "jobs-biography"
+        },
+        {
+          "type": "related",
+          "target": "jobs-process"
+        }
+      ]
+    },
+    {
+      "id": "jobs-process",
+      "topicId": "jobs-biography",
+      "title": "过程中的投入本身就是意义",
+      "bookBadge": "📖 乔布斯传",
+      "oneLiner": "连看不见的电路板都要排列整齐——制造本身值得被尊重。过程导向是结果的最优路径。",
+      "philosophyNote": "过程中的投入本身就是意义——当结果意识消失时，产出反而最高。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-乔布斯传-过程即奖励.md",
+      "keyTakeaways": [
+        "制造本身值得被尊重",
+        "结果意识消失时产出最高",
+        "过程导向是最优路径"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "jobs-simplicity"
+        },
+        {
+          "type": "related",
+          "target": "jobs-encoding"
+        }
+      ]
+    },
+    {
+      "id": "jobs-encoding",
+      "topicId": "jobs-biography",
+      "title": "把标准编码成自运转系统",
+      "bookBadge": "📖 乔布斯传",
+      "oneLiner": "高阶能力不是亲自做每一件事，而是把标准编码成不依赖自己的自运转系统。",
+      "philosophyNote": "高阶能力不是亲自做每一件事，而是把标准编码成不依赖自己的自运转系统。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-乔布斯传-编码标准.md",
+      "keyTakeaways": [
+        "标准在前系统在后",
+        "让系统自运转",
+        "从执行者升级为定义者"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "duan-clockmaker"
+        },
+        {
+          "type": "related",
+          "target": "carbon-silicon"
+        }
+      ]
+    },
+    {
+      "id": "jobs-death",
+      "topicId": "jobs-biography",
+      "title": "死亡既是决策标尺，也是感恩来源",
+      "bookBadge": "📖 乔布斯传",
+      "oneLiner": "减法排空噪音，加法填入感恩——两面合一才是完整的活在当下。",
+      "philosophyNote": "死亡既是决策的标尺（减法），也是感恩的来源（加法）。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-乔布斯传-死亡的标尺与感恩.md",
+      "keyTakeaways": [
+        "死亡做决策过滤器",
+        "意外做感恩触发器",
+        "当下是唯一确定的东西"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "anxiety-death"
+        },
+        {
+          "type": "related",
+          "target": "heart-check"
+        }
+      ]
+    },
+    {
+      "id": "jobs-visionary",
+      "topicId": "jobs-biography",
+      "title": "信息不对称可以是正向的——愿景者",
+      "bookBadge": "📖 乔布斯传",
+      "mergedInto": "duan-clockmaker",
+      "oneLiner": "三类人模型需要第四类：愿景者——用信念点燃追随者而非消耗他们。",
+      "philosophyNote": "信息不对称可以是正向的——愿景者用信念点燃追随者而非消耗他们。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-乔布斯传-愿景者.md",
+      "keyTakeaways": [
+        "信息不对称可以正向",
+        "愿景者制造可能性",
+        "三类人模型扩展为四类"
+      ],
+      "relations": [
+        {
+          "type": "contrasts_with",
+          "target": "info-asymmetry-three-types"
+        },
+        {
+          "type": "part_of",
+          "target": "jobs-biography"
+        }
+      ]
+    },
+    {
+      "id": "jobs-obsession",
+      "topicId": "jobs-biography",
+      "title": "偏执不是性格天赋，是经历锻造的结果",
+      "bookBadge": "📖 乔布斯传",
+      "reviewTag": "research",
+      "oneLiner": "乔布斯的平静过滤器指向\"做出伟大的东西\"——偏执是正反馈和负反馈交替锻造的极致选择。",
+      "philosophyNote": "偏执不是性格天赋，是经历锻造的结果。两条路径都能到达终点，但代价不同。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-乔布斯传-偏执与英雄之旅.md",
+      "keyTakeaways": [
+        "偏执是经历锻造",
+        "两条路径代价不同",
+        "平静过滤器可以指向不同目标"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "duan-benfen"
+        },
+        {
+          "type": "part_of",
+          "target": "jobs-biography"
+        }
+      ]
+    },
+    {
+      "id": "duan-benfen",
+      "topicId": "duan-yongping",
+      "title": "本分就是平静过滤器的哲学名字",
+      "bookBadge": "📖 段永平",
+      "oneLiner": "段永平给了它一个名字叫\"本分\"，你给了它一个操作系统。",
+      "philosophyNote": "段永平是物理学家发现了\"本分\"的存在，你是工程师造出了\"平静过滤器\"这个常数。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-段永平-本分与平静过滤器.md",
+      "keyTakeaways": [
+        "本分 = 有诱惑时回到本质",
+        "平静过滤器是本分的操作系统",
+        "判断标准以内在平静为准"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "naval-peace-filter"
+        },
+        {
+          "type": "related",
+          "target": "peace-filter"
+        }
+      ]
+    },
+    {
+      "id": "duan-beyond-profit",
+      "topicId": "duan-yongping",
+      "title": "真正的驱动力不能是产出本身",
+      "bookBadge": "📖 段永平",
+      "reviewTag": "NIPoison",
+      "oneLiner": "产出是做对了事的副产品。盯着果实看的人反而结不出好果实。",
+      "philosophyNote": "真正的驱动力不能是产出本身——产出是做对了事的副产品。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-段永平-利润之上的追求.md",
+      "keyTakeaways": [
+        "利润之外的追求更长青",
+        "产出是副产品",
+        "驱动力要高于产出本身"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "ai-meaning"
+        },
+        {
+          "type": "related",
+          "target": "self-driven"
+        }
+      ]
+    },
+    {
+      "id": "duan-no-touch",
+      "topicId": "duan-yongping",
+      "title": "没有内化的理解，不要轻易行动",
+      "bookBadge": "📖 段永平",
+      "oneLiner": "不懂不碰——行动之前先确认结果会内化到你身上。",
+      "philosophyNote": "行动之前先确认结果会内化到你身上——没有内化的理解，不要轻易行动。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-段永平-不懂不碰.md",
+      "keyTakeaways": [
+        "不懂不碰是投资门禁",
+        "内化是行动前提",
+        "认知工具也需要门禁"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "duan-no-touch-chaos"
+        },
+        {
+          "type": "related",
+          "target": "ai-tool-validation"
+        }
+      ]
+    },
+    {
+      "id": "duan-clockmaker",
+      "topicId": "duan-yongping",
+      "title": "用AI做自己认知系统的造钟人",
+      "bookBadge": "📖 段永平 · 📖 纳瓦尔宝典",
+      "oneLiner": "不亲自执行每一件事，而是定义系统让它自运转。",
+      "philosophyNote": "你用AI在自己认知系统里做造钟人——不亲自执行每一件事，而是定义系统让它自运转。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-段永平-造钟人.md",
+      "absorbedFrom": [
+        "jobs-visionary"
+      ],
+      "keyTakeaways": [
+        "造钟人 vs 报时人",
+        "AI让个人也能造钟",
+        "系统自运转是目标",
+        "愿景者的信息不对称是正向的"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "jobs-encoding"
+        },
+        {
+          "type": "related",
+          "target": "carbon-silicon"
+        }
+      ]
+    },
+    {
+      "id": "duan-no-touch-chaos",
+      "topicId": "duan-yongping",
+      "title": "不懂不碰，最坏结果可接受才算懂了",
+      "bookBadge": "📖 段永平",
+      "oneLiner": "三类人模型是\"不懂不碰\"的压力测试工具——最坏结果都能接受，才算真懂了。",
+      "philosophyNote": "段永平没有漏洞。三类人模型是\"不懂不碰\"的压力测试工具。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-段永平-不懂不碰与混沌变量.md",
+      "keyTakeaways": [
+        "毛估估能判断就是懂",
+        "最坏结果可接受",
+        "姚明走进人群一眼最高"
+      ],
+      "relations": [
+        {
+          "type": "depends_on",
+          "target": "duan-no-touch"
+        },
+        {
+          "type": "related",
+          "target": "info-asymmetry-three-types"
+        }
+      ]
+    },
+    {
+      "id": "three-books",
+      "topicId": "duan-yongping",
+      "title": "选择→坚持→穿越，完整操作手册",
+      "bookBadge": "📖 段永平 · 📖 复利效应 · 📖 清晰思考",
+      "oneLiner": "地图（段永平）+ 油表（哈迪）+ 指南针（你）。三步齐全才是完整的认知操作系统。",
+      "philosophyNote": "选择→坚持→穿越，三步齐全才是完整的认知操作系统。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-三书交汇-选择坚持穿越.md",
+      "keyTakeaways": [
+        "平静过滤器选方向",
+        "复利逻辑死磕",
+        "焦急是相变前奏"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "duan-benfen"
+        },
+        {
+          "type": "related",
+          "target": "compound-anxiety"
+        },
+        {
+          "type": "related",
+          "target": "anxiety-cosmos"
+        }
+      ]
+    },
+    {
+      "id": "compound-iteration",
+      "topicId": "compound-effect",
+      "title": "持续的迭代会带来复利",
+      "bookBadge": "📖 复利效应",
+      "oneLiner": "复利的关键变量不是利率（进步幅度）而是次数（持续性）。降低幅度以提高持续性。",
+      "philosophyNote": "降低幅度以提高持续性，是复利的操作层面最优解。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-09",
+      "source": "data/memory/atlas/2026-04-09-持续迭代带来复利.md",
+      "keyTakeaways": [
+        "持续性是前提",
+        "幅度是次要变量",
+        "每天都在进步这个事实最重要"
+      ],
+      "relations": [
+        {
+          "type": "part_of",
+          "target": "compound-effect"
+        },
+        {
+          "type": "related",
+          "target": "iteration-300"
+        }
+      ]
+    },
+    {
+      "id": "compound-record",
+      "topicId": "compound-effect",
+      "title": "记录是行为的镜子，也是认知的防腐剂",
+      "bookBadge": "📖 复利效应",
+      "oneLiner": "不记录，你既不知道自己在做什么，也不知道自己经历过什么。",
+      "philosophyNote": "记录是行为的镜子，也是认知的防腐剂。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-复利效应-记录.md",
+      "keyTakeaways": [
+        "行为追踪是改善第一步",
+        "认知保鲜防止篡改",
+        "记录 = 镜子 + 防腐剂"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "memory-asset-clear"
+        },
+        {
+          "type": "related",
+          "target": "memory-asset-protection"
+        }
+      ]
+    },
+    {
+      "id": "compound-anxiety",
+      "topicId": "compound-effect",
+      "title": "焦急往往出现在复利即将显现的前夜",
+      "bookBadge": "📖 复利效应",
+      "oneLiner": "它不是走错了的信号，而是快到了的信号。",
+      "philosophyNote": "焦急往往出现在复利即将显现的前夜——它不是走错了的信号，而是快到了的信号。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-复利效应-焦急与复利.md",
+      "keyTakeaways": [
+        "大多数人在看到结果前放弃",
+        "焦急是相变前奏",
+        "快到了不是走错了"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "anxiety-cosmos"
+        },
+        {
+          "type": "related",
+          "target": "anxiety-death"
+        }
+      ]
+    },
+    {
+      "id": "compound-autopilot",
+      "topicId": "compound-effect",
+      "title": "打破自动驾驶需要三层防线",
+      "bookBadge": "📖 复利效应",
+      "mergedInto": "three-reflections",
+      "oneLiner": "方向过滤器（你）→ 思维模式识别（帕里什）→ 行为追踪（哈迪）。缺一层就有漏洞。",
+      "philosophyNote": "打破自动驾驶需要三层防线。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-复利效应-自动驾驶.md",
+      "keyTakeaways": [
+        "行为追踪是最外层",
+        "模式识别是中间层",
+        "方向过滤是最底层"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "peace-filter"
+        },
+        {
+          "type": "related",
+          "target": "fast-thinking-patterns"
+        }
+      ]
+    },
+    {
+      "id": "compound-right-thing",
+      "topicId": "compound-effect",
+      "title": "先做对的事情，再把事情做对",
+      "bookBadge": "📖 复利效应 · 📖 清晰思考",
+      "oneLiner": "先确认方向盘，再踩油门——顺序错了，越努力离目的地越远。",
+      "philosophyNote": "做对的事情（方向），再把事情做对（执行）。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-复利效应-做对的事把事做对.md",
+      "keyTakeaways": [
+        "方向 > 执行",
+        "段永平反复强调",
+        "顺序是关键"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "duan-benfen"
+        },
+        {
+          "type": "related",
+          "target": "three-books"
+        }
+      ]
+    },
+    {
+      "id": "rough-start",
+      "topicId": "compound-effect",
+      "title": "粗糙的开始胜过周全的计划",
+      "bookBadge": null,
+      "oneLiner": "粗糙开始的价值不在完成，在于获得真实反馈。反馈是迭代的燃料。",
+      "philosophyNote": "粗糙开始的价值不在\"完成\"，在于\"获得真实反馈\"。没有反馈的完美计划是无燃料的飞机。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-09",
+      "source": "data/memory/atlas/2026-04-09-粗糙的开始胜过周全的计划.md",
+      "keyTakeaways": [
+        "真实反馈比完美计划重要",
+        "第一时间碰到现实",
+        "反馈是迭代的燃料"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "compound-iteration"
+        },
+        {
+          "type": "related",
+          "target": "tomato-clock"
+        }
+      ]
+    },
+    {
+      "id": "naval-silicon-leverage",
+      "topicId": "naval-almanack",
+      "title": "硅基杠杆是2026年普通人的杠杆",
+      "bookBadge": "📖 纳瓦尔宝典",
+      "oneLiner": "纳瓦尔定义了杠杆，你给出了2026年普通人握住它的手柄。",
+      "philosophyNote": "纳瓦尔定义了杠杆，你给出了2026年普通人握住它的手柄。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-纳瓦尔宝典-硅基杠杆.md",
+      "keyTakeaways": [
+        "四种杠杆中代码最民主",
+        "AI让硅基杠杆更易获取",
+        "普通人也能握住杠杆"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "carbon-silicon"
+        },
+        {
+          "type": "part_of",
+          "target": "naval-almanack"
+        }
+      ]
+    },
+    {
+      "id": "naval-tool-judgment",
+      "topicId": "naval-almanack",
+      "title": "工具流的第二道检验就是判断力",
+      "bookBadge": "📖 纳瓦尔宝典",
+      "mergedInto": "ai-tool-validation",
+      "oneLiner": "第一道检验问刀快不快，第二道检验问厨师有没有变好。",
+      "philosophyNote": "第一道检验问刀快不快，第二道检验问厨师有没有变好。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-纳瓦尔宝典-工具流与判断力.md",
+      "keyTakeaways": [
+        "判断力比努力更重要",
+        "产出有没有改变我",
+        "效率 + 判断力双检验"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "ai-tool-validation"
+        },
+        {
+          "type": "part_of",
+          "target": "naval-almanack"
+        }
+      ]
+    },
+    {
+      "id": "naval-peace-filter",
+      "topicId": "naval-almanack",
+      "title": "平静是幸福的操作系统",
+      "bookBadge": "📖 纳瓦尔宝典",
+      "oneLiner": "纳瓦尔写了操作系统的设计文档，你编译出了第一个可运行的版本。",
+      "philosophyNote": "纳瓦尔写了操作系统的设计文档，你编译出了第一个可运行的版本。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-纳瓦尔宝典-平静过滤器.md",
+      "keyTakeaways": [
+        "幸福 = 减少欲望后的平和",
+        "平静过滤器是可运行版本",
+        "理论 → 操作系统"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "duan-benfen"
+        },
+        {
+          "type": "related",
+          "target": "peace-filter"
+        }
+      ]
+    },
+    {
+      "id": "naval-memory-asset",
+      "topicId": "naval-almanack",
+      "title": "记录是采矿，复盘是冶炼",
+      "bookBadge": "📖 纳瓦尔宝典",
+      "oneLiner": "认知复利的三步机制：记录（采矿）→ 碰撞（冶炼）→ 飞轮（再投资）。",
+      "philosophyNote": "纳瓦尔描述了复利的结果，你给出了认知复利的三步机制。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-纳瓦尔宝典-记忆资产.md",
+      "keyTakeaways": [
+        "记录是采矿",
+        "复盘是冶炼",
+        "飞轮是再投资"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "compound-record"
+        },
+        {
+          "type": "related",
+          "target": "memory-asset-clear"
+        }
+      ]
+    },
+    {
+      "id": "naval-ai-expertise",
+      "topicId": "naval-almanack",
+      "title": "AI时代的专长是你用工具产出了什么不可复制的认知",
+      "bookBadge": "📖 纳瓦尔宝典",
+      "mergedInto": "ai-meaning",
+      "oneLiner": "专长不在工具里，在\"你用了工具之后的你\"里。含金量 = 内化率。",
+      "philosophyNote": "专长不在工具里，在\"你用了工具之后的你\"里。含金量 = 内化率。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-纳瓦尔宝典-AI时代的专长.md",
+      "keyTakeaways": [
+        "专长来自独特性",
+        "AI时代验证标准是内化率",
+        "工具只是载体"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "ai-meaning"
+        },
+        {
+          "type": "related",
+          "target": "naval-tool-judgment"
+        }
+      ]
+    },
+    {
+      "id": "naval-desire",
+      "topicId": "naval-almanack",
+      "title": "资源匮乏不是快乐的敌人，欲望才是",
+      "bookBadge": "📖 纳瓦尔宝典",
+      "oneLiner": "匮乏时代快乐被资源保护，富足时代快乐需要自己保护。平静过滤器就是那个保护机制。",
+      "philosophyNote": "匮乏时代快乐被资源保护，富足时代快乐需要自己保护。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-纳瓦尔宝典-资源与欲望.md",
+      "keyTakeaways": [
+        "欲望无限扩张是敌人",
+        "置身其中但不陷进去",
+        "正念是核心技术"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "in-but-not-trapped"
+        },
+        {
+          "type": "related",
+          "target": "fantasy-joy"
+        }
+      ]
+    },
+    {
+      "id": "naval-reading-recording",
+      "topicId": "naval-almanack",
+      "title": "阅读和记录是认知复利的双螺旋",
+      "bookBadge": "📖 纳瓦尔宝典",
+      "oneLiner": "阅读是进口，记录是自产，碰撞是连接两条链的碱基对。",
+      "philosophyNote": "阅读和记录是认知复利的双螺旋——阅读是进口，记录是自产，碰撞是连接两条链的碱基对。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-08",
+      "source": "data/memory/atlas/2026-04-08-纳瓦尔宝典-阅读与记录.md",
+      "keyTakeaways": [
+        "向外摄取 + 向内记录",
+        "两者动态互补",
+        "碰撞是连接的碱基对"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "compound-record"
+        },
+        {
+          "type": "related",
+          "target": "naval-memory-asset"
+        }
+      ]
+    },
+    {
+      "id": "three-reflections",
+      "topicId": "direction-state-execution",
+      "title": "三省吾身（生活版）",
+      "bookBadge": null,
+      "oneLiner": "乔布斯管方向（砍到一件事），段永平管状态（平常心），曾国藩管执行（日日不断）。",
+      "philosophyNote": "方向对抗焦虑，状态接纳起伏，笨功夫穿越时间。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-26",
+      "source": "data/memory/atlas/2026-04-26-三省吾身生活版.md",
+      "absorbedFrom": [
+        "compound-autopilot"
+      ],
+      "keyTakeaways": [
+        "先有方向再有状态最后执行",
+        "顺序反了会出问题",
+        "59张卡片的收束",
+        "三层防线=方向过滤→模式识别→行为追踪"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "jobs-obsession"
+        },
+        {
+          "type": "related",
+          "target": "duan-benfen"
+        },
+        {
+          "type": "related",
+          "target": "three-books"
+        }
+      ]
+    },
+    {
+      "id": "do-important-things",
+      "topicId": "direction-state-execution",
+      "title": "做你认为重要的事，而不是别人认为好的事",
+      "bookBadge": null,
+      "oneLiner": "\"好的事\"是社会共识的打卡照，\"重要的事\"是你自己想记住的蚂蚁搬家。",
+      "philosophyNote": "用别人的坐标系导航，永远到不了自己的目的地。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-09",
+      "source": "data/memory/atlas/2026-04-09-做重要的事不是好的事.md",
+      "keyTakeaways": [
+        "重要是你的价值判断",
+        "好是别人的价值判断",
+        "用自己的坐标系导航"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "self-driven"
+        },
+        {
+          "type": "related",
+          "target": "duan-benfen"
+        }
+      ]
+    },
+    {
+      "id": "lower-expectation",
+      "topicId": "direction-state-execution",
+      "title": "预期放低与熵减的前提",
+      "bookBadge": null,
+      "oneLiner": "预期放低到\"今天就有反馈\"是甜点——太低是躺平，太高是焦虑。",
+      "philosophyNote": "和世俗目标对齐是锚点——不是放弃世俗，是不依赖世俗评价来驱动自己。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-09",
+      "source": "data/memory/life/2026-04-09-预期放低与熵减的前提.md",
+      "keyTakeaways": [
+        "降低无效消耗",
+        "找到有反馈的小事",
+        "和世俗目标对齐"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "rough-start"
+        },
+        {
+          "type": "related",
+          "target": "tomato-clock"
+        }
+      ]
+    },
+    {
+      "id": "tomato-clock",
+      "topicId": "direction-state-execution",
+      "title": "把复杂方法论最小化到番茄钟",
+      "bookBadge": null,
+      "oneLiner": "方法论经得起\"番茄钟压缩测试\"才是有效的——通不过这个测试的就是理论消费品。",
+      "philosophyNote": "方法论经得起番茄钟压缩测试才有效。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-09",
+      "source": "data/memory/atlas/2026-04-09-方法论最小化到番茄钟.md",
+      "keyTakeaways": [
+        "25分钟内能执行才算有效",
+        "微小操作是执行单元",
+        "理论消费品 vs 可执行方法论"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "rough-start"
+        },
+        {
+          "type": "related",
+          "target": "compound-iteration"
+        }
+      ]
+    },
+    {
+      "id": "knowledge-management",
+      "topicId": "knowledge-work",
+      "title": "知识管理的觉醒",
+      "bookBadge": null,
+      "oneLiner": "IPO原则 + 微习惯 + 断舍离。知识管理不是建仓库，是建提取通道。",
+      "philosophyNote": "断舍离与主题化学习是减少系统中无序能量的过程。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-03-22",
+      "source": "data/memory/reading/2026-03-22-知识管理的觉醒.md",
+      "keyTakeaways": [
+        "IPO原则",
+        "微习惯积累",
+        "建提取通道不是仓库"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "naval-reading-recording"
+        },
+        {
+          "type": "related",
+          "target": "compound-record"
+        }
+      ]
+    },
+    {
+      "id": "memory-asset-protection",
+      "topicId": "knowledge-work",
+      "title": "记忆资产的保护",
+      "bookBadge": null,
+      "oneLiner": "经历像矿石，记录是采矿，复盘是冶炼。记忆资产 = 经历 × 串联 × 演绎。",
+      "philosophyNote": "只采矿不冶炼是一堆石头，只冶炼不采矿没有原材料。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-01",
+      "source": "data/memory/life/2026-04-01-记忆资产的保护.md",
+      "keyTakeaways": [
+        "记录是采矿",
+        "复盘是冶炼",
+        "串联和演绎是关键"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "naval-memory-asset"
+        },
+        {
+          "type": "related",
+          "target": "compound-record"
+        }
+      ]
+    },
+    {
+      "id": "test-self-audit",
+      "topicId": "knowledge-work",
+      "title": "测试 = 自我审计系统",
+      "bookBadge": null,
+      "oneLiner": "测试的本质不再是找Bug，而是构建具备自我审计能力的系统。",
+      "philosophyNote": "工具选型只是手段，认知框架才是壁垒。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-03-31",
+      "source": "data/memory/atlas/2026-03-31-测试的本质-自我审计系统.md",
+      "keyTakeaways": [
+        "测试是自我审计",
+        "认知框架是壁垒",
+        "工具选型是手段"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "jobs-encoding"
+        },
+        {
+          "type": "related",
+          "target": "ai-tool-validation"
+        }
+      ]
+    },
+    {
+      "id": "interview-investment",
+      "topicId": "knowledge-work",
+      "title": "面试像投资，能买断的是未来现金流",
+      "bookBadge": null,
+      "oneLiner": "已完成的项目是资产负债表（可被复刻），还没写出来的判断力是未来现金流（不可复刻）。",
+      "philosophyNote": "面试官买断的不是过去式，是未来式。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-09",
+      "source": "data/memory/work/2026-04-09-面试像投资.md",
+      "keyTakeaways": [
+        "思考链不可被复刻",
+        "判断力是真正的溢价",
+        "未来增长预期决定价值"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "naval-ai-expertise"
+        },
+        {
+          "type": "related",
+          "target": "naval-tool-judgment"
+        }
+      ]
+    },
+    {
+      "id": "anxiety-cosmos",
+      "topicId": "anxiety-peace",
+      "title": "焦急 = 宇宙相变前奏",
+      "bookBadge": null,
+      "mergedInto": "anxiety-death",
+      "oneLiner": "焦急不是错误，而是宇宙在\"你这个节点\"上进行的一场激烈\"相变\"前奏。",
+      "philosophyNote": "耗散结构理论——远离平衡态的系统如何维持有序并演进。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-03-31",
+      "source": "data/memory/life/2026-03-31-焦急与宇宙动力学.md",
+      "keyTakeaways": [
+        "焦急是相变信号",
+        "远离平衡态才能演进",
+        "IPO循环的张力释放"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "compound-anxiety"
+        },
+        {
+          "type": "related",
+          "target": "anxiety-death"
+        }
+      ]
+    },
+    {
+      "id": "anxiety-death",
+      "topicId": "anxiety-peace",
+      "title": "焦急的根源是对死亡和失去的恐惧",
+      "bookBadge": null,
+      "oneLiner": "万事最怕你着急。坦然面对死亡，焦急就失去了底层燃料。事缓则圆。",
+      "philosophyNote": "焦急的底层燃料是对\"来不及\"的恐惧，而\"来不及\"的终极版本是死亡。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-22",
+      "source": "data/memory/atlas/2026-04-22-焦急与死亡.md",
+      "absorbedFrom": [
+        "anxiety-cosmos"
+      ],
+      "keyTakeaways": [
+        "来不及的终极是死亡",
+        "平静不是不作为",
+        "对时间有信心",
+        "焦急=相变前奏(footnote)"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "anxiety-cosmos"
+        },
+        {
+          "type": "related",
+          "target": "jobs-death"
+        }
+      ]
+    },
+    {
+      "id": "peace-filter",
+      "topicId": "anxiety-peace",
+      "title": "平静过滤器",
+      "bookBadge": null,
+      "oneLiner": "除了呼吸和心跳，没什么是必须要做的。对保持平静没有帮助的事，就别去想。",
+      "philosophyNote": "心烦意乱时的减法——意义指向自己，把缰绳放在自己手里。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-02",
+      "source": "data/memory/life/2026-04-02-除了呼吸和心跳.md",
+      "keyTakeaways": [
+        "呼吸和心跳之外都不必须",
+        "平静是判断标准",
+        "缰绳在自己手里"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "duan-benfen"
+        },
+        {
+          "type": "related",
+          "target": "naval-peace-filter"
+        }
+      ]
+    },
+    {
+      "id": "sunshine-flowers",
+      "topicId": "present-moment",
+      "title": "感受阳光，闻着花香",
+      "bookBadge": null,
+      "oneLiner": "吃喜欢的饼干，喝点茶，做力所能及的工作——这便是幸福。",
+      "philosophyNote": "获得幸福的答案就是自己。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-02",
+      "source": "data/memory/life/2026-04-02-感受阳光闻着花香.md",
+      "keyTakeaways": [
+        "幸福在当下",
+        "力所能及就是幸福",
+        "感知是关键"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "fantasy-joy"
+        },
+        {
+          "type": "related",
+          "target": "mindful-writing"
+        }
+      ]
+    },
+    {
+      "id": "fantasy-joy",
+      "topicId": "present-moment",
+      "title": "梦幻西游与纯粹的快乐",
+      "bookBadge": null,
+      "oneLiner": "那时10块钱的点卡好贵。现在有好多10块钱，可是思绪被焦虑填满了。",
+      "philosophyNote": "注意力被锁定在当下时，快乐最纯粹。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-02",
+      "source": "data/memory/life/2026-04-02-梦幻西游与纯粹的快乐.md",
+      "keyTakeaways": [
+        "资源不等于快乐",
+        "注意力锁定当下",
+        "纯粹的快乐来自全情投入"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "naval-desire"
+        },
+        {
+          "type": "related",
+          "target": "sunshine-flowers"
+        }
+      ]
+    },
+    {
+      "id": "mindful-writing",
+      "topicId": "present-moment",
+      "title": "正念书写与放下目的",
+      "bookBadge": null,
+      "oneLiner": "只是写，只是呼吸，不关注目的。没有心，人就不是活在当下。",
+      "philosophyNote": "控制目光和呼吸，把自我交还心灵。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-02",
+      "source": "data/memory/life/2026-04-02-正念书写与放下目的.md",
+      "keyTakeaways": [
+        "只是写不关注目的",
+        "甚至拒绝目的",
+        "把自我交还心灵"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "sunshine-flowers"
+        },
+        {
+          "type": "related",
+          "target": "peace-filter"
+        }
+      ]
+    },
+    {
+      "id": "heart-check",
+      "topicId": "present-moment",
+      "title": "对未知的敬畏",
+      "bookBadge": null,
+      "oneLiner": "世事不能算尽。你和意外之间可能只隔着一个认真负责的人。",
+      "philosophyNote": "体检的价值不在检测到问题，在于提醒你\"意外真实存在\"。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-04",
+      "source": "data/memory/life/2026-04-04-心脏复查-对未知的敬畏.md",
+      "keyTakeaways": [
+        "意外真实存在",
+        "感恩偶然",
+        "敬畏不确定"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "jobs-death"
+        },
+        {
+          "type": "related",
+          "target": "anxiety-death"
+        }
+      ]
+    },
+    {
+      "id": "grip-eternal",
+      "topicId": "present-moment",
+      "title": "握力器与永恒轮回",
+      "bookBadge": "📖 加缪 · 尼采",
+      "oneLiner": "一紧一松的重复不是惩罚，是\"在不会结束的轮回中训练自己变强\"。",
+      "philosophyNote": "石头不会变轻，但你会变得不需要它变轻。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-04-09",
+      "source": "data/memory/life/2026-04-09-握力器与永恒轮回.md",
+      "keyTakeaways": [
+        "重复不是惩罚",
+        "在轮回中找到意义",
+        "抗阻训练的底层原理"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "compound-iteration"
+        },
+        {
+          "type": "related",
+          "target": "anxiety-cosmos"
+        }
+      ]
+    },
+    {
+      "id": "universal-philosophy",
+      "topicId": "present-moment",
+      "title": "万物相通",
+      "bookBadge": null,
+      "reviewTag": "header-quote",
+      "oneLiner": "哲学本身就是和万物相通的。日常琐事升华为普遍逻辑。",
+      "philosophyNote": "打破学科边界，将日常琐事升华为普遍逻辑，实现从\"生肉数据\"到\"模型认知\"的跨越。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-03-21",
+      "source": null,
+      "keyTakeaways": [
+        "生活是素材",
+        "日常升华为逻辑",
+        "从生肉到模型"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "universal-connection"
+        },
+        {
+          "type": "enables",
+          "target": "anxiety-cosmos"
+        }
+      ]
+    },
+    {
+      "id": "cold-shower",
+      "topicId": "present-moment",
+      "title": "小满洗冷水澡",
+      "bookBadge": null,
+      "oneLiner": "她根本没哭。洗完后哼着小调，心情很好——克服挑战后的内在轻快。",
+      "philosophyNote": "冷水澡带来的不是痛苦，是清冽的愉悦感。主动寻求小的不适，反而能界定自我的边界。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-03-21",
+      "source": null,
+      "keyTakeaways": [
+        "主动寻求小不适",
+        "克服后的内在轻快",
+        "界定自我边界"
+      ],
+      "relations": [
+        {
+          "type": "related",
+          "target": "grip-eternal"
+        },
+        {
+          "type": "related",
+          "target": "lower-expectation"
+        }
+      ]
+    }
+  ]
+}

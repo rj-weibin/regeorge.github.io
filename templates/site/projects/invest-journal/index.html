@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投资观点笔记 | reGeorge</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --surface: #161b22;
+            --surface-raised: #1c2333;
+            --text: #e6edf3;
+            --text-secondary: #8b949e;
+            --text-tertiary: #6e7681;
+            --border: rgba(240,246,252,0.08);
+            --border-strong: rgba(240,246,252,0.14);
+            --accent: #58a6ff;
+            --buy: #3fb950;
+            --buy-bg: rgba(63,185,80,0.12);
+            --hold: #d29922;
+            --hold-bg: rgba(210,153,34,0.12);
+            --sell: #f85149;
+            --sell-bg: rgba(248,81,73,0.12);
+            --tencent: #00d46a;
+            --xiaomi: #ff6b35;
+            --moutai: #e64040;
+            --radius: 10px;
+            --radius-sm: 6px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            justify-content: center;
+            padding: 48px 20px 80px;
+        }
+
+        .container { max-width: 720px; width: 100%; }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-tertiary);
+            text-decoration: none;
+            font-size: 0.82rem;
+            margin-bottom: 48px;
+            transition: color 0.2s;
+            letter-spacing: 0.03em;
+        }
+        .back-link:hover { color: var(--accent); }
+
+        /* ── Header ── */
+        header {
+            margin-bottom: 16px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--border);
+        }
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 8px;
+            letter-spacing: -0.03em;
+            color: #fff;
+        }
+        .subtitle {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* ── Summary bar ── */
+        .summary-bar {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 32px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .summary-item {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .summary-num {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            font-variant-numeric: tabular-nums;
+            font-family: "SF Mono", "JetBrains Mono", "Cascadia Code", monospace;
+        }
+        .summary-num.buy-color { color: var(--buy); }
+        .summary-num.hold-color { color: var(--hold); }
+        .summary-num.sell-color { color: var(--sell); }
+        .summary-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-tertiary);
+        }
+
+        /* ── Filter bar ── */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+        .filter-chip {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.76rem;
+            font-weight: 500;
+            padding: 5px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--border-strong);
+            background: var(--surface);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.02em;
+        }
+        .filter-chip:hover { border-color: var(--accent); color: var(--text); }
+        .filter-chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+        /* ── Timeline ── */
+        .timeline { display: flex; flex-direction: column; gap: 20px; }
+
+        /* ── Entry card ── */
+        .entry-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: border-color 0.2s, background 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+        .entry-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .entry-card:hover {
+            border-color: var(--border-strong);
+            background: var(--surface-raised);
+        }
+        .entry-card[data-company="tencent"]:hover::before { opacity: 1; background: var(--tencent); }
+        .entry-card[data-company="xiaomi"]:hover::before  { opacity: 1; background: var(--xiaomi); }
+        .entry-card[data-company="moutai"]::before { opacity: 1; background: var(--moutai); }
+
+        .entry-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .entry-date {
+            font-size: 0.76rem;
+            color: var(--text-tertiary);
+            letter-spacing: 0.04em;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* ── Ticker line ── */
+        .ticker {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-variant-numeric: tabular-nums;
+        }
+        .ticker-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #fff;
+            font-family: "SF Mono", "JetBrains Mono", "Cascadia Code", monospace;
+        }
+        .ticker-pe {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            font-family: "SF Mono", "JetBrains Mono", "Cascadia Code", monospace;
+        }
+        .ticker-pe span {
+            color: var(--text-tertiary);
+            font-size: 0.68rem;
+        }
+
+        .company-tag {
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 999px;
+            letter-spacing: 0.04em;
+        }
+        .company-tag.tencent { background: rgba(0,212,106,0.12); color: var(--tencent); }
+        .company-tag.xiaomi  { background: rgba(255,107,53,0.12); color: var(--xiaomi); }
+        .company-tag.moutai { background: rgba(230,64,64,0.12); color: var(--moutai); }
+
+        .rating {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 999px;
+            letter-spacing: 0.08em;
+            margin-left: auto;
+            text-transform: uppercase;
+        }
+        .rating.buy  { background: var(--buy-bg); color: var(--buy); }
+        .rating.hold { background: var(--hold-bg); color: var(--hold); }
+        .rating.sell { background: var(--sell-bg); color: var(--sell); }
+
+        .entry-view {
+            font-size: 0.92rem;
+            line-height: 1.85;
+            color: var(--text);
+            margin-bottom: 18px;
+        }
+
+        /* ── Sparkline ── */
+        .sparkline-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding: 8px 12px;
+            background: rgba(255,255,255,0.02);
+            border-radius: var(--radius-sm);
+            font-size: 0.72rem;
+            color: var(--text-tertiary);
+        }
+        .sparkline-row svg { flex-shrink: 0; }
+        .spark-label { letter-spacing: 0.06em; text-transform: uppercase; }
+
+        /* ── Variables ── */
+        .entry-variables {
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+        }
+        .entry-variables h4 {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-tertiary);
+            margin: 0 0 10px;
+            font-weight: 600;
+        }
+        .variable-item {
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+            padding-left: 16px;
+            position: relative;
+            margin-bottom: 6px;
+            line-height: 1.6;
+        }
+        .variable-item::before {
+            content: "⚡";
+            position: absolute;
+            left: 0;
+            font-size: 0.7rem;
+            top: 2px;
+        }
+
+        .entry-card.is-hidden { display: none; }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-tertiary);
+            font-size: 0.88rem;
+            font-style: italic;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.78rem;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 32px 14px 60px; }
+            h1 { font-size: 1.6rem; }
+            .ticker-price { font-size: 1.3rem; }
+            .entry-card { padding: 18px; }
+            .entry-meta { gap: 6px; }
+            .rating { margin-left: 0; }
+            .summary-bar { gap: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">← 返回首页</a>
+
+        <header>
+            <h1>投资观点笔记</h1>
+            <div class="subtitle">观点会变，但写下时的思考不会消失。</div>
+        </header>
+
+        <div class="summary-bar">
+            <div class="summary-item">
+                <span class="summary-num buy-color">1</span>
+                <span class="summary-label">买入</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-num hold-color">2</span>
+                <span class="summary-label">持有</span>
+            </div>
+            <div class="summary-item">
+                <span class="summary-num sell-color">0</span>
+                <span class="summary-label">卖出</span>
+            </div>
+        </div>
+
+        <div class="filter-bar" id="filterBar">
+            <span class="filter-chip active" data-filter="all">全部</span>
+            <span class="filter-chip" data-filter="tencent">腾讯</span>
+            <span class="filter-chip" data-filter="xiaomi">小米</span>
+            <span class="filter-chip" data-filter="moutai">茅台</span>
+        </div>
+
+        <div class="timeline" id="timeline">
+
+            <!-- 2026-04-23 茅台 -->
+            <div class="entry-card" data-company="moutai">
+                <div class="entry-meta">
+                    <span class="entry-date">2026-04-23</span>
+                    <span class="company-tag moutai">茅台</span>
+                    <span class="rating hold">持有</span>
+                </div>
+                <div class="ticker">
+                    <span class="ticker-price">¥1,458</span>
+                    <span class="ticker-pe">PE <span>TTM</span> 22.19</span>
+                </div>
+                <div class="entry-view">
+                    三家公司中生意模式最顶级——不光轻松赚钱，还拥有库存升值的特性。22.19 的 PE 看似不低，但稳定分红提供了长久的安全边际，让持有过程更容易获得鱼尾效应（越持有越舒服）。如果三家公司同时处于持有评级，会优先将多余现金配置给茅台——因为它是那个"不需要你操心的仓位"。
+                </div>
+                <div class="entry-variables">
+                    <h4>关键变量</h4>
+                    <div class="variable-item">白酒行业整体消费趋势——社会消费场景和礼赠需求的变化</div>
+                    <div class="variable-item">公司治理和分红政策稳定性——能否维持当前的回报节奏</div>
+                    <div class="variable-item">库存价值能否持续升值——年份酒溢价逻辑是否长期成立</div>
+                </div>
+            </div>
+
+            <!-- 2026-04-23 小米 -->
+            <div class="entry-card" data-company="xiaomi">
+                <div class="entry-meta">
+                    <span class="entry-date">2026-04-23</span>
+                    <span class="company-tag xiaomi">小米</span>
+                    <span class="rating hold">持有</span>
+                </div>
+                <div class="ticker">
+                    <span class="ticker-price">HK$31</span>
+                    <span class="ticker-pe">PE <span>TTM</span> 17.5</span>
+                </div>
+                <div class="entry-view">
+                    和腾讯同样的 PE 区间，但生意更苦——竞争对手更多，属于不努力就挨打的行业。之前没完全看懂就买入，现在有些浮亏。但长期看仍是一家各方面比较优秀、短板很少的公司，尤其是雷军的个人魅力是稀缺资产。持有它的股票，本质上是一种保持深度关注和感受的方式，算是一种乐趣。不追加，也不急着离场。
+                </div>
+                <div class="entry-variables">
+                    <h4>关键变量</h4>
+                    <div class="variable-item">汽车业务能否跑通盈利模型——SU7 之后的产品线扩展和规模效应</div>
+                    <div class="variable-item">手机业务毛利率能否在高端化路线下持续提升</div>
+                    <div class="variable-item">雷军个人影响力能否持续转化为品牌溢价和组织凝聚力</div>
+                </div>
+            </div>
+
+            <!-- 2026-04-23 腾讯 -->
+            <div class="entry-card" data-company="tencent">
+                <div class="entry-meta">
+                    <span class="entry-date">2026-04-23</span>
+                    <span class="company-tag tencent">腾讯</span>
+                    <span class="rating buy">买入</span>
+                </div>
+                <div class="ticker">
+                    <span class="ticker-price">HK$493</span>
+                    <span class="ticker-pe">PE <span>TTM</span> 17.99</span>
+                </div>
+                <div class="entry-view">
+                    腾讯在 AI 时代从增速平稳来到了加速前的深蹲。市场上的短钱对其 AI 的思路不喜欢，但它的用户黏性（护城河）和产品调性（品味或文化）依旧是顶级的。短钱看到的是 AI 叙事不够性感，长钱看到的是一个拥有最强用户关系和产品审美的公司在为 AI 原生体验蓄力。17.99 的 TTM PE 对这个护城河来说是便宜的。
+                </div>
+                <div class="entry-variables">
+                    <h4>关键变量</h4>
+                    <div class="variable-item">AI 变现路径是否清晰——混元大模型在微信生态内的原生整合进展</div>
+                    <div class="variable-item">短钱流出压力持续时间——市场对"AI 叙事"的偏好何时回归基本面</div>
+                    <div class="variable-item">游戏+广告+支付三大引擎在 AI 赋能下的效率提升能否兑现</div>
+                </div>
+            </div>
+
+            <div class="empty-state" id="emptyState" style="display:none;">还没有记录。发送你的投资观点给 bot，自动生成卡片。</div>
+        </div>
+
+        <footer>
+            reGeorge's Investment Journal · 观点仅代表当时判断，不构成投资建议
+        </footer>
+    </div>
+
+    <script>
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+            document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            const filter = chip.dataset.filter;
+            document.querySelectorAll('.entry-card').forEach(card => {
+                if (filter === 'all' || card.dataset.company === filter) {
+                    card.classList.remove('is-hidden');
+                } else {
+                    card.classList.add('is-hidden');
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>

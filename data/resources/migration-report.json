@@ -1,0 +1,743 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-20T09:57:33.511Z",
+  "dailyNotes": "https://github.com/rj-weibin/daily-notes",
+  "mergedFiles": [
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-03-22-知识管理的觉醒.md",
+      "canonical": "data\\memory\\reading\\2026-03-22-知识管理的觉醒.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-04-15-300次迭代认知.md",
+      "canonical": "data\\memory\\work\\2026-04-15-300次迭代认知.md"
+    }
+  ],
+  "importedFiles": [
+    {
+      "from": "乒乓\\2026-03-10-乒乓球练习复盘.md",
+      "to": "data\\memory\\sports\\2026-03-10-乒乓球练习复盘.md"
+    },
+    {
+      "from": "乒乓\\2026-03-16-乒乓球练习复盘.md",
+      "to": "data\\memory\\sports\\2026-03-16-乒乓球练习复盘.md"
+    },
+    {
+      "from": "乒乓\\2026-03-21-乒乓球练习复盘.md",
+      "to": "data\\memory\\sports\\2026-03-21-乒乓球练习复盘.md"
+    },
+    {
+      "from": "乒乓\\2026-03-21-今日学球体会.md",
+      "to": "data\\memory\\sports\\2026-03-21-今日学球体会.md"
+    },
+    {
+      "from": "乒乓\\2026-03-21-滑梯加复利方案.md",
+      "to": "data\\memory\\sports\\2026-03-21-滑梯加复利方案.md"
+    },
+    {
+      "from": "乒乓\\2026-03-21-被球挤住的系统优化.md",
+      "to": "data\\memory\\sports\\2026-03-21-被球挤住的系统优化.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-乒乓月亮雨刮器.md",
+      "to": "data\\memory\\sports\\2026-03-22-乒乓月亮雨刮器.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-乒乓球技术要点汇总.md",
+      "to": "data\\memory\\sports\\2026-03-22-乒乓球技术要点汇总.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-乒乓球正手关键技术.md",
+      "to": "data\\memory\\sports\\2026-03-22-乒乓球正手关键技术.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-乒乓球练习复盘.md",
+      "to": "data\\memory\\sports\\2026-03-22-乒乓球练习复盘.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-乒乓球错题集.md",
+      "to": "data\\memory\\sports\\2026-03-22-乒乓球错题集.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-今日学球体会2.md",
+      "to": "data\\memory\\sports\\2026-03-22-今日学球体会2.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-今日学球体会3.md",
+      "to": "data\\memory\\sports\\2026-03-22-今日学球体会3.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-今日学球体会4.md",
+      "to": "data\\memory\\sports\\2026-03-22-今日学球体会4.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-今日学球体会5.md",
+      "to": "data\\memory\\sports\\2026-03-22-今日学球体会5.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-借力原理.md",
+      "to": "data\\memory\\sports\\2026-03-22-借力原理.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-击球时机.md",
+      "to": "data\\memory\\sports\\2026-03-22-击球时机.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-反手撕最新体会.md",
+      "to": "data\\memory\\sports\\2026-03-22-反手撕最新体会.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-徒手挥拍进阶练习.md",
+      "to": "data\\memory\\sports\\2026-03-22-徒手挥拍进阶练习.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-林德乒乓球分享.md",
+      "to": "data\\memory\\sports\\2026-03-22-林德乒乓球分享.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-樊振东A底板使用感受.md",
+      "to": "data\\memory\\sports\\2026-03-22-樊振东A底板使用感受.md"
+    },
+    {
+      "from": "乒乓\\2026-03-22-正手半出台突破.md",
+      "to": "data\\memory\\sports\\2026-03-22-正手半出台突破.md"
+    },
+    {
+      "from": "乒乓\\2026-03-31-乒乓球击球要点.md",
+      "to": "data\\memory\\sports\\2026-03-31-乒乓球击球要点.md"
+    },
+    {
+      "from": "乒乓\\2026-04-08-乒乓球训练.md",
+      "to": "data\\memory\\sports\\2026-04-08-乒乓球训练.md"
+    },
+    {
+      "from": "乒乓\\2026-04-09-乒乓球训练.md",
+      "to": "data\\memory\\sports\\2026-04-09-乒乓球训练.md"
+    },
+    {
+      "from": "乒乓\\2026-04-19-乒乓球训练.md",
+      "to": "data\\memory\\sports\\2026-04-19-乒乓球训练.md"
+    },
+    {
+      "from": "乒乓\\2026-05-06-樊振东打法分析-反手筑势正手破局.md",
+      "to": "data\\memory\\sports\\2026-05-06-樊振东打法分析-反手筑势正手破局.md"
+    },
+    {
+      "from": "乒乓\\2026-05-13-加转弧圈低平弧线要点.md",
+      "to": "data\\memory\\sports\\2026-05-13-加转弧圈低平弧线要点.md"
+    },
+    {
+      "from": "乒乓\\20_乒乓球实战技术指南.md",
+      "to": "data\\memory\\sports\\20_乒乓球实战技术指南.md"
+    },
+    {
+      "from": "乒乓\\乒乓球切身感悟总结.md",
+      "to": "data\\memory\\sports\\乒乓球切身感悟总结.md"
+    },
+    {
+      "from": "存档\\hexo_posts\\12_测试方案的设计思路.md",
+      "to": "data\\memory\\archive\\hexo_posts\\12_测试方案的设计思路.md"
+    },
+    {
+      "from": "存档\\hexo_posts\\14_测试工作的一些总结.md",
+      "to": "data\\memory\\archive\\hexo_posts\\14_测试工作的一些总结.md"
+    },
+    {
+      "from": "存档\\hexo_posts\\15_开发相关内容记录.md",
+      "to": "data\\memory\\archive\\hexo_posts\\15_开发相关内容记录.md"
+    },
+    {
+      "from": "存档\\hexo_posts\\16_读书笔记收集.md",
+      "to": "data\\memory\\archive\\hexo_posts\\16_读书笔记收集.md"
+    },
+    {
+      "from": "存档\\hexo_posts\\17_工具类项目需求文档.md",
+      "to": "data\\memory\\archive\\hexo_posts\\17_工具类项目需求文档.md"
+    },
+    {
+      "from": "存档\\hexo_posts\\18_公众号实现发布文章.md",
+      "to": "data\\memory\\archive\\hexo_posts\\18_公众号实现发布文章.md"
+    },
+    {
+      "from": "存档\\hexo_posts\\19_自动化如何设计和维护才能不成为每日工作的一部分.md",
+      "to": "data\\memory\\archive\\hexo_posts\\19_自动化如何设计和维护才能不成为每日工作的一部分.md"
+    },
+    {
+      "from": "存档\\hexo_posts\\21_闲聊记录.md",
+      "to": "data\\memory\\archive\\hexo_posts\\21_闲聊记录.md"
+    },
+    {
+      "from": "存档\\hexo_posts\\22_测试用例准备指南.md",
+      "to": "data\\memory\\archive\\hexo_posts\\22_测试用例准备指南.md"
+    },
+    {
+      "from": "存档\\hexo_posts\\23_调用github_api的后台实现.md",
+      "to": "data\\memory\\archive\\hexo_posts\\23_调用github_api的后台实现.md"
+    },
+    {
+      "from": "存档\\简历\\resume.md",
+      "to": "data\\memory\\archive\\简历\\resume.md"
+    },
+    {
+      "from": "工作\\2026-03-10-AI数据飞轮.md",
+      "to": "data\\memory\\work\\2026-03-10-AI数据飞轮.md"
+    },
+    {
+      "from": "工作\\2026-03-10-AI自动化效率提升方法论.md",
+      "to": "data\\memory\\work\\2026-03-10-AI自动化效率提升方法论.md"
+    },
+    {
+      "from": "工作\\2026-03-10-用例分析与LDAP实践.md",
+      "to": "data\\memory\\work\\2026-03-10-用例分析与LDAP实践.md"
+    },
+    {
+      "from": "工作\\2026-03-21-AI元认知-前端信息聚合与思维还原.md",
+      "to": "data\\memory\\work\\2026-03-21-AI元认知-前端信息聚合与思维还原.md"
+    },
+    {
+      "from": "工作\\2026-03-21-AI自动化效率提升方法论.md",
+      "to": "data\\memory\\work\\2026-03-21-AI自动化效率提升方法论.md"
+    },
+    {
+      "from": "工作\\2026-03-22-2026年度人生规划.md",
+      "to": "data\\memory\\work\\2026-03-22-2026年度人生规划.md"
+    },
+    {
+      "from": "工作\\2026-03-22-乒乓球比赛管理系统需求文档.md",
+      "to": "data\\memory\\work\\2026-03-22-乒乓球比赛管理系统需求文档.md"
+    },
+    {
+      "from": "工作\\2026-03-22-深度学习和深度工作.md",
+      "to": "data\\memory\\work\\2026-03-22-深度学习和深度工作.md"
+    },
+    {
+      "from": "工作\\2026-03-31-AI时代的意义指向.md",
+      "to": "data\\memory\\work\\2026-03-31-AI时代的意义指向.md"
+    },
+    {
+      "from": "工作\\2026-03-31-碳基与硅基思维.md",
+      "to": "data\\memory\\work\\2026-03-31-碳基与硅基思维.md"
+    },
+    {
+      "from": "工作\\2026-04-01-caseHelper阶段思考.md",
+      "to": "data\\memory\\work\\2026-04-01-caseHelper阶段思考.md"
+    },
+    {
+      "from": "工作\\2026-04-09-交互式文档人机协作.md",
+      "to": "data\\memory\\work\\2026-04-09-交互式文档人机协作.md"
+    },
+    {
+      "from": "工作\\2026-04-09-面试像投资.md",
+      "to": "data\\memory\\work\\2026-04-09-面试像投资.md"
+    },
+    {
+      "from": "工作\\2026-04-14-AI使用心得.md",
+      "to": "data\\memory\\work\\2026-04-14-AI使用心得.md"
+    },
+    {
+      "from": "工作\\2026-04-15-300次迭代认知.md",
+      "to": "data\\memory\\work\\2026-04-15-300次迭代认知.md"
+    },
+    {
+      "from": "工作\\2026-05-27-caseHelper架构演进洞见.md",
+      "to": "data\\memory\\work\\2026-05-27-caseHelper架构演进洞见.md"
+    },
+    {
+      "from": "生活\\2026-03-10-一人公司思考与洞察.md",
+      "to": "data\\memory\\life\\2026-03-10-一人公司思考与洞察.md"
+    },
+    {
+      "from": "生活\\2026-03-10-寒冬技能.md",
+      "to": "data\\memory\\life\\2026-03-10-寒冬技能.md"
+    },
+    {
+      "from": "生活\\2026-03-10-方法论灵感与技能习得.md",
+      "to": "data\\memory\\life\\2026-03-10-方法论灵感与技能习得.md"
+    },
+    {
+      "from": "生活\\2026-03-10-身心调节与健康活动清单.md",
+      "to": "data\\memory\\life\\2026-03-10-身心调节与健康活动清单.md"
+    },
+    {
+      "from": "生活\\2026-03-16-获得幸福的答案就是自己.md",
+      "to": "data\\memory\\life\\2026-03-16-获得幸福的答案就是自己.md"
+    },
+    {
+      "from": "生活\\2026-03-21-ArthurBrooks幸福哲学.md",
+      "to": "data\\memory\\life\\2026-03-21-ArthurBrooks幸福哲学.md"
+    },
+    {
+      "from": "生活\\2026-03-21-人生目标维度.md",
+      "to": "data\\memory\\life\\2026-03-21-人生目标维度.md"
+    },
+    {
+      "from": "生活\\2026-03-21-低物欲与客观投资.md",
+      "to": "data\\memory\\life\\2026-03-21-低物欲与客观投资.md"
+    },
+    {
+      "from": "生活\\2026-03-21-小满洗冷水澡.md",
+      "to": "data\\memory\\life\\2026-03-21-小满洗冷水澡.md"
+    },
+    {
+      "from": "生活\\2026-03-21-少年心气困惑.md",
+      "to": "data\\memory\\life\\2026-03-21-少年心气困惑.md"
+    },
+    {
+      "from": "生活\\2026-03-21-手段可以抄内核无法速成.md",
+      "to": "data\\memory\\life\\2026-03-21-手段可以抄内核无法速成.md"
+    },
+    {
+      "from": "生活\\2026-03-21-爱是动词不是名词.md",
+      "to": "data\\memory\\life\\2026-03-21-爱是动词不是名词.md"
+    },
+    {
+      "from": "生活\\2026-03-21-自己的成绩才有说服力.md",
+      "to": "data\\memory\\life\\2026-03-21-自己的成绩才有说服力.md"
+    },
+    {
+      "from": "生活\\2026-03-22-不要神话任何人.md",
+      "to": "data\\memory\\life\\2026-03-22-不要神话任何人.md"
+    },
+    {
+      "from": "生活\\2026-03-22-人际关系反直觉策略.md",
+      "to": "data\\memory\\life\\2026-03-22-人际关系反直觉策略.md"
+    },
+    {
+      "from": "生活\\2026-03-22-大脑是信息环境的代理人.md",
+      "to": "data\\memory\\life\\2026-03-22-大脑是信息环境的代理人.md"
+    },
+    {
+      "from": "生活\\2026-03-22-如何克制分享欲.md",
+      "to": "data\\memory\\life\\2026-03-22-如何克制分享欲.md"
+    },
+    {
+      "from": "生活\\2026-03-22-巴菲特1998佛罗里达大学演讲.md",
+      "to": "data\\memory\\life\\2026-03-22-巴菲特1998佛罗里达大学演讲.md"
+    },
+    {
+      "from": "生活\\2026-03-22-巴菲特没有做过的事.md",
+      "to": "data\\memory\\life\\2026-03-22-巴菲特没有做过的事.md"
+    },
+    {
+      "from": "生活\\2026-03-22-幸福生活塞涅卡.md",
+      "to": "data\\memory\\life\\2026-03-22-幸福生活塞涅卡.md"
+    },
+    {
+      "from": "生活\\2026-03-22-心烦意乱时的减法.md",
+      "to": "data\\memory\\life\\2026-03-22-心烦意乱时的减法.md"
+    },
+    {
+      "from": "生活\\2026-03-22-意识上的最优体验.md",
+      "to": "data\\memory\\life\\2026-03-22-意识上的最优体验.md"
+    },
+    {
+      "from": "生活\\2026-03-22-把缰绳放在自己手里.md",
+      "to": "data\\memory\\life\\2026-03-22-把缰绳放在自己手里.md"
+    },
+    {
+      "from": "生活\\2026-03-22-智慧vs精明.md",
+      "to": "data\\memory\\life\\2026-03-22-智慧vs精明.md"
+    },
+    {
+      "from": "生活\\2026-03-22-牛市心态失衡.md",
+      "to": "data\\memory\\life\\2026-03-22-牛市心态失衡.md"
+    },
+    {
+      "from": "生活\\2026-03-22-看山是山.md",
+      "to": "data\\memory\\life\\2026-03-22-看山是山.md"
+    },
+    {
+      "from": "生活\\2026-03-22-睡前和解.md",
+      "to": "data\\memory\\life\\2026-03-22-睡前和解.md"
+    },
+    {
+      "from": "生活\\2026-03-22-给自己多一点耐心.md",
+      "to": "data\\memory\\life\\2026-03-22-给自己多一点耐心.md"
+    },
+    {
+      "from": "生活\\2026-03-22-芒格钱是工具自由是目的.md",
+      "to": "data\\memory\\life\\2026-03-22-芒格钱是工具自由是目的.md"
+    },
+    {
+      "from": "生活\\2026-03-22-辩解vs复盘.md",
+      "to": "data\\memory\\life\\2026-03-22-辩解vs复盘.md"
+    },
+    {
+      "from": "生活\\2026-03-22-降低皮质醇缓解焦虑.md",
+      "to": "data\\memory\\life\\2026-03-22-降低皮质醇缓解焦虑.md"
+    },
+    {
+      "from": "生活\\2026-03-23",
+      "to": "data\\memory\\life\\2026-03-23"
+    },
+    {
+      "from": "生活\\2026-03-31-焦急与宇宙动力学.md",
+      "to": "data\\memory\\life\\2026-03-31-焦急与宇宙动力学.md"
+    },
+    {
+      "from": "生活\\2026-04-01-记忆资产的保护.md",
+      "to": "data\\memory\\life\\2026-04-01-记忆资产的保护.md"
+    },
+    {
+      "from": "生活\\2026-04-02-感受阳光闻着花香.md",
+      "to": "data\\memory\\life\\2026-04-02-感受阳光闻着花香.md"
+    },
+    {
+      "from": "生活\\2026-04-02-梦幻西游与纯粹的快乐.md",
+      "to": "data\\memory\\life\\2026-04-02-梦幻西游与纯粹的快乐.md"
+    },
+    {
+      "from": "生活\\2026-04-02-正念书写与放下目的.md",
+      "to": "data\\memory\\life\\2026-04-02-正念书写与放下目的.md"
+    },
+    {
+      "from": "生活\\2026-04-02-除了呼吸和心跳.md",
+      "to": "data\\memory\\life\\2026-04-02-除了呼吸和心跳.md"
+    },
+    {
+      "from": "生活\\2026-04-04-心脏复查-对未知的敬畏.md",
+      "to": "data\\memory\\life\\2026-04-04-心脏复查-对未知的敬畏.md"
+    },
+    {
+      "from": "生活\\2026-04-09-四条洞见.md",
+      "to": "data\\memory\\life\\2026-04-09-四条洞见.md"
+    },
+    {
+      "from": "生活\\2026-04-09-握力器与永恒轮回.md",
+      "to": "data\\memory\\life\\2026-04-09-握力器与永恒轮回.md"
+    },
+    {
+      "from": "生活\\2026-04-09-预期放低与熵减的前提.md",
+      "to": "data\\memory\\life\\2026-04-09-预期放低与熵减的前提.md"
+    },
+    {
+      "from": "生活\\2026-04-14-自发驱动.md",
+      "to": "data\\memory\\life\\2026-04-14-自发驱动.md"
+    },
+    {
+      "from": "生活\\2026-05-06-否定排除与深度选择.md",
+      "to": "data\\memory\\life\\2026-05-06-否定排除与深度选择.md"
+    },
+    {
+      "from": "生活\\2026-06-16-Ni与活在当下.md",
+      "to": "data\\memory\\life\\2026-06-16-Ni与活在当下.md"
+    },
+    {
+      "from": "生活\\xiaoman.html",
+      "to": "data\\memory\\life\\xiaoman.html"
+    },
+    {
+      "from": "生活\\小满成长记录\\daily_message.txt",
+      "to": "data\\memory\\life\\小满成长记录\\daily_message.txt"
+    },
+    {
+      "from": "生活\\小满成长记录\\daily_summary.md",
+      "to": "data\\memory\\life\\小满成长记录\\daily_summary.md"
+    },
+    {
+      "from": "生活\\小满成长记录\\moments_logs.json",
+      "to": "data\\memory\\life\\小满成长记录\\moments_logs.json"
+    },
+    {
+      "from": "生活\\小满成长记录\\monthly_message.txt",
+      "to": "data\\memory\\life\\小满成长记录\\monthly_message.txt"
+    },
+    {
+      "from": "生活\\小满成长记录\\monthly_summary.md",
+      "to": "data\\memory\\life\\小满成长记录\\monthly_summary.md"
+    },
+    {
+      "from": "生活\\小满成长记录\\source_history.md",
+      "to": "data\\memory\\life\\小满成长记录\\source_history.md"
+    },
+    {
+      "from": "生活\\小满成长记录\\weekly_message.txt",
+      "to": "data\\memory\\life\\小满成长记录\\weekly_message.txt"
+    },
+    {
+      "from": "生活\\小满成长记录\\weekly_summary.md",
+      "to": "data\\memory\\life\\小满成长记录\\weekly_summary.md"
+    },
+    {
+      "from": "生活\\小满成长记录\\xiaoman_records.md",
+      "to": "data\\memory\\life\\小满成长记录\\xiaoman_records.md"
+    },
+    {
+      "from": "生活\\小满成长记录\\xiaoman_records.ndjson",
+      "to": "data\\memory\\life\\小满成长记录\\xiaoman_records.ndjson"
+    },
+    {
+      "from": "阅读\\2026-03-22-知识管理的觉醒.md",
+      "to": "data\\memory\\reading\\2026-03-22-知识管理的觉醒.md"
+    },
+    {
+      "from": "阅读\\2026-04-08-史蒂夫乔布斯传.md",
+      "to": "data\\memory\\reading\\2026-04-08-史蒂夫乔布斯传.md"
+    },
+    {
+      "from": "阅读\\2026-04-08-复利效应.md",
+      "to": "data\\memory\\reading\\2026-04-08-复利效应.md"
+    },
+    {
+      "from": "阅读\\2026-04-08-段永平投资问答录.md",
+      "to": "data\\memory\\reading\\2026-04-08-段永平投资问答录.md"
+    },
+    {
+      "from": "阅读\\2026-04-08-清晰思考.md",
+      "to": "data\\memory\\reading\\2026-04-08-清晰思考.md"
+    },
+    {
+      "from": "阅读\\2026-04-08-纳瓦尔宝典.md",
+      "to": "data\\memory\\reading\\2026-04-08-纳瓦尔宝典.md"
+    },
+    {
+      "from": "阅读\\2026-04-12-Karpathy学习路线图.md",
+      "to": "data\\memory\\reading\\2026-04-12-Karpathy学习路线图.md"
+    },
+    {
+      "from": "阅读\\2026-04-12-今日洞见.md",
+      "to": "data\\memory\\reading\\2026-04-12-今日洞见.md"
+    },
+    {
+      "from": "阅读\\2026-04-14-今日洞见.md",
+      "to": "data\\memory\\reading\\2026-04-14-今日洞见.md"
+    },
+    {
+      "from": "阅读\\2026-04-24-推荐书单.md",
+      "to": "data\\memory\\reading\\2026-04-24-推荐书单.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-03-21-AI元认知.md",
+      "to": "data\\memory\\atlas\\2026-03-21-AI元认知.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-03-31-测试的本质-自我审计系统.md",
+      "to": "data\\memory\\atlas\\2026-03-31-测试的本质-自我审计系统.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-三书交汇-选择坚持穿越.md",
+      "to": "data\\memory\\atlas\\2026-04-08-三书交汇-选择坚持穿越.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-乔布斯传-偏执与英雄之旅.md",
+      "to": "data\\memory\\atlas\\2026-04-08-乔布斯传-偏执与英雄之旅.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-乔布斯传-大道至简.md",
+      "to": "data\\memory\\atlas\\2026-04-08-乔布斯传-大道至简.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-乔布斯传-愿景者.md",
+      "to": "data\\memory\\atlas\\2026-04-08-乔布斯传-愿景者.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-乔布斯传-死亡的标尺与感恩.md",
+      "to": "data\\memory\\atlas\\2026-04-08-乔布斯传-死亡的标尺与感恩.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-乔布斯传-编码标准.md",
+      "to": "data\\memory\\atlas\\2026-04-08-乔布斯传-编码标准.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-乔布斯传-过程即奖励.md",
+      "to": "data\\memory\\atlas\\2026-04-08-乔布斯传-过程即奖励.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-复利效应-做对的事把事做对.md",
+      "to": "data\\memory\\atlas\\2026-04-08-复利效应-做对的事把事做对.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-复利效应-焦急与复利.md",
+      "to": "data\\memory\\atlas\\2026-04-08-复利效应-焦急与复利.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-复利效应-自动驾驶.md",
+      "to": "data\\memory\\atlas\\2026-04-08-复利效应-自动驾驶.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-复利效应-记录.md",
+      "to": "data\\memory\\atlas\\2026-04-08-复利效应-记录.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-段永平-不懂不碰.md",
+      "to": "data\\memory\\atlas\\2026-04-08-段永平-不懂不碰.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-段永平-不懂不碰与混沌变量.md",
+      "to": "data\\memory\\atlas\\2026-04-08-段永平-不懂不碰与混沌变量.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-段永平-利润之上的追求.md",
+      "to": "data\\memory\\atlas\\2026-04-08-段永平-利润之上的追求.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-段永平-本分与平静过滤器.md",
+      "to": "data\\memory\\atlas\\2026-04-08-段永平-本分与平静过滤器.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-段永平-造钟人.md",
+      "to": "data\\memory\\atlas\\2026-04-08-段永平-造钟人.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-清晰思考-万物相通.md",
+      "to": "data\\memory\\atlas\\2026-04-08-清晰思考-万物相通.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-清晰思考-信息不对称.md",
+      "to": "data\\memory\\atlas\\2026-04-08-清晰思考-信息不对称.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-清晰思考-想清楚与做决定.md",
+      "to": "data\\memory\\atlas\\2026-04-08-清晰思考-想清楚与做决定.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-清晰思考-焦急的决策框架.md",
+      "to": "data\\memory\\atlas\\2026-04-08-清晰思考-焦急的决策框架.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-清晰思考-记忆资产.md",
+      "to": "data\\memory\\atlas\\2026-04-08-清晰思考-记忆资产.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-纳瓦尔宝典-AI时代的专长.md",
+      "to": "data\\memory\\atlas\\2026-04-08-纳瓦尔宝典-AI时代的专长.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-纳瓦尔宝典-工具流与判断力.md",
+      "to": "data\\memory\\atlas\\2026-04-08-纳瓦尔宝典-工具流与判断力.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-纳瓦尔宝典-平静过滤器.md",
+      "to": "data\\memory\\atlas\\2026-04-08-纳瓦尔宝典-平静过滤器.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-纳瓦尔宝典-硅基杠杆.md",
+      "to": "data\\memory\\atlas\\2026-04-08-纳瓦尔宝典-硅基杠杆.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-纳瓦尔宝典-记忆资产.md",
+      "to": "data\\memory\\atlas\\2026-04-08-纳瓦尔宝典-记忆资产.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-纳瓦尔宝典-资源与欲望.md",
+      "to": "data\\memory\\atlas\\2026-04-08-纳瓦尔宝典-资源与欲望.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-08-纳瓦尔宝典-阅读与记录.md",
+      "to": "data\\memory\\atlas\\2026-04-08-纳瓦尔宝典-阅读与记录.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-09-做重要的事不是好的事.md",
+      "to": "data\\memory\\atlas\\2026-04-09-做重要的事不是好的事.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-09-持续迭代带来复利.md",
+      "to": "data\\memory\\atlas\\2026-04-09-持续迭代带来复利.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-09-方法论最小化到番茄钟.md",
+      "to": "data\\memory\\atlas\\2026-04-09-方法论最小化到番茄钟.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-09-粗糙的开始胜过周全的计划.md",
+      "to": "data\\memory\\atlas\\2026-04-09-粗糙的开始胜过周全的计划.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-22-焦急与死亡.md",
+      "to": "data\\memory\\atlas\\2026-04-22-焦急与死亡.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-23-快思考潜意识模式.md",
+      "to": "data\\memory\\atlas\\2026-04-23-快思考潜意识模式.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-23-快思考觉察锚点.md",
+      "to": "data\\memory\\atlas\\2026-04-23-快思考觉察锚点.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-23-置身其中但不陷进去.md",
+      "to": "data\\memory\\atlas\\2026-04-23-置身其中但不陷进去.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-23-自我安顿与察觉缺点.md",
+      "to": "data\\memory\\atlas\\2026-04-23-自我安顿与察觉缺点.md"
+    },
+    {
+      "from": "projects\\philosophy-flywheel\\sources\\2026-04-26-三省吾身生活版.md",
+      "to": "data\\memory\\atlas\\2026-04-26-三省吾身生活版.md"
+    }
+  ],
+  "conflicts": [
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-03-31-AI时代的意义指向.md",
+      "canonical": "data\\memory\\work\\2026-03-31-AI时代的意义指向.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-03-31-焦急与宇宙动力学.md",
+      "canonical": "data\\memory\\life\\2026-03-31-焦急与宇宙动力学.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-03-31-碳基与硅基思维.md",
+      "canonical": "data\\memory\\work\\2026-03-31-碳基与硅基思维.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-04-02-感受阳光闻着花香.md",
+      "canonical": "data\\memory\\life\\2026-04-02-感受阳光闻着花香.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-04-02-梦幻西游与纯粹的快乐.md",
+      "canonical": "data\\memory\\life\\2026-04-02-梦幻西游与纯粹的快乐.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-04-02-正念书写与放下目的.md",
+      "canonical": "data\\memory\\life\\2026-04-02-正念书写与放下目的.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-04-02-除了呼吸和心跳.md",
+      "canonical": "data\\memory\\life\\2026-04-02-除了呼吸和心跳.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-04-04-心脏复查-对未知的敬畏.md",
+      "canonical": "data\\memory\\life\\2026-04-04-心脏复查-对未知的敬畏.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-04-09-交互式文档人机协作.md",
+      "canonical": "data\\memory\\work\\2026-04-09-交互式文档人机协作.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-04-09-握力器与永恒轮回.md",
+      "canonical": "data\\memory\\life\\2026-04-09-握力器与永恒轮回.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-04-09-面试像投资.md",
+      "canonical": "data\\memory\\work\\2026-04-09-面试像投资.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-04-09-预期放低与熵减的前提.md",
+      "canonical": "data\\memory\\life\\2026-04-09-预期放低与熵减的前提.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-04-14-AI使用心得.md",
+      "canonical": "data\\memory\\work\\2026-04-14-AI使用心得.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-04-14-自发驱动.md",
+      "canonical": "data\\memory\\life\\2026-04-14-自发驱动.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-05-06-否定排除与深度选择.md",
+      "canonical": "data\\memory\\life\\2026-05-06-否定排除与深度选择.md"
+    },
+    {
+      "site": "projects\\philosophy-flywheel\\sources\\2026-06-16-Ni与活在当下.md",
+      "canonical": "data\\memory\\life\\2026-06-16-Ni与活在当下.md"
+    },
+    {
+      "missingOriginal": "sources/2026-04-01-AI工具流双向检验.md",
+      "canonical": "data\\memory\\atlas\\2026-04-01-AI工具流双向检验.md"
+    },
+    {
+      "missingOriginal": "sources/2026-04-01-信息不对称与人性的三类变量.md",
+      "canonical": "data\\memory\\atlas\\2026-04-01-信息不对称与人性的三类变量.md"
+    }
+  ]
+}

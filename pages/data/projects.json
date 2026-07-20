@@ -1,0 +1,92 @@
+[
+  {
+    "id": "reading-shelf",
+    "dimension": "阅读",
+    "icon": "📖",
+    "dimensionDesc": "Ni · 输入 · 结晶",
+    "title": "阅读记录",
+    "description": "主题路线、书目记录和碰撞归档的统一入口。",
+    "meta": "阅读入口",
+    "page": "projects/reading-shelf/reading-roadmap.html"
+  },
+  {
+    "id": "invest-journal",
+    "dimension": "阅读",
+    "icon": "📖",
+    "dimensionDesc": "Ni · 输入 · 结晶",
+    "title": "投资观点笔记",
+    "description": "记录个股观点与仓位逻辑，追踪判断的演变过程。",
+    "meta": "决策系统 · Te",
+    "page": "projects/invest-journal/index.html"
+  },
+  {
+    "id": "life-notes",
+    "dimension": "阅读",
+    "icon": "📖",
+    "dimensionDesc": "Ni · 输入 · 结晶",
+    "title": "生活随笔",
+    "description": "INTJ 操作系统手册、行动框架与认知碰撞归档。",
+    "meta": "碰撞归档 · Ni/INTJ",
+    "page": "projects/reading-shelf/reading-study.html?bookId=SELF_BIN"
+  },
+  {
+    "id": "philosophy-flywheel",
+    "dimension": "阅读",
+    "icon": "📖",
+    "dimensionDesc": "Ni · 输入 · 结晶",
+    "title": "Knowledge Atlas",
+    "description": "从日常原话中提炼洞见，并连接认知模型与行动。",
+    "meta": "认知仓库 · Ni",
+    "page": "projects/philosophy-flywheel/index.html"
+  },
+  {
+    "id": "auto-test-station",
+    "dimension": "工作",
+    "icon": "⚙️",
+    "dimensionDesc": "Te · 系统化输出 · 做减法",
+    "title": "自动化工作站",
+    "description": "从脚本仓库到服务编排的工程架构演进。",
+    "meta": "Architecture · Engineering · Te",
+    "page": "projects/autoTestStation/index.html"
+  },
+  {
+    "id": "garden-for-lilis",
+    "dimension": "生活",
+    "icon": "🏠",
+    "dimensionDesc": "Fi · 家庭 · 生活实验",
+    "title": "莉莉丝的花园池塘",
+    "description": "适合和小朋友一起打开的轻交互场景。",
+    "meta": "亲子互动 · Fi",
+    "page": "projects/gardenForLilis/index.html"
+  },
+  {
+    "id": "stickergotaro",
+    "dimension": "生活",
+    "icon": "🏠",
+    "dimensionDesc": "Fi · 家庭 · 生活实验",
+    "title": "磁贴成长纪",
+    "description": "用磁贴激励系统帮助孩子养成好习惯。",
+    "meta": "习惯系统 · Fi",
+    "page": "projects/stickergotaro/index.html"
+  },
+  {
+    "id": "stickergotaro-collision",
+    "dimension": "生活",
+    "icon": "🏠",
+    "dimensionDesc": "Fi · 家庭 · 生活实验",
+    "title": "万物互联：从内部积分卡到磁贴大作战",
+    "description": "洞见卡与亲子产品落地之间的映射。",
+    "meta": "认知碰撞 · Ni × Te",
+    "page": "projects/stickergotaro-collision/index.html"
+  },
+  {
+    "id": "table-tennis",
+    "dimension": "乒乓",
+    "icon": "🏓",
+    "dimensionDesc": "Se · 身体直觉 · 肌肉记忆",
+    "title": "乒乓技术框架图谱",
+    "description": "系统化整理乒乓球技术与战术知识体系。",
+    "meta": "技术体系 · Se",
+    "page": "projects/project-table-tennis/index.html"
+  }
+]

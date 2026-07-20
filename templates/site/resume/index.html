@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>魏斌 | 简历</title>
+    <style>
+        :root {
+            --bg: #f7f4ee;
+            --card: #fffdf8;
+            --text: #1f1b16;
+            --sub: #6f6559;
+            --line: rgba(60, 38, 18, 0.1);
+            --accent: #b35c35;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 40px 20px 64px;
+            background:
+                radial-gradient(circle at top, rgba(255,255,255,0.75), transparent 35%),
+                linear-gradient(180deg, #f7f3ec 0%, #efe6d8 100%);
+            color: var(--text);
+            font-family: "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            display: flex;
+            justify-content: center;
+        }
+
+        .page {
+            width: min(860px, 100%);
+        }
+
+        .back-home {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--sub);
+            text-decoration: none;
+            font-size: 0.92rem;
+        }
+
+        .back-home:hover {
+            color: var(--accent);
+        }
+
+        .resume-shell {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(60, 38, 18, 0.08);
+            overflow: hidden;
+        }
+
+        .hero {
+            padding: 32px 32px 24px;
+            border-bottom: 1px solid var(--line);
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(234, 217, 198, 0.6));
+        }
+
+        .hero h1 {
+            margin: 0 0 8px;
+            font-size: clamp(2rem, 4vw, 2.6rem);
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            color: var(--sub);
+            margin-bottom: 14px;
+            font-size: 1rem;
+        }
+
+        .hero-contact {
+            color: var(--sub);
+            font-size: 0.92rem;
+        }
+
+        .hero-contact span {
+            display: inline-block;
+            margin-right: 16px;
+        }
+
+        .hero-summary {
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px dashed var(--line);
+            color: var(--text);
+            max-width: 720px;
+        }
+
+        .content {
+            padding: 28px 32px 36px;
+        }
+
+        .section {
+            margin-bottom: 28px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            margin: 0 0 14px;
+            font-size: 0.82rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--sub);
+        }
+
+        .chip-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 7px 10px;
+            border-radius: 999px;
+            background: rgba(179, 92, 53, 0.08);
+            color: var(--accent);
+            font-size: 0.84rem;
+        }
+
+        .resume-item {
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: #fff;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .resume-item:last-child {
+            margin-bottom: 0;
+        }
+
+        details {
+            margin: 0;
+        }
+
+        summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 16px 18px;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .summary-title {
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .summary-meta {
+            color: var(--sub);
+            font-size: 0.9rem;
+        }
+
+        .summary-highlight {
+            margin-top: 8px;
+            color: var(--text);
+        }
+
+        .summary-toggle {
+            color: var(--accent);
+            white-space: nowrap;
+            font-size: 0.88rem;
+        }
+        details[open] .summary-toggle::after { content: " 收起"; }
+        details:not([open]) .summary-toggle::after { content: " 展开"; }
+
+        .resume-detail {
+            padding: 0 18px 18px;
+            border-top: 1px solid var(--line);
+            color: var(--sub);
+        }
+
+        .resume-detail ul {
+            margin: 12px 0 0;
+            padding-left: 18px;
+        }
+
+        .resume-detail li {
+            margin-bottom: 8px;
+        }
+
+        .simple-list {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--sub);
+        }
+
+        .simple-list li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 20px 12px 40px;
+            }
+
+            .hero, .content {
+                padding-left: 18px;
+                padding-right: 18px;
+            }
+
+            .summary-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <a href="../index.html" class="back-home">← 返回首页</a>
+
+        <div class="resume-shell">
+            <header class="hero">
+                <h1>魏斌</h1>
+                <div class="hero-subtitle">测试开发工程师 · AI 工程化 / 自动化平台 / 质量保障</div>
+                <div class="hero-contact">
+                    <span>南京</span>
+                    <span>18351923906</span>
+                    <span>18351923906@163.com</span>
+                    <span>南京邮电大学 · 电子信息工程</span>
+                </div>
+                <div class="hero-summary">
+                    关注 AI 驱动的测试工程化、自动化平台与质量保障。擅长把重复流程抽象成系统，把模糊经验固化成可复用工具，偏好用小步验证推进复杂问题。
+                </div>
+            </header>
+
+            <main class="content">
+                <section class="section">
+                    <h2 class="section-title">核心关键词</h2>
+                    <div class="chip-list">
+                        <span class="chip">AI 驱动测试工程化</span>
+                        <span class="chip">自动化平台搭建</span>
+                        <span class="chip">Prompt Engineering / 工作流设计</span>
+                        <span class="chip">Java / Spring Boot / Python</span>
+                        <span class="chip">CI/CD 与质量门禁</span>
+                        <span class="chip">快速验证与闭环交付</span>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">工作经历</h2>
+
+                    <div class="resume-item">
+                        <details open>
+                            <summary>
+                                <div class="summary-row">
+                                    <div>
+                                        <div class="summary-title">上海锐捷网络</div>
+                                        <div class="summary-meta">测试开发工程师 · 2025.05 — 至今</div>
+                                        <div class="summary-highlight">参与并落地 AI Prompt Engineering 用例生成流水线，覆盖 5000+ 用例。</div>
+                                    </div>
+                                    <div class="summary-toggle"></div>
+                                </div>
+                            </summary>
+                            <div class="resume-detail">
+                                <ul>
+                                    <li>先用 n8n 对重复且规则明确的接口用例做流程编排，优先解决高频、低复杂度的自动化问题。</li>
+                                    <li>在 Agent 能力更成熟后，把平台 API 抽象为 skill、把执行流程沉淀为 service，逐步形成可对话式生成自动化用例的能力。</li>
+                                    <li>通过小步验证推进方案演进，从流程编排走向更灵活的人机协同。</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="resume-item">
+                        <details>
+                            <summary>
+                                <div class="summary-row">
+                                    <div>
+                                        <div class="summary-title">上海携程</div>
+                                        <div class="summary-meta">测试开发工程师 · 2020.10 — 2025.05</div>
+                                        <div class="summary-highlight">负责酒店查询与定价服务工具链、日志解析比对工具与质量工程，发布流程效率提升 50%。</div>
+                                    </div>
+                                    <div class="summary-toggle"></div>
+                                </div>
+                            </summary>
+                            <div class="resume-detail">
+                                <ul>
+                                    <li>搭建日志解析与自动比对工具，减少人工逐行排查，提高问题定位效率。</li>
+                                    <li>通过分级质量门禁对需求进行测试，并结合灰度上线，降低新需求引入问题影响订单的风险。</li>
+                                    <li>负责酒店查询与定价服务工具链、日志解析比对工具与质量工程，推动发布工作量从 5 人日降到 2 人日，发布流程效率提升 50%。</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="resume-item">
+                        <details>
+                            <summary>
+                                <div class="summary-row">
+                                    <div>
+                                        <div class="summary-title">南京软通动力信息技术服务有限公司</div>
+                                        <div class="summary-meta">测试开发工程师 · 2017.07 — 2020.10</div>
+                                        <div class="summary-highlight">负责华为云空间客户端功能测试与安卓自动化补充，覆盖云相册、文件管理等客户端场景。</div>
+                                    </div>
+                                    <div class="summary-toggle"></div>
+                                </div>
+                            </summary>
+                            <div class="resume-detail">
+                                <ul>
+                                    <li>负责客户端新需求的测试设计、测试策略、用例评审与执行，保障云相册与文件管理相关版本稳定上线。</li>
+                                    <li>以客户端手工测试为主，补充安卓自动化脚本与回归能力，提升重复验证效率。</li>
+                                    <li>通过脚本构造压测数据，生成云相册 hash 值不同的图片，支撑上传下载性能与稳定性验证。</li>
+                                </ul>
+                            </div>
+                        </details>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">技能与方向</h2>
+                    <ul class="simple-list">
+                        <li>开发：Java、Spring Boot、Vue、MyBatis、Python</li>
+                        <li>AI 实践：Prompt Engineering、工作流设计</li>
+                        <li>测试与 DevOps：TestNG、UI 自动化、CI/CD、质量门禁、容量规划</li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">教育背景</h2>
+                    <ul class="simple-list">
+                        <li>南京邮电大学 · 电子信息工程 · 本科 · 2016 — 2020</li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
