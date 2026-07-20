@@ -37,3 +37,4 @@ jobs:
           branch: gh-pages
           folder: pages
           clean: true
+          force_orphan: true
