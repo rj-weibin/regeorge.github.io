@@ -60,7 +60,9 @@ tags: []
 ---
 ```
 
-状态只有 `draft`、`proposed`、`reviewed`、`archived`。关系指向稳定 ID，不指向页面 URL。用户原话和 Agent 结构化建议必须明确分区。
+状态只有 `draft`、`proposed`、`reviewed`、`archived`。关系指向稳定 ID，并使用 `targetType: node | topic | category` 标明目标类型，不指向页面 URL。用户原话和 Agent 结构化建议必须明确分区。
+
+碰撞卡必须有稳定 `id`、`type: collision`、`status`、`updatedAt` 和 `source`。来源为空时只能保持 `proposed`，不得自动升级为 `reviewed`。
 
 ## 原话优先
 
@@ -79,6 +81,8 @@ tags: []
 ```
 
 `inbox/` 不参与页面、MCP 或自动化读取。确认后只保留必要的“洞见 + 原话”，不把整本书、整段聊天或无关导出长期复制进仓库。
+
+公开页面安全边界：不得写入真实内部 IP、账号、密码、Authorization、Token、Webhook 或公司内部地址。页面只能使用占位符；敏感配置放在本地环境或受控系统中。
 
 ## 阅读碰撞
 
@@ -112,7 +116,7 @@ tags: []
 - 运行 `node scripts/build-site.mjs` 生成页面。
 - 本地预览：`python -m http.server --directory pages`。
 - GitHub Actions 推送 `master` 后部署 `pages/` 到 `gh-pages`。
-- 不保留 `.deploy_git`、旧 Hexo 页面、旧博客路径或旧页面数据副本。
+- 不保留 `.deploy_git`、旧 Hexo 页面、旧博客路径或旧页面数据副本。历史文章统一归档到 `data/memory/archive/legacy-articles/`，不再使用 `hexo_posts` 命名。
 
 ## Agent 指引同步
 

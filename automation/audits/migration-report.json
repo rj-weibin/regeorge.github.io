@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-20T09:57:33.511Z",
+  "generatedAt": "2026-07-20T12:46:28.589Z",
   "dailyNotes": "https://github.com/rj-weibin/daily-notes",
   "mergedFiles": [
     {
@@ -134,44 +134,44 @@
       "to": "data\\memory\\sports\\乒乓球切身感悟总结.md"
     },
     {
-      "from": "存档\\hexo_posts\\12_测试方案的设计思路.md",
-      "to": "data\\memory\\archive\\hexo_posts\\12_测试方案的设计思路.md"
+      "from": "存档\\legacy-articles\\12_测试方案的设计思路.md",
+      "to": "data\\memory\\archive\\legacy-articles\\12_测试方案的设计思路.md"
     },
     {
-      "from": "存档\\hexo_posts\\14_测试工作的一些总结.md",
-      "to": "data\\memory\\archive\\hexo_posts\\14_测试工作的一些总结.md"
+      "from": "存档\\legacy-articles\\14_测试工作的一些总结.md",
+      "to": "data\\memory\\archive\\legacy-articles\\14_测试工作的一些总结.md"
     },
     {
-      "from": "存档\\hexo_posts\\15_开发相关内容记录.md",
-      "to": "data\\memory\\archive\\hexo_posts\\15_开发相关内容记录.md"
+      "from": "存档\\legacy-articles\\15_开发相关内容记录.md",
+      "to": "data\\memory\\archive\\legacy-articles\\15_开发相关内容记录.md"
     },
     {
-      "from": "存档\\hexo_posts\\16_读书笔记收集.md",
-      "to": "data\\memory\\archive\\hexo_posts\\16_读书笔记收集.md"
+      "from": "存档\\legacy-articles\\16_读书笔记收集.md",
+      "to": "data\\memory\\archive\\legacy-articles\\16_读书笔记收集.md"
     },
     {
-      "from": "存档\\hexo_posts\\17_工具类项目需求文档.md",
-      "to": "data\\memory\\archive\\hexo_posts\\17_工具类项目需求文档.md"
+      "from": "存档\\legacy-articles\\17_工具类项目需求文档.md",
+      "to": "data\\memory\\archive\\legacy-articles\\17_工具类项目需求文档.md"
     },
     {
-      "from": "存档\\hexo_posts\\18_公众号实现发布文章.md",
-      "to": "data\\memory\\archive\\hexo_posts\\18_公众号实现发布文章.md"
+      "from": "存档\\legacy-articles\\18_公众号实现发布文章.md",
+      "to": "data\\memory\\archive\\legacy-articles\\18_公众号实现发布文章.md"
     },
     {
-      "from": "存档\\hexo_posts\\19_自动化如何设计和维护才能不成为每日工作的一部分.md",
-      "to": "data\\memory\\archive\\hexo_posts\\19_自动化如何设计和维护才能不成为每日工作的一部分.md"
+      "from": "存档\\legacy-articles\\19_自动化如何设计和维护才能不成为每日工作的一部分.md",
+      "to": "data\\memory\\archive\\legacy-articles\\19_自动化如何设计和维护才能不成为每日工作的一部分.md"
     },
     {
-      "from": "存档\\hexo_posts\\21_闲聊记录.md",
-      "to": "data\\memory\\archive\\hexo_posts\\21_闲聊记录.md"
+      "from": "存档\\legacy-articles\\21_闲聊记录.md",
+      "to": "data\\memory\\archive\\legacy-articles\\21_闲聊记录.md"
     },
     {
-      "from": "存档\\hexo_posts\\22_测试用例准备指南.md",
-      "to": "data\\memory\\archive\\hexo_posts\\22_测试用例准备指南.md"
+      "from": "存档\\legacy-articles\\22_测试用例准备指南.md",
+      "to": "data\\memory\\archive\\legacy-articles\\22_测试用例准备指南.md"
     },
     {
-      "from": "存档\\hexo_posts\\23_调用github_api的后台实现.md",
-      "to": "data\\memory\\archive\\hexo_posts\\23_调用github_api的后台实现.md"
+      "from": "存档\\legacy-articles\\23_调用github_api的后台实现.md",
+      "to": "data\\memory\\archive\\legacy-articles\\23_调用github_api的后台实现.md"
     },
     {
       "from": "存档\\简历\\resume.md",
@@ -272,10 +272,6 @@
     {
       "from": "生活\\2026-03-21-低物欲与客观投资.md",
       "to": "data\\memory\\life\\2026-03-21-低物欲与客观投资.md"
-    },
-    {
-      "from": "生活\\2026-03-21-小满洗冷水澡.md",
-      "to": "data\\memory\\life\\2026-03-21-小满洗冷水澡.md"
     },
     {
       "from": "生活\\2026-03-21-少年心气困惑.md",
@@ -420,50 +416,6 @@
     {
       "from": "生活\\2026-06-16-Ni与活在当下.md",
       "to": "data\\memory\\life\\2026-06-16-Ni与活在当下.md"
-    },
-    {
-      "from": "生活\\xiaoman.html",
-      "to": "data\\memory\\life\\xiaoman.html"
-    },
-    {
-      "from": "生活\\小满成长记录\\daily_message.txt",
-      "to": "data\\memory\\life\\小满成长记录\\daily_message.txt"
-    },
-    {
-      "from": "生活\\小满成长记录\\daily_summary.md",
-      "to": "data\\memory\\life\\小满成长记录\\daily_summary.md"
-    },
-    {
-      "from": "生活\\小满成长记录\\moments_logs.json",
-      "to": "data\\memory\\life\\小满成长记录\\moments_logs.json"
-    },
-    {
-      "from": "生活\\小满成长记录\\monthly_message.txt",
-      "to": "data\\memory\\life\\小满成长记录\\monthly_message.txt"
-    },
-    {
-      "from": "生活\\小满成长记录\\monthly_summary.md",
-      "to": "data\\memory\\life\\小满成长记录\\monthly_summary.md"
-    },
-    {
-      "from": "生活\\小满成长记录\\source_history.md",
-      "to": "data\\memory\\life\\小满成长记录\\source_history.md"
-    },
-    {
-      "from": "生活\\小满成长记录\\weekly_message.txt",
-      "to": "data\\memory\\life\\小满成长记录\\weekly_message.txt"
-    },
-    {
-      "from": "生活\\小满成长记录\\weekly_summary.md",
-      "to": "data\\memory\\life\\小满成长记录\\weekly_summary.md"
-    },
-    {
-      "from": "生活\\小满成长记录\\xiaoman_records.md",
-      "to": "data\\memory\\life\\小满成长记录\\xiaoman_records.md"
-    },
-    {
-      "from": "生活\\小满成长记录\\xiaoman_records.ndjson",
-      "to": "data\\memory\\life\\小满成长记录\\xiaoman_records.ndjson"
     },
     {
       "from": "阅读\\2026-03-22-知识管理的觉醒.md",

@@ -50,36 +50,6 @@
     "page": "projects/autoTestStation/index.html"
   },
   {
-    "id": "garden-for-lilis",
-    "dimension": "生活",
-    "icon": "🏠",
-    "dimensionDesc": "Fi · 家庭 · 生活实验",
-    "title": "莉莉丝的花园池塘",
-    "description": "适合和小朋友一起打开的轻交互场景。",
-    "meta": "亲子互动 · Fi",
-    "page": "projects/gardenForLilis/index.html"
-  },
-  {
-    "id": "stickergotaro",
-    "dimension": "生活",
-    "icon": "🏠",
-    "dimensionDesc": "Fi · 家庭 · 生活实验",
-    "title": "磁贴成长纪",
-    "description": "用磁贴激励系统帮助孩子养成好习惯。",
-    "meta": "习惯系统 · Fi",
-    "page": "projects/stickergotaro/index.html"
-  },
-  {
-    "id": "stickergotaro-collision",
-    "dimension": "生活",
-    "icon": "🏠",
-    "dimensionDesc": "Fi · 家庭 · 生活实验",
-    "title": "万物互联：从内部积分卡到磁贴大作战",
-    "description": "洞见卡与亲子产品落地之间的映射。",
-    "meta": "认知碰撞 · Ni × Te",
-    "page": "projects/stickergotaro-collision/index.html"
-  },
-  {
     "id": "table-tennis",
     "dimension": "乒乓",
     "icon": "🏓",

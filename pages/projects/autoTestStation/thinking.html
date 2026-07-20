@@ -441,7 +441,7 @@
           <h4>接口文档说的和实际的不一样</h4>
           <p>
             白名单功能有个第三方 SOAP 接口 <code>bindOperatorV2</code>。平台上有人写过公共用例引用了它，但 body 是空的 <code>{}</code>。<br><br>
-            AI 照着抄，当然跑不通。后来自己抓包才发现：SOAP 请求需要完整的 XML 信封，header 必须带 <code>Content-Type: text/xml</code> 和 <code>Authorization: Basic dGhpcmQ6MTIz</code>。平台上的"公共用例"根本没写这些。<br><br>
+            AI 照着抄，当然跑不通。后来自己抓包才发现：SOAP 请求需要完整的 XML 信封，header 必须带 <code>Content-Type: text/xml</code> 和参数化的 Authorization。平台上的"公共用例"根本没写这些。<br><br>
             最终把公共用例引用全部展开成内联 HTTP 步骤，手工补全了 XML body 和 header。<strong>不要盲信"公共"二字</strong>。
           </p>
         </div>

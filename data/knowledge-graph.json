@@ -2,8 +2,8 @@
   "meta": {
     "title": "Knowledge Atlas",
     "subtitle": "从整体到局部，从快速审阅到深度理解",
-    "lastUpdated": "2026-06-22",
-    "reviewStatus": "已回顾 — 36 Active / 16 NIPoison / 7 合并 / 3 降级/研究",
+    "lastUpdated": "2026-07-20",
+    "reviewStatus": "结构化清洗后 61 个节点；历史回顾状态见 data/resources/knowledge-atlas-review.md",
     "sourceOfTruth": "data",
     "generatedFrom": "data/memory"
   },
@@ -263,15 +263,18 @@
       "relations": [
         {
           "type": "enables",
-          "target": "ai-usage-tips"
+          "target": "ai-usage-tips",
+          "targetType": "node"
         },
         {
           "type": "part_of",
-          "target": "human-in-the-loop"
+          "target": "human-in-the-loop",
+          "targetType": "topic"
         },
         {
           "type": "related",
-          "target": "ai-tool-validation"
+          "target": "ai-tool-validation",
+          "targetType": "node"
         }
       ]
     },
@@ -293,11 +296,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "interactive-doc"
+          "target": "interactive-doc",
+          "targetType": "node"
         },
         {
           "type": "part_of",
-          "target": "human-in-the-loop"
+          "target": "human-in-the-loop",
+          "targetType": "topic"
         }
       ]
     },
@@ -323,11 +328,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "interactive-doc"
+          "target": "interactive-doc",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "naval-tool-judgment"
+          "target": "naval-tool-judgment",
+          "targetType": "node"
         }
       ]
     },
@@ -350,11 +357,13 @@
       "relations": [
         {
           "type": "enables",
-          "target": "carbon-silicon"
+          "target": "carbon-silicon",
+          "targetType": "node"
         },
         {
           "type": "part_of",
-          "target": "cognitive-upgrade"
+          "target": "cognitive-upgrade",
+          "targetType": "topic"
         }
       ]
     },
@@ -380,11 +389,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "ai-metacognition"
+          "target": "ai-metacognition",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "ai-meaning"
+          "target": "ai-meaning",
+          "targetType": "node"
         }
       ]
     },
@@ -410,11 +421,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "carbon-silicon"
+          "target": "carbon-silicon",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "naval-ai-expertise"
+          "target": "naval-ai-expertise",
+          "targetType": "node"
         }
       ]
     },
@@ -436,11 +449,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "compound-iteration"
+          "target": "compound-iteration",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "self-driven"
+          "target": "self-driven",
+          "targetType": "node"
         }
       ]
     },
@@ -462,11 +477,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "iteration-300"
+          "target": "iteration-300",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "do-important-things"
+          "target": "do-important-things",
+          "targetType": "node"
         }
       ]
     },
@@ -488,11 +505,13 @@
       "relations": [
         {
           "type": "part_of",
-          "target": "clear-thinking"
+          "target": "clear-thinking",
+          "targetType": "topic"
         },
         {
           "type": "related",
-          "target": "think-vs-decide"
+          "target": "think-vs-decide",
+          "targetType": "node"
         }
       ]
     },
@@ -514,11 +533,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "memory-asset-protection"
+          "target": "memory-asset-protection",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "naval-memory-asset"
+          "target": "naval-memory-asset",
+          "targetType": "node"
         }
       ]
     },
@@ -540,11 +561,13 @@
       "relations": [
         {
           "type": "part_of",
-          "target": "clear-thinking"
+          "target": "clear-thinking",
+          "targetType": "topic"
         },
         {
           "type": "related",
-          "target": "universal-philosophy"
+          "target": "universal-philosophy",
+          "targetType": "node"
         }
       ]
     },
@@ -567,11 +590,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "info-asymmetry-three-types"
+          "target": "info-asymmetry-three-types",
+          "targetType": "node"
         },
         {
           "type": "part_of",
-          "target": "clear-thinking"
+          "target": "clear-thinking",
+          "targetType": "topic"
         }
       ]
     },
@@ -593,11 +618,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "anxiety-decision"
+          "target": "anxiety-decision",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "denial-vs-selection"
+          "target": "denial-vs-selection",
+          "targetType": "node"
         }
       ]
     },
@@ -619,11 +646,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "think-vs-decide"
+          "target": "think-vs-decide",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "anxiety-cosmos"
+          "target": "anxiety-cosmos",
+          "targetType": "node"
         }
       ]
     },
@@ -645,11 +674,13 @@
       "relations": [
         {
           "type": "enables",
-          "target": "fast-thinking-anchors"
+          "target": "fast-thinking-anchors",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "self-settle"
+          "target": "self-settle",
+          "targetType": "node"
         }
       ]
     },
@@ -675,11 +706,13 @@
       "relations": [
         {
           "type": "depends_on",
-          "target": "fast-thinking-patterns"
+          "target": "fast-thinking-patterns",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "self-settle"
+          "target": "self-settle",
+          "targetType": "node"
         }
       ]
     },
@@ -701,11 +734,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "in-but-not-trapped"
+          "target": "in-but-not-trapped",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "fast-thinking-patterns"
+          "target": "fast-thinking-patterns",
+          "targetType": "node"
         }
       ]
     },
@@ -727,11 +762,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "self-settle"
+          "target": "self-settle",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "naval-peace-filter"
+          "target": "naval-peace-filter",
+          "targetType": "node"
         }
       ]
     },
@@ -753,11 +790,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "info-asymmetry-social"
+          "target": "info-asymmetry-social",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "jobs-visionary"
+          "target": "jobs-visionary",
+          "targetType": "node"
         }
       ]
     },
@@ -779,11 +818,13 @@
       "relations": [
         {
           "type": "part_of",
-          "target": "jobs-biography"
+          "target": "jobs-biography",
+          "targetType": "topic"
         },
         {
           "type": "related",
-          "target": "jobs-process"
+          "target": "jobs-process",
+          "targetType": "node"
         }
       ]
     },
@@ -805,11 +846,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "jobs-simplicity"
+          "target": "jobs-simplicity",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "jobs-encoding"
+          "target": "jobs-encoding",
+          "targetType": "node"
         }
       ]
     },
@@ -831,11 +874,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "duan-clockmaker"
+          "target": "duan-clockmaker",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "carbon-silicon"
+          "target": "carbon-silicon",
+          "targetType": "node"
         }
       ]
     },
@@ -857,11 +902,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "anxiety-death"
+          "target": "anxiety-death",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "heart-check"
+          "target": "heart-check",
+          "targetType": "node"
         }
       ]
     },
@@ -884,11 +931,13 @@
       "relations": [
         {
           "type": "contrasts_with",
-          "target": "info-asymmetry-three-types"
+          "target": "info-asymmetry-three-types",
+          "targetType": "node"
         },
         {
           "type": "part_of",
-          "target": "jobs-biography"
+          "target": "jobs-biography",
+          "targetType": "topic"
         }
       ]
     },
@@ -911,11 +960,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "duan-benfen"
+          "target": "duan-benfen",
+          "targetType": "node"
         },
         {
           "type": "part_of",
-          "target": "jobs-biography"
+          "target": "jobs-biography",
+          "targetType": "topic"
         }
       ]
     },
@@ -937,11 +988,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "naval-peace-filter"
+          "target": "naval-peace-filter",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "peace-filter"
+          "target": "peace-filter",
+          "targetType": "node"
         }
       ]
     },
@@ -964,11 +1017,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "ai-meaning"
+          "target": "ai-meaning",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "self-driven"
+          "target": "self-driven",
+          "targetType": "node"
         }
       ]
     },
@@ -990,11 +1045,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "duan-no-touch-chaos"
+          "target": "duan-no-touch-chaos",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "ai-tool-validation"
+          "target": "ai-tool-validation",
+          "targetType": "node"
         }
       ]
     },
@@ -1020,11 +1077,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "jobs-encoding"
+          "target": "jobs-encoding",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "carbon-silicon"
+          "target": "carbon-silicon",
+          "targetType": "node"
         }
       ]
     },
@@ -1046,11 +1105,13 @@
       "relations": [
         {
           "type": "depends_on",
-          "target": "duan-no-touch"
+          "target": "duan-no-touch",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "info-asymmetry-three-types"
+          "target": "info-asymmetry-three-types",
+          "targetType": "node"
         }
       ]
     },
@@ -1072,15 +1133,18 @@
       "relations": [
         {
           "type": "related",
-          "target": "duan-benfen"
+          "target": "duan-benfen",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "compound-anxiety"
+          "target": "compound-anxiety",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "anxiety-cosmos"
+          "target": "anxiety-cosmos",
+          "targetType": "node"
         }
       ]
     },
@@ -1102,11 +1166,13 @@
       "relations": [
         {
           "type": "part_of",
-          "target": "compound-effect"
+          "target": "compound-effect",
+          "targetType": "topic"
         },
         {
           "type": "related",
-          "target": "iteration-300"
+          "target": "iteration-300",
+          "targetType": "node"
         }
       ]
     },
@@ -1128,11 +1194,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "memory-asset-clear"
+          "target": "memory-asset-clear",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "memory-asset-protection"
+          "target": "memory-asset-protection",
+          "targetType": "node"
         }
       ]
     },
@@ -1154,11 +1222,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "anxiety-cosmos"
+          "target": "anxiety-cosmos",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "anxiety-death"
+          "target": "anxiety-death",
+          "targetType": "node"
         }
       ]
     },
@@ -1181,11 +1251,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "peace-filter"
+          "target": "peace-filter",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "fast-thinking-patterns"
+          "target": "fast-thinking-patterns",
+          "targetType": "node"
         }
       ]
     },
@@ -1207,11 +1279,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "duan-benfen"
+          "target": "duan-benfen",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "three-books"
+          "target": "three-books",
+          "targetType": "node"
         }
       ]
     },
@@ -1233,11 +1307,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "compound-iteration"
+          "target": "compound-iteration",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "tomato-clock"
+          "target": "tomato-clock",
+          "targetType": "node"
         }
       ]
     },
@@ -1259,11 +1335,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "carbon-silicon"
+          "target": "carbon-silicon",
+          "targetType": "node"
         },
         {
           "type": "part_of",
-          "target": "naval-almanack"
+          "target": "naval-almanack",
+          "targetType": "topic"
         }
       ]
     },
@@ -1286,11 +1364,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "ai-tool-validation"
+          "target": "ai-tool-validation",
+          "targetType": "node"
         },
         {
           "type": "part_of",
-          "target": "naval-almanack"
+          "target": "naval-almanack",
+          "targetType": "topic"
         }
       ]
     },
@@ -1312,11 +1392,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "duan-benfen"
+          "target": "duan-benfen",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "peace-filter"
+          "target": "peace-filter",
+          "targetType": "node"
         }
       ]
     },
@@ -1338,11 +1420,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "compound-record"
+          "target": "compound-record",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "memory-asset-clear"
+          "target": "memory-asset-clear",
+          "targetType": "node"
         }
       ]
     },
@@ -1365,11 +1449,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "ai-meaning"
+          "target": "ai-meaning",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "naval-tool-judgment"
+          "target": "naval-tool-judgment",
+          "targetType": "node"
         }
       ]
     },
@@ -1391,11 +1477,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "in-but-not-trapped"
+          "target": "in-but-not-trapped",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "fantasy-joy"
+          "target": "fantasy-joy",
+          "targetType": "node"
         }
       ]
     },
@@ -1417,11 +1505,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "compound-record"
+          "target": "compound-record",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "naval-memory-asset"
+          "target": "naval-memory-asset",
+          "targetType": "node"
         }
       ]
     },
@@ -1447,15 +1537,18 @@
       "relations": [
         {
           "type": "related",
-          "target": "jobs-obsession"
+          "target": "jobs-obsession",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "duan-benfen"
+          "target": "duan-benfen",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "three-books"
+          "target": "three-books",
+          "targetType": "node"
         }
       ]
     },
@@ -1477,11 +1570,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "self-driven"
+          "target": "self-driven",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "duan-benfen"
+          "target": "duan-benfen",
+          "targetType": "node"
         }
       ]
     },
@@ -1503,11 +1598,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "rough-start"
+          "target": "rough-start",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "tomato-clock"
+          "target": "tomato-clock",
+          "targetType": "node"
         }
       ]
     },
@@ -1529,11 +1626,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "rough-start"
+          "target": "rough-start",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "compound-iteration"
+          "target": "compound-iteration",
+          "targetType": "node"
         }
       ]
     },
@@ -1555,11 +1654,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "naval-reading-recording"
+          "target": "naval-reading-recording",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "compound-record"
+          "target": "compound-record",
+          "targetType": "node"
         }
       ]
     },
@@ -1581,11 +1682,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "naval-memory-asset"
+          "target": "naval-memory-asset",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "compound-record"
+          "target": "compound-record",
+          "targetType": "node"
         }
       ]
     },
@@ -1607,11 +1710,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "jobs-encoding"
+          "target": "jobs-encoding",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "ai-tool-validation"
+          "target": "ai-tool-validation",
+          "targetType": "node"
         }
       ]
     },
@@ -1633,11 +1738,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "naval-ai-expertise"
+          "target": "naval-ai-expertise",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "naval-tool-judgment"
+          "target": "naval-tool-judgment",
+          "targetType": "node"
         }
       ]
     },
@@ -1660,11 +1767,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "compound-anxiety"
+          "target": "compound-anxiety",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "anxiety-death"
+          "target": "anxiety-death",
+          "targetType": "node"
         }
       ]
     },
@@ -1690,11 +1799,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "anxiety-cosmos"
+          "target": "anxiety-cosmos",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "jobs-death"
+          "target": "jobs-death",
+          "targetType": "node"
         }
       ]
     },
@@ -1716,11 +1827,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "duan-benfen"
+          "target": "duan-benfen",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "naval-peace-filter"
+          "target": "naval-peace-filter",
+          "targetType": "node"
         }
       ]
     },
@@ -1742,11 +1855,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "fantasy-joy"
+          "target": "fantasy-joy",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "mindful-writing"
+          "target": "mindful-writing",
+          "targetType": "node"
         }
       ]
     },
@@ -1768,11 +1883,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "naval-desire"
+          "target": "naval-desire",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "sunshine-flowers"
+          "target": "sunshine-flowers",
+          "targetType": "node"
         }
       ]
     },
@@ -1794,11 +1911,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "sunshine-flowers"
+          "target": "sunshine-flowers",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "peace-filter"
+          "target": "peace-filter",
+          "targetType": "node"
         }
       ]
     },
@@ -1820,11 +1939,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "jobs-death"
+          "target": "jobs-death",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "anxiety-death"
+          "target": "anxiety-death",
+          "targetType": "node"
         }
       ]
     },
@@ -1846,11 +1967,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "compound-iteration"
+          "target": "compound-iteration",
+          "targetType": "node"
         },
         {
           "type": "related",
-          "target": "anxiety-cosmos"
+          "target": "anxiety-cosmos",
+          "targetType": "node"
         }
       ]
     },
@@ -1873,37 +1996,13 @@
       "relations": [
         {
           "type": "related",
-          "target": "universal-connection"
+          "target": "universal-connection",
+          "targetType": "node"
         },
         {
           "type": "enables",
-          "target": "anxiety-cosmos"
-        }
-      ]
-    },
-    {
-      "id": "cold-shower",
-      "topicId": "present-moment",
-      "title": "小满洗冷水澡",
-      "bookBadge": null,
-      "oneLiner": "她根本没哭。洗完后哼着小调，心情很好——克服挑战后的内在轻快。",
-      "philosophyNote": "冷水澡带来的不是痛苦，是清冽的愉悦感。主动寻求小的不适，反而能界定自我的边界。",
-      "status": "human-reviewed",
-      "updatedAt": "2026-03-21",
-      "source": null,
-      "keyTakeaways": [
-        "主动寻求小不适",
-        "克服后的内在轻快",
-        "界定自我边界"
-      ],
-      "relations": [
-        {
-          "type": "related",
-          "target": "grip-eternal"
-        },
-        {
-          "type": "related",
-          "target": "lower-expectation"
+          "target": "anxiety-cosmos",
+          "targetType": "node"
         }
       ]
     }

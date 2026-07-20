@@ -500,7 +500,7 @@
     "publisher": "中央编译出版社",
     "status": "在读",
     "progress": 30,
-    "notes": 2,
+    "notes": 0,
     "edition": "微信读书",
     "theme": [
       "#98806b",
@@ -1613,7 +1613,7 @@
       "#f6f9f4",
       "#8ac39c"
     ],
-    "source": "截图 + 旧读书笔记",
+    "source": "截图 + 旧读书笔记 + 微信读书同步",
     "cover": "https://weread-1258476243.file.myqcloud.com/app/assets/bookcover/book_cover_default_imported_02.png",
     "lastReadDate": "2025-08-10",
     "readingTime": 917,
@@ -1625,7 +1625,20 @@
       "collisions": [
         "旧读书笔记待迁入 Obsidian 快照"
       ]
-    }
+    },
+    "mergedBookIds": [
+      "35551088"
+    ],
+    "editionVariants": [
+      {
+        "bookId": "35551088",
+        "author": "罗伯特·戴博德",
+        "publisher": "微信读书",
+        "edition": "微信读书",
+        "source": "微信读书同步",
+        "cover": "https://cdn.weread.qq.com/weread/cover/81/YueWen_35551088/t9_YueWen_35551088.jpg"
+      }
+    ]
   },
   {
     "bookId": "695233",
@@ -2579,35 +2592,6 @@
     }
   },
   {
-    "bookId": "35551088",
-    "title": "蛤蟆先生去看心理医生",
-    "coverTitle": "蛤蟆先生去看心理医生",
-    "author": "罗伯特·戴博德",
-    "publisher": "微信读书",
-    "status": "已读",
-    "progress": 100,
-    "notes": 0,
-    "edition": "微信读书",
-    "theme": [
-      "#f2e8d9",
-      "#d7cab5"
-    ],
-    "source": "微信读书同步",
-    "cover": "https://cdn.weread.qq.com/weread/cover/81/YueWen_35551088/t9_YueWen_35551088.jpg",
-    "lastReadDate": "2024-12-30",
-    "readingTime": 0,
-    "detail": {
-      "summary": "微信读书已同步，读书快照待补。",
-      "thesis": "待补",
-      "reader": "待补",
-      "distance": "待补",
-      "originalFeeling": "",
-      "collisions": [],
-      "scanDate": "",
-      "scanTarget": ""
-    }
-  },
-  {
     "bookId": "44026191",
     "title": "纳瓦尔宝典",
     "coverTitle": "纳瓦尔\n宝典",
@@ -2880,7 +2864,20 @@
       "collisions": [],
       "scanDate": "",
       "scanTarget": ""
-    }
+    },
+    "mergedBookIds": [
+      "31605317"
+    ],
+    "editionVariants": [
+      {
+        "bookId": "31605317",
+        "author": "叔本华",
+        "publisher": "微信读书",
+        "edition": "微信读书",
+        "source": "微信读书同步",
+        "cover": "https://wfqqreader-1252317822.image.myqcloud.com/cover/317/31605317/t9_31605317.jpg"
+      }
+    ]
   },
   {
     "bookId": "3300072888",
@@ -4385,35 +4382,6 @@
     "cover": "https://cdn.weread.qq.com/weread/cover/94/YueWen_522205/t9_YueWen_522205.jpg",
     "lastReadDate": "2023-03-22",
     "readingTime": 11964,
-    "detail": {
-      "summary": "微信读书已同步，读书快照待补。",
-      "thesis": "待补",
-      "reader": "待补",
-      "distance": "待补",
-      "originalFeeling": "",
-      "collisions": [],
-      "scanDate": "",
-      "scanTarget": ""
-    }
-  },
-  {
-    "bookId": "31605317",
-    "title": "人生的智慧",
-    "coverTitle": "人生的智慧",
-    "author": "叔本华",
-    "publisher": "微信读书",
-    "status": "未读",
-    "progress": 0,
-    "notes": 0,
-    "edition": "微信读书",
-    "theme": [
-      "#d7edf4",
-      "#95b8c8"
-    ],
-    "source": "微信读书同步",
-    "cover": "https://wfqqreader-1252317822.image.myqcloud.com/cover/317/31605317/t9_31605317.jpg",
-    "lastReadDate": "2026-03-15",
-    "readingTime": 0,
     "detail": {
       "summary": "微信读书已同步，读书快照待补。",
       "thesis": "待补",

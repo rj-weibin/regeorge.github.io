@@ -47,7 +47,6 @@
 
 | 卡片 | 救活方案 |
 |------|---------|
-| 小满洗冷水澡(cold-shower) | 改写为自我行动实验卡：每周一次冷水澡，记录身体感受 |
 | Ni与活在当下(Ni-thoughts) | 并入日课第12条：每天10分钟Se开车时间 |
 | 欲望是快乐的敌人(naval-desire) | 加购物门禁规则：72小时冷静期 + 平静状态确认 |
 | 利润之上的追求(duan-beyond-profit) | 并入项目选择过滤器 |
@@ -141,7 +140,6 @@
 | heart-check | 心脏复查 | ⚠️NIPoison→救活中 |
 | grip-eternal | 握力器×永恒轮回 | ⚡Active |
 | universal-philosophy | 万物相通 | 🌐页首引言 |
-| cold-shower | 小满洗冷水澡 | ⚠️NIPoison→救活中 |
 | Ni-thoughts | Ni与活在当下 | ⚠️NIPoison→救活中 |
 
 ### 个人成长 (8张)
