@@ -40,6 +40,7 @@ const books = readJson('data/books/books.json');
 const cards = readJson('data/concepts/collisions.json');
 const mobileCards = readJson('data/concepts/mobile-cards.json');
 const projects = readJson('data/projects/projects.json');
+const personalEngineeringThesis = readJson('data/projects/personal-engineering-thesis.json');
 duplicateIds(graph?.nodes, 'concept');
 duplicateIds(books, 'book', item => item.bookId ?? item.id ?? item.title);
 duplicateValues(books, 'book', item => item.title?.trim());
@@ -48,6 +49,14 @@ books?.forEach(book => {
   if ((book.notes ?? 0) !== collisionCount) errors.push(`book ${book.bookId}: notes must equal detail.collisions length`);
 });
 duplicateIds(projects, 'project');
+if (personalEngineeringThesis) {
+  if (personalEngineeringThesis.id !== 'personal-engineering-thesis') errors.push('personal engineering thesis: invalid id');
+  if (personalEngineeringThesis.type !== 'project') errors.push('personal engineering thesis: type must be project');
+  if (!['draft', 'proposed', 'reviewed', 'archived'].includes(personalEngineeringThesis.status)) errors.push('personal engineering thesis: invalid status');
+  if (!personalEngineeringThesis.updatedAt) errors.push('personal engineering thesis: missing updatedAt');
+  if (!personalEngineeringThesis.source) errors.push('personal engineering thesis: missing source');
+  if (!Array.isArray(personalEngineeringThesis.featuredCases) || personalEngineeringThesis.featuredCases.length < 2) errors.push('personal engineering thesis: missing featured cases');
+}
 duplicateIds(cards, 'collision');
 cards?.forEach((card, index) => {
   if (!card.tag && !card.id) errors.push(`collision card ${index + 1}: missing tag/id`);
@@ -77,7 +86,7 @@ if (fs.existsSync(pending) && fs.readdirSync(pending).length > 0) {
   console.warn('warning: inbox/pending contains unprocessed intake files');
 }
 
-for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/cards.json', 'pages/data/projects.json']) {
+for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/cards.json', 'pages/data/projects.json', 'pages/data/personal-engineering-thesis.json', 'pages/projects/personal-engineering-thesis/index.html']) {
   if (!fs.existsSync(path.join(root, relative))) errors.push(`missing build output: ${relative}`);
 }
 

@@ -32,11 +32,13 @@ const books = readJson('data/books/books.json');
 const cards = readJson('data/concepts/collisions.json');
 const mobileCards = readJson('data/concepts/mobile-cards.json');
 const projects = readJson('data/projects/projects.json');
+const personalEngineeringThesis = readJson('data/projects/personal-engineering-thesis.json');
 fs.writeFileSync(path.join(pages, 'data', 'knowledge-graph.json'), JSON.stringify(graph, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'books.json'), JSON.stringify(books, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'philosophy-cards.json'), JSON.stringify(cards, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'cards.json'), JSON.stringify(mobileCards, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'projects.json'), JSON.stringify(projects, null, 2) + '\n');
+fs.writeFileSync(path.join(pages, 'data', 'personal-engineering-thesis.json'), JSON.stringify(personalEngineeringThesis, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'books-data.js'), `window.READING_SHELF_BOOKS = ${JSON.stringify(books, null, 2)};\n`);
 
 const registry = {
