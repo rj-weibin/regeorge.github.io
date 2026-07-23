@@ -1,0 +1,229 @@
+{
+  "id": "personal-engineering-thesis",
+  "type": "project",
+  "status": "draft",
+  "updatedAt": "2026-07-23",
+  "source": "caseHelper/knowledge/tomyself/personal-engineering-thesis.md",
+  "links": [
+    {
+      "target": "auto-test-station",
+      "targetType": "project",
+      "relation": "evolves-from"
+    },
+    {
+      "target": "high-quality-invisible-context",
+      "targetType": "concept",
+      "relation": "articulates"
+    }
+  ],
+  "tags": [
+    "AI工程化",
+    "测试自动化",
+    "Harness Engineering",
+    "个人工程论"
+  ],
+  "title": "个人工程论",
+  "subtitle": "把个人判断沉淀为可验证、可复用、可由 Agent 协作的工程能力。",
+  "originalWords": [
+    "> 用真实系统证据收敛业务意图，再把验证过的判断封装成可复用、可审计、可由 Agent 执行的工程能力。"
+  ],
+  "thesis": {
+    "insight": "AI 时代，代码只是中间过程；真正需要积累的是问题洞察、关键判断、协作方式和业务影响。",
+    "decision": "不把想法或 Agent 的执行量当作成果，只把由我主导、经过纠偏并落进工程资产且被真实验证的判断纳入职业资产。",
+    "impact": "工作成果从一次性交付转为可复用的个人工程论，并能在上下文丢失后通过固定资产恢复连续工作。"
+  },
+  "evidenceGate": [
+    "目标和范围由我决定",
+    "Agent 的初稿被我纠偏、取舍或重新定义",
+    "判断落进代码、Skill、Knowledge、工作流或其他可执行资产",
+    "有真实验证、实际使用或跨项目复用证据"
+  ],
+  "metrics": [
+    {
+      "value": "1300+",
+      "label": "阶段性自动化用例",
+      "qualification": "规模指标，不单独作为个人价值证明"
+    },
+    {
+      "value": "约 85%",
+      "label": "自动化率",
+      "qualification": "与高置信案例共同展示"
+    },
+    {
+      "value": "约 94%",
+      "label": "CI 成功率",
+      "qualification": "阶段性质量指标"
+    }
+  ],
+  "thinkingShifts": [
+    {
+      "id": "from-count-to-efficiency",
+      "title": "从完成数量到提高执行效率",
+      "insight": "重复读取用例、创建 ATP 用例和回填 ID 的动作，无法持续支撑规模化工作。",
+      "decision": "抽取公共步骤、平台客户端、变量约定和公共用例清单，让新需求从已有能力开始。",
+      "evidence": [
+        "batch-case-creator",
+        "case-id-backfiller",
+        "platform-client",
+        "common_cases_manifest.json"
+      ]
+    },
+    {
+      "id": "from-script-to-process",
+      "title": "从脚本执行到流程设计",
+      "insight": "手工用例质量不稳定，状态组合容易遗漏；批量执行会把错误理解放大。",
+      "decision": "建立 Phase 0：先理解意图、拆状态矩阵、生成 review 页面，人工审核后再批量写入。",
+      "evidence": [
+        "phase0-sop",
+        "case-design-analyzer",
+        "用户名特殊字符配置 Phase 0"
+      ]
+    },
+    {
+      "id": "from-api-guessing-to-evidence",
+      "title": "从 API 猜测到真实系统证据",
+      "insight": "API 路径、请求体和前端展示可能不一致，单靠接口猜测会把错误写进自动化。",
+      "decision": "用浏览器 Network、页面行为和 API 结果三方校准，先确认系统真正执行了什么。",
+      "evidence": [
+        "playwright-probe",
+        "费用管理真实路由确认",
+        "终端管理迁移 API 探测"
+      ]
+    },
+    {
+      "id": "from-pass-to-quality-loop",
+      "title": "从数量交付到质量闭环",
+      "insight": "用例 PASS 不等于验证了业务命题；数据自包含、断言和失败归因决定了结果可信度。",
+      "decision": "建立样本先行、T1-T8 门禁、全量审计和失败回流。",
+      "evidence": [
+        "case-debugger",
+        "librarian",
+        "运营商 VLAN 全量审计",
+        "费用管理 56/56 PASS"
+      ]
+    },
+    {
+      "id": "from-agent-execution-to-constrained-agency",
+      "title": "从让 Agent 执行到约束 Agent 自主性",
+      "insight": "Agent 的价值不只在执行速度，也在于能否加载正确知识、暴露不确定性，并在错误扩散前停下。",
+      "decision": "建设 Workstream Orchestrator、Librarian、Context Engineering 和 Steward Brain，让工作跨周期、跨上下文保持连续。",
+      "evidence": [
+        "workstream-orchestrator",
+        "librarian",
+        "context-engineering",
+        "Steward Brain"
+      ]
+    }
+  ],
+  "engineeringTheses": [
+    {
+      "id": "intent-before-automation",
+      "title": "先收敛意图，再自动化",
+      "insight": "手工用例文本、页面行为和 API 行为经常不一致，直接翻译会把错误理解规模化。",
+      "decision": "使用手工意图、浏览器真实行为、API Path/Payload 三方校准，先确认验证点，再设计自动化步骤。",
+      "agentRole": "负责读取、探测、对比和生成候选方案；不能替代人工确认业务预期。",
+      "impact": "陌生模块不再依赖 API 猜测，真实请求、变量、断言和手工预期进入同一条证据链。"
+    },
+    {
+      "id": "composable-experience",
+      "title": "把重复经验变成可组合能力",
+      "insight": "登录、开户、设备准备和清理步骤反复出现，重复实现会重复出错。",
+      "decision": "抽取公共用例、PlatformClient、变量约定和四段式步骤链，业务用例只保留差异化操作和断言。",
+      "agentRole": "检索已有公共能力，按变量契约组合步骤，发现缺口时提出新增能力，不重复造轮子。",
+      "impact": "同类用例从单条脚本变成可复用组合，后续工作从重新设计变成选择并校准。"
+    },
+    {
+      "id": "gates-for-agent-autonomy",
+      "title": "用门禁限制 Agent 自动驾驶",
+      "insight": "Agent 可以快速生成大量看似完整的用例，但可能缺少期望结果、业务断言、清理步骤或正确变量。",
+      "decision": "批量前先做 Phase 0 和样本验证；写入前执行 T1-T8；debug 后按 step-level 结果审计。",
+      "agentRole": "承担拆解、生成、检查和修复；门禁不通过时必须报告阻塞，不能用数量掩盖质量问题。",
+      "impact": "自动化从一次性脚本变成有准入、有验证、有回退的生产流程。"
+    },
+    {
+      "id": "failure-as-boundary",
+      "title": "把失败变成系统边界和长期规则",
+      "insight": "失败可能暴露环境缺失、平台接口异常、协议兼容边界或并发条件，不应全部归因于脚本。",
+      "decision": "按环境、平台、用例设计和产品行为分层归因，再决定修用例、改环境、提缺陷还是保留手工。",
+      "agentRole": "聚类失败、寻找第一个失败节点、对照历史模式、给出证据链；不能把所有失败都归因于脚本。",
+      "impact": "失败报告开始产生新的诊断能力，减少重复人工排查。"
+    }
+  ],
+  "featuredCases": [
+    {
+      "level": "S",
+      "title": "从脚本到测试生产线",
+      "insight": "重复前置步骤和平台怪癖阻碍规模化。",
+      "decision": "用公共用例、PlatformClient、Phase 0 和 Knowledge 组合出有门禁的测试生产线。",
+      "impact": "形成 1300+ 条用例、约 85% 自动化率和约 94% CI 成功率的阶段性规模结果。",
+      "evidence": [
+        "费用管理 56/56 全量调试通过",
+        "运营商 VLAN 82 条全量审计",
+        "SMP+ 89 条串行复检 100% PASS",
+        "接入时段 46 条全部 PASS",
+        "简网络界面 34/34 PASS"
+      ]
+    },
+    {
+      "level": "S",
+      "title": "基本费计费策略",
+      "insight": "业务状态多、手工范围大，直接批量会放大遗漏。",
+      "decision": "先做状态拆解、公共链和样本验证，再按能力边界分流。",
+      "impact": "形成 100 条自动化脚本，覆盖 80 条手工用例，并明确 79 条手工保留原因。",
+      "evidence": [
+        "基本费计费策略 meta.json"
+      ]
+    },
+    {
+      "level": "A",
+      "title": "以真实结果校准自动化质量",
+      "insight": "接口成功、页面成功和业务成功不是同一个判断。",
+      "decision": "把变量链、导入行为、字段约束和业务断言放进全量审计。",
+      "impact": "费用管理、运营商 VLAN、SMP+、接入时段和简网络案例形成可复用资产。",
+      "evidence": [
+        "56/56",
+        "82 条",
+        "89 条",
+        "46 条",
+        "34/34"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "name": "phase0-sop / case-design-analyzer",
+      "meaning": "在批量创建前把业务意图、状态矩阵、数据和验证点结构化。"
+    },
+    {
+      "name": "playwright-probe / platform-client",
+      "meaning": "用真实系统证据校准请求，并集中封装平台怪癖。"
+    },
+    {
+      "name": "case-debugger / librarian",
+      "meaning": "把质量审计和知识注入前置到工作流中。"
+    },
+    {
+      "name": "workstream-orchestrator / context-engineering",
+      "meaning": "跨阶段、跨项目和跨上下文恢复工作状态，特别是在 API 上下文缓存消失后保持判断连续。"
+    }
+  ],
+  "automationAdmission": {
+    "status": "proposed",
+    "title": "复杂场景自动化准入卡点",
+    "steps": [
+      "业务意图明确",
+      "测试数据可完整构造",
+      "触发场景可稳定复现",
+      "验证逻辑可明确断言",
+      "通过准入，才允许写公共用例"
+    ],
+    "stopRule": "任一环节无法完整说明，暂不创建公共用例，归为“当前不可自动化 / 信息不足”，并记录缺失的数据、触发条件和可观测结果。",
+    "meaning": "这不是放弃复杂场景，而是把尚未理解清楚与已经具备自动化条件分开。"
+  },
+  "boundaries": [
+    "只有 review 页面，没有人工审核和平台执行结果的内容，不进入主成果。",
+    "只有 placeholder 或空步骤，但统计上显示已自动化的内容，不作为证据。",
+    "只有生成的 Skill，没有真实 workstream 使用记录的内容，保留为待证明能力。",
+    "复杂场景如果不能完整构造数据、触发场景和验证逻辑，暂归当前不可自动化 / 信息不足。"
+  ]
+}

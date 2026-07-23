@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乒乓球技术框架与思维流</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --surface: #161b22;
+            --surface-raised: #1c2333;
+            --claude-beige: #0d1117;
+            --claude-text: #e6edf3;
+            --claude-sub: #8b949e;
+            --accent: #00e676;
+            --accent-glow: rgba(0,230,118,0.18);
+            --orange: #ff6d00;
+            --orange-glow: rgba(255,109,0,0.15);
+            --border: rgba(240,246,252,0.08);
+            --border-strong: rgba(240,246,252,0.14);
+            --card-bg: #161b22;
+            --node-bg: #1c2333;
+            --dialogue-bg: rgba(240,246,252,0.03);
+            --filter-color: #484f58;
+            --action-color: #00e676;
+            --highlight-bg: rgba(0,230,118,0.08);
+            --radius: 10px;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        @keyframes ball-bounce {
+            0%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-6px) scale(1.04); }
+            60% { transform: translateY(2px) scale(0.98); }
+        }
+        @keyframes impact-pulse {
+            0% { box-shadow: 0 0 0 0 var(--accent-glow); }
+            70% { box-shadow: 0 0 0 8px transparent; }
+            100% { box-shadow: 0 0 0 0 transparent; }
+        }
+        @keyframes speed-line {
+            from { width: 0; opacity: 0; }
+            to { width: 100%; opacity: 1; }
+        }
+        @keyframes neon-flicker {
+            0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+            20%, 24%, 55% { opacity: 0.4; }
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--claude-text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            line-height: 1.75;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 720px; width: 100%; }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--claude-sub);
+            text-decoration: none;
+            font-size: 0.82rem;
+            margin-bottom: 40px;
+            transition: color 0.2s;
+            letter-spacing: 0.03em;
+        }
+        .back-link:hover { color: var(--accent); }
+
+        header { margin-bottom: 40px; }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.03em;
+            color: #fff;
+        }
+        .bio {
+            color: var(--claude-sub);
+            font-size: 0.92rem;
+        }
+
+        /* ==================== 顶部架构图 ==================== */
+        .architecture {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 32px;
+            margin-bottom: 56px;
+            position: relative;
+            overflow: hidden;
+        }
+        .architecture::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), var(--orange), transparent);
+            opacity: 0.7;
+        }
+
+        .arch-title {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .core-node {
+            background: linear-gradient(135deg, #1a2a1a, #1c2a1c);
+            color: #fff;
+            padding: 18px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            letter-spacing: 0.08em;
+            border: 1px solid rgba(0,230,118,0.25);
+            position: relative;
+            animation: ball-bounce 2.4s ease-in-out infinite;
+        }
+        .core-node::before {
+            content: "🏓";
+            position: absolute;
+            left: -14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.4rem;
+            animation: ball-bounce 0.8s ease-in-out infinite;
+            animation-delay: 0.15s;
+        }
+        .core-node::after {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent), var(--orange));
+            opacity: 0;
+            z-index: -1;
+            filter: blur(8px);
+            transition: opacity 0.3s;
+        }
+        .core-node:hover::after { opacity: 0.25; }
+
+        .node-level {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .pillar-card {
+            background-color: var(--node-bg);
+            border: 1px solid var(--border);
+            padding: 14px 16px;
+            border-radius: var(--radius);
+            flex: 1;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--claude-text);
+            text-decoration: none;
+            transition: all 0.25s;
+            position: relative;
+        }
+        .pillar-card:hover {
+            border-color: var(--accent);
+            background-color: var(--surface-raised);
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+        .pillar-card strong { color: var(--accent); display: block; margin-bottom: 2px; font-size: 0.88rem; }
+
+        /* ==================== 卡片通用 ==================== */
+        .insight-list { display: flex; flex-direction: column; gap: 20px; }
+
+        .insight-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+        }
+        .insight-card:hover {
+            border-color: var(--border-strong);
+            background: var(--surface-raised);
+            box-shadow: 0 4px 24px rgba(0,230,118,0.06);
+            animation: impact-pulse 0.8s ease-out;
+        }
+
+        .card-header { padding: 22px 26px 0; }
+
+        .tag {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 999px;
+            background: var(--accent-glow);
+            border: 1px solid rgba(0,230,118,0.15);
+        }
+
+        /* ==================== details / summary ==================== */
+        details { border-top: 1px solid var(--border); }
+
+        summary {
+            cursor: pointer;
+            user-select: none;
+            list-style: none;
+            padding: 0 26px 18px;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after {
+            content: attr(data-hint);
+            font-size: 0.76rem;
+            color: var(--filter-color);
+            font-style: italic;
+        }
+        details[open] summary::after { content: "▲ 收起"; color: var(--accent); }
+        details[open] summary .core-text { color: var(--accent); }
+
+        .core-statement {
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.6;
+            padding: 0 26px 18px;
+            color: #fff;
+        }
+
+        details[open] summary { padding-bottom: 10px; }
+        details[open] .core-statement { padding-bottom: 0; }
+
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0;
+        }
+
+        /* ==================== 展开内容区 ==================== */
+        .process-content { padding: 0 26px 22px; }
+        .process-section { margin-top: 16px; }
+
+        .process-section h4 {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--claude-sub);
+            margin: 0 0 8px;
+            font-weight: 600;
+        }
+
+        .process-section p,
+        .process-section ul {
+            font-size: 0.9rem;
+            color: var(--claude-text);
+            margin: 0;
+        }
+        .process-section ul { padding-left: 18px; }
+        .process-section ul li { margin-bottom: 5px; }
+
+        /* ==================== 对话还原 ==================== */
+        .dialogue-block {
+            background: var(--dialogue-bg);
+            border-radius: 8px;
+            padding: 14px 18px;
+            font-size: 0.88rem;
+            line-height: 1.9;
+            border: 1px solid var(--border);
+        }
+        .dialogue-block .q { color: var(--accent); font-weight: 600; }
+        .dialogue-block .q::before { content: "Q："; }
+        .dialogue-block .a {
+            color: var(--claude-text);
+            padding-left: 14px;
+            border-left: 2px solid rgba(0,230,118,0.3);
+            margin-top: 4px;
+        }
+        .dialogue-block .a::before {
+            content: "A：";
+            color: var(--claude-sub);
+            font-weight: 600;
+        }
+
+        /* ==================== 身体感悟 ==================== */
+        .aha-block {
+            background: rgba(255,109,0,0.08);
+            border-left: 3px solid var(--orange);
+            padding: 12px 16px;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.88rem;
+        }
+        .aha-block::before {
+            content: "⚡ 身体感悟 / Aha Moment：";
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+            color: var(--orange);
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+        }
+        .aha-block p { color: #ffd1a3; margin: 0; }
+
+        /* ==================== 冗余过滤器 ==================== */
+        .redundancy-section {
+            background: rgba(240,246,252,0.02);
+            border-radius: 6px;
+            padding: 12px 16px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+        }
+        .redundancy-section h4 {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--filter-color);
+            margin: 0 0 8px;
+        }
+        .noise {
+            color: var(--filter-color);
+            text-decoration: line-through;
+            margin-bottom: 4px;
+            display: block;
+        }
+        .focus-lens {
+            color: var(--claude-text);
+            border-left: 2px solid var(--accent);
+            padding-left: 10px;
+            margin-top: 8px;
+        }
+        .focus-lens::before {
+            content: "✓ ";
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* ==================== 最小化行动 ==================== */
+        .actionable-section { margin-top: 14px; }
+        .action-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.88rem;
+            margin-bottom: 7px;
+        }
+        .checkbox {
+            width: 15px;
+            height: 15px;
+            border: 1.5px solid var(--accent);
+            border-radius: 3px;
+            flex-shrink: 0;
+            margin-top: 3px;
+            background: rgba(0,230,118,0.06);
+        }
+        .action-label { color: var(--accent); font-weight: 600; }
+
+        /* ==================== 可迁移场景 ==================== */
+        .migration-section {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px dashed var(--border);
+        }
+        .migration-section h4 {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--claude-sub);
+            margin: 0 0 8px;
+        }
+        .migration-item {
+            font-size: 0.88rem;
+            margin-bottom: 5px;
+            padding-left: 14px;
+            position: relative;
+        }
+        .migration-item::before {
+            content: "↳";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* ==================== 错题集 ==================== */
+        .error-card {
+            border-left: 3px solid #f85149;
+            box-shadow: inset 3px 0 12px rgba(248,81,73,0.08);
+        }
+        .error-card:hover {
+            border-color: #f85149;
+            box-shadow: 0 4px 24px rgba(248,81,73,0.1), inset 3px 0 12px rgba(248,81,73,0.08);
+        }
+        .error-card .tag { color: #f85149; background: rgba(248,81,73,0.1); border-color: rgba(248,81,73,0.2); }
+        .error-list { list-style: none; padding: 0; margin: 0; }
+        .error-list li {
+            font-size: 0.88rem;
+            margin-bottom: 8px;
+            padding-left: 14px;
+            border-left: 2px solid rgba(248,81,73,0.3);
+            color: #fda4a3;
+        }
+
+        /* ==================== 底部说明 ==================== */
+        .format-note {
+            background: rgba(0,230,118,0.04);
+            border: 1px solid rgba(0,230,118,0.12);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 48px;
+            font-size: 0.84rem;
+            color: var(--claude-sub);
+        }
+        .format-note strong { color: var(--accent); }
+
+        /* ==================== 卡片工具按钮 ==================== */
+        .card-tools {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            z-index: 20;
+            display: flex;
+            gap: 6px;
+        }
+        .card-shot-btn {
+            appearance: none;
+            border: 1px solid var(--border);
+            background: rgba(22,27,34,0.92);
+            color: var(--claude-sub);
+            border-radius: 999px;
+            padding: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-shot-btn svg { width: 16px; height: 16px; }
+        .card-shot-btn:hover {
+            color: var(--accent);
+            border-color: rgba(0,230,118,0.3);
+            background: var(--surface-raised);
+            transform: translateY(-1px);
+        }
+        .card-shot-btn:disabled { opacity: 0.6; cursor: wait; transform: none; }
+        .capture-mode .card-tools { display: none !important; }
+        .capture-mode { transform: none !important; box-shadow: none !important; }
+        .insight-card { position: relative; }
+        .card-header { padding-right: 50px !important; }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--claude-sub);
+            font-size: 0.78rem;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 24px 12px; }
+            .container { overflow-x: hidden; }
+            h1 { font-size: 1.7rem; }
+            .architecture { padding: 20px 16px; }
+            .arch-title { margin-bottom: 16px; }
+            .core-node { padding: 14px 20px; font-size: 0.85rem; }
+            .node-level { flex-direction: column; gap: 8px; }
+            .pillar-card { padding: 10px 14px; font-size: 0.82rem; }
+            .format-note { padding: 14px 16px; margin-bottom: 32px; }
+            .insight-list { gap: 16px; }
+            .card-header { padding: 16px 16px 0 !important; }
+            .card-tools { top: 10px; right: 10px; }
+            summary { padding: 0 16px 14px; word-break: break-word; }
+            summary::after,
+            details[open] summary::after { display: none; }
+            .core-statement { padding: 0 16px 14px; word-break: break-word; }
+            .core-text { word-break: break-word; }
+            .process-content { padding: 0 16px 16px; }
+            .process-section { margin-top: 12px; }
+            .process-section p,
+            .process-section ul,
+            .process-section li { font-size: 0.85rem; }
+            .dialogue-block { padding: 12px 14px; font-size: 0.85rem; word-break: break-word; }
+            .aha-block { padding: 10px 14px; font-size: 0.85rem; }
+            .redundancy-section { padding: 10px 14px; font-size: 0.82rem; }
+            .action-item { font-size: 0.85rem; }
+            .action-item .action-label { word-break: break-word; }
+            .migration-item { font-size: 0.85rem; }
+            .error-list li { font-size: 0.85rem; }
+            footer { margin-top: 48px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../index.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            返回首页
+        </a>
+
+        <header>
+            <h1>乒乓技术框架图谱</h1>
+            <p class="bio">从底层发力逻辑到动态实战意识的解构体系。</p>
+        </header>
+
+        <!-- 顶部架构导航 -->
+        <div class="architecture">
+            <div class="arch-title">核心心法 · 四字裁判标准</div>
+            <div class="core-node">收 · 顶 · 顺 · 重心</div>
+            <div class="node-level">
+                <a href="#card-force" class="pillar-card"><strong>力量传导</strong>物理层</a>
+                <a href="#card-frame" class="pillar-card"><strong>动作框架</strong>结构层</a>
+                <a href="#card-tactic" class="pillar-card"><strong>迎前意识</strong>战术层</a>
+                <a href="#card-timing" class="pillar-card"><strong>击球时机</strong>动态层</a>
+            </div>
+            <div class="node-level" style="margin-top:10px;">
+                <a href="#card-errors" class="pillar-card"><strong>错题集</strong>反模式</a>
+                <a href="#card-force" class="pillar-card"><strong>踩实释放</strong>正手细节</a>
+                <a href="#card-frame" class="pillar-card"><strong>反手稳住</strong>正反衔接</a>
+                <a href="#card-timing" class="pillar-card"><strong>引拍收臂</strong>动作细节</a>
+            </div>
+        </div>
+
+        <!-- 格式说明 -->
+        <div class="format-note">
+            <strong>格式说明：</strong>每张卡片默认只显示核心结论，点击"展开推导过程"查看对话还原、身体感悟（Aha Moment）、冗余过滤器与最小化行动实验。
+        </div>
+
+        <div class="insight-list">
+
+            <!-- ==================== Card: 击球点 ==================== -->
+            <div class="insight-card" id="card-force">
+                <div class="card-header">
+                    <span class="tag">击球点技术 · 力量传导</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">第三点撞击集中向前，第四点放慢往上合力。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>向前 = 速度，向前 + 向上 = 旋转。两者合力才是完整的拉球。</p>
+                            <p style="margin-top: 6px;"><strong>类比：</strong>击球瞬间像"撞门"（爆发），收拍瞬间像"甩鞭"（控制）——一个是力量传导，一个是旋转完成。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>对话还原</h4>
+                            <div class="dialogue-block">
+                                <span class="q">教练：正手拉球分为几个击球阶段？</span><br>
+                                <span class="a">我理解分为几个点，第三点是撞击，要向前。</span><br><br>
+                                <span class="q">教练：第四点呢？</span><br>
+                                <span class="a">第四点是摩擦，要往上收，但不能太快——快了就只摩擦不撞了。</span>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>身体感悟</h4>
+                            <div class="aha-block">
+                                <p>"撞门"是力量从身体传到球上的那一瞬，要有质量。"甩鞭"是力量传导之后的收尾，控制旋转的落点和弧线。两者是前后关系，不是同时发生。</p>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">站位角度的微调</span>
+                                <span class="noise">手腕内旋外旋的角度</span>
+                                <span class="noise">握拍松紧的各种讨论</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>"撞 vs. 摩"的意象区分——第三点先把球撞实，第四点再给旋转。一快一慢，一个力一个转。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">下次练球：</span>专门数每一板：第三点"撞"了没有（有没有向前发力的感觉），第四点"收"了没有（手腕有没有完成一个甩鞭动作）。</span>
+                            </div>
+                        </div>
+                        <div class="process-section migration-section">
+                            <h4>可迁移场景</h4>
+                            <div class="migration-item">写作：先把观点"撞"出去（有力的结论），再给"旋转"（让读者自己思考）——不能只有结论没有弧线。</div>
+                            <div class="migration-item">公开演讲：先把核心"撞"进听众脑子（清晰的结论），再给回味的空间（停顿或故事）——不能只堆信息。</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 重心感知 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">身体感知 · 力量传导</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">重心不是"压低"，而是"挂在腿上"——不要对抗重力，要利用重力。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>对抗 = 消耗，利用 = 传导。你不是在"扛"身体，你是在让身体自然垂挂。</p>
+                            <p style="margin-top: 6px;"><strong>类比：</strong>就像攀岩时重心"挂"在脚上而不是用手臂硬撑——真正的高手把重力变成朋友。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>对话还原</h4>
+                            <div class="dialogue-block">
+                                <span class="q">教练：你觉得腿累吗？</span><br>
+                                <span class="a">特别酸，大腿发胀。</span><br><br>
+                                <span class="q">教练：那是你在对抗重力，而不是利用重力。试试想象重心挂在裤腿上。</span><br>
+                                <span class="a">……（试了一下）确实，腿松了。</span>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>身体感悟</h4>
+                            <div class="aha-block">
+                                <p>"挂"的感觉，是一种不用力的用力——你不需要肌肉紧绷去"扛"住身体，只要让身体自然垂挂在腿上，大腿反而比硬扛时更放松。这就是重心的"利用"而非"对抗"。</p>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">脚尖朝向的具体角度</span>
+                                <span class="noise">膝盖弯曲几度</span>
+                                <span class="noise">站位宽度的讨论</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>"对抗 vs. 利用"的意象选择题——瞬间从技术细节跳到身体感知层，一个问题过滤了所有姿势细节。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">下次练球前：</span>静站 10 秒，先感受"硬扛"时大腿的紧绷感，再想象裤腿被挂住——记录两者的差异。</span>
+                            </div>
+                        </div>
+                        <div class="process-section migration-section">
+                            <h4>可迁移场景</h4>
+                            <div class="migration-item">写代码时：不要"对抗"bug，而是"利用"错误信息定位问题根因——对抗让你疲劳，利用让问题自己暴露。</div>
+                            <div class="migration-item">团队管理：不要"对抗"员工的缺点，而是"利用"其优势填补系统缺口——内耗变成协作。</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 力量传导 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">底层发力 · 力量传导</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">右胯先顶出去，右臂才开始挥拍——力量传导的本质是"延迟释放"，而不是"同时发力"。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>力量传导不是"同时用力"，而是"有序释放"。胯→腰→肩→臂→拍，每个环节在前一个环节到位后才启动。</p>
+                            <p style="margin-top: 6px;"><strong>类比：</strong>像多米诺骨牌——每一张牌的倒下，都是下一张启动的触发。身体的发力链也是同一原理。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>身体感悟</h4>
+                            <div class="aha-block">
+                                <p>最大的误区是"用力传导"——以为力量是从手臂"推"出去的。实际上力量是从地面"蹬"上来，经过胯、腰、肩，最后才到手臂。手臂只是传导管，不是发动机。</p>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">手臂发多大的力</span>
+                                <span class="noise">小臂要挥多快</span>
+                                <span class="noise">手腕在击球瞬间的角度</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>力量传导的关键是"放松的手臂"——肌肉紧绷会在内部抵消力量。想象手臂是一根绳子，力量从绳子中间穿过，你只需要让绳子保持松而不垮。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>对话还原</h4>
+                            <div class="dialogue-block">
+                                <span class="q">问：为什么我手臂力量很大，但打不出质量？</span><br>
+                                <span class="a">因为你用手臂在发力，而不是用地面。脚蹬地→胯顶→力量传到手臂——手臂只是个门把手，不是发动机。</span><br><br>
+                                <span class="q">问：那右臂要怎么做？</span><br>
+                                <span class="a">放松。想象你的手臂是空的，力量自己会穿过去。你只需要在正确的时机把拍面放到正确的位置。</span>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">今天的最小实验：</span>无球练习：站着，右脚踩地，感受力量从脚底→腿→胯→腰的传递链。闭眼感受哪个环节是"断"的——那个就是你的瓶颈。</span>
+                            </div>
+                        </div>
+                        <div class="process-section migration-section">
+                            <h4>可迁移场景</h4>
+                            <div class="migration-item">产品研发：不要直接做"最终功能"（手臂发力），先确保底层架构（脚蹬地）没问题，再一层层往上构建。</div>
+                            <div class="migration-item">公开表达：好的演讲不是一口气说完，而是有节奏的"释放"——每个段落的结尾是下一个起点的蓄力。</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 动作框架 ==================== -->
+            <div class="insight-card" id="card-frame">
+                <div class="card-header">
+                    <span class="tag">动作框架 · 结构层</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">放弃控制权——只要把动作自然地做完整，球上台就接近了一大半。框架比用力更重要。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>框架是轨道，力是速度——没有轨道，速度越快越容易脱轨。</p>
+                            <p style="margin-top: 6px;"><strong>类比：</strong>高铁跑得快，不是因为发动机特别强，而是因为有轨道。动作框架就是那条让力量高效传导的轨道。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>对话还原</h4>
+                            <div class="dialogue-block">
+                                <span class="q">问：我每次打完都觉得动作不完整，是力量不够吗？</span><br>
+                                <span class="a">不是。你是太急了——在框架还没到位时就发力，结果力量传导到一半就散了。</span><br><br>
+                                <span class="q">问：那应该怎么办？</span><br>
+                                <span class="a">先做完，再发力。想象你在打一个很慢很慢的球——你会怎么做？先把动作走完。</span>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>身体感悟</h4>
+                            <div class="aha-block">
+                                <p>"放弃控制权"不是放弃努力，而是放弃"过早干预"。在框架走完之前不去想结果，只是把身体放在正确的位置上——球来了，框架自己会完成工作。</p>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">击球瞬间手腕应该怎么动</span>
+                                <span class="noise">球拍应该什么角度</span>
+                                <span class="noise">力量大小的控制</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>自我调节能力比框架本身更重要——框架是固定的，但每一次击球都会有偏差。能"感知偏差并修正"，才是高手的核心差异。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">下次练球：</span>故意放慢每一板的节奏，强制自己先"走完框架"，再想发力。不求质量，只求框架完整——记录连续多少板能保持框架不散。</span>
+                            </div>
+                        </div>
+                        <div class="process-section migration-section">
+                            <h4>可迁移场景</h4>
+                            <div class="migration-item">写作：先有结构（框架），再有文采（发力）——没有提纲的文章，就像没有轨道的火车，跑得越快越乱。</div>
+                            <div class="migration-item">会议主持：先建立议程框架（走完流程），再讨论细节（发力）——框架没对齐，细节越辩越乱。</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 迎前意识 ==================== -->
+            <div class="insight-card" id="card-tactic">
+                <div class="card-header">
+                    <span class="tag">迎前意识 · 战术层</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">意识中建立一个"击球窗"——在身体右前方 40-50cm 处有一个最佳发力区，"抢"胜过"拉"。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>最好的击球点不是"等着球来"，而是"迎上去接"。迎前不是冒险，是缩短反应时间、扩大回球角度。</p>
+                            <p style="margin-top: 6px;"><strong>类比：</strong>接飞盘时不是站在原地等，而是跑向落点——迎前就是"跑向落点"的乒乓球版本。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>对话还原</h4>
+                            <div class="dialogue-block">
+                                <span class="q">问：为什么我总是被球顶住，做不出动作？</span><br>
+                                <span class="a">因为你站得太死，等球到你面前才动。试试想象在身体右前方 50cm 有一个"击球窗"——球还没到，你就先过去等它。</span><br><br>
+                                <span class="q">问：这会不会太冒险？</span><br>
+                                <span class="a">不冒险。迎前反而让你有更宽的角度可选，因为你是主动"切进"落点，而不是被动"挡回"。</span>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>身体感悟</h4>
+                            <div class="aha-block">
+                                <p>"抢"字是关键——不是反应快，是位置先到。高手不是跑得快，是提前站在了正确的位置。迎前意识就是"提前量"，它改变的是你的站位策略，而不是你的反应速度。</p>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">手腕在击球瞬间的精细调整</span>
+                                <span class="noise">球拍与球的接触角度</span>
+                                <span class="noise">击球后还原的快慢</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>正手要先撞实再加摩擦——之前全是压拍摩擦，导致不出质量且提前还原。收臂要打开，收到位。<br><br>
+                                    反手不要"蹭"，以手肘为轴往前转，注意力放小臂，避免手腕僵硬——动作点到为止，力花在刀刃上。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">今天的最小实验：</span>练习正手时，有意识地把站位向右前方挪半步，让击球点从身体正前方移到右前方——记录这一改变对回球质量和角度的影响。</span>
+                            </div>
+                        </div>
+                        <div class="process-section migration-section">
+                            <h4>可迁移场景</h4>
+                            <div class="migration-item">项目管理：不要等需求明确再做（等球到面前），主动提前沟通澄清（迎前）——提前量决定主动性。</div>
+                            <div class="migration-item">人际关系：主动约朋友比被动等消息更高效——迎前不是热情过度，是掌握节奏主动权。</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 击球时机 ==================== -->
+            <div class="insight-card" id="card-timing">
+                <div class="card-header">
+                    <span class="tag">击球时机 · 动态层</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">上升期借力、高点期发力、下降期摩擦——三个时机的处理逻辑完全不同，但背后的框架只有一个。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>击球时机的本质是对"来球状态"的选择——你不能改变球的状态，你只能选择何时接入这个状态。</p>
+                            <p style="margin-top: 6px;"><strong>类比：</strong>就像冲浪——浪来了，你不能改变浪的高度和速度，只能选择在浪的哪个位置起乘。冲浪者选择"上升期"，因为那是最有速度的位置。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>对话还原</h4>
+                            <div class="dialogue-block">
+                                <span class="q">问：我下旋球总是不稳定，怎么办？</span><br>
+                                <span class="a">你在等球落到最低点再起板。试试在上升期借力——球还没落到底就开始拉，利用它的反弹力，而不是自己硬起。</span><br><br>
+                                <span class="q">问：上升期那么快，我反应不过来。</span><br>
+                                <span class="a">不是反应的问题，是位置的问题。迎前，站在击球窗里，时间自然就多了。</span>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">球下网了怎么调手腕</span>
+                                <span class="noise">球出界了怎么压拍</span>
+                                <span class="noise">力量大一点还是小一点</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>球下网或出界，优先靠调重心迎前的程度，而非调手腕。要把发力和重心联系起来——这是"时机"的根本，不是手腕的技巧。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">今天的多球练习：</span>专门只打上升期（10 个），再专门只打高点期（10 个），再只打下降期（10 个）——感受三种时机的身体状态和回球质量差异。</span>
+                            </div>
+                        </div>
+                        <div class="process-section migration-section">
+                            <h4>可迁移场景</h4>
+                            <div class="migration-item">沟通表达：不同的听众状态（上升/高点/下降期）需要不同的沟通策略——有人在专注听时直接给结论，有人需要慢慢铺垫节奏。</div>
+                            <div class="migration-item">投资决策：市场时机不同策略不同——不是判断"什么时候该买"，而是理解"现在处于哪个时机"，然后选择对应的策略。</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 错题集 ==================== -->
+            <div class="insight-card error-card" id="card-errors">
+                <div class="card-header">
+                    <span class="tag">错题集 · 芒格思维</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开完整清单）">
+                        <span class="core-text">避免失败比追求成功更重要。以下是四个最常见的误区及其正确路径。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>常见误区清单</h4>
+                            <ul class="error-list">
+                                <li><strong>下旋球误区：</strong>"先起弧线，再压弧线"的思维双重误区——实际上应该是一次性完成，刻意追求高吊反而导致稳定性差。</li>
+                                <li><strong>上旋球误区：</strong>击球点晚、拉手大、不转腰——导致被球顶住，动作做不完，回球质量低。</li>
+                                <li><strong>步法误区：</strong>蹬而不转——重心不稳导致还原极差，没有连续打下一板的条件。更深层的问题：脚步不到位时用手围/绕够球，框架散了，歪头抡胳膊，练不出正反馈，形成恶性循环。斩断循环的切入点永远在脚步。</li>
+                                <li><strong>手肘误区：</strong>内旋抬肘——手肘紧张导致拍面打不开，撞不实，纯靠胶皮摩擦。</li>
+                            </ul>
+                        </div>
+                        <div class="process-section">
+                            <h4>身体感悟</h4>
+                            <div class="aha-block">
+                                <p>这四个误区有一个共同特征：都是在用"局部"弥补"整体"的不足。越用手腕，越是框架散了；越想压弧线，越是节奏乱了。正确路径永远是"框架优先，细节其次"。</p>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>共同根源</h4>
+                                <span class="noise">单独分析每个动作的技术细节</span>
+                                <span class="noise">反复练习单一的击球动作</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>这四个误区不是技术问题，是"发力顺序"问题——都是从末端（手腕、手肘）发力，而不是从根端（脚、胯）传导。检查发力顺序，比检查手腕角度更有价值。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">下次练球：</span>故意打错一个球后，停下来问自己："是哪个环节先散了？"——手腕？框架？还是重心？记录 10 个球的"第一个散点"，找到你的高频失误模式。</span>
+                            </div>
+                        </div>
+                        <div class="process-section migration-section">
+                            <h4>可迁移场景</h4>
+                            <div class="migration-item">工作：项目出问题时，先问"流程的哪个环节先脱节"（发力顺序），而不是"谁做错了"（局部追责）。</div>
+                            <div class="migration-item">健康：身体疼痛时，问"是哪个发力链先断了"，而不是"哪里疼就治哪里"——疼痛是结果，不是原因。</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 滑梯与复利 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">进阶逻辑 · 复利飞轮</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">滑梯 = 动作自动化，复利 = 积累几何增长。两者合一，才是真正的技术飞轮。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>正确的事情重复做，形成肌肉记忆（滑梯）；每一次重复都在上一次基础上增强（复利）——两者的叠加才是指数级成长。</p>
+                            <p style="margin-top: 6px;"><strong>类比：</strong>就像滚雪球——需要一条够长的坡（滑梯 = 自动化框架）和足够湿的雪（复利 = 正确积累）。没有坡，雪球滚不起来；没有雪，坡再长也没用。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>对话还原</h4>
+                            <div class="dialogue-block">
+                                <span class="q">问：为什么我练了很多，但进步不快？</span><br>
+                                <span class="a">因为你可能每次都在"重复"同样的错误，而不是在"积累"同样的正确。练得多不等于积累得多。</span><br><br>
+                                <span class="q">问：那我应该怎么练？</span><br>
+                                <span class="a">找到那个让动作自动化的"滑梯"——一个你不需要思考就能完成的框架。一旦滑梯建好，每一次重复都在给雪球加雪。</span>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>身体感悟</h4>
+                            <div class="aha-block">
+                                <p>"滑梯"建成之前，一切都是消耗——你每次打球都在消耗"思考配额"。滑梯建成之后，思考配额被释放出来，你才有能力去关注更高层次的东西：对手、节奏、战术。真正的复利不是技术越来越好，而是"有精力想更多的事"。<strong>节奏是速度的前提</strong>——连续摆速不要急于提速，先等球找到节奏，节奏自如了再加速。快而不稳是无效训练。</p>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">每天练球时间的长短</span>
+                                <span class="noise">换了多少种器材和胶皮</span>
+                                <span class="noise">看了多少教学视频</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>坚决不养成任何"虚幻"的手感——那种离开了特定球、特定的台子就消失的感觉不是真正的能力。真正的能力是：换了球台、换了球，依然稳定的框架。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">本周的最小实验：</span>选一个你最常失误的动作，专门练 20 分钟。目标不是"打出多少好球"，而是"有多少球是因为同一个原因失误的"——找到原因，减少原因，进步就会自然发生。</span>
+                            </div>
+                        </div>
+                        <div class="process-section migration-section">
+                            <h4>可迁移场景</h4>
+                            <div class="migration-item">知识管理：建立知识的"滑梯"（笔记系统），每次学习都在同一个框架里积累——复利来自于"不换框架，专注积累"。</div>
+                            <div class="migration-item">职业成长：在自己的核心技能上建"滑梯"（SOP、框架、方法论），而不是每件事都从零开始——你的经验应该是越积累越省力，而不是越积累越焦虑。</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 撞击优先 重心先行 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">正手攻拉 · 撞击优先</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">撞击是旋转的前提，重心是转换的根基——正手先亮拍撞实，再网内收压弧线；重心放前脚掌，身体前倾。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>摩擦加力是浪费做功，摩擦要想加上旋转，必须要靠集中而攻球。亮拍撞击天然就能降低"集中"的门槛，再配合网内收压弧线，就能打出高质量的球。</p>
+                            <p style="margin-top: 6px;"><strong>正手拉球同理：</strong>撞击充分的情况下控制好弧线，找好击球点，就能打出又稳又前冲的有质量的拉球。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>对话还原</h4>
+                            <div class="dialogue-block">
+                                <span class="q">正手攻球该怎么打？</span><br>
+                                <span class="a">正手攻球要亮拍，不要压着拍。摩擦再加力是浪费做功，摩擦要想加上旋转，必须要靠的是集中而攻球，亮拍撞击天然就能够将集中的门槛降低，然后再配合上网内收，就能压住弧线，打出有质量的球。</span><br><br>
+                                <span class="q">正手拉球呢？</span><br>
+                                <span class="a">正手拉球同理，撞击充分的情况下，去控制好这个弧线，找好击球点，就能打出又稳又前冲的有质量的拉球。</span><br><br>
+                                <span class="q">正反手有没有共通的要点？</span><br>
+                                <span class="a">有一个同样的点，就是重心要放在前脚掌，整个人前倾，这样才能在拉球的时候轻易地做到重心转换。如果第一步就把腿扯出去找球，整个人的重心是没有办法轻易地完成从后往前的转换的，重心就已经被固定死了。</span>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>身体感悟</h4>
+                            <div class="aha-block">
+                                <p>亮拍时拍面朝前、手腕放松的感觉，像用手掌"接住"来球而不是"切"它。撞击瞬间拍面有轻微震动，说明力量传到了球上。重心放在前脚掌时，身体微微前倾，膝盖弯曲，感觉像短跑起跑的预备姿势——随时能蹬地转换。</p>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">"打出有质量的球"重复出现两次，去掉一个</span>
+                                <span class="noise">"又稳又前冲"是结果描述，不是方法</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>合并正手攻球和拉球的共性——撞击充分→弧线控制→高质量出球。正反手的共通点是重心在前脚掌、身体前倾。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">下次练球，第一件事：</span>确认重心在前脚掌。如果做到了，再检查第二件事：正手亮拍，不压板。</span>
+                            </div>
+                        </div>
+                        <div class="process-section migration-section">
+                            <h4>可迁移场景</h4>
+                            <div class="migration-item">乒乓球教学：纠正"摩擦加力"的常见误区——先撞实再加转。</div>
+                            <div class="migration-item">其他球类（网球、羽毛球）：同样适用"先稳定接触再加旋转"的逻辑。</div>
+                            <div class="migration-item">工作决策：先撞清楚问题本质（充分接触），再施加力量（旋转/方案）。</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 加转弧圈 低平弧线 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">正手拉球 · 加转弧圈低平弧线</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">下降前期出手，向前70%向上30%，触球瞬间手腕由外展快速内收——这一下是压低弧线、制造"下扎"的秘诀。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>加转弧圈（低吊弧圈）的核心不是"向上兜"，而是"向前推+手腕内收压弧线"。向上摩擦多于向前撞击是方向比例，不是动作方向——发力方向仍是向前70%、向上30%。弧线高的根源是击球点太晚（下降中后期）和发力方向太向上（从下往上兜）。</p>
+                            <p style="margin-top: 6px;"><strong>击球点：</strong>下降前期——球从最高点刚下落，比网高10-20厘米时。球还在台面水平线以上或略低。盯球，感觉球"一过头顶最高点往下掉"的瞬间就出手，绝不能等到球掉到膝盖高度。</p>
+                            <p style="margin-top: 6px;"><strong>发力方向：</strong>引拍时手臂向后（不是向下），拍面稍亮约80度。触球中下部后，手臂主要向前上方挥动，"向前"占70%，"向上"占30%。制造"从后往前"的强烈摩擦。错误动作：下蹲太多，手臂从下往上"兜"，导致球只转不冲，弧线像吊高球。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>手腕外展→内收</h4>
+                            <div class="dialogue-block">
+                                <span class="q">蓝海绵的特性怎么用上？</span><br>
+                                <span class="a">樊A+蓝国狂的强项是持球和吞吐感。不要"碰"或"弹"——要感觉球陷进海绵里，先向前推顶，再快收小臂。想象用拍子把球"吃住"然后"甩"向对方底线。</span><br><br>
+                                <span class="q">手腕内收那一下具体是什么？</span><br>
+                                <span class="a">触球瞬间手腕由外展快速内收。这个微小动作是压低弧线、制造"下扎"效果的秘诀。没有这一下，球过来弧线高、落点浅；有了这一下，球弧线低平、落点深、二跳下扎。</span>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>身体感悟</h4>
+                            <div class="aha-block">
+                                <p>练习口诀："低、前、底"。低——击球点低（下降前期），重心低；前——发力方向向前多，向上少；底——目标把球打到对方底线白线附近。先追求"弧线平、落点深"，等落点控稳了再加手腕摩擦。</p>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">"加转就是往上蹭"</span>
+                                <span class="noise">"低吊弧线要蹲很低"</span>
+                                <span class="noise">"手腕要固定不动"</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>加转不是"往上蹭"而是"向前推+手腕内收压弧线"。蹲太低反而导致从下往上兜。手腕不是固定不动，而是在触球瞬间由外展快速内收——这一下才是低平弧线的核心。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">"低前底"练习：</span>多球或单球喂下旋长球，退后一步，心里默念"低、前、底"——低击球点、前发力方向、底白线落点。先不追求旋转，先追求弧线平、落点深。稳定后加入手腕外展→内收的摩擦。</span>
+                            </div>
+                        </div>
+                        <div class="process-section migration-section">
+                            <h4>可迁移场景</h4>
+                            <div class="migration-item">写作表达：先"撞实"核心观点（向前推），再用手腕内收般精炼（压弧线）——观点有力但不飘。</div>
+                            <div class="migration-item">演讲节奏：低（不拔高）、前（直击要点）、底（落到具体行动）——和加转弧圈的三字诀同构。</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 正手踩实与释放 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">正手细节 · 踩实与释放</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">每球必踩实顶住——顶住是发力前提，不是"有时候顶住"。拉下旋后原地轻颠释放，不斜向还原，为下一板顶住创造条件。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>踩实顶住是"能不能发力"的前置条件——没有顶住就没有质量。释放不是"还原"，而是"为下一板创造顶住条件的轻过渡"。斜向还原会断掉下一板的衔接链，原地轻颠才能对上节奏。</p>
+                            <p style="margin-top: 6px;"><strong>类比：</strong>像跑步时脚蹬地——不是每一步都要全速冲刺，但每一步都必须踩实。踩实的瞬间是发力的起点，蹬完之后的收腿不是"停下来"，是为下一步做准备。轻颠就是那个"收腿"。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>身体感悟</h4>
+                            <div class="aha-block">
+                                <p>正手击球时脸要往前——脸歪了说明身体没转到位，身体没转到位就等于没顶住。让搭档观察你击球时脸的方向，是最直观的自检方法。踩实的身体信号是：击球瞬间感觉力量从脚底传到手上，像一脚踩进了地面里。</p>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">"还原要快"</span>
+                                <span class="noise">"击球后迅速回到准备姿势"</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>"还原"这个词有误导——它暗示要回到一个固定姿势。但实际上应该叫"过渡"——从一个动作轻柔过渡到下一个，不是"归零"，而是"为下一板蓄力"。原地轻颠就是最优过渡。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">发球机练习正手单点上旋球：</span>专注于两个自检——①击球时脸朝前了吗？②击球后原地轻颠了吗？不追求力量，只追求每球都踩实+轻颠。</span>
+                            </div>
+                        </div>
+                        <div class="process-section migration-section">
+                            <h4>可迁移场景</h4>
+                            <div class="migration-item">工作节奏：完成任务后不要急于跳到下一个，原地"轻颠"一下（回顾+整理），再接下一个——斜向跳跃式切换最容易丢节奏。</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 反手为正手创造空间 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">反手定位 · 稳住为攻</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">反手在上旋对抗时，注意力放在右侧后前防守对住，而不是左右重心转换追求质量。反手的稳定和放松，为正手创造出宝贵的发力时间和空间。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>反手的任务不是"得分"，是"稳住"——只要反手不丢，正手就有机会发力得分。反手追求质量（左右转换加力）反而容易失位，给正手创造的是"匆忙"而不是"空间"。注意力放在右侧后前对住，反手就是一堵墙。</p>
+                            <p style="margin-top: 6px;"><strong>类比：</strong>像篮球中的中锋——不是每次都要得分，而是守住篮下（防守对住），让后卫有空间投三分（正手发力）。中锋越稳，后卫越敢出手。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>身体感悟</h4>
+                            <div class="aha-block">
+                                <p>反手放松时，身体的重心是稳定的，脚底下是"踩实"的。反手一紧张、一追求质量，身体就开始左右晃，重心不稳，下一板正手根本来不及到位。反手越放松，正手越有时间——因为"放松"意味着身体没有多余动作，下一板直接就能顶住。</p>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">"反手也要有进攻性"</span>
+                                <span class="noise">"反手要练出质量"</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>反手的"进攻性"不是左右转换加力，而是"骑着球往前"——以肘为轴小臂前转，在身体正前方撞击。这是反手的正确攻击方式，不需要左右重心大幅转换。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">上旋对抗练习：</span>反手刻意降低质量追求，只做一件事——右侧后前对住。观察反手"稳住"之后，正手是不是有了更多时间和空间发力。</span>
+                            </div>
+                        </div>
+                        <div class="process-section migration-section">
+                            <h4>可迁移场景</h4>
+                            <div class="migration-item">团队合作：不是每个岗位都要"发力"，有些岗位的任务是"稳住底盘"——让核心团队有空间做高杠杆决策。</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 樊振东打法-反手筑势正手破局 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">战术体系 · 反手筑势正手破局</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">樊振东的"势"——反手相持绝对优势筑底，正手抢前点大角度破局，对手无论反手硬扛还是变线，都会落入被动。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>正手抢前点的意识和机会，是建立在反手相持占绝对优势的基础上的。反手优势给了正手"底气"和"猎物"——对手被迫变线的那一板，就是正手的猎物。</p>
+                            <p style="margin-top: 6px;"><strong>樊振东正手的关键：</strong>不是拉冲，而是抢前点给正手大角度，然后迅速将意识回到反手位去变线。抢前点≠冒险，而是反手已经把对手逼到了必须变线的境地。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>"势"的三条路径</h4>
+                            <div class="dialogue-block">
+                                <span class="q">对手选择反手硬扛？</span><br>
+                                <span class="a">被反手加质量抽死。</span><br><br>
+                                <span class="q">对手选择主动变线？</span><br>
+                                <span class="a">被正手抢前点带一板大角度。</span><br><br>
+                                <span class="q">对手被动去够大角度球？</span><br>
+                                <span class="a">再被反手调动，彻底失位。</span>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>身体感悟</h4>
+                            <div class="aha-block">
+                                <p>这和"反手稳住为正手创造空间"是同一个逻辑的升级版——樊振东把"稳住"升级成了"绝对优势"，把"创造空间"升级成了"主动猎杀"。反手从"不失分"变成了"迫使对手变线"，正手从"有机会发力"变成了"抢前点一击致命"。</p>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">"樊振东正手力量大"</span>
+                                <span class="noise">"樊振东步伐快"</span>
+                                <span class="noise">"樊振东心态稳"</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>樊振东的核心不是"某个技术强"，而是"势"——一个由反手绝对优势驱动的体系。正手抢前点不是独立的技术选择，而是反手优势的必然延伸。理解"势"比理解"技术"更接近本质。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">下次对抗练习：</span>先不用正手抢，只用反手相持，看能不能把对手逼到变线。当对手变线的那一刻，有意识地用正手抢前点打大角度——感受"反手筑势→正手破局"的链条。</span>
+                            </div>
+                        </div>
+                        <div class="process-section migration-section">
+                            <h4>可迁移场景</h4>
+                            <div class="migration-item">商业竞争：在核心业务（反手）建立绝对优势，对手被迫在你擅长的领域外寻找机会（变线），这时用创新产品（正手抢前点）精准打击——不是四处出击，而是守中带攻。</div>
+                            <div class="migration-item">知识体系：在一个领域深耕到绝对优势（反手），自然会把问题逼到交叉领域（变线），然后用跨学科洞察（正手大角度）一击破局。</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 引拍与收臂 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">正手细节 · 引拍与收臂</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">大臂贴身→小臂自然打开→击球后能看到胶皮黑面 = 标准完整动作。手肘指向地面不要向后。先透板再收臂，攻球以收臂为主转腰为辅。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>引拍质量的控制链是：大臂距离→小臂打开程度→击球行程。大臂贴身是起点——大臂一远离身体，小臂打开就失去控制，整个手臂伸太远，击球时完全无法控制弧线。自检标准：击球后眼睛能看到正手胶皮黑面，说明收臂完整到位。</p>
+                            <p style="margin-top: 6px;"><strong>时序要点：</strong>先透板再收臂——透板是力量传到球上的瞬间，收臂是之后的弧线控制。攻球时收臂为主、转腰为辅（不是靠转腰收到前方）；拉球时收臂和转腰要协同。手肘指向地面不要向后——手肘向后会拉大引拍幅度、破坏动作紧凑性。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">"引拍要大"</span>
+                                <span class="noise">"手腕要内旋外旋"</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>引拍质量的自检三步链：①大臂贴身了吗？②小臂打开了吗？③击球后能看到胶皮黑面吗？三个条件全满足 = 完整动作。任何一个不满足 = 动作散了。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">徒手挥拍 20 次：</span>每挥一次就检查——击球后能看到胶皮黑面吗？如果看不到，退回去检查：是大臂离身体太远，还是小臂没打开？</span>
+                            </div>
+                        </div>
+                        <div class="process-section migration-section">
+                            <h4>可迁移场景</h4>
+                            <div class="migration-item">任何技能学习：找到"可自检的完整动作标准"（如看到胶皮黑面），比模糊的"动作到位"更容易形成肌肉记忆。</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 雨刮器与行程控制 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">身体感知 · 雨刮器思维</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">稳定的核心+轻微的转腰+极其稳定放松的收小臂 = 协同。像雨刮器——车身不动，雨刮器在稳定的轨道上摆动。行程控制是击球质量的关键：让球在拍面上有更长的接触时间。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>车窗落雨时，不能摇晃整个车身来甩掉雨滴——这会带来巨大不稳定性。正确做法是车身稳定，雨刮器在自己固定的轨道上摆动。正手也一样：核心稳定（车身），收小臂（雨刮器），两者分工明确、协同运转。行程控制的目标是让球在拍面上停留更久——停留时间越长，控制力和旋转越强。</p>
+                            <p style="margin-top: 6px;"><strong>正手行程链：</strong>亮拍转体创造空间→收臂吃住球→往前送行程。反手行程链：身体支撑→手臂发力→往前送行程。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">"收小臂要快"</span>
+                                <span class="noise">"转腰幅度要大"</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>"车身不动，雨刮器摆"——核心稳定是前提。很多人问题出在"车身也在晃"——核心不稳，收小臂再快也没用。检查核心稳定性比检查手臂速度更重要。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">发球机慢速球练习：</span>刻意放慢速度，感受球在拍面上"停留"的感觉——从碰到球到离开球，时间能拉长到多少？拉长的同时弧线是否稳定？</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 近台退台与反手时序 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">反手进阶 · 近台退台</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">反手近台仅用手臂就够了，退台才加入胯部发力。反手"骑着球往前"——以肘为轴小臂前转，手腕外旋制动，在身体正前方撞击。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>近台反手的发力层级是：手臂→手腕，不需要胯部参与。退台之后才需要胯部加入——因为距离远了，纯手臂力量不够覆盖。反手上旋对抗的核心不是"蹭"一下上台，而是"骑着球往前"——以手肘为轴，小臂向前转动，手腕在找到位置后抓板制动。击球发生在身体正前方，不是侧方。</p>
+                            <p style="margin-top: 6px;"><strong>反手不同时期处理：</strong>上升期借力撞击不发力（用框架撑住），高点期往前发力摩擦出前冲，下降期往上摩擦高调（用核心顶住）。<strong>反手起下旋的第一追求不是发力，是重心顶出来而不散</strong>——靠蛮力甩臂是典型误区，要用重心把球"顶"出来。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">"反手要加腰"</span>
+                                <span class="noise">"反手要转胯发力"</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>近台反手的发力层级是"手臂为主"——加腰反而破坏紧凑性。分清近台（手臂）和退台（加胯）的发力层级，比统一一个"正确动作"更有实战价值。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">反手对抗练习：</span>刻意不加腰，纯用手臂和手腕。检查"骑着球往前"的感觉——击球点在身体正前方，以肘为轴小臂前转。对比加腰和不加腰的稳定性差异。</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 比赛环境驱动迎前 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">训练方法论 · 环境驱动</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">迎前意识不是纯技术问题，是环境问题——没有竞争压力就会退化到"等球"的被动模式。以前在携程打比赛，不抢就要下去，紧迫感自动逼出迎前意识。很久不打比赛后，紧迫感消失，身体默认回到"等球过来"的状态。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>迎前意识有两层：知道要迎前（认知层）和身体自动迎前（本能层）。认知层靠看图谱、记要点就能维持，但本能层需要竞争环境来激活——没有"不抢就输"的紧迫感，身体不会自动切换到迎前模式。这就是为什么懂很多技术但在练习中打不出来——练习环境缺少逼迫感。</p>
+                            <p style="margin-top: 6px;"><strong>类比：</strong>游泳运动员在训练池里游得再快，比赛时的肾上腺素也是模拟不了的。迎前意识也是——练习时你知道要迎前，但身体不会自动做；比赛时你不迎前就会丢分，身体被迫迎前。从"知道"到"自动做"，中间差的是环境的逼迫。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>冗余过滤器</h4>
+                            <div class="redundancy-section">
+                                <h4>已过滤的噪音</h4>
+                                <span class="noise">"要多打比赛"</span>
+                                <span class="noise">"比赛经验很重要"</span>
+                                <div class="focus-lens">
+                                    <strong>聚焦透镜：</strong>"多打比赛"是正确的废话。关键洞察在于：比赛的价值不是"积累经验"，而是"激活本能层"——让认知层面的技术要点下沉为身体层面的自动反应。没有比赛环境时，可以用什么方式模拟这种紧迫感？比如发球机加速、给自己设定"连续不到3板就重来"的惩罚规则。
+                                </div>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">练习时模拟紧迫感：</span>给自己设定一个规则——连续3板没有迎前到位就重新开始计数。用"惩罚机制"替代比赛压力，逼迫身体进入迎前模式。</span>
+                            </div>
+                        </div>
+                        <div class="process-section migration-section">
+                            <h4>可迁移场景</h4>
+                            <div class="migration-item">工作：很多技能在日常环境中"知道但不自动做"——需要制造"不做好就丢分"的紧迫感（比如公开承诺deadline、团队内部分享）来激活本能层。</div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+        </div>
+
+        <!-- ==================== Card: 学球总结 2026-05-20 ==================== -->
+        <div class="insight-card">
+            <div class="card-header">
+                <span class="tag">学球总结 · 撤跨与垫步</span>
+            </div>
+            <details>
+                <summary data-hint="（点击展开推导过程）">
+                    <span class="core-text">正手撤跨把发力支点从肩移到胯。反手撕靠重心一致性。侧身要近球合住击实。脚步乱的核心是缺了垫步——它是还原重心的本能动作。</span>
+                </summary>
+                <hr class="divider">
+                <div class="process-content">
+                    <div class="process-section">
+                        <h4>核心淬炼</h4>
+                        <p><strong>一句话真知：</strong>正手撤跨避免了拉大手后无法驱动发力——撤跨前支点在肩，撤跨后支点在胯和重心附近。正手快带本质是胯带手撞击加收小臂，不是拉手摩擦。反手撕是重心和手背一致向前击球。正手侧身要离球近一点，力求合住击实。</p>
+                    </div>
+                    <div class="process-section">
+                        <h4>冗余过滤器</h4>
+                        <div class="redundancy-section">
+                            <h4>已过滤的噪音</h4>
+                            <span class="noise">"反手要绝对不要撅屁股"</span>
+                            <span class="noise">"要找到骑着球往前的感觉"</span>
+                            <div class="focus-lens">
+                                <strong>聚焦透镜：</strong>脚步问题的核心是缺少垫步——垫步是最接近本能的还原动作。击球后重心回正（脚尖左右五五开），通过小垫步调整位置以便移动到位。高手让对手被动，是通过球速和落点让对方来不及做第一个垫步，导致重心回不来。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="process-section actionable-section">
+                        <h4>最小化行动实验</h4>
+                        <div class="action-item">
+                            <div class="checkbox"></div>
+                            <span><span class="action-label">无球垫步练习：</span>每次正手击球后自觉垫一步还原重心，再启动下一板。从知道垫步到身体自动垫步，中间差的是一次又一次的重复。</span>
+                        </div>
+                        <div class="action-item">
+                            <div class="checkbox"></div>
+                            <span><span class="action-label">撤跨验证：</span>正手拉球时刻意对比——有撤跨和没撤跨的发力感受差异。没撤跨时肩酸，撤跨后重心稳。</span>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- ==================== Card: 推侧扑 — 忘掉右脚，记住左脚蹬 ==================== -->
+        <div class="insight-card">
+            <div class="card-header">
+                <span class="tag">推侧扑 · 左脚驱动</span>
+            </div>
+            <details>
+                <summary data-hint="（点击展开推导过程）">
+                    <span class="core-text">推侧扑扑不好不是意识问题。教练说"右脚奔球"，但你的身体在等"左脚"。发力顺序上，是左脚先蹬地——左脚一蹬，重心飞向右脚，右脚自然就出去了。想"右脚跨"是去够球，想"左脚蹬"是去找球。</span>
+                </summary>
+                <hr class="divider">
+                <div class="process-content">
+                    <div class="process-section">
+                        <h4>核心淬炼</h4>
+                        <p><strong>一句话真知：</strong>"右脚奔球"是外在动作，"左脚蹬地"是内在发力。你想右脚，身体会先坐重心到左脚再跨——中间有个延迟。你想左脚，左脚直接蹬地发力，重心自动送向右脚，反而比想右脚快。这是又一层"支点下移"——撤跨把发力支点从肩移到胯，推侧扑把启动支点从右脚（目标）移到左脚（驱动）。</p>
+                        <p style="margin-top: 6px;"><strong>身体感受：</strong>侧身打完那一瞬间，左脚脚掌已经有意识地向右侧蹬地发力——不是"扑"的意识，是"蹬"的意识。左脚一蹬，重心自然飞过去，右脚落地接住身体。比想"右脚迈"快至少半拍。</p>
+                    </div>
+                    <div class="process-section">
+                        <h4>对话还原</h4>
+                        <div class="dialogue-block">
+                            <span class="q">问：为什么教练说"右脚奔球"是错的？</span><br>
+                            <span class="a">教练没有说错，"右脚奔球"是正确的外部动作描述。但你的身体在执行时，会先做一个预备动作（重心坐回左脚），然后才启动右脚——这个延迟就是你扑慢的原因。"左脚蹬"跳过了这个预备阶段，直接进入发力链条。</span><br><br>
+                            <span class="q">追问：那"左脚蹬"会不会导致提前启动？</span><br>
+                            <span class="a">不会。"左脚蹬"不是左脚先往右移动——是左脚保持"待命"状态，不出击。看到球往正手大角去了，左脚再发力蹬地。区别：提前启动是不知道球往哪走就动了，左脚蹬是看清楚了再蹬。</span>
+                        </div>
+                    </div>
+                        <div class="process-section actionable-section">
+                        <h4>最小化行动实验</h4>
+                        <div class="action-item">
+                            <div class="checkbox"></div>
+                            <span><span class="action-label">徒手练习：</span>站直做推侧扑的慢动作。第一轮心里默念"右脚跨"——感受重心先坐左脚再跨的延迟。第二轮默念"左脚蹬"——感受左脚直接蹬地启动的速度差。每轮10次，记住两轮的区别。</span>
+                        </div>
+                        <div class="action-item">
+                            <div class="checkbox"></div>
+                            <span><span class="action-label">有球验证：</span>下次练推侧扑时，脑子里只记四个字"左脚蹬地"。打完侧身后不要想"快跑"，想"蹬"——让左脚帮你决定右脚去哪。</span>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <!-- ==================== Card: 推侧扑 — 待机  ==================== -->
+        <div class="insight-card">
+            <div class="card-header">
+                <span class="tag">推侧扑 · 待机</span>
+            </div>
+            <details>
+                <summary data-hint="（点击展开推导过程）">
+                    <span class="core-text">你不是侧身完才被锁死，你是侧身那一下就被挤死了。被挤住是因为总想猜球，球没出就把重心提前交出去了。身体一累预判失败，球顶到身上，重心被撞歪，所有后续动作都是空中楼阁。</span>
+                </summary>
+                <hr class="divider">
+                <div class="process-content">
+                    <div class="process-section">
+                        <h4>核心淬炼</h4>
+                        <p><strong>一句话真知：</strong>教练给的解法叫"待机"——不是松弛，是身体保持在起跑线上，脑子别提前启动。以前是脑子和身体一起抢跑。现在把身体保持在起跑线上，把脑子关进小黑屋，眼睛死盯对方拍子触球那一瞬间。</p>
+                        <p style="margin-top: 6px;"><strong>这和撤跨、左脚蹬是同一个底层的第三步：</strong><br>
+                        撤跨 — 把发力支点从肩移到胯（力量更好）<br>
+                        左脚蹬 — 把启动支点从右脚移到左脚（速度更快）<br>
+                        待机 — 把启动时机从"猜"移到"看"（重心不歪）</p>
+                    </div>
+                    <div class="process-section">
+                        <h4>对话还原</h4>
+                        <div class="dialogue-block">
+                            <span class="q">问：那就是说推侧扑的问题不是脚步问题？</span><br>
+                            <span class="a">对，根在判断时机。脚步是症状，时机是病因。你的脚步完全够用，但你是在重心被撞歪的情况下做脚步——再快的脚也救不了歪的重心。</span><br><br>
+                            <span class="q">追问：怎么练"待机"？</span><br>
+                            <span class="a">三步：1.站台往后10-15厘米，给自己创造空间。2.强迫自己先看方向再启动，哪怕接飞了也要坚持看。3.每一分结束走回接发球位时清空脑子，不想上一个失误，不猜下一个来球。</span>
+                        </div>
+                    </div>
+                    <div class="process-section actionable-section">
+                        <h4>最小化行动实验</h4>
+                        <div class="action-item">
+                            <div class="checkbox"></div>
+                            <span><span class="action-label">分间关机练习：</span>下一场训练课，每打完一分，走回接发位置时在心里默念"关"，清空脑子。不想刚才那板打得好不好，不想下一板要怎么打。只做一件事：等。等对方拍子触球，再看。</span>
+                        </div>
+                        <div class="action-item">
+                            <div class="checkbox"></div>
+                            <span><span class="action-label">退台练习：</span>刻意站远10厘米接球，给自己制造"看了再动"的空间。哪怕一开始觉得够不到球，也要坚持先看再动——空间够大之后，你自然有时间反应了。</span>
+                        </div>
+                    </div>
+                </div>
+            </details>
+            </div>
+
+            <!-- ==================== Card: 非对称两面 — 反手体系 vs INTJ认知结构 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">战术体系 · 非对称两面</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">你的性格适合打磨以反手体系为核心、正手为终结手段的"两面非对称"打法。反手搭框架(势)、正手做终结(破局)。每一板反手都在构建，每一板正手都在收割。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>反手匹配Ni——连续稳定地构建"势"，让对手在相持中逐渐窒息。正手匹配Te——在充分准备后精准执行、一击致命。你不是两面均衡的类型，你需要的是非对称：反手够厚、厚到撑起整个体系，正手够锐、锐到对手不得不防。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>对话还原</h4>
+                            <div class="dialogue-block">
+                                <span class="q">问：为什么不练两面均衡？</span><br>
+                                <span class="a">两面均衡是高Si打法——靠经验和流程应对所有局面。但你的Ni主导让你天然反感标准答案。你需要的是有主次、有纵深、能自我运转的体系，不是两块同样厚的盾牌。</span><br><br>
+                                <span class="q">追问：理想的比赛节奏是什么？</span><br>
+                                <span class="a">反手反手反手—对手被你压得越来越深—你感知到他扛不住了—正手抢前点打大角度—对手重心交出去—你回到反手位—下一板反手收割。这不是在打球，是在执行一套由Ni设计、Te执行、反手体系承载的战术程序。</span>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">70/30分配：</span>训练中反手投入70%精力（起下旋质量、连续加质量、变线），正手投入30%（抢前点时机、小动作发力、回位意识）。</span>
+                            </div>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">一局反手限制赛：</span>打一局比赛，正手只用来处理被迫够不到的球，其他全部用反手。感受用反手"搭框架"的节奏。</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 全台拧 — 接发球决策简化 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">战术体系 · 全台拧</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">放弃正反手接发球的选择判断，反手09C统一处理所有来球。不是技术简化，是认知简化：去掉"正手还是反手"的选择树，脑子关进小黑屋，身体回到待机。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>正反手接发球的内耗流程——Ni扫描球路→判断正手还是反手→分析站位角度→球已经到了。全台拧把这个流程缩短为：Ni看球→反手拧。你只需要一个信号触发：球弹起高于网→弹/带，低于网→拧。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>对话还原</h4>
+                            <div class="dialogue-block">
+                                <span class="q">问：对手偷软球怎么办？</span><br>
+                                <span class="a">用一个不消耗Ni的预定义分支：球弹起高于网→反手弹击或快带到反手大角；低于网→依然全台拧。Se天然能看到高度区别，不再需要脑子的决策。</span><br><br>
+                                <span class="q">追问：如果拧球因为步伐不到位失位？</span><br>
+                                <span class="a">宁可在不好的球位下失误，也要用同一个动作重复4-5次，把自己钉死在"只做拧"的沙盒里。练完之后对镜子走一遍全台拧→摸脚后跟→回位。</span>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">训练：</span>下一场接发球训练，所有来球全台拧，10分钟不间断。不看质量，只看是否每一球都用了拧。</span>
+                            </div>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">实战：</span>打一局比赛，对方发球全部用拧接。高于网的弹/带，低于网的拧。赛后统计自己有没有在接发球时启动"正手还是反手"的选择。</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 正手连续的关键 — 肘位 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">击球点技术 · 肘位控制</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">正手拉几板就不好发力的根因：无意识抬肘。肘高了→击球点高→拍面压→转动轨迹诡异→吃不住球。正确的做法：肘始终低于球，刻意等球下降到靠近身体的舒服位置。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>抬肘 = Ni启动的物理表达（这一板质量够不够、下一球会不会变方向）。肘在下面=脑子安静。身体和手臂全部不再做二次调整，教练教的"重心不要起来、蹬转进来、小臂收到位"自动完成。</p>
+                            <p style="margin-top: 6px;"><strong>连续的秘诀：</strong>拉完一板正手后重心可能出现左右转换→顺势将重心往中间轻微一沉→下一球脚步和意识跟上。连续的击球节奏依赖于每一个局部都是连续可循环的。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>对话还原</h4>
+                            <div class="dialogue-block">
+                                <span class="q">教练：你今天第一次悟到了连续的诀窍。</span><br>
+                                <span class="a">把肘放低、等球降下来，身体和手臂就不再需要二次调整去找球了，球的弧线好，人没有做多余的事，连续就自动建立起来了。还原也不需要特殊的意识——重心左右转换后顺势往中间一沉，下一板自然就能跟到位。</span>
+                            </div>
+                        </div>
+                        <div class="process-section">
+                            <h4>身体锚点</h4>
+                            <div class="aha-block">
+                                左手拍一下右肘外侧：拍不到=肘高了。还原时自然完成，不占用比赛节奏。和摸脚后跟形成一套组合——脚后跟管脑子（待机），肘管身体（不抬）。
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">肘位校准：</span>练球前十分钟不追求连续拉，只追求一件事：拉完→还原→左手拍右肘。连续10板都在正确位置。</span>
+                            </div>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">正手连续：</span>肘低+等球降→蹬转收→重心居中还原→下一板。数自己能连续多少板不作调整。</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 反手上旋连续 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">反手技术 · 上旋撞击</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">反手上旋连续的核心：由后往前撞击+附一点摩擦，不是从左往右绕薄皮。从左往右绕上旋会出界，撞击以后再给摩擦才能吃住球。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>反手下旋起板你已经做得很好了——下降前期出手，向前撞击后手腕捻收加摩擦。但上旋的相持不是在"绕弧圈"，是在"撞实了再给旋转"——打实的球既稳定又有质量。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>身体感悟</h4>
+                            <div class="aha-block">
+                                从前打上旋是靠蹭、靠刷——全是薄皮，触球时间短，极不稳定。现在由后往前撞击，胶皮咬住球后再转手腕，球打得更实更重，连续也更稳。和教练说的反手"骑着球往前"正好呼应——撞击是前提，摩擦是加项。
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">上旋相持：</span>下一场训练，专门练反手上旋相持——每一板先想"撞击"，拍子触球时咬住，再略收腕给摩擦。目标是连续10板上台不飘。</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 侧身 — 身体角度决定线路 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">击球点技术 · 侧身站位</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">身体垂直球台→保送斜线，强行扭直线几乎不可能。想拉直线就必须让身体尽量平行球台——身体回正了、手臂收进来了，自然就是直线。球挤住时侧身往左往外撤。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>侧身的线路不由手臂控制，由身体与球台的角度决定。身体垂直→只能拉斜线；身体平行→自然就是直线。"身体带手"在这里又一次得到了验证。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>对话还原</h4>
+                            <div class="dialogue-block">
+                                <span class="q">教练：你侧身整个人跟球台垂直了，最好保送斜线，强行扭过来拉直线几乎不可能。</span><br>
+                                <span class="a">明白——身体垂直的时候手臂是横向的，扭直线就得强行改变手臂轨迹，而且身体不支持这个方向。</span><br><br>
+                                <span class="q">教练：想拉直线，身体尽量和球台平行。球挤住你了，侧身的时候人尽量相对球台往左往外撤。</span><br>
+                                <span class="a">之前在小房间球台落下的毛病——没空间再往左了，只能强行垂直侧身。现在空间够了，身体角度的调整比手臂的调整有效得多。</span>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">侧身角度：</span>下一场训练，要拉直线时先确认身体是否平行球台。身体角度不对，不强行出手——先调整站位再拉。</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <!-- ==================== Card: 心态 — Se-Fi 切换 ==================== -->
+            <div class="insight-card">
+                <div class="card-header">
+                    <span class="tag">心态篇 · Se-Fi 专注力</span>
+                </div>
+                <details>
+                    <summary data-hint="（点击展开推导过程）">
+                        <span class="core-text">有熟人围观时，第一球Se在线打出高水平，但Fi秒亮——"我打得不错，他们看到了"——Se瞬间被挤到后台。越想在他们面前打得好，Se掉得越快。</span>
+                    </summary>
+                    <hr class="divider">
+                    <div class="process-content">
+                        <div class="process-section">
+                            <h4>核心淬炼</h4>
+                            <p><strong>一句话真知：</strong>Se被Fi打断的根因，是从"沉浸在打球"自动切到了"沉浸在被人看到"。熟人（不是陌生人）的在场天然激活Fi——因为他们的看法你在乎。</p>
+                        </div>
+                        <div class="process-section">
+                            <h4>对话还原</h4>
+                            <div class="dialogue-block">
+                                <span class="q">问：为什么和高手打球时，旁边有熟人反而打不好？</span><br>
+                                <span class="a">不是打不好——是第一球Se爆表之后，Fi听到熟人的反应（哇/好球）自动亮了，然后你从纯打球变成了"打球+确认表现+算走势"三线程并发。Se被挤到后台。</span><br><br>
+                                <span class="q">追问：怎么维持Se更久？</span><br>
+                                <span class="a">方法A：赛前找一个不会说话的物体盯住（墙上的钟、台边一条线），让Fi从一开始就无法在人群中定位验证目标。方法B：Fi启动时左手拍右肘，告诉自己——这些人早就知道你是什么样的人了。</span>
+                            </div>
+                        </div>
+                        <div class="process-section actionable-section">
+                            <h4>最小化行动实验</h4>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">赛前锚定：</span>下一次有熟人围观时，上场前盯住一个固定物体3秒，不上场不和任何人对视。</span>
+                            </div>
+                            <div class="action-item">
+                                <div class="checkbox"></div>
+                                <span><span class="action-label">赛中Fi切断：</span>感觉到Fi启动→左手拍右肘→默念"没你更好"→继续等球。</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+        <footer>
+            归档来源：[个人练球笔记 · 乒乓技术框架.md]<br>
+            © 2026 reGeorge · Crafted with AI Metacognition.
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script>
+    (function () {
+        const CARD_SELECTOR = '.insight-card';
+        const SCALE = Math.min(window.devicePixelRatio || 2, 2);
+        const copySvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';
+        function sanitizeFileName(n) { return (n || 'card').replace(/[\\/:*?"<>|]/g, '').replace(/\s+/g, '-').slice(0, 80); }
+        function getCardTitle(card, i) { const t = card.querySelector('.tag'); return sanitizeFileName(t ? t.textContent.trim() : `card-${i+1}`); }
+        function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+        function canvasToBlob(c) { return new Promise(r => c.toBlob(r, 'image/png')); }
+        function triggerDownload(blob, filename) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = filename;
+            document.body.appendChild(a); a.click(); a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }
+        async function renderCard(card) {
+            card.classList.add('capture-mode');
+            const canvas = await html2canvas(card, {
+                backgroundColor: '#0d1117', scale: SCALE, useCORS: true, logging: false,
+                scrollX: 0, scrollY: -window.scrollY,
+                windowWidth: document.documentElement.scrollWidth,
+                windowHeight: document.documentElement.scrollHeight,
+                onclone: function(doc) {
+                    const cc = doc.querySelector('.insight-card.capture-mode');
+                    if (cc) { cc.style.backgroundColor = '#0d1117'; cc.style.background = '#0d1117'; }
+                    doc.querySelectorAll('.process-section, .core-text').forEach(el => { el.style.backgroundColor = '#0d1117'; });
+                }
+            });
+            card.classList.remove('capture-mode');
+            return canvas;
+        }
+        async function captureCard(card, btn, idx) {
+            const details = card.querySelector('details');
+            const wasOpen = details ? details.open : false;
+            try {
+                btn.disabled = true;
+                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;animation:spin 1s linear infinite"><circle cx="12" cy="12" r="10" stroke-dasharray="20 40"/></svg>';
+                if (details && !details.open) { details.open = true; await wait(300); }
+                await wait(200);
+                const canvas = await renderCard(card);
+                const blob = await canvasToBlob(canvas);
+                triggerDownload(blob, `${getCardTitle(card, idx)}.png`);
+                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                setTimeout(() => { btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>'; btn.disabled = false; }, 1500);
+            } catch (err) {
+                console.error(err);
+                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15" stroke-linecap="round"/></svg>';
+                setTimeout(() => { btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>'; btn.disabled = false; }, 2000);
+            } finally {
+                if (details && !wasOpen) details.open = false;
+            }
+        }
+        function normalizeText(t) { return (t || '').replace(/\n{3,}/g, '\n\n').replace(/[ \t]+\n/g, '\n').replace(/\u00A0/g, ' ').trim(); }
+        function textFrom(el) { return el ? normalizeText(el.innerText) : ''; }
+        function esc(t) { return (t || '').replace(/\\/g, '\\\\'); }
+        function buildMarkdown(card) {
+            const lines = [];
+            const title = textFrom(card.querySelector('.tag'));
+            const summary = card.querySelector('.core-text') || card.querySelector('.core-statement');
+            if (title) { lines.push(`# ${esc(title)}`, ''); }
+            if (summary) { lines.push(`> ${esc(textFrom(summary))}`, ''); }
+            card.querySelectorAll('.process-section').forEach(sec => {
+                const h = textFrom(sec.querySelector('h4'));
+                if (h) lines.push(`## ${esc(h)}`);
+                sec.querySelectorAll('p').forEach(p => { const t = textFrom(p); if (t) { lines.push(esc(t)); lines.push(''); } });
+                const db = sec.querySelector('.dialogue-block');
+                if (db) db.querySelectorAll('.q, .a').forEach(q => { const t = textFrom(q); if (t) lines.push(esc(t)); });
+                const aha = sec.querySelector('.aha-block p');
+                if (aha) { lines.push(''); lines.push(esc(textFrom(aha))); lines.push(''); }
+                const noises = sec.querySelectorAll('.noise');
+                noises.forEach(n => { const t = textFrom(n); if (t) lines.push(`- ${esc(t)}`); });
+                if (noises.length) lines.push('');
+                const fl = sec.querySelector('.focus-lens');
+                if (fl) { lines.push(esc(textFrom(fl))); lines.push(''); }
+                sec.querySelectorAll('.action-item').forEach(a => { const t = textFrom(a); if (t) lines.push(`- ${esc(t)}`); });
+                sec.querySelectorAll('.migration-item').forEach(m => { const t = textFrom(m); if (t) lines.push(`- ${esc(t)}`); });
+            });
+            return normalizeText(lines.join('\n'));
+        }
+        async function copyCard(card, btn) {
+            try {
+                btn.disabled = true;
+                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+                await navigator.clipboard.writeText(buildMarkdown(card));
+                setTimeout(() => { btn.innerHTML = copySvg; btn.disabled = false; }, 1200);
+            } catch (err) {
+                console.error(err);
+                setTimeout(() => { btn.innerHTML = copySvg; btn.disabled = false; }, 1500);
+            }
+        }
+        function injectButtons() {
+            const dlSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>';
+            document.querySelectorAll(CARD_SELECTOR).forEach((card, i) => {
+                if (card.querySelector('.card-tools')) return;
+                const tools = document.createElement('div'); tools.className = 'card-tools';
+                const dl = document.createElement('button');
+                dl.className = 'card-shot-btn'; dl.type = 'button'; dl.innerHTML = dlSvg;
+                dl.addEventListener('click', () => captureCard(card, dl, i));
+                tools.appendChild(dl);
+                const cp = document.createElement('button');
+                cp.className = 'card-shot-btn'; cp.type = 'button'; cp.innerHTML = copySvg;
+                cp.addEventListener('click', () => copyCard(card, cp));
+                tools.appendChild(cp);
+                card.appendChild(tools);
+            });
+        }
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', injectButtons);
+        else injectButtons();
+    })();
+    </script>
+</body>
+</html>

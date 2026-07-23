@@ -1,0 +1,98 @@
+{
+  "id": "high-quality-invisible-context",
+  "type": "concept",
+  "status": "reviewed",
+  "updatedAt": "2026-07-23",
+  "source": "conversation:2026-07-23",
+  "links": [
+    {
+      "target": "personal-engineering-thesis",
+      "targetType": "project",
+      "relation": "part-of"
+    },
+    {
+      "target": "auto-test-station",
+      "targetType": "project",
+      "relation": "supports"
+    }
+  ],
+  "tags": [
+    "ai-workflow",
+    "context-engineering",
+    "librarian",
+    "steward-brain"
+  ],
+  "title": "高质量隐形上下文",
+  "originalWords": [
+    "> 这些东西可以称之为高质量隐形上下文，但由于人无法在每次对话都提及它，所以我设置了管家/librarian的角色，由其智能调度"
+  ],
+  "definition": "高质量隐形上下文不是一条提示词，而是由阶段状态、长期规则、失败经验、当前决策和角色加载顺序共同组成的可恢复工作环境。它平时不需要用户逐条说出，但会在任务进入相应阶段时被智能调度。",
+  "roleSeparation": [
+    {
+      "role": "Context Engineering",
+      "responsibility": "设计上下文的来源、密度和加载时机，把 workspace 结论蒸馏为可复用知识，并用 meta.json 和阶段路由恢复工作。"
+    },
+    {
+      "role": "Librarian",
+      "responsibility": "在人没有主动提及时，根据当前动作和风险模式主动注入规则；在高风险动作前执行守门，必要时阻塞并要求补齐信息。"
+    },
+    {
+      "role": "Steward Brain",
+      "responsibility": "保存跨 workstream 的告警、已验证模式、用户纠偏和决策日志，为 Librarian 提供持久化记忆。"
+    }
+  ],
+  "operatingLoop": [
+    {
+      "step": "01",
+      "title": "捕获",
+      "description": "从用户纠偏、失败路径、样本验证和阶段结论中捕获高信号变化。"
+    },
+    {
+      "step": "02",
+      "title": "蒸馏",
+      "description": "区分 verified、api-quirk、failed-path、pattern 和 workstream conclusion，放入合适的事实层。"
+    },
+    {
+      "step": "03",
+      "title": "监测",
+      "description": "Steward Brain 将重复错误转成 active alert、watch pattern 和跨 workstream 规则。"
+    },
+    {
+      "step": "04",
+      "title": "调度",
+      "description": "Librarian 根据当前动作匹配上下文，在执行、探测和写入前主动注入或阻塞。"
+    },
+    {
+      "step": "05",
+      "title": "复盘",
+      "description": "把新的用户判断和验证结果写回决策日志，经过多个 workstream 验证后提升为长期知识。"
+    }
+  ],
+  "successEvidence": [
+    {
+      "title": "上下文恢复",
+      "result": "基本费计费策略的 workflow_state 明确了新对话首读顺序，并把高密度过程信息留在 trace；个人哑终端在输入从 8 条更正为 106 条后重置 pipeline，从 Intake 重新建立状态。",
+      "source": "caseHelper/workspace/0330版本/analysis/20260410_基本费计费策略/workflow_state.json; caseHelper/workspace/0330版本/analysis/20260415_个人哑终端/workflow_state.json"
+    },
+    {
+      "title": "重复错误主动预警",
+      "result": "Steward Brain 已记录 bash 变量展开问题 198 次、期望结果缺失 45 次、delayTime 单位错误 12 次，并为高风险动作配置触发条件和处理动作。",
+      "source": "caseHelper/knowledge/librarian/steward_brain.json"
+    },
+    {
+      "title": "经验跨项目复用",
+      "result": "导入五步链、变量先行、step-level PASS、批量前先做样本和登录链已被标记为 verified pattern，不再依赖某次对话临时记忆。",
+      "source": "caseHelper/knowledge/librarian/steward_brain.json"
+    },
+    {
+      "title": "纠偏转为决策",
+      "result": "用户纠正被记录为 option A / option B、root cause、impact 和 promotion status，Agent 的一次错误不再只是当场修掉。",
+      "source": "caseHelper/knowledge/librarian/steward_brain.json"
+    }
+  ],
+  "boundaries": [
+    "Librarian 负责智能调度和阻塞，不替代用户对业务预期和重大取舍的最终裁决。",
+    "成功标准是降低漏加载、重复纠偏和错误扩散，不是让 Agent 永远不犯错。",
+    "Steward Brain 中尚未跨 workstream 验证的发现只能保持候选状态，不能冒充长期规则。"
+  ]
+}

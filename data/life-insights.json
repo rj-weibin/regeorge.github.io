@@ -1,0 +1,51 @@
+{
+  "id": "life-insights",
+  "type": "project",
+  "status": "reviewed",
+  "updatedAt": "2026-07-23",
+  "source": "data/books/books.json#SELF_BIN; data/concepts/mobile-cards.json; data/knowledge-graph.json",
+  "links": [
+    {
+      "target": "SELF_BIN",
+      "targetType": "book",
+      "relation": "absorbs"
+    },
+    {
+      "target": "high-quality-invisible-context",
+      "targetType": "concept",
+      "relation": "supports"
+    }
+  ],
+  "title": "生活感悟",
+  "subtitle": "把生活观察、个人原话和结构化洞见放在同一条回路里。",
+  "dimension": "生活",
+  "icon": "🌿",
+  "dimensionDesc": "Fi · 生活验证 · 当下体验",
+  "page": "projects/life-insights/index.html",
+  "meta": "原话 · 洞见 · 关系",
+  "sourcePolicy": {
+    "personalRecord": "data/books/books.json#SELF_BIN",
+    "personalCards": "data/concepts/mobile-cards.json",
+    "structuredNodes": "data/knowledge-graph.json",
+    "presentationRule": "页面整合展示，事实仍按个人原话和结构化节点分层；不把页面当写入目标。"
+  },
+  "recognition": {
+    "trigger": [
+      "用户描述自己的生活经历、身体感受、情绪变化、关系观察或人生判断",
+      "用户说某个日常现象改变了自己，或形成了可复用的生活原则",
+      "用户明确要求记录生活感悟、原话或碰撞"
+    ],
+    "notThisRoute": [
+      "只有书名或读书进度：写入阅读事实",
+      "书名加读后感：先走阅读碰撞协议，再由用户决定是否升级为生活洞见",
+      "工作流程、测试成果和 Agent 工程经验：写入工作事实",
+      "乒乓动作、技术和训练：写入运动事实"
+    ],
+    "writeOrder": [
+      "先查重生活原话、卡片标题和知识节点",
+      "保留用户原话，区分原始记录与 Agent 结构化建议",
+      "说明准备新增或补充的实体、关系和状态",
+      "等待用户确认后再写入事实源"
+    ]
+  }
+}
