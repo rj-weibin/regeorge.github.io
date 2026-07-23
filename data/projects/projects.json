@@ -4,6 +4,6 @@
   {"id":"life-notes","dimension":"阅读","icon":"📖","dimensionDesc":"Ni · 输入 · 结晶","title":"生活随笔","description":"INTJ 操作系统手册、行动框架与认知碰撞归档。","meta":"碰撞归档 · Ni/INTJ","page":"projects/reading-shelf/reading-study.html?bookId=SELF_BIN"},
   {"id":"philosophy-flywheel","dimension":"阅读","icon":"📖","dimensionDesc":"Ni · 输入 · 结晶","title":"Knowledge Atlas","description":"从日常原话中提炼洞见，并连接认知模型与行动。","meta":"认知仓库 · Ni","page":"projects/philosophy-flywheel/index.html"},
   {"id":"auto-test-station","dimension":"工作","icon":"⚙️","dimensionDesc":"Te · 系统化输出 · 做减法","title":"自动化测试生产线","description":"以意图收敛、样本验证和审计回流为核心的自动化测试工程体系。","meta":"工程证据 · Te","page":"projects/autoTestStation/index.html"},
-  {"id":"personal-engineering-thesis","dimension":"工作","icon":"🧭","dimensionDesc":"Te · 判断沉淀 · 人机协作","title":"Personal Engineering Thesis","description":"从脚本执行到测试生产线：记录由个人意图主导、经过验证并沉淀为工程资产的案例。","meta":"Insight · Decision · Impact","page":"projects/personal-engineering-thesis/index.html"},
+  {"id":"personal-engineering-thesis","dimension":"工作","icon":"🧭","dimensionDesc":"Te · 判断沉淀 · 人机协作","title":"个人工程论","description":"从脚本执行到测试生产线：记录由个人意图主导、经过验证并沉淀为工程资产的案例。","meta":"Insight · Decision · Impact","page":"projects/personal-engineering-thesis/index.html"},
   {"id":"table-tennis","dimension":"乒乓","icon":"🏓","dimensionDesc":"Se · 身体直觉 · 肌肉记忆","title":"乒乓技术框架图谱","description":"系统化整理乒乓球技术与战术知识体系。","meta":"技术体系 · Se","page":"projects/project-table-tennis/index.html"}
 ]

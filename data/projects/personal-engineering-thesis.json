@@ -12,7 +12,7 @@
     }
   ],
   "tags": ["AI工程化", "测试自动化", "Harness Engineering", "个人工程论"],
-  "title": "Personal Engineering Thesis",
+  "title": "个人工程论",
   "subtitle": "把个人判断沉淀为可验证、可复用、可由 Agent 协作的工程能力。",
   "originalWords": [
     "> 用真实系统证据收敛业务意图，再把验证过的判断封装成可复用、可审计、可由 Agent 执行的工程能力。"
