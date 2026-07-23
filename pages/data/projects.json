@@ -44,9 +44,9 @@
     "dimension": "工作",
     "icon": "⚙️",
     "dimensionDesc": "Te · 系统化输出 · 做减法",
-    "title": "自动化工作站",
-    "description": "从脚本仓库到服务编排的工程架构演进。",
-    "meta": "Architecture · Engineering · Te",
+    "title": "自动化测试生产线",
+    "description": "以意图收敛、样本验证和审计回流为核心的自动化测试工程体系。",
+    "meta": "工程证据 · Te",
     "page": "projects/autoTestStation/index.html"
   },
   {
