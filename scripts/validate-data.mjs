@@ -42,6 +42,7 @@ const mobileCards = readJson('data/concepts/mobile-cards.json');
 const projects = readJson('data/projects/projects.json');
 const personalEngineeringThesis = readJson('data/projects/personal-engineering-thesis.json');
 const highQualityInvisibleContext = readJson('data/concepts/high-quality-invisible-context.json');
+const lifeInsights = readJson('data/projects/life-insights.json');
 duplicateIds(graph?.nodes, 'concept');
 duplicateIds(books, 'book', item => item.bookId ?? item.id ?? item.title);
 duplicateValues(books, 'book', item => item.title?.trim());
@@ -66,6 +67,15 @@ if (highQualityInvisibleContext) {
   if (!highQualityInvisibleContext.source) errors.push('high-quality invisible context: missing source');
   if (!Array.isArray(highQualityInvisibleContext.roleSeparation) || highQualityInvisibleContext.roleSeparation.length !== 3) errors.push('high-quality invisible context: role separation must contain three roles');
   if (!Array.isArray(highQualityInvisibleContext.successEvidence) || highQualityInvisibleContext.successEvidence.length < 3) errors.push('high-quality invisible context: missing success evidence');
+}
+if (lifeInsights) {
+  if (lifeInsights.id !== 'life-insights') errors.push('life insights: invalid id');
+  if (lifeInsights.type !== 'project') errors.push('life insights: type must be project');
+  if (!['draft', 'proposed', 'reviewed', 'archived'].includes(lifeInsights.status)) errors.push('life insights: invalid status');
+  if (!lifeInsights.updatedAt || !lifeInsights.source) errors.push('life insights: missing metadata');
+  if (lifeInsights.page !== 'projects/life-insights/index.html') errors.push('life insights: invalid page');
+  if (!Array.isArray(lifeInsights.recognition?.trigger) || lifeInsights.recognition.trigger.length < 2) errors.push('life insights: missing recognition triggers');
+  if (!Array.isArray(lifeInsights.recognition?.notThisRoute) || lifeInsights.recognition.notThisRoute.length < 3) errors.push('life insights: missing route boundaries');
 }
 duplicateIds(cards, 'collision');
 cards?.forEach((card, index) => {
@@ -96,7 +106,7 @@ if (fs.existsSync(pending) && fs.readdirSync(pending).length > 0) {
   console.warn('warning: inbox/pending contains unprocessed intake files');
 }
 
-for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/cards.json', 'pages/data/projects.json', 'pages/data/personal-engineering-thesis.json', 'pages/data/high-quality-invisible-context.json', 'pages/projects/personal-engineering-thesis/index.html']) {
+for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/cards.json', 'pages/data/projects.json', 'pages/data/personal-engineering-thesis.json', 'pages/data/high-quality-invisible-context.json', 'pages/data/life-insights.json', 'pages/projects/life-insights/index.html']) {
   if (!fs.existsSync(path.join(root, relative))) errors.push(`missing build output: ${relative}`);
 }
 

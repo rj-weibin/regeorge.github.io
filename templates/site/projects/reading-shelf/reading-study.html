@@ -328,6 +328,9 @@ function getParam(name) {
   return new URLSearchParams(location.search).get(name) || '';
 }
 var bookId = getParam('bookId');
+if (bookId === 'SELF_BIN') {
+  window.location.replace('../life-insights/index.html');
+}
 
 // ── 查找书目 ─────────────────────────────────────────────
 var allBooks = window.READING_SHELF_BOOKS || [];

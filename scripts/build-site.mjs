@@ -34,6 +34,7 @@ const mobileCards = readJson('data/concepts/mobile-cards.json');
 const projects = readJson('data/projects/projects.json');
 const personalEngineeringThesis = readJson('data/projects/personal-engineering-thesis.json');
 const highQualityInvisibleContext = readJson('data/concepts/high-quality-invisible-context.json');
+const lifeInsights = readJson('data/projects/life-insights.json');
 fs.writeFileSync(path.join(pages, 'data', 'knowledge-graph.json'), JSON.stringify(graph, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'books.json'), JSON.stringify(books, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'philosophy-cards.json'), JSON.stringify(cards, null, 2) + '\n');
@@ -41,6 +42,7 @@ fs.writeFileSync(path.join(pages, 'data', 'cards.json'), JSON.stringify(mobileCa
 fs.writeFileSync(path.join(pages, 'data', 'projects.json'), JSON.stringify(projects, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'personal-engineering-thesis.json'), JSON.stringify(personalEngineeringThesis, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'high-quality-invisible-context.json'), JSON.stringify(highQualityInvisibleContext, null, 2) + '\n');
+fs.writeFileSync(path.join(pages, 'data', 'life-insights.json'), JSON.stringify(lifeInsights, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'books-data.js'), `window.READING_SHELF_BOOKS = ${JSON.stringify(books, null, 2)};\n`);
 
 const registry = {

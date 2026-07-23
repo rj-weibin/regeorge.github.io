@@ -20,24 +20,14 @@
     "page": "projects/invest-journal/index.html"
   },
   {
-    "id": "life-notes",
-    "dimension": "阅读",
-    "icon": "📖",
-    "dimensionDesc": "Ni · 输入 · 结晶",
-    "title": "生活随笔",
-    "description": "INTJ 操作系统手册、行动框架与认知碰撞归档。",
-    "meta": "碰撞归档 · Ni/INTJ",
-    "page": "projects/reading-shelf/reading-study.html?bookId=SELF_BIN"
-  },
-  {
-    "id": "philosophy-flywheel",
-    "dimension": "阅读",
-    "icon": "📖",
-    "dimensionDesc": "Ni · 输入 · 结晶",
-    "title": "Knowledge Atlas",
-    "description": "从日常原话中提炼洞见，并连接认知模型与行动。",
-    "meta": "认知仓库 · Ni",
-    "page": "projects/philosophy-flywheel/index.html"
+    "id": "life-insights",
+    "dimension": "生活",
+    "icon": "🌿",
+    "dimensionDesc": "Fi · 生活验证 · 当下体验",
+    "title": "生活感悟",
+    "description": "把生活随笔、个人原话和结构化洞见整合到同一条回路。",
+    "meta": "原话 · 洞见 · 关系",
+    "page": "projects/life-insights/index.html"
   },
   {
     "id": "auto-test-station",

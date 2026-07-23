@@ -3,64 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Knowledge Atlas | reGeorge</title>
-  <style>
-    :root{--paper:#f8f5ef;--ink:#2b2824;--muted:#746d64;--line:#ded7cc;--card:#fffdf9;--accent:#b96b4b;--soft:#efe8dc}
-    *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",sans-serif}
-    .wrap{width:min(1180px,calc(100% - 32px));margin:auto;padding:28px 0 64px}.back{color:var(--muted);text-decoration:none}.back:hover{color:var(--accent)}
-    header{padding:44px 0 26px;border-bottom:1px solid var(--line)}h1{margin:0 0 12px;font:700 clamp(2.3rem,6vw,4.8rem)/1.05 Georgia,"Songti SC",serif;letter-spacing:-.04em}.sub{color:var(--muted);line-height:1.8;max-width:680px}
-    .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.pill,.filter{border:1px solid var(--line);border-radius:999px;background:var(--card);padding:7px 12px;color:var(--muted);font-size:.86rem}.filter{cursor:pointer;font:inherit}.filter.active{background:var(--ink);border-color:var(--ink);color:#fff}
-    .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding:22px 0 14px}.search{flex:1;min-width:220px;border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:var(--card);color:var(--ink);font:inherit}.status{color:var(--muted);font-size:.9rem}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 8px 24px rgba(75,55,35,.05)}.card h2{font:700 1.22rem/1.35 Georgia,"Songti SC",serif;margin:0 0 10px}.eyebrow{color:var(--accent);font-size:.82rem;margin-bottom:10px}.one{font-size:1.04rem;line-height:1.75}.note{margin:16px 0 0;padding:13px 14px;background:var(--soft);border-radius:10px;color:#514a41;line-height:1.7}.takeaways{margin:14px 0 0;padding-left:1.2em;color:var(--muted);line-height:1.8}.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;font-size:.82rem}.links a{color:var(--accent);text-decoration:none}.links a:hover{text-decoration:underline}.empty{padding:40px;text-align:center;color:var(--muted);grid-column:1/-1}
-    @media(max-width:600px){.wrap{width:min(100% - 22px,1180px);padding-top:18px}.grid{grid-template-columns:1fr}.card{padding:17px}}
-  </style>
+  <meta http-equiv="refresh" content="0; url=../life-insights/index.html">
+  <title>生活感悟 · reGeorge</title>
 </head>
 <body>
-  <main class="wrap">
-    <a class="back" href="../../index.html">← 返回四维飞轮</a>
-    <header>
-      <h1 id="title">Knowledge Atlas</h1>
-      <p class="sub" id="subtitle">从整体到局部，从快速审阅到深度理解。</p>
-      <div class="meta"><span class="pill" id="updated">加载中</span><span class="pill" id="count"></span><span class="pill">事实源：data/</span></div>
-    </header>
-    <section class="toolbar" aria-label="筛选">
-      <input class="search" id="search" type="search" placeholder="搜索标题、洞见或要点" aria-label="搜索知识节点">
-      <div id="filters"></div>
-    </section>
-    <div class="status" id="status"></div>
-    <section class="grid" id="grid" aria-live="polite"><div class="empty">正在读取事实源……</div></section>
-  </main>
-  <script>
-    const repoBase = 'https://github.com/reGeorge/regeorge.github.io/blob/master/';
-    const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-    let graph = null; let category = ''; let query = '';
-    const topicMap = () => Object.fromEntries((graph.topics || []).map(topic => [topic.id, topic]));
-    function sourceHref(source){ return source ? repoBase + source.split('/').map(encodeURIComponent).join('/') : ''; }
-    function renderFilters(){
-      const el = document.querySelector('#filters');
-      el.innerHTML = '<button class="filter active" data-category="">全部</button>' + (graph.categories || []).map(item => `<button class="filter" data-category="${esc(item.id)}">${esc(item.icon || '')} ${esc(item.title)}</button>`).join('');
-      el.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => { category = button.dataset.category; el.querySelectorAll('.filter').forEach(item => item.classList.toggle('active', item === button)); render(); }));
-    }
-    function render(){
-      const topics = topicMap();
-      const needle = query.toLowerCase();
-      const nodes = (graph.nodes || []).filter(node => {
-        const topic = topics[node.topicId] || {}; const cat = graph.categories.find(item => item.id === topic.categoryId) || {};
-        const text = [node.title,node.oneLiner,node.philosophyNote,(node.keyTakeaways || []).join(' '),topic.title,cat.title].join(' ').toLowerCase();
-        return (!category || cat.id === category) && (!needle || text.includes(needle));
-      });
-      document.querySelector('#count').textContent = `${nodes.length} / ${graph.nodes.length} 个节点`;
-      document.querySelector('#status').textContent = category ? `当前筛选：${(graph.categories.find(item => item.id === category) || {}).title || category}` : '全部节点';
-      document.querySelector('#grid').innerHTML = nodes.length ? nodes.map(node => {
-        const topic = topics[node.topicId] || {}; const cat = graph.categories.find(item => item.id === topic.categoryId) || {};
-        const takeaways = (node.keyTakeaways || []).map(item => `<li>${esc(item)}</li>`).join('');
-        const relations = (node.relations || []).map(link => `<span>${esc(link.label || link.type || '关联')} → ${esc(link.target || link.targetId || '')}</span>`).join('');
-        const source = node.source ? `<a href="${sourceHref(node.source)}" target="_blank" rel="noreferrer">📎 ${esc(node.source)}</a>` : '';
-        return `<article class="card"><div class="eyebrow">${esc(cat.icon || '')} ${esc(cat.title || '未分类')} · ${esc(topic.title || '')}</div><h2>${esc(node.title)}</h2><div class="one">${esc(node.oneLiner)}</div>${node.philosophyNote ? `<div class="note">${esc(node.philosophyNote)}</div>` : ''}${takeaways ? `<ul class="takeaways">${takeaways}</ul>` : ''}<div class="links">${source}${relations}</div></article>`;
-      }).join('') : '<div class="empty">没有匹配的节点。</div>';
-    }
-    document.querySelector('#search').addEventListener('input', event => { query = event.target.value.trim(); render(); });
-    fetch('../../data/knowledge-graph.json').then(response => { if (!response.ok) throw new Error('data load failed'); return response.json(); }).then(value => { graph = value; document.querySelector('#title').textContent = value.meta.title; document.querySelector('#subtitle').textContent = value.meta.subtitle; document.querySelector('#updated').textContent = `更新：${value.meta.lastUpdated}`; renderFilters(); render(); }).catch(error => { document.querySelector('#grid').innerHTML = `<div class="empty">事实源读取失败：${esc(error.message)}</div>`; });
-  </script>
+  <p>哲学飞轮已并入<a href="../life-insights/index.html">生活感悟</a>。</p>
+  <script>window.location.replace('../life-insights/index.html');</script>
 </body>
 </html>
