@@ -41,6 +41,7 @@ const cards = readJson('data/concepts/collisions.json');
 const mobileCards = readJson('data/concepts/mobile-cards.json');
 const projects = readJson('data/projects/projects.json');
 const personalEngineeringThesis = readJson('data/projects/personal-engineering-thesis.json');
+const highQualityInvisibleContext = readJson('data/concepts/high-quality-invisible-context.json');
 duplicateIds(graph?.nodes, 'concept');
 duplicateIds(books, 'book', item => item.bookId ?? item.id ?? item.title);
 duplicateValues(books, 'book', item => item.title?.trim());
@@ -56,6 +57,15 @@ if (personalEngineeringThesis) {
   if (!personalEngineeringThesis.updatedAt) errors.push('personal engineering thesis: missing updatedAt');
   if (!personalEngineeringThesis.source) errors.push('personal engineering thesis: missing source');
   if (!Array.isArray(personalEngineeringThesis.featuredCases) || personalEngineeringThesis.featuredCases.length < 2) errors.push('personal engineering thesis: missing featured cases');
+}
+if (highQualityInvisibleContext) {
+  if (highQualityInvisibleContext.id !== 'high-quality-invisible-context') errors.push('high-quality invisible context: invalid id');
+  if (highQualityInvisibleContext.type !== 'concept') errors.push('high-quality invisible context: type must be concept');
+  if (!['draft', 'proposed', 'reviewed', 'archived'].includes(highQualityInvisibleContext.status)) errors.push('high-quality invisible context: invalid status');
+  if (!highQualityInvisibleContext.updatedAt) errors.push('high-quality invisible context: missing updatedAt');
+  if (!highQualityInvisibleContext.source) errors.push('high-quality invisible context: missing source');
+  if (!Array.isArray(highQualityInvisibleContext.roleSeparation) || highQualityInvisibleContext.roleSeparation.length !== 3) errors.push('high-quality invisible context: role separation must contain three roles');
+  if (!Array.isArray(highQualityInvisibleContext.successEvidence) || highQualityInvisibleContext.successEvidence.length < 3) errors.push('high-quality invisible context: missing success evidence');
 }
 duplicateIds(cards, 'collision');
 cards?.forEach((card, index) => {
@@ -86,7 +96,7 @@ if (fs.existsSync(pending) && fs.readdirSync(pending).length > 0) {
   console.warn('warning: inbox/pending contains unprocessed intake files');
 }
 
-for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/cards.json', 'pages/data/projects.json', 'pages/data/personal-engineering-thesis.json', 'pages/projects/personal-engineering-thesis/index.html']) {
+for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/cards.json', 'pages/data/projects.json', 'pages/data/personal-engineering-thesis.json', 'pages/data/high-quality-invisible-context.json', 'pages/projects/personal-engineering-thesis/index.html']) {
   if (!fs.existsSync(path.join(root, relative))) errors.push(`missing build output: ${relative}`);
 }
 

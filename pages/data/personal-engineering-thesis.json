@@ -9,6 +9,11 @@
       "target": "auto-test-station",
       "targetType": "project",
       "relation": "evolves-from"
+    },
+    {
+      "target": "high-quality-invisible-context",
+      "targetType": "concept",
+      "relation": "articulates"
     }
   ],
   "tags": [
