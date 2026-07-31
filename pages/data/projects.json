@@ -50,6 +50,16 @@
     "page": "projects/personal-engineering-thesis/index.html"
   },
   {
+    "id": "engineering-skills",
+    "dimension": "工作",
+    "icon": "🧩",
+    "dimensionDesc": "Te · 方法沉淀 · 可迁移能力",
+    "title": "工程 Skills",
+    "description": "把不确定的工作拆成可验证、可恢复、可复用的能力卡片。",
+    "meta": "方法 · 门禁 · 工作方式",
+    "page": "projects/skills/index.html"
+  },
+  {
     "id": "table-tennis",
     "dimension": "乒乓",
     "icon": "🏓",

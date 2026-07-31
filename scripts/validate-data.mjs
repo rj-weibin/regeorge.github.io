@@ -43,6 +43,7 @@ const projects = readJson('data/projects/projects.json');
 const personalEngineeringThesis = readJson('data/projects/personal-engineering-thesis.json');
 const highQualityInvisibleContext = readJson('data/concepts/high-quality-invisible-context.json');
 const lifeInsights = readJson('data/projects/life-insights.json');
+const skillsHub = readJson('data/skills/skills-index.json');
 duplicateIds(graph?.nodes, 'concept');
 duplicateIds(books, 'book', item => item.bookId ?? item.id ?? item.title);
 duplicateValues(books, 'book', item => item.title?.trim());
@@ -77,6 +78,35 @@ if (lifeInsights) {
   if (!Array.isArray(lifeInsights.recognition?.trigger) || lifeInsights.recognition.trigger.length < 2) errors.push('life insights: missing recognition triggers');
   if (!Array.isArray(lifeInsights.recognition?.notThisRoute) || lifeInsights.recognition.notThisRoute.length < 3) errors.push('life insights: missing route boundaries');
 }
+if (skillsHub) {
+  if (skillsHub.id !== 'skills-hub') errors.push('skills hub: invalid id');
+  if (skillsHub.type !== 'skills-hub') errors.push('skills hub: invalid type');
+  if (!['draft', 'proposed', 'reviewed', 'archived'].includes(skillsHub.status)) errors.push('skills hub: invalid status');
+  if (!skillsHub.updatedAt || !skillsHub.source) errors.push('skills hub: missing metadata');
+  if (!skillsHub.title || !skillsHub.subtitle || !skillsHub.thesis) errors.push('skills hub: missing presentation fields');
+  if (!Array.isArray(skillsHub.personalPrinciples) || skillsHub.personalPrinciples.length < 5) errors.push('skills hub: missing personal principles');
+  duplicateIds(skillsHub.personalPrinciples, 'skill principle');
+  duplicateIds(skillsHub.skills, 'skill');
+  const skillIds = new Set(skillsHub.skills?.map(skill => skill.id) ?? []);
+  for (const skill of skillsHub.skills ?? []) {
+    if (skill.type !== 'skill') errors.push(`skill ${skill.id}: type must be skill`);
+    if (!['draft', 'proposed', 'reviewed', 'archived'].includes(skill.status)) errors.push(`skill ${skill.id}: invalid status`);
+    if (!skill.updatedAt || !skill.source) errors.push(`skill ${skill.id}: missing metadata`);
+    for (const field of ['category', 'layer', 'title', 'subtitle', 'essence', 'transferability']) {
+      if (!skill[field]) errors.push(`skill ${skill.id}: missing ${field}`);
+    }
+    if (!['capability', 'both', 'workStyle'].includes(skill.layer)) errors.push(`skill ${skill.id}: invalid layer`);
+    for (const field of ['useWhen', 'inputs', 'stages', 'workflow', 'gates', 'unknownHandling', 'failureRecovery', 'deliverables', 'antiPatterns', 'personalWorkStyle', 'links']) {
+      if (!Array.isArray(skill[field]) || skill[field].length === 0) errors.push(`skill ${skill.id}: missing ${field}`);
+    }
+    for (const link of skill.links ?? []) {
+      if (!skillIds.has(link)) errors.push(`skill ${skill.id}: missing linked skill ${link}`);
+    }
+    for (const step of skill.workflow ?? []) {
+      if (!step.step || !step.title || !step.description) errors.push(`skill ${skill.id}: invalid workflow step`);
+    }
+  }
+}
 duplicateIds(cards, 'collision');
 cards?.forEach((card, index) => {
   if (!card.tag && !card.id) errors.push(`collision card ${index + 1}: missing tag/id`);
@@ -101,12 +131,24 @@ for (const node of graph?.nodes ?? []) {
   }
 }
 
+const publicSensitivePatterns = [
+  /172\.17\.\d+\.\d+/i,
+  /\b(?:SAM\+?|SDET|ATP|RADIUS|Portal|Authorization|Bearer|SESSION|Webhook)\b/i,
+  /deployAccessToken/i,
+];
+if (skillsHub) {
+  const skillsText = JSON.stringify(skillsHub);
+  for (const pattern of publicSensitivePatterns) {
+    if (pattern.test(skillsText)) errors.push(`sensitive value in skills source: ${pattern}`);
+  }
+}
+
 const pending = path.join(root, 'inbox', 'pending');
 if (fs.existsSync(pending) && fs.readdirSync(pending).length > 0) {
   console.warn('warning: inbox/pending contains unprocessed intake files');
 }
 
-for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/cards.json', 'pages/data/projects.json', 'pages/data/personal-engineering-thesis.json', 'pages/data/high-quality-invisible-context.json', 'pages/data/life-insights.json', 'pages/projects/life-insights/index.html']) {
+for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/cards.json', 'pages/data/projects.json', 'pages/data/personal-engineering-thesis.json', 'pages/data/high-quality-invisible-context.json', 'pages/data/life-insights.json', 'pages/data/skills-index.json', 'pages/projects/life-insights/index.html', 'pages/projects/skills/index.html']) {
   if (!fs.existsSync(path.join(root, relative))) errors.push(`missing build output: ${relative}`);
 }
 
@@ -115,10 +157,15 @@ const pageFiles = fs.existsSync(path.join(root, 'pages'))
   : [];
 for (const relative of pageFiles) {
   const text = fs.readFileSync(path.join(root, 'pages', relative), 'utf8');
+  const normalized = relative.replaceAll('\\', '/');
   if (text.includes('.deploy_git') || text.includes('projects/philosophy-flywheel/data/knowledge-graph') || text.includes('hexo_posts') || text.includes('gardenForLilis') || text.includes('stickergotaro')) {
     errors.push(`legacy data reference: pages/${relative}`);
   }
-  for (const pattern of [/172\.17\.\d+\.\d+/, /Basic dGhpcmQ6MTIz/, /Credentials:\s*third:123/, /12345aA!/]) {
+  const patterns = [/172\.17\.\d+\.\d+/, /Basic dGhpcmQ6MTIz/, /Credentials:\s*third:123/, /12345aA!/];
+  if (normalized === 'pages/data/skills-index.json' || normalized === 'pages/projects/skills/index.html') {
+    patterns.push(...publicSensitivePatterns);
+  }
+  for (const pattern of patterns) {
     if (pattern.test(text)) errors.push(`sensitive value in generated page: pages/${relative}`);
   }
 }
