@@ -20,16 +20,6 @@
     "page": "projects/invest-journal/index.html"
   },
   {
-    "id": "life-insights",
-    "dimension": "生活",
-    "icon": "🌿",
-    "dimensionDesc": "Fi · 生活验证 · 当下体验",
-    "title": "生活感悟",
-    "description": "把生活随笔、个人原话和结构化洞见整合到同一条回路。",
-    "meta": "原话 · 洞见 · 关系",
-    "page": "projects/life-insights/index.html"
-  },
-  {
     "id": "auto-test-station",
     "dimension": "工作",
     "icon": "⚙️",
@@ -58,6 +48,16 @@
     "description": "把不确定的工作拆成可验证、可恢复、可复用的能力卡片。",
     "meta": "方法 · 门禁 · 工作方式",
     "page": "projects/skills/index.html"
+  },
+  {
+    "id": "life-insights",
+    "dimension": "生活",
+    "icon": "🌿",
+    "dimensionDesc": "Fi · 生活验证 · 当下体验",
+    "title": "生活感悟",
+    "description": "把生活随笔、个人原话和结构化洞见整合到同一条回路。",
+    "meta": "原话 · 洞见 · 关系",
+    "page": "projects/life-insights/index.html"
   },
   {
     "id": "table-tennis",

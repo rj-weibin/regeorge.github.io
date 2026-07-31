@@ -507,8 +507,9 @@
             footer { margin-top: 48px; }
         }
     </style>
+    <link rel="stylesheet" href="../../assets/site-chrome.css">
 </head>
-<body>
+<body class="site-page site-sport">
     <div class="container">
         <a href="../../index.html" class="back-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
@@ -1800,7 +1801,7 @@
 
         <footer>
             归档来源：[个人练球笔记 · 乒乓技术框架.md]<br>
-            © 2026 reGeorge · Crafted with AI Metacognition.
+            © 2026 reGeorge · 乒乓训练笔记
         </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
@@ -1823,14 +1824,14 @@
         async function renderCard(card) {
             card.classList.add('capture-mode');
             const canvas = await html2canvas(card, {
-                backgroundColor: '#0d1117', scale: SCALE, useCORS: true, logging: false,
+                backgroundColor: '#fffdf8', scale: SCALE, useCORS: true, logging: false,
                 scrollX: 0, scrollY: -window.scrollY,
                 windowWidth: document.documentElement.scrollWidth,
                 windowHeight: document.documentElement.scrollHeight,
                 onclone: function(doc) {
                     const cc = doc.querySelector('.insight-card.capture-mode');
-                    if (cc) { cc.style.backgroundColor = '#0d1117'; cc.style.background = '#0d1117'; }
-                    doc.querySelectorAll('.process-section, .core-text').forEach(el => { el.style.backgroundColor = '#0d1117'; });
+                    if (cc) { cc.style.backgroundColor = '#fffdf8'; cc.style.background = '#fffdf8'; }
+                    doc.querySelectorAll('.process-section, .core-text').forEach(el => { el.style.backgroundColor = '#fffdf8'; });
                 }
             });
             card.classList.remove('capture-mode');
