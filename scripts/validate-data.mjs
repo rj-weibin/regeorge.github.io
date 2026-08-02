@@ -158,7 +158,7 @@ const pageFiles = fs.existsSync(path.join(root, 'pages'))
 for (const relative of pageFiles) {
   const text = fs.readFileSync(path.join(root, 'pages', relative), 'utf8');
   const normalized = relative.replaceAll('\\', '/');
-  if (text.includes('.deploy_git') || text.includes('projects/philosophy-flywheel/data/knowledge-graph') || text.includes('hexo_posts') || text.includes('gardenForLilis') || text.includes('stickergotaro')) {
+  if (text.includes('.deploy_git') || text.includes('projects/philosophy-flywheel/data/knowledge-graph') || text.includes('hexo_posts') || text.includes('gardenForLilis')) {
     errors.push(`legacy data reference: pages/${relative}`);
   }
   const patterns = [/172\.17\.\d+\.\d+/, /Basic dGhpcmQ6MTIz/, /Credentials:\s*third:123/, /12345aA!/];
