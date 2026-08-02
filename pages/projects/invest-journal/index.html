@@ -14,7 +14,9 @@
             --text-tertiary: #6e7681;
             --border: rgba(240,246,252,0.08);
             --border-strong: rgba(240,246,252,0.14);
-            --accent: #58a6ff;
+            --accent: #66805c;
+            /* 鼠尾草绿，与 life-insights / table-tennis 同款暗绿色系 */
+            --accent-soft: rgba(102,128,92,0.18);
             --buy: #3fb950;
             --buy-bg: rgba(63,185,80,0.12);
             --hold: #d29922;
@@ -41,7 +43,7 @@
             padding: 48px 20px 80px;
         }
 
-        .container { max-width: 720px; width: 100%; }
+        .container { max-width: 720px; width: 100%; margin: 0 auto; }
 
         .back-link {
             display: inline-flex;
@@ -127,7 +129,7 @@
             letter-spacing: 0.02em;
         }
         .filter-chip:hover { border-color: var(--accent); color: var(--text); }
-        .filter-chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+        .filter-chip.active { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); font-weight: 600; }
 
         /* ── Timeline ── */
         .timeline { display: flex; flex-direction: column; gap: 20px; }
