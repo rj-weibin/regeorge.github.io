@@ -5,5 +5,6 @@
   {"id":"personal-engineering-thesis","dimension":"工作","icon":"🧭","dimensionDesc":"Te · 判断沉淀 · 人机协作","title":"个人工程论","description":"从脚本执行到测试生产线：记录由个人意图主导、经过验证并沉淀为工程资产的案例。","meta":"Insight · Decision · Impact","page":"projects/personal-engineering-thesis/index.html"},
   {"id":"engineering-skills","dimension":"工作","icon":"🧩","dimensionDesc":"Te · 方法沉淀 · 可迁移能力","title":"工程 Skills","description":"把不确定的工作拆成可验证、可恢复、可复用的能力卡片。","meta":"方法 · 门禁 · 工作方式","page":"projects/skills/index.html"},
   {"id":"life-insights","dimension":"生活","icon":"🌿","dimensionDesc":"Fi · 生活验证 · 当下体验","title":"生活感悟","description":"把生活随笔、个人原话和结构化洞见整合到同一条回路。","meta":"原话 · 洞见 · 关系","page":"projects/life-insights/index.html"},
+  {"id":"stickergotaro","dimension":"生活","icon":"🧲","dimensionDesc":"Fi · 生活验证 · 当下体验","title":"磁贴成长纪","description":"从代币经济到习惯内化的亲子成长产品，记录版本迭代与设计亮点。","meta":"亲子 · 产品 · 成长","page":"projects/stickergotaro/index.html"},
   {"id":"table-tennis","dimension":"乒乓","icon":"🏓","dimensionDesc":"Se · 身体直觉 · 肌肉记忆","title":"乒乓技术框架图谱","description":"系统化整理乒乓球技术与战术知识体系。","meta":"技术体系 · Se","page":"projects/project-table-tennis/index.html"}
 ]

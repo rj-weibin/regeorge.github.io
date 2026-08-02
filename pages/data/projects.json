@@ -60,6 +60,16 @@
     "page": "projects/life-insights/index.html"
   },
   {
+    "id": "stickergotaro",
+    "dimension": "生活",
+    "icon": "🧲",
+    "dimensionDesc": "Fi · 生活验证 · 当下体验",
+    "title": "磁贴成长纪",
+    "description": "从代币经济到习惯内化的亲子成长产品，记录版本迭代与设计亮点。",
+    "meta": "亲子 · 产品 · 成长",
+    "page": "projects/stickergotaro/index.html"
+  },
+  {
     "id": "table-tennis",
     "dimension": "乒乓",
     "icon": "🏓",
