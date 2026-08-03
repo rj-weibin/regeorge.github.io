@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: 20
 
-      - name: Validate data
+      - name: Validate data (builds pages first, then validates)
         run: node scripts/validate-data.mjs
 
       - name: Build pages

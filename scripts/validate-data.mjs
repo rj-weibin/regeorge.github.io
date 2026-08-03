@@ -5,6 +5,14 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
 
+// pages/ 是构建产物，不再提交到 git。校验前先重建，确保检查的是最新产物而不是陈旧快照。
+try {
+  await import('./build-site.mjs');
+} catch (error) {
+  console.error(`✗ build failed before validation:\n${error.stack}`);
+  process.exit(1);
+}
+
 function readJson(relative) {
   const file = path.join(root, relative);
   if (!fs.existsSync(file)) {
@@ -44,6 +52,7 @@ const personalEngineeringThesis = readJson('data/projects/personal-engineering-t
 const highQualityInvisibleContext = readJson('data/concepts/high-quality-invisible-context.json');
 const lifeInsights = readJson('data/projects/life-insights.json');
 const skillsHub = readJson('data/skills/skills-index.json');
+const pingpongCards = readJson('data/memory/sports/pingpong-cards.json');
 duplicateIds(graph?.nodes, 'concept');
 duplicateIds(books, 'book', item => item.bookId ?? item.id ?? item.title);
 duplicateValues(books, 'book', item => item.title?.trim());
@@ -115,6 +124,13 @@ cards?.forEach((card, index) => {
   if (!card.updatedAt) errors.push(`collision card ${index + 1}: missing updatedAt`);
 });
 duplicateIds(mobileCards?.cards, 'mobile card');
+duplicateIds(pingpongCards?.cards, 'pingpong card');
+pingpongCards?.cards?.forEach((card, index) => {
+  if (card.type !== 'pingpong-card') errors.push(`pingpong card ${index + 1}: type must be pingpong-card`);
+  if (!['draft', 'proposed', 'reviewed', 'archived'].includes(card.status)) errors.push(`pingpong card ${index + 1}: invalid status`);
+  if (!card.updatedAt) errors.push(`pingpong card ${index + 1}: missing updatedAt`);
+  if (!card.source) errors.push(`pingpong card ${index + 1}: missing source`);
+});
 
 const graphNodeIds = new Set(graph?.nodes?.map(node => node.id) ?? []);
 const graphTopicIds = new Set(graph?.topics?.map(topic => topic.id) ?? []);
@@ -148,7 +164,7 @@ if (fs.existsSync(pending) && fs.readdirSync(pending).length > 0) {
   console.warn('warning: inbox/pending contains unprocessed intake files');
 }
 
-for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/cards.json', 'pages/data/projects.json', 'pages/data/personal-engineering-thesis.json', 'pages/data/high-quality-invisible-context.json', 'pages/data/life-insights.json', 'pages/data/skills-index.json', 'pages/projects/life-insights/index.html', 'pages/projects/skills/index.html']) {
+for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/cards.json', 'pages/data/projects.json', 'pages/data/personal-engineering-thesis.json', 'pages/data/high-quality-invisible-context.json', 'pages/data/life-insights.json', 'pages/data/skills-index.json', 'pages/data/pingpong-cards.json', 'pages/projects/life-insights/index.html', 'pages/projects/skills/index.html']) {
   if (!fs.existsSync(path.join(root, relative))) errors.push(`missing build output: ${relative}`);
 }
 
