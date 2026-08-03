@@ -23,6 +23,8 @@
 
 乒乓卡是乒乓训练的个人原话卡片，独立存放于 `data/memory/sports/pingpong-cards.json`，结构与 `data/concepts/mobile-cards.json` 相同，但 `type` 为 `pingpong-card`、`category` 为 `乒乓`。它不与认知图谱混编，只被乒乓主页读取。页面需要的数据由 `scripts/build-site.mjs` 从这里生成。不要直接编辑 `pages/` 下的 JSON、JS 或 HTML。
 
+书籍事实以 `data/books/books.json` 为唯一来源。读书笔记的洞见经确认后升格为 `data/memory/atlas/` 节点并挂到对应书的 `detail.collisions`，不再单独维护 `reading-notes` 索引。
+
 ## 从 memory 到图谱的准入标准
 
 `data/memory/` 保存原始记录，`data/knowledge-graph.json` 只保存已结构化的节点。不是每篇 memory 都要进图谱——图谱筛选、去重、跨域联结，而不是全量搬运。一篇 memory 进入图谱，至少满足其一：
