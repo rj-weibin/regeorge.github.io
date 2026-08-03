@@ -21,7 +21,7 @@
 
 `source: null` 或 `status: proposed` 表示来源尚未完成确认，Agent 不得把它当作已确认事实。
 
-页面需要的数据由 `scripts/build-site.mjs` 从这里生成。不要直接编辑 `pages/` 下的 JSON、JS 或 HTML。
+乒乓卡是乒乓训练的个人原话卡片，独立存放于 `data/memory/sports/pingpong-cards.json`，结构与 `data/concepts/mobile-cards.json` 相同，但 `type` 为 `pingpong-card`、`category` 为 `乒乓`。它不与认知图谱混编，只被乒乓主页读取。页面需要的数据由 `scripts/build-site.mjs` 从这里生成。不要直接编辑 `pages/` 下的 JSON、JS 或 HTML。
 
 ## 状态
 

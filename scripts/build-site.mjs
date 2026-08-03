@@ -36,6 +36,7 @@ const personalEngineeringThesis = readJson('data/projects/personal-engineering-t
 const highQualityInvisibleContext = readJson('data/concepts/high-quality-invisible-context.json');
 const lifeInsights = readJson('data/projects/life-insights.json');
 const skills = readJson('data/skills/skills-index.json');
+const pingpongCards = readJson('data/memory/sports/pingpong-cards.json');
 fs.writeFileSync(path.join(pages, 'data', 'knowledge-graph.json'), JSON.stringify(graph, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'books.json'), JSON.stringify(books, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'philosophy-cards.json'), JSON.stringify(cards, null, 2) + '\n');
@@ -45,6 +46,7 @@ fs.writeFileSync(path.join(pages, 'data', 'personal-engineering-thesis.json'), J
 fs.writeFileSync(path.join(pages, 'data', 'high-quality-invisible-context.json'), JSON.stringify(highQualityInvisibleContext, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'life-insights.json'), JSON.stringify(lifeInsights, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'skills-index.json'), JSON.stringify(skills, null, 2) + '\n');
+fs.writeFileSync(path.join(pages, 'data', 'pingpong-cards.json'), JSON.stringify(pingpongCards, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'books-data.js'), `window.READING_SHELF_BOOKS = ${JSON.stringify(books, null, 2)};\n`);
 
 const registry = {
@@ -55,9 +57,10 @@ const registry = {
     books: books.length,
     collisionCards: cards.length,
     mobileCards: mobileCards.cards?.length ?? 0,
+    pingpongCards: pingpongCards.cards?.length ?? 0,
     projects: projects.length,
     skills: skills.skills?.length ?? 0,
   },
 };
 fs.writeFileSync(path.join(pages, 'data', 'registry.json'), JSON.stringify(registry, null, 2) + '\n');
-console.log(`Built pages/ (${registry.counts.concepts} concepts, ${registry.counts.books} books, ${registry.counts.collisionCards} collision cards, ${registry.counts.skills} skills)`);
+console.log(`Built pages/ (${registry.counts.concepts} concepts, ${registry.counts.books} books, ${registry.counts.collisionCards} collision cards, ${registry.counts.mobileCards} mobile cards, ${registry.counts.pingpongCards} pingpong cards, ${registry.counts.skills} skills)`);

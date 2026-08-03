@@ -1800,6 +1800,70 @@
                 </details>
             </div>
 
+        <!-- 数据驱动的乒乓卡（来自 data/memory/sports/pingpong-cards.json，构建为 pages/data/pingpong-cards.json） -->
+        <script>
+        (function () {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '../../data/pingpong-cards.json', false);
+            xhr.send();
+            if (xhr.status < 200 || xhr.status >= 300) return;
+            var data;
+            try { data = JSON.parse(xhr.responseText); } catch (e) { return; }
+            var cards = (data && data.cards) || [];
+            if (!cards.length) return;
+            var before = document.getElementById('card-errors');
+            var container = before ? before.parentNode : document.body;
+            var frag = document.createDocumentFragment();
+            var section = document.createElement('div');
+            section.className = 'insight-list';
+            section.id = 'data-cards';
+            section.style.marginTop = '40px';
+            var heading = document.createElement('h2');
+            heading.textContent = '数据卡片';
+            heading.style.cssText = 'color:var(--claude-sub);font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;margin:0 0 16px;';
+            section.appendChild(heading);
+            cards.forEach(function (card) {
+                var div = document.createElement('div');
+                div.className = 'insight-card';
+                var header = document.createElement('div');
+                header.className = 'card-header';
+                var tag = document.createElement('span');
+                tag.className = 'tag';
+                tag.textContent = (card.category || '乒乓') + ' · 数据卡';
+                header.appendChild(tag);
+                div.appendChild(header);
+                var details = document.createElement('details');
+                var summary = document.createElement('summary');
+                summary.setAttribute('data-hint', '（点击展开正文）');
+                var core = document.createElement('span');
+                core.className = 'core-text';
+                core.textContent = card.title || '未命名卡';
+                summary.appendChild(core);
+                details.appendChild(summary);
+                var hr = document.createElement('hr');
+                hr.className = 'divider';
+                details.appendChild(hr);
+                var content = document.createElement('div');
+                content.className = 'process-content';
+                var sec = document.createElement('div');
+                sec.className = 'process-section';
+                var h4 = document.createElement('h4');
+                h4.textContent = '正文';
+                sec.appendChild(h4);
+                var p = document.createElement('p');
+                p.style.whiteSpace = 'pre-wrap';
+                p.textContent = card.body || '';
+                sec.appendChild(p);
+                content.appendChild(sec);
+                details.appendChild(content);
+                div.appendChild(details);
+                section.appendChild(div);
+            });
+            frag.appendChild(section);
+            container.insertBefore(frag, before);
+        })();
+        </script>
+
         <footer>
             归档来源：[个人练球笔记 · 乒乓技术框架.md]<br>
             © 2026 reGeorge · 乒乓训练笔记
