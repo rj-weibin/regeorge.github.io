@@ -23,8 +23,6 @@ remove(pages);
 fs.mkdirSync(pages, { recursive: true });
 copy(template, pages);
 copy(path.join(root, 'assets'), path.join(pages, 'assets'));
-remove(path.join(pages, 'projects', 'reading-shelf', 'scripts'));
-remove(path.join(pages, 'projects', 'philosophy-flywheel', 'REVIEW.md'));
 fs.mkdirSync(path.join(pages, 'data'), { recursive: true });
 
 const graph = readJson('data/knowledge-graph.json');
