@@ -69,11 +69,12 @@
       "created": "2026-06-25",
       "type": "pingpong-card",
       "status": "reviewed",
-      "updatedAt": "2026-06-25",
+      "updatedAt": "2026-08-03",
       "source": "data/memory/sports/pingpong-cards.json",
       "links": [],
       "tags": [
-        "乒乓"
+        "乒乓",
+        "战术体系"
       ]
     },
     {
