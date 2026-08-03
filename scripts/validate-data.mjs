@@ -61,6 +61,16 @@ books?.forEach(book => {
   if ((book.notes ?? 0) !== collisionCount) errors.push(`book ${book.bookId}: notes must equal detail.collisions length`);
 });
 duplicateIds(projects, 'project');
+const projectFields = ['id', 'dimension', 'icon', 'dimensionDesc', 'title', 'description', 'meta', 'page'];
+projects?.forEach(project => {
+  for (const field of projectFields) {
+    if (!project[field]) errors.push(`project ${project.id ?? '(missing id)'}: missing ${field}`);
+  }
+  if (project.page) {
+    const templatePath = path.join(root, 'templates', 'site', project.page);
+    if (!fs.existsSync(templatePath)) errors.push(`project ${project.id}: page template missing: templates/site/${project.page}`);
+  }
+});
 if (personalEngineeringThesis) {
   if (personalEngineeringThesis.id !== 'personal-engineering-thesis') errors.push('personal engineering thesis: invalid id');
   if (personalEngineeringThesis.type !== 'project') errors.push('personal engineering thesis: type must be project');
@@ -176,6 +186,18 @@ for (const relative of pageFiles) {
   const normalized = relative.replaceAll('\\', '/');
   if (text.includes('.deploy_git') || text.includes('hexo_posts') || text.includes('gardenForLilis')) {
     errors.push(`legacy data reference: pages/${relative}`);
+  }
+  // 模板页 fetch 的数据文件必须都是 build 产物（pages/data/），避免页面引用到根本不生成的数据。
+  if (normalized.endsWith('.html') && normalized.startsWith('pages/')) {
+    const dataRefs = [...text.matchAll(/(?:fetch|load)\(['"]\.\.\/\.\.\/data\/([a-zA-Z0-9_./-]+\.(?:json|js))['"]\)/g)]
+      .map(match => match[1]);
+    const jsRefs = [...text.matchAll(/<script[^>]*src=["']\.\.\/\.\.\/data\/([a-zA-Z0-9_./-]+\.(?:json|js))["']/g)]
+      .map(match => match[1]);
+    for (const ref of [...dataRefs, ...jsRefs]) {
+      if (!fs.existsSync(path.join(root, 'pages', 'data', ref))) {
+        errors.push(`page ${normalized} references missing build output: pages/data/${ref}`);
+      }
+    }
   }
   const patterns = [/172\.17\.\d+\.\d+/, /Basic dGhpcmQ6MTIz/, /Credentials:\s*third:123/, /12345aA!/];
   if (normalized === 'pages/data/skills-index.json' || normalized === 'pages/projects/skills/index.html') {
