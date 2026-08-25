@@ -2,7 +2,7 @@
   "id": "personal-engineering-thesis",
   "type": "project",
   "status": "draft",
-  "updatedAt": "2026-07-23",
+  "updatedAt": "2026-08-05",
   "source": "caseHelper/knowledge/tomyself/personal-engineering-thesis.md",
   "links": [
     {
@@ -85,6 +85,13 @@
       "insight": "Agent 的价值不只在执行速度，也在于能否加载正确知识、暴露不确定性，并在错误扩散前停下。",
       "decision": "建设 Workstream Orchestrator、Librarian、Context Engineering 和 Steward Brain，让工作跨周期、跨上下文保持连续。",
       "evidence": ["workstream-orchestrator", "librarian", "context-engineering", "Steward Brain"]
+    },
+    {
+      "id": "from-serial-automation-to-agent-orchestration",
+      "title": "从串行建设到 Agent 并行探索",
+      "insight": "自动化建设的瓶颈不只在编码，还在用例分析、能力检索、页面实证、数据设计、调试和经验整理。",
+      "decision": "让 Agent 并行处理用例、代码、浏览器、API、数据库和知识检索；人工负责定义目标、验证结果和优化流程。",
+      "evidence": ["data/memory/work/2026-08-05-AI Agent驱动的自动化建设效率提升.md"]
     }
   ],
   "engineeringTheses": [

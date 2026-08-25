@@ -2,8 +2,8 @@
   "meta": {
     "title": "Knowledge Atlas",
     "subtitle": "从整体到局部，从快速审阅到深度理解",
-    "lastUpdated": "2026-07-20",
-    "reviewStatus": "结构化清洗后 61 个节点；历史回顾状态见 data/resources/knowledge-atlas-review.md",
+    "lastUpdated": "2026-08-25",
+    "reviewStatus": "结构化清洗后 62 个节点；历史回顾状态见 data/resources/knowledge-atlas-review.md",
     "sourceOfTruth": "data",
     "generatedFrom": "data/memory"
   },
@@ -2002,6 +2002,46 @@
         {
           "type": "enables",
           "target": "anxiety-cosmos",
+          "targetType": "node"
+        }
+      ]
+    },
+    {
+      "id": "agent-driven-automation-efficiency",
+      "topicId": "human-in-the-loop",
+      "title": "AI Agent 驱动的自动化建设效率提升",
+      "bookBadge": null,
+      "oneLiner": "AI 把自动化建设从单人串行的手工推进，转变为多 Agent 并行探索 + 人工审核决策的工程系统；效率瓶颈在写代码之前。",
+      "philosophyNote": "自动化建设的效率瓶颈不在写代码，而在写代码之前的信息收集、逻辑分析、环境验证和流程确认。引入 Agent 后，验证从「猜测后尝试」转变为「观察真实行为再形成结论」。",
+      "status": "human-reviewed",
+      "updatedAt": "2026-08-05",
+      "source": "data/memory/work/2026-08-05-AI Agent驱动的自动化建设效率提升.md",
+      "keyTakeaways": [
+        "分析从人工逐条拆解，转变为 AI 初步建模、人工审核收敛",
+        "验证从猜测后尝试，转变为观察真实行为再形成结论",
+        "执行从单人串行，转变为多 Agent 并行探索 + 人工统一决策",
+        "知识复用让个人经验转化为团队可复用资产",
+        "人工角色从执行转向目标定义、结果判断与流程优化"
+      ],
+      "relations": [
+        {
+          "type": "part_of",
+          "target": "human-in-the-loop",
+          "targetType": "topic"
+        },
+        {
+          "type": "extends",
+          "target": "personal-engineering-thesis",
+          "targetType": "project"
+        },
+        {
+          "type": "supports",
+          "target": "auto-test-station",
+          "targetType": "project"
+        },
+        {
+          "type": "related",
+          "target": "interactive-doc",
           "targetType": "node"
         }
       ]
