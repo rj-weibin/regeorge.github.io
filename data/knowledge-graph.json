@@ -2030,16 +2030,6 @@
           "targetType": "topic"
         },
         {
-          "type": "extends",
-          "target": "personal-engineering-thesis",
-          "targetType": "project"
-        },
-        {
-          "type": "supports",
-          "target": "auto-test-station",
-          "targetType": "project"
-        },
-        {
           "type": "related",
           "target": "interactive-doc",
           "targetType": "node"

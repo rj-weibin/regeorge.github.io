@@ -11,6 +11,8 @@
             --purple-end: #a78bfa;
             --blue-start: #2563eb;
             --blue-end: #60a5fa;
+            --pink: #ec4899;
+            --amber: #f59e0b;
             --bg: #fafafa;
             --surface: #ffffff;
             --text: #1a1a2e;
@@ -74,6 +76,11 @@
             color: var(--text-secondary); font-weight: 400;
             margin-bottom: 28px; letter-spacing: -0.01em;
         }
+        .hero-quote {
+            font-size: 0.95rem; color: var(--text-secondary);
+            border-left: 3px solid var(--purple-start);
+            padding-left: 14px; margin-bottom: 28px; line-height: 1.8;
+        }
         .tech-stack {
             display: flex; flex-wrap: wrap; gap: 8px;
         }
@@ -107,35 +114,49 @@
             overflow: hidden;
         }
         .phone-header {
-            padding: 24px 16px 12px;
+            padding: 20px 16px 12px;
             text-align: center;
             background: linear-gradient(135deg, var(--purple-start), var(--blue-start));
             color: #fff;
         }
-        .phone-header h3 { font-size: 0.95rem; font-weight: 600; }
-        .phone-header p { font-size: 0.7rem; opacity: 0.8; margin-top: 2px; }
+        .phone-header h3 { font-size: 0.9rem; font-weight: 600; }
+        .phone-header p { font-size: 0.68rem; opacity: 0.8; margin-top: 2px; }
         .sticker-balance {
             display: flex; align-items: center; justify-content: center; gap: 4px;
-            margin-top: 8px;
-            font-size: 1.5rem; font-weight: 700;
+            margin-top: 6px;
+            font-size: 1.4rem; font-weight: 700;
         }
-        .phone-body { flex: 1; padding: 12px; }
+        .phone-body { flex: 1; padding: 10px; overflow: hidden; }
+        .person-group {
+            margin-bottom: 8px;
+        }
+        .person-head {
+            display: flex; align-items: center; gap: 6px;
+            padding: 6px 8px;
+            font-size: 0.68rem; font-weight: 700; color: #4f46e5;
+            background: #eef2ff; border-radius: 8px; margin-bottom: 4px;
+        }
+        .person-head .mbti { color: var(--text-secondary); font-weight: 500; font-size: 0.62rem; }
         .task-item {
-            display: flex; align-items: center; gap: 10px;
-            padding: 10px; margin-bottom: 6px;
-            background: #fff; border-radius: 12px;
-            font-size: 0.75rem; border: 1px solid var(--border);
-            transition: all 0.3s;
+            display: flex; align-items: center; gap: 8px;
+            padding: 7px 8px; margin-bottom: 4px;
+            background: #fff; border-radius: 10px;
+            font-size: 0.7rem; border: 1px solid var(--border);
         }
-        .task-item .task-emoji { font-size: 1.1rem; }
+        .task-item .task-emoji { font-size: 1rem; }
         .task-item .task-name { flex: 1; font-weight: 500; }
         .task-item .task-points {
             background: linear-gradient(135deg, var(--purple-start), var(--blue-start));
-            color: #fff; padding: 2px 8px; border-radius: 100px;
-            font-size: 0.65rem; font-weight: 600;
+            color: #fff; padding: 2px 7px; border-radius: 100px;
+            font-size: 0.6rem; font-weight: 600;
         }
-        .task-item.done {
-            opacity: 0.5; text-decoration: line-through;
+        .task-item.done { opacity: 0.5; text-decoration: line-through; }
+        .gacha-card {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 8px; margin-top: 2px;
+            background: linear-gradient(135deg, #fff7ed, #ffedd5);
+            border: 1px solid #fed7aa; border-radius: 10px;
+            font-size: 0.7rem; font-weight: 700; color: #c2410c;
         }
 
         /* ===== Floating decorations ===== */
@@ -167,7 +188,11 @@
         .section-title {
             font-size: clamp(1.6rem, 3.5vw, 2.2rem);
             font-weight: 700; letter-spacing: -0.02em;
-            margin-bottom: 40px;
+            margin-bottom: 24px;
+        }
+        .section-intro {
+            font-size: 0.98rem; color: var(--text-secondary);
+            line-height: 1.9; margin-bottom: 40px; max-width: 720px;
         }
 
         /* ===== Bento Grid ===== */
@@ -204,7 +229,13 @@
             margin-bottom: 8px; letter-spacing: -0.01em;
         }
         .bento-card p {
-            font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;
+            font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7;
+        }
+        .bento-card .why {
+            margin-top: 12px; padding-top: 12px;
+            border-top: 1px dashed var(--border);
+            font-size: 0.84rem; color: var(--text);
+            line-height: 1.7;
         }
         .bento-tags {
             display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px;
@@ -216,6 +247,22 @@
         .bento-tag.purple { background: #f3e8ff; color: var(--purple-start); }
         .bento-tag.blue { background: #dbeafe; color: var(--blue-start); }
         .bento-tag.green { background: #dcfce7; color: #16a34a; }
+        .bento-tag.amber { background: #fef3c7; color: #b45309; }
+        .bento-tag.pink { background: #fce7f3; color: #be185d; }
+
+        /* ===== Design voice quote ===== */
+        .voice {
+            background: linear-gradient(135deg, #f5f3ff, #eff6ff);
+            border: 1px solid #e0e7ff;
+            border-radius: var(--radius);
+            padding: 40px;
+            margin-bottom: 24px;
+        }
+        .voice p {
+            font-size: 1.02rem; line-height: 2; color: var(--text);
+        }
+        .voice p + p { margin-top: 16px; }
+        .voice .accent { color: var(--purple-start); font-weight: 600; }
 
         /* ===== Version Timeline ===== */
         .timeline { position: relative; padding-left: 32px; }
@@ -237,21 +284,23 @@
         }
         .timeline-item:nth-child(2) .timeline-dot { box-shadow: 0 0 0 2px var(--blue-start); }
         .timeline-item:nth-child(3) .timeline-dot { box-shadow: 0 0 0 2px #8b5cf6; }
+        .timeline-item:nth-child(4) .timeline-dot { box-shadow: 0 0 0 2px var(--pink); }
         .timeline-version {
             font-size: 0.7rem; font-weight: 700;
             text-transform: uppercase; letter-spacing: 0.08em;
             margin-bottom: 4px;
         }
-        .timeline-item:nth-child(1) .timeline-version { color: var(--purple-start); }
-        .timeline-item:nth-child(2) .timeline-version { color: var(--blue-start); }
-        .timeline-item:nth-child(3) .timeline-version { color: #8b5cf6; }
+        .timeline-item:nth-child(1) .timeline-version { color: var(--pink); }
+        .timeline-item:nth-child(2) .timeline-version { color: var(--purple-start); }
+        .timeline-item:nth-child(3) .timeline-version { color: var(--blue-start); }
+        .timeline-item:nth-child(4) .timeline-version { color: #8b5cf6; }
         .timeline-title {
             font-size: 1.15rem; font-weight: 600;
             margin-bottom: 6px; letter-spacing: -0.01em;
         }
         .timeline-desc {
             font-size: 0.88rem; color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.7;
         }
         .timeline-features {
             display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px;
@@ -263,7 +312,7 @@
             border: 1px solid var(--border);
         }
 
-        /* ===== Interactive Demo ===== */
+        /* ===== Gacha Demo ===== */
         .demo-container {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -280,115 +329,75 @@
             display: flex; align-items: center; gap: 6px;
             font-size: 1.1rem; font-weight: 700;
         }
-        .demo-body { padding: 24px; }
-        .demo-task {
-            display: flex; align-items: center; gap: 12px;
-            padding: 14px 18px; margin-bottom: 10px;
-            background: #f8fafc; border: 1px solid var(--border);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: all 0.3s;
-            user-select: none;
+        .demo-body { padding: 24px; display: flex; flex-direction: column; align-items: center; }
+        .gacha-machine {
+            width: 130px; height: 150px;
+            background: linear-gradient(180deg, #ff6b6b, #ee5a24);
+            border-radius: 20px 20px 28px 28px;
             position: relative;
+            box-shadow: 0 16px 32px rgba(238,90,36,0.25);
+            display: flex; flex-direction: column; align-items: center;
+            padding-top: 18px;
+        }
+        .gacha-machine::before {
+            content: '';
+            position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+            width: 60px; height: 26px;
+            background: linear-gradient(180deg, #4f46e5, #7c3aed);
+            border-radius: 10px 10px 0 0;
+        }
+        .gacha-dome {
+            width: 66px; height: 52px;
+            background: rgba(255,255,255,0.25);
+            border: 3px solid rgba(255,255,255,0.6);
+            border-radius: 50% 50% 30% 30%;
+            display: flex; align-items: center; justify-content: center;
             overflow: hidden;
         }
-        .demo-task:hover { border-color: var(--purple-start); background: #faf5ff; }
-        .demo-task.completed {
-            opacity: 0.5;
-            pointer-events: none;
+        .gacha-dome .egg { font-size: 2rem; transition: transform 0.15s; }
+        .gacha-dome .egg.spin { animation: eggSpin 0.12s linear infinite; }
+        @keyframes eggSpin {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-4px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
         }
-        .demo-task.completed .demo-task-name { text-decoration: line-through; }
-        .demo-task-emoji { font-size: 1.3rem; }
-        .demo-task-name { flex: 1; font-size: 0.9rem; font-weight: 500; }
-        .demo-task-points {
-            font-size: 0.8rem; font-weight: 600;
-            color: var(--purple-start);
-        }
-        .demo-task::after {
-            content: '';
-            position: absolute; inset: 0;
+        .gacha-slot { margin-top: 8px; font-size: 1.1rem; }
+        .gacha-btn {
+            margin-top: 16px;
             background: linear-gradient(135deg, var(--purple-start), var(--blue-start));
-            opacity: 0; transition: opacity 0.4s;
+            color: #fff; border: none;
+            padding: 12px 36px; border-radius: 100px;
+            font-size: 0.95rem; font-weight: 600; cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
         }
-        .demo-task.tapped::after {
-            opacity: 0.1;
+        .gacha-btn:hover { transform: scale(1.03); }
+        .gacha-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .gacha-result {
+            margin-top: 18px;
+            border-radius: 14px; padding: 16px 24px;
+            text-align: center; display: none;
+            border: 2px solid;
+        }
+        .gacha-result.show { display: block; animation: resultPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        @keyframes resultPop {
+            0% { transform: scale(0.6); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .gacha-result .res-icon { font-size: 2.6rem; display: block; margin-bottom: 4px; }
+        .gacha-result .res-label { font-size: 0.95rem; font-weight: 700; }
+        .gacha-result .res-amount { font-size: 1.4rem; font-weight: 800; margin-top: 2px; }
+        .gacha-result.rarity-common { background: #f1f5f9; border-color: #cbd5e1; color: #334155; }
+        .gacha-result.rarity-silver { background: #f0f9ff; border-color: #93c5fd; color: #0369a1; }
+        .gacha-result.rarity-gold { background: #fffbeb; border-color: #fbbf24; color: #b45309; }
+        .gacha-result.rarity-rainbow {
+            background: linear-gradient(135deg, #fdf2f8, #f5f3ff, #eff6ff);
+            border-color: var(--pink); color: #be185d;
         }
         .demo-hint {
             text-align: center; font-size: 0.8rem;
             color: var(--text-secondary); margin-top: 16px;
             opacity: 0.7;
         }
-
-        /* ===== Flying Sticker Animation ===== */
-        .flying-sticker {
-            position: fixed;
-            font-size: 2rem;
-            z-index: 200;
-            pointer-events: none;
-            transition: none;
-        }
-        @keyframes flyToBalance {
-            0% { opacity: 1; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
-            100% { opacity: 0; transform: scale(0.3) translate(var(--tx), var(--ty)); }
-        }
-        .flying-sticker.active {
-            animation: flyToBalance 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
-
-        /* ===== Badge Popup ===== */
-        .badge-overlay {
-            position: fixed; inset: 0;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            z-index: 300;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.4s;
-        }
-        .badge-overlay.show { opacity: 1; pointer-events: auto; }
-        .badge-popup {
-            background: var(--surface);
-            border-radius: 24px;
-            padding: 40px;
-            text-align: center;
-            transform: scale(0.8);
-            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-            max-width: 320px;
-        }
-        .badge-overlay.show .badge-popup { transform: scale(1); }
-        .badge-icon {
-            width: 80px; height: 80px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2.2rem;
-            box-shadow: 0 8px 24px rgba(251,191,36,0.4);
-            position: relative;
-        }
-        .badge-icon::after {
-            content: '';
-            position: absolute; inset: -4px;
-            border-radius: 50%;
-            background: conic-gradient(from 0deg, transparent, #fbbf24, transparent, #f59e0b, transparent);
-            z-index: -1;
-            animation: spinGlow 2s linear infinite;
-        }
-        @keyframes spinGlow {
-            to { transform: rotate(360deg); }
-        }
-        .badge-popup h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }
-        .badge-popup p { font-size: 0.88rem; color: var(--text-secondary); }
-        .badge-popup .badge-close {
-            margin-top: 20px;
-            background: linear-gradient(135deg, var(--purple-start), var(--blue-start));
-            color: #fff; border: none; padding: 10px 32px;
-            border-radius: 100px; font-size: 0.88rem; font-weight: 600;
-            cursor: pointer; transition: opacity 0.2s;
-        }
-        .badge-popup .badge-close:hover { opacity: 0.85; }
 
         /* ===== Footer ===== */
         .page-footer {
@@ -426,17 +435,23 @@
         <div class="hero-badge">
             <span class="emoji">🧲</span>
             Stickergotaro
-            <span style="opacity:0.7; margin-left: 4px;">v3.0 Stable</span>
+            <span style="opacity:0.7; margin-left: 4px;">v4.0 Android</span>
         </div>
         <h1>磁贴成长纪</h1>
-        <p class="hero-subtitle">从代币经济到习惯内化的亲子进化论</p>
+        <p class="hero-subtitle">从代币经济到习惯内化的亲子成长纪</p>
+        <p class="hero-quote">
+            这不是一个管理孩子的工具，而是一家人一起玩、一起长大、一起看见彼此的地方。<br>
+            安卓版把任务按"人"归集、把奖励交给"命运"、让每个操作都有魔法感——<br>
+            因为真正能长成习惯的，从来不是被要求做的事，而是好玩到想再做一次的事。
+        </p>
         <div class="tech-stack">
             <span class="tech-tag">Taro 3</span>
             <span class="tech-tag">React</span>
             <span class="tech-tag">Zustand</span>
-            <span class="tech-tag">Supabase</span>
             <span class="tech-tag">Tailwind CSS</span>
+            <span class="tech-tag">Capacitor 6</span>
             <span class="tech-tag">Lottie</span>
+            <span class="tech-tag">Kotlin Compose</span>
         </div>
 
         <!-- Hero Visual: Phone Mockup -->
@@ -449,36 +464,93 @@
                     <div class="phone-header">
                         <h3>小满的磁贴银行</h3>
                         <p>今日已赚 5 枚磁贴</p>
-                        <div class="sticker-balance">🧲 23</div>
+                        <div class="sticker-balance">🧲 23 · ⭐ 2</div>
                     </div>
                     <div class="phone-body">
-                        <div class="task-item">
-                            <span class="task-emoji">🍚</span>
-                            <span class="task-name">吃饭香香</span>
-                            <span class="task-points">+1</span>
+                        <div class="person-group">
+                            <div class="person-head">👴 爷爷 <span class="mbti">ISTP · 动手派</span></div>
+                            <div class="task-item done">
+                                <span class="task-emoji">🛠️</span>
+                                <span class="task-name">一起修好小玩具</span>
+                                <span class="task-points">+3</span>
+                            </div>
                         </div>
-                        <div class="task-item">
-                            <span class="task-emoji">📚</span>
-                            <span class="task-name">自主阅读20分钟</span>
-                            <span class="task-points">+2</span>
+                        <div class="person-group">
+                            <div class="person-head">👵 奶奶 <span class="mbti">INFP · 故事家</span></div>
+                            <div class="task-item">
+                                <span class="task-emoji">🎨</span>
+                                <span class="task-name">一起画一幅画</span>
+                                <span class="task-points">+2</span>
+                            </div>
                         </div>
-                        <div class="task-item done">
-                            <span class="task-emoji">🐌</span>
-                            <span class="task-name">耐心小蜗牛</span>
-                            <span class="task-points">+3</span>
+                        <div class="person-group">
+                            <div class="person-head">👨 爸爸 <span class="mbti">INTJ · 棋手</span></div>
+                            <div class="task-item">
+                                <span class="task-emoji">♟️</span>
+                                <span class="task-name">下一盘棋</span>
+                                <span class="task-points">+3</span>
+                            </div>
                         </div>
-                        <div class="task-item">
-                            <span class="task-emoji">🎨</span>
-                            <span class="task-name">创意画画</span>
-                            <span class="task-points">+1</span>
-                        </div>
-                        <div class="task-item">
-                            <span class="task-emoji">🧹</span>
-                            <span class="task-name">整理玩具</span>
-                            <span class="task-points">+1</span>
-                        </div>
+                        <div class="gacha-card">🎰 每日扭蛋 · 还有一次</div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Philosophy -->
+    <section class="section" id="philosophy">
+        <div class="section-label">Why It's Built This Way</div>
+        <h2 class="section-title">为什么这么做</h2>
+
+        <div class="voice">
+            <p>
+                磁贴成长纪最早只是给孩子做的一个"代币制"小程序：完成任务，赚磁贴，换心愿。
+                做着做着我发现，最难的不是让孩子完成任务，而是让习惯真的长出来。
+            </p>
+            <p>
+                安卓版是一次更诚实的重做。我把每个"功能"重新想了一遍，
+                最后它们都指向同一件事：<span class="accent">把任务按人归集，把奖励交给命运，让每个操作都有魔法感。</span>
+                因为一个习惯能否长出来，取决于孩子做完之后还想不想再做一次。
+            </p>
+        </div>
+
+        <div class="bento-grid">
+            <div class="bento-card">
+                <div class="bento-icon" style="background:#eef2ff;">👨‍👩‍👧</div>
+                <h3>任务按人归集 —— 不是清单，是关系</h3>
+                <p>爷爷是 ISTP，话少手巧，他的任务叫"一起修好一件小玩具"；奶奶是 INFP，温柔有想象力，她的任务叫"一起画一幅画"。任务不再是一张冷冰冰的待办表，而是每个人用自己的方式参与小满的成长。</p>
+                <div class="why">MBTI 不是标签，是"这个人能给孩子什么"的说明书。一家人各用自己的长处陪孩子，而不是只有妈妈一个人念清单。</div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-icon" style="background:#fff7ed;">🎰</div>
+                <h3>每日扭蛋 —— 把命运交给随机</h3>
+                <p>每天一次，蛋从扭蛋机里掉出来：掉落、摇晃、裂开、发光。60% 是普通蛋，5% 是彩虹蛋。因为不知道会抽到什么，所以每天都想再扭一次。</p>
+                <div class="why">习惯养成需要确定性，也需要一点点惊喜。不确定的奖励反而比确定的更让人期待——孩子不只是完成任务，是在玩一个每天开奖的小游戏。</div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-icon" style="background:#fce7f3;">🌈</div>
+                <h3>心情转换器 —— 置身其中不陷进去</h3>
+                <p>坏情绪是一只灰色的小怪兽。孩子选一个情绪，深呼吸，看着它从灰色慢慢变成彩色。坏心情不用被消灭，只需要被转化。</p>
+                <div class="why">这个功能里藏着我自己的生活哲学：情绪来了，承认它、看着它，别被它带走。"可能既没那么糟，也没那么好。"</div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-icon" style="background:#fef3c7;">🏅</div>
+                <h3>勋章收集册 —— 从做事到成为</h3>
+                <p>十枚勋章，四页收集册：传说、勇气、智慧、见证。未解锁的是一格虚线框，里面画着"？"和进度。点开一枚勋章，会看到它推荐的任务。</p>
+                <div class="why">勋章不是墙上的荣誉，是一张行动清单：想成为勇敢的人，就去做那些关于勇气的事。从"我完成了"到"我是这样的人"。</div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-icon" style="background:#dcfce7;">👾</div>
+                <h3>小怪兽精灵 —— 让每个操作有魔法感</h3>
+                <p>每个任务旁边住着一只 Q 版小怪兽，会呼吸、会打瞌睡。完成任务时它跳起来庆祝；情绪转化、扭蛋开箱、图片展开，每一处都有动画、声音和震动。</p>
+                <div class="why">孩子不需要看懂机制，只要感觉"这很好玩"。魔法感是习惯最诚实的入口——觉得好玩，才会再来。</div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-icon" style="background:#eff6ff;">☁️</div>
+                <h3>家人档案 + 云同步 —— 全家参与，不只在手机里</h3>
+                <p>每个家人有一份完整档案：MBTI、性格、兴趣、家庭角色、育儿建议，可以一键导出分享。记录、照片、任务、家人档案都能同步到云端。</p>
+                <div class="why">成长不该只发生在一台手机上。全家人的参与方式值得被认真设计，也值得被保存下来、带得走。</div>
             </div>
         </div>
     </section>
@@ -491,16 +563,33 @@
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-version">v1.0 · 核心激励 (MVP)</div>
-                <div class="timeline-title">任务闭环 × 代币逻辑</div>
+                <div class="timeline-version">v4.0 · Android · 魔法与关系 (Magic &amp; People)</div>
+                <div class="timeline-title">Lottie 动效体系 × 人物归集 × 扭蛋 × 勋章收集册</div>
                 <div class="timeline-desc">
-                    建立最基础的激励机制：完成任务 → 赚取磁贴 → 兑换奖励。让孩子在"梦想屋"中看到自己的积累如何变成真实奖励，形成行为闭环。
+                    迁到 Taro H5 + Capacitor，跑进安卓 WebView；引入 lottie-web 动效体系——任务小怪兽、心情转换魔法、扭蛋开箱、图片平滑展开，配合声音与震动形成多模态反馈。原生版设计方向进一步加入人物归集任务、MBTI 家人共创、勋章收集册与云同步。设计的重心从"完成任务"转向"和谁一起、成为什么样的人、碰见什么惊喜"。
                 </div>
                 <div class="timeline-features">
-                    <span class="timeline-feature">📋 任务清单</span>
-                    <span class="timeline-feature">🧲 磁贴积分</span>
-                    <span class="timeline-feature">🏠 梦想屋兑换</span>
-                    <span class="timeline-feature">📊 每日统计</span>
+                    <span class="timeline-feature">✨ Lottie 动效体系</span>
+                    <span class="timeline-feature">🎰 每日扭蛋</span>
+                    <span class="timeline-feature">👨‍👩‍👧 人物归集</span>
+                    <span class="timeline-feature">🏅 勋章收集册</span>
+                    <span class="timeline-feature">🎵 声音 + 震动</span>
+                    <span class="timeline-feature">📱 Capacitor Android</span>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-version">v3.0 · 动效反馈 × 数据飞轮 (Flywheel)</div>
+                <div class="timeline-title">CSS 动效 × 周报展示</div>
+                <div class="timeline-desc">
+                    小程序端引入纯 CSS 动画体系：磁贴飞入、勋章绽放、全垒打撒花。自动生成周报，把碎片化的日常积累变成可回顾的成长档案，形成数据飞轮——记录越多，画像越清晰，激励越精准。
+                </div>
+                <div class="timeline-features">
+                    <span class="timeline-feature">✨ CSS 物理动效</span>
+                    <span class="timeline-feature">🎆 粒子特效</span>
+                    <span class="timeline-feature">📊 数据飞轮</span>
+                    <span class="timeline-feature">📝 周报自动生成</span>
                 </div>
             </div>
 
@@ -521,82 +610,79 @@
 
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <div class="timeline-version">v3.0 · 动效反馈 × 数据飞轮 (Flywheel)</div>
-                <div class="timeline-title">安卓物理动效 × 周报展示</div>
+                <div class="timeline-version">v1.0 · 核心激励 (MVP)</div>
+                <div class="timeline-title">任务闭环 × 代币逻辑</div>
                 <div class="timeline-desc">
-                    引入安卓原生级动效体系：磁贴吸附抛物线、勋章绽放粒子特效、全垒打撒花动画。自动生成周报，把碎片化的日常积累变成可回顾的成长档案，形成数据飞轮——记录越多，画像越清晰，激励越精准。
+                    建立最基础的激励机制：完成任务 → 赚取磁贴 → 兑换奖励。让孩子在"梦想屋"中看到自己的积累如何变成真实奖励，形成行为闭环。
                 </div>
                 <div class="timeline-features">
-                    <span class="timeline-feature">✨ 物理动效</span>
-                    <span class="timeline-feature">🎆 粒子特效</span>
-                    <span class="timeline-feature">📊 数据飞轮</span>
-                    <span class="timeline-feature">📝 周报自动生成</span>
+                    <span class="timeline-feature">📋 任务清单</span>
+                    <span class="timeline-feature">🧲 磁贴积分</span>
+                    <span class="timeline-feature">🏠 梦想屋兑换</span>
+                    <span class="timeline-feature">📊 每日统计</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Bento Grid: Design Highlights -->
+    <!-- Design Highlights -->
     <section class="section" id="design">
         <div class="section-label">Design Highlights</div>
         <h2 class="section-title">设计亮点</h2>
 
         <div class="bento-grid">
             <div class="bento-card">
-                <div class="bento-icon" style="background:#f3e8ff;">🧲</div>
-                <h3>磁铁吸附动效</h3>
-                <p>完成任务时磁贴以抛物线轨迹飞入余额槽，模拟真实磁铁吸附的物理触感。</p>
+                <div class="bento-icon" style="background:#eef2ff;">🧲</div>
+                <h3>双轨激励制</h3>
+                <p>磁贴管日常小奖励，许愿星管低频大梦想。高频即时反馈 + 低频延迟满足分离，孩子不用艰难地攒几十个磁贴去换一个大愿望。</p>
                 <div class="bento-tags">
+                    <span class="bento-tag purple">Token Economy</span>
+                    <span class="bento-tag blue">Dual-Track</span>
+                </div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-icon" style="background:#fff7ed;">🎰</div>
+                <h3>加权随机扭蛋</h3>
+                <p>每日一次，60% 普通蛋 / 25% 银蛋 / 10% 金蛋 / 5% 彩虹蛋。掉落 → 摇晃 → 裂开 → 光效，一套完整的开蛋仪式。</p>
+                <div class="bento-tags">
+                    <span class="bento-tag amber">Variable Reward</span>
                     <span class="bento-tag purple">Lottie</span>
-                    <span class="bento-tag blue">Physics</span>
                 </div>
             </div>
             <div class="bento-card">
-                <div class="bento-icon" style="background:#dbeafe;">🏅</div>
-                <h3>品格勋章系统</h3>
-                <p>勇气、智慧、善良、坚韧、创造力——五种勋章对应五种核心品格，从"做事"升级为"成为"。</p>
+                <div class="bento-icon" style="background:#dcfce7;">👾</div>
+                <h3>任务小怪兽精灵</h3>
+                <p>吃饭、洗澡、收纳、守时、作息，每个任务有一只专属小怪兽，idle 时轻轻呼吸，完成时 burst 庆祝，做完就"睡着了"。</p>
                 <div class="bento-tags">
-                    <span class="bento-tag purple">Identity</span>
-                    <span class="bento-tag green">Gamification</span>
-                </div>
-            </div>
-            <div class="bento-card">
-                <div class="bento-icon" style="background:#fef3c7;">🔄</div>
-                <h3>数据飞轮</h3>
-                <p>日常记录自动汇总为周报——任务完成率、品格成长曲线、高光时刻回顾。记录越多，成长画像越清晰，家长能精准识别孩子需要加强的方向。碎片化的日常积累变成系统化的成长档案。</p>
-                <div class="bento-tags">
-                    <span class="bento-tag purple">Supabase</span>
-                    <span class="bento-tag blue">Zustand</span>
-                    <span class="bento-tag green">Auto Report</span>
-                </div>
-            </div>
-            <div class="bento-card">
-                <div class="bento-icon" style="background:#fce7f3;">🎪</div>
-                <h3>安卓动效体系</h3>
-                <p>安卓原生级动画：磁贴抛物线飞入、勋章绽放粒子特效、全垒打撒花、心情转换祝贺动画。每一次操作都有视觉反馈，让习惯养成变得有仪式感。</p>
-                <div class="bento-tags">
+                    <span class="bento-tag green">Mascot</span>
                     <span class="bento-tag purple">Lottie</span>
-                    <span class="bento-tag blue">CSS Physics</span>
-                    <span class="bento-tag green">Micro-interaction</span>
                 </div>
             </div>
             <div class="bento-card">
-                <div class="bento-icon" style="background:#dcfce7;">👨‍👩‍👧</div>
-                <h3>家庭角色专属心愿</h3>
-                <p>每个家庭成员有自己的 MBTI 闪光点。比如爷爷（ISTP）带玩具拼装任务和工具类奖励，形成"技能传授→动手实践→获得磁贴→兑换心愿"的正向循环。让不同性格的家人都有独特的参与感和认可感。</p>
+                <div class="bento-icon" style="background:#fef3c7;">🏅</div>
+                <h3>勋章 → 任务闭环</h3>
+                <p>点开未解锁勋章，看到它推荐的具体任务，一键加进首页。勋章从"展示荣誉"变成"通往品质的行动清单"。</p>
                 <div class="bento-tags">
-                    <span class="bento-tag purple">MBTI</span>
-                    <span class="bento-tag blue">亲子联结</span>
-                    <span class="bento-tag green">个性化</span>
+                    <span class="bento-tag amber">Collection Book</span>
+                    <span class="bento-tag green">Actionable</span>
                 </div>
             </div>
             <div class="bento-card">
-                <div class="bento-icon" style="background:#fce7f3;">📱</div>
-                <h3>Taro 跨端</h3>
-                <p>基于 Taro 3 + React 开发，一套代码覆盖微信小程序和 H5，保持体验一致。</p>
+                <div class="bento-icon" style="background:#fce7f3;">🌈</div>
+                <h3>心情转换魔法</h3>
+                <p>灰色小怪兽在孩子的深呼吸中慢慢变成彩色，配上升调音效与震动。情绪管理不是讲道理，是一场看得见的转化。</p>
                 <div class="bento-tags">
-                    <span class="bento-tag purple">Taro 3</span>
-                    <span class="bento-tag blue">React</span>
+                    <span class="bento-tag pink">Emotion</span>
+                    <span class="bento-tag purple">Magic</span>
+                </div>
+            </div>
+            <div class="bento-card">
+                <div class="bento-icon" style="background:#eff6ff;">🎵</div>
+                <h3>多模态反馈</h3>
+                <p>每次操作都有动画 + 合成音效 + 震动三层回应。声音用 WebAudio 实时合成（金币音、礼炮音、风铃音），无需音频文件。</p>
+                <div class="bento-tags">
+                    <span class="bento-tag blue">WebAudio</span>
+                    <span class="bento-tag purple">Haptics</span>
                 </div>
             </div>
         </div>
@@ -605,54 +691,37 @@
     <!-- Interactive Demo -->
     <section class="section" id="demo">
         <div class="section-label">Try It</div>
-        <h2 class="section-title">试试看：完成任务赚磁贴</h2>
+        <h2 class="section-title">试试看：扭一次蛋</h2>
+        <p class="section-intro">每天一次，把命运交给扭蛋机。抽到彩虹蛋的那一刻，你大概能懂小满为什么愿意每天打开这个 App。</p>
 
         <div class="demo-container">
             <div class="demo-header">
-                <h3>小满的今日任务</h3>
+                <h3>小满的每日扭蛋</h3>
                 <div class="balance-display">
                     🧲 <span id="demo-balance">0</span>
                 </div>
             </div>
             <div class="demo-body">
-                <div class="demo-task" onclick="completeTask(this, '🍚', 1, 80)">
-                    <span class="demo-task-emoji">🍚</span>
-                    <span class="demo-task-name">吃饭香香</span>
-                    <span class="demo-task-points">+1 磁贴</span>
+                <div class="gacha-machine">
+                    <div class="gacha-dome">
+                        <div class="egg" id="demo-egg">🥚</div>
+                    </div>
+                    <div class="gacha-slot" id="demo-slot">🎰</div>
                 </div>
-                <div class="demo-task" onclick="completeTask(this, '📚', 2, 100)">
-                    <span class="demo-task-emoji">📚</span>
-                    <span class="demo-task-name">自主阅读20分钟</span>
-                    <span class="demo-task-points">+2 磁贴</span>
+                <button class="gacha-btn" id="demo-btn">扭一下！</button>
+                <div class="gacha-result" id="demo-result">
+                    <span class="res-icon" id="res-icon">🥚</span>
+                    <div class="res-label" id="res-label"></div>
+                    <div class="res-amount" id="res-amount"></div>
                 </div>
-                <div class="demo-task" onclick="completeTask(this, '🐌', 3, 150)">
-                    <span class="demo-task-emoji">🐌</span>
-                    <span class="demo-task-name">耐心小蜗牛</span>
-                    <span class="demo-task-points">+3 磁贴</span>
-                </div>
-                <div class="demo-task" onclick="completeTask(this, '🎨', 1, 60)">
-                    <span class="demo-task-emoji">🎨</span>
-                    <span class="demo-task-name">创意画画</span>
-                    <span class="demo-task-points">+1 磁贴</span>
-                </div>
-                <p class="demo-hint">点击任务，看看磁贴飞行的效果 🧲</p>
+                <p class="demo-hint">点击按钮，看看你能抽到什么蛋 🧲（每天一次，明天见）</p>
             </div>
         </div>
     </section>
 
-    <!-- Badge Popup -->
-    <div class="badge-overlay" id="badge-overlay" onclick="closeBadge()">
-        <div class="badge-popup">
-            <div class="badge-icon">🏅</div>
-            <h3>获得「自控力勋章」</h3>
-            <p>耐心小蜗牛 × 3 — 坚持就是力量</p>
-            <button class="badge-close" onclick="closeBadge()">太棒了！</button>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer class="page-footer">
-        <span style="font-size:0.8rem;color:var(--text-secondary);">© 2026 磁贴成长纪 Stickergotaro</span>
+        <span style="font-size:0.8rem;color:var(--text-secondary);">© 2026 磁贴成长纪 Stickergotaro · v4.0 Android</span>
         <a href="../../index.html">← 返回首页</a>
     </footer>
 
@@ -668,56 +737,53 @@
 
         document.querySelectorAll('.hero, .section').forEach(el => observer.observe(el));
 
-        // ===== Flying Sticker + Balance =====
+        // ===== Gacha Demo (weights match the real app) =====
         let balance = 0;
-        let snailCount = 0;
+        let usedToday = false;
+        const egg = document.getElementById('demo-egg');
+        const btn = document.getElementById('demo-btn');
+        const result = document.getElementById('demo-result');
+        const balanceEl = document.getElementById('demo-balance');
 
-        function completeTask(el, emoji, points, duration) {
-            if (el.classList.contains('completed')) return;
-
-            // Get positions
-            const rect = el.getBoundingClientRect();
-            const balanceEl = document.getElementById('demo-balance');
-            const balanceRect = balanceEl.getBoundingClientRect();
-
-            // Create flying sticker
-            const flyer = document.createElement('div');
-            flyer.className = 'flying-sticker';
-            flyer.textContent = emoji;
-            flyer.style.left = (rect.left + rect.width / 2 - 16) + 'px';
-            flyer.style.top = (rect.top + rect.height / 2 - 16) + 'px';
-            document.body.appendChild(flyer);
-
-            // Calculate translation
-            const tx = (balanceRect.left + balanceRect.width / 2) - (rect.left + rect.width / 2);
-            const ty = (balanceRect.top + balanceRect.height / 2) - (rect.top + rect.height / 2);
-            flyer.style.setProperty('--tx', tx + 'px');
-            flyer.style.setProperty('--ty', ty + 'px');
-
-            // Trigger animation
-            requestAnimationFrame(() => {
-                flyer.classList.add('active');
-            });
-
-            // Tap feedback
-            el.classList.add('tapped');
-            setTimeout(() => el.classList.remove('tapped'), 400);
-
-            // Update balance
-            setTimeout(() => {
-                balance += points;
-                animateNumber(balanceEl, balance - points, balance, 300);
-                el.classList.add('completed');
-
-                // Track snail
-                if (emoji === '🐌') {
-                    snailCount++;
-                    if (snailCount >= 1) {
-                        setTimeout(() => showBadge(), 400);
-                    }
-                }
-            }, duration);
+        // 5% rainbow / 10% gold / 25% silver / 60% common
+        function roll() {
+            const r = Math.random();
+            if (r < 0.05) return { amount: 5, label: '🌈 彩虹蛋！超级幸运！', icon: '🌈', rarity: 'rainbow' };
+            if (r < 0.15) return { amount: 3, label: '🥇 金色蛋！太厉害了！', icon: '🥇', rarity: 'gold' };
+            if (r < 0.40) return { amount: 2, label: '🥈 银色蛋！还不错哦！', icon: '🥈', rarity: 'silver' };
+            return { amount: 1, label: '🥚 普通蛋！积少成多！', icon: '🥚', rarity: 'common' };
         }
+
+        btn.addEventListener('click', () => {
+            if (usedToday) return;
+            usedToday = true;
+            btn.disabled = true;
+            egg.classList.add('spin');
+            result.classList.remove('show');
+
+            const r = roll();
+            const spins = 10 + Math.floor(Math.random() * 6);
+            let count = 0;
+            const icons = ['🥚', '🥚', '🥈', '🥇', '🥚', '🌈', '🥈', '🥚', '🥇'];
+            const spinTimer = setInterval(() => {
+                egg.textContent = icons[Math.floor(Math.random() * icons.length)];
+                if (++count >= spins) {
+                    clearInterval(spinTimer);
+                    egg.classList.remove('spin');
+                    egg.textContent = r.icon;
+
+                    setTimeout(() => {
+                        result.className = 'gacha-result show rarity-' + r.rarity;
+                        document.getElementById('res-icon').textContent = r.icon;
+                        document.getElementById('res-label').textContent = r.label;
+                        document.getElementById('res-amount').textContent = '+ ' + r.amount + ' 🧲';
+                        balance += r.amount;
+                        animateNumber(balanceEl, balance - r.amount, balance, 400);
+                        btn.textContent = '明天再来';
+                    }, 350);
+                }
+            }, 120);
+        });
 
         function animateNumber(el, from, to, duration) {
             const start = performance.now();
@@ -728,13 +794,6 @@
                 if (progress < 1) requestAnimationFrame(update);
             }
             requestAnimationFrame(update);
-        }
-
-        function showBadge() {
-            document.getElementById('badge-overlay').classList.add('show');
-        }
-        function closeBadge() {
-            document.getElementById('badge-overlay').classList.remove('show');
         }
 
         // ===== Auto trigger hero visible =====
