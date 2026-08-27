@@ -1,0 +1,359 @@
+{
+  "id": "emotional-value-businesses",
+  "type": "project",
+  "status": "proposed",
+  "updatedAt": "2026-08-27",
+  "source": "personal observation plus five official FY2025 filings and one FY2024 baseline filing",
+  "links": [
+    {"target": "invest-journal", "targetType": "project", "relation": "extends"},
+    {"target": "memory-asset-protection", "targetType": "node", "relation": "tests"}
+  ],
+  "title": "情绪价值能被量化吗？",
+  "subtitle": "从“IP 是用户心智里的永久货架”出发，用 FY2025 经营数据检验四家公司。",
+  "dimension": "阅读",
+  "icon": "◎",
+  "dimensionDesc": "Ni · 感知触发 · 证据校准",
+  "page": "projects/emotional-value-businesses/index.html",
+  "meta": "6 份官方资料 · 4 家公司 · 1 个可证伪假设",
+  "research": {
+    "asOf": "2026-08-27",
+    "period": "FY2025",
+    "eyebrow": "RESEARCH NOTE / FY2025",
+    "title": "IP 是更贵，也更便宜的广告吗？",
+    "origin": {
+      "label": "感知起点",
+      "quotes": [
+        "泡泡玛特卖的可能根本不只是盲盒，而是未来的广告位。",
+        "盲盒只是第一次交易。",
+        "IP = 用户心智里的永久货架。"
+      ],
+      "sourceId": "personal-ppmt-note"
+    },
+    "question": "如果一个 IP 已经进入用户的生活和记忆，它是否会带来更高复购、更顺畅的跨品类交易、更低的重复获客负担，并最终兑现为利润？",
+    "verdict": {
+      "label": "中等支持，尚未证实“永久”",
+      "tone": "mixed",
+      "summary": "泡泡玛特在 2025 年同时出现复购提升、载体迁移、销售费用率下降和利润率扩张，经营指纹与“心智货架”一致；但 THE MONSTERS 单一 IP 占收入 38.1%，超级爆款和规模效应仍是足以解释结果的竞争假设。",
+      "boundary": "财报能观察行为与经济结果，不能证明用户为何喜欢，也不能证明这份喜欢会持续五年。"
+    }
+  },
+  "method": {
+    "title": "把感觉拆成五个可证伪环节",
+    "note": "不同公司的业务模式不相同。横向比较只看方向与证据链，不把毛利率或销售费用率做简单排名。",
+    "steps": [
+      {"id": "mindshare", "number": "01", "label": "心智占位", "question": "用户是否持续把时间和注意力留在这里？", "proxies": "MAU、使用时长、会员规模", "limit": "规模不等于情绪认同"},
+      {"id": "return", "number": "02", "label": "用户回流", "question": "第一次交易后，用户是否再次回来？", "proxies": "复购率、付费订阅、深度设备用户", "limit": "回流也可能来自习惯或稀缺机制"},
+      {"id": "extension", "number": "03", "label": "载体迁移", "question": "同一关系能否承接新的产品或场景？", "proxies": "品类收入、服务组合、直接渠道", "limit": "新品也可能来自新客而非老客"},
+      {"id": "pull", "number": "04", "label": "需求拉力", "question": "增长是否越来越少依赖重复购买流量？", "proxies": "广义销售费用率、收入与费用增速差", "limit": "披露口径含物流、渠道和销售人员，并非纯广告费"},
+      {"id": "realization", "number": "05", "label": "经济兑现", "question": "认同最终有没有变成毛利、利润或现金？", "proxies": "毛利率、利润率、经营现金流", "limit": "高利润还可能来自稀缺供给或行业结构"}
+    ]
+  },
+  "headlineMetrics": [
+    {
+      "id": "ppmt-repeat",
+      "label": "会员复购率",
+      "value": "55.7%",
+      "delta": "+6.3pct",
+      "deltaTone": "positive",
+      "detail": "2024 年为 49.4%",
+      "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 17}, {"sourceId": "popmart-2024-results", "page": 22}]
+    },
+    {
+      "id": "ppmt-plush",
+      "label": "毛绒收入占比",
+      "value": "50.4%",
+      "delta": "+28.7pct",
+      "deltaTone": "positive",
+      "detail": "从 2024 年的 21.7% 跃升",
+      "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 28}]
+    },
+    {
+      "id": "ppmt-selling",
+      "label": "广义销售费用率",
+      "value": "21.77%",
+      "delta": "-6.23pct",
+      "deltaTone": "positive",
+      "detail": "费用仍达 80.82 亿元，不等于广告费",
+      "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 29}, {"sourceId": "popmart-2024-results", "page": 2}]
+    },
+    {
+      "id": "ppmt-concentration",
+      "label": "THE MONSTERS 收入占比",
+      "value": "38.1%",
+      "delta": "+14.8pct",
+      "deltaTone": "risk",
+      "detail": "单一 IP 收入已超过公司 2024 年总收入",
+      "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 27}]
+    }
+  ],
+  "ppmtAudit": {
+    "title": "PPMT：这个感知走到数据里，还剩下什么？",
+    "summary": "最强证据不是营收暴涨，而是三件事同时发生：老用户回流变强、消费载体从手办迁移到毛绒、每一元收入对应的广义销售费用下降。最强反证则是增长高度集中在 THE MONSTERS。",
+    "tests": [
+      {
+        "id": "return-test",
+        "label": "用户真的回来了吗？",
+        "verdict": "支持",
+        "tone": "support",
+        "strength": "直接经营指标",
+        "finding": "会员复购率从 49.4% 升至 55.7%，会员销售贡献从 92.7% 升至 93.7%。会员池从 4,608 万增至 7,258 万。",
+        "interpretation": "用户回流与会员依赖同步增强，符合“第一次交易之后还有交易”。",
+        "alternative": "复购可能来自盲盒概率机制、限量发行或新品密度，财报没有按 IP 和获客年份给出 cohort。",
+        "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 17}, {"sourceId": "popmart-2024-results", "page": 22}]
+      },
+      {
+        "id": "extension-test",
+        "label": "盲盒之后还能卖什么？",
+        "verdict": "较强支持",
+        "tone": "support",
+        "strength": "品类迁移指标",
+        "finding": "毛绒收入从 28.32 亿元增至 187.08 亿元，同比增长 560.6%；收入占比从 21.7% 升至 50.4%，手办占比则从 53.2% 降至 32.4%。",
+        "interpretation": "IP 已经跨过原始手办载体，毛绒更接近日常陪伴品，这与“进入生活”的感知高度一致。",
+        "alternative": "无法证明毛绒购买者先买过盲盒；也可能是 LABUBU 毛绒带来的新客与新需求。",
+        "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 28}]
+      },
+      {
+        "id": "pull-test",
+        "label": "增长真的更少依赖买流量吗？",
+        "verdict": "有限支持",
+        "tone": "mixed",
+        "strength": "间接效率指标",
+        "finding": "收入增长 184.7%，分销及销售费用增长 121.4%，费用率从 28.00% 降至 21.77%。每新增 1 元收入，对应新增广义销售费用约 0.184 元。",
+        "interpretation": "收入扩张快于销售负担，出现明显经营杠杆。",
+        "alternative": "该费用包含物流、平台佣金和销售人员；下降也可能来自固定成本摊薄、渠道结构与供应链效率，不能直接归因于 IP 替代广告。",
+        "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 29}, {"sourceId": "popmart-2025-ar", "page": 30}, {"sourceId": "popmart-2024-results", "page": 2}]
+      },
+      {
+        "id": "realization-test",
+        "label": "喜欢有没有变成经济结果？",
+        "verdict": "支持，但非单因果",
+        "tone": "support",
+        "strength": "利润兑现指标",
+        "finding": "毛利率从 66.8% 升至 72.1%，经调整净利率从 26.1% 升至 35.2%；2023 至 2025 年收入两年复合增速约 142.7%。",
+        "interpretation": "需求增长没有被成本完全吃掉，利润率反而扩张。",
+        "alternative": "公司明确把毛利率提升部分归因于海外占比、柔性供应链、采购议价与集中采购，不应全部记在情绪价值名下。",
+        "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 6}, {"sourceId": "popmart-2025-ar", "page": 29}, {"sourceId": "popmart-2025-ar", "page": 31}]
+      },
+      {
+        "id": "durability-test",
+        "label": "这是一套系统，还是一个超级爆款？",
+        "verdict": "关键反证",
+        "tone": "risk",
+        "strength": "集中度指标",
+        "finding": "THE MONSTERS 占总收入 38.1%，八个具名艺术家 IP 合计约 83.4%。THE MONSTERS 一项收入 141.61 亿元，是公司 2024 年总收入的 108.6%。",
+        "interpretation": "心智货架确实很大，但目前最上层几乎由一个超级 IP 拉动。",
+        "alternative": "若未来收入增量仍依赖单一爆款，数据证明的是命中超级 IP 的能力，而不是可复制、永久的品牌货架。",
+        "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 27}]
+      }
+    ],
+    "charts": {
+      "member": {
+        "title": "用户回流",
+        "subtitle": "中国内地会员口径",
+        "series": [
+          {"label": "复购率", "unit": "%", "values": [{"year": "2024", "value": 49.4}, {"year": "2025", "value": 55.7}]},
+          {"label": "会员销售贡献", "unit": "%", "values": [{"year": "2024", "value": 92.7}, {"year": "2025", "value": 93.7}]}
+        ],
+        "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 17}, {"sourceId": "popmart-2024-results", "page": 22}]
+      },
+      "category": {
+        "title": "消费载体迁移",
+        "subtitle": "各品类收入占比",
+        "series": [
+          {"year": "2024", "segments": [{"label": "毛绒", "value": 21.7, "tone": "pink"}, {"label": "手办", "value": 53.2, "tone": "blue"}, {"label": "MEGA", "value": 12.9, "tone": "gold"}, {"label": "衍生及其他", "value": 12.2, "tone": "teal"}]},
+          {"year": "2025", "segments": [{"label": "毛绒", "value": 50.4, "tone": "pink"}, {"label": "手办", "value": 32.4, "tone": "blue"}, {"label": "MEGA", "value": 5.2, "tone": "gold"}, {"label": "衍生及其他", "value": 12.0, "tone": "teal"}]}
+        ],
+        "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 28}]
+      },
+      "economics": {
+        "title": "经济兑现",
+        "subtitle": "利润率上升，销售负担下降",
+        "series": [
+          {"label": "毛利率", "unit": "%", "values": [{"year": "2024", "value": 66.8}, {"year": "2025", "value": 72.1}]},
+          {"label": "经调整净利率", "unit": "%", "values": [{"year": "2024", "value": 26.1}, {"year": "2025", "value": 35.2}]},
+          {"label": "广义销售费用率", "unit": "%", "values": [{"year": "2024", "value": 28.0}, {"year": "2025", "value": 21.77}]}
+        ],
+        "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 6}, {"sourceId": "popmart-2025-ar", "page": 29}, {"sourceId": "popmart-2024-results", "page": 2}]
+      }
+    },
+    "calculations": [
+      {"label": "两年收入复合增速", "formula": "(371.20 / 63.01)^(1/2) - 1", "result": "142.7%", "meaning": "增长速度极高，但起点低且受超级爆款影响。"},
+      {"label": "新增销售负担", "formula": "(80.82 - 36.50) / (371.20 - 130.38)", "result": "18.4%", "meaning": "每新增 1 元收入约增加 0.184 元广义销售费用。"},
+      {"label": "单一 IP 集中度", "formula": "141.61 / 371.20", "result": "38.1%", "meaning": "是心智占位的证明，也是持续性的主要风险。"},
+      {"label": "海外收入占比", "formula": "21.6% + 18.3% + 3.9%", "result": "43.8%", "meaning": "2024 年为 31.8%，IP 的跨文化扩张得到经营结果支持。"}
+    ]
+  },
+  "crossCompany": {
+    "title": "四家公司：同一种结果，还是四种不同机制？",
+    "note": "销售费用率采用各公司披露的广义口径。泡泡玛特含分销物流与平台佣金；腾讯、小米为销售及营销；茅台为销售费用。只能比较变化方向，不能当作纯广告费排名。",
+    "sellingIntensity": [
+      {"companyId": "popmart", "company": "泡泡玛特", "y2024": 28.0, "y2025": 21.77, "change": -6.23},
+      {"companyId": "tencent", "company": "腾讯", "y2024": 5.51, "y2025": 5.55, "change": 0.04},
+      {"companyId": "xiaomi", "company": "小米", "y2024": 6.94, "y2025": 7.26, "change": 0.32},
+      {"companyId": "moutai", "company": "茅台", "y2024": 3.3, "y2025": 4.3, "change": 1.0}
+    ],
+    "grossMargin": [
+      {"companyId": "popmart", "company": "泡泡玛特", "y2024": 66.8, "y2025": 72.1, "change": 5.3},
+      {"companyId": "tencent", "company": "腾讯", "y2024": 53.0, "y2025": 56.0, "change": 3.0},
+      {"companyId": "xiaomi", "company": "小米", "y2024": 20.9, "y2025": 22.3, "change": 1.3},
+      {"companyId": "moutai", "company": "茅台", "y2024": 92.01, "y2025": 91.23, "change": -0.78}
+    ],
+    "matrix": [
+      {
+        "dimension": "回流 / 黏性",
+        "comparability": "代理指标不同，不可直接排序",
+        "cells": {
+          "popmart": "会员复购 55.7%，同比 +6.3pct；最接近真实复购。",
+          "tencent": "微信及 WeChat MAU 14.18 亿，+2%；视频号总使用时长 +20%。",
+          "xiaomi": "五台以上设备用户 2,270 万，+24%；联网设备 10.79 亿，+19.3%。",
+          "moutai": "未披露消费者复购；直接渠道占比升至 50.1%，只能观察渠道拉力。"
+        }
+      },
+      {
+        "dimension": "跨品类 / 场景延展",
+        "comparability": "观察原关系能否承接新交易",
+        "cells": {
+          "popmart": "毛绒占比 21.7%→50.4%，最清晰的载体迁移证据。",
+          "tencent": "增值服务 49%、营销服务 19%、金融科技与企业服务 31%，但无法确认同一用户交叉购买。",
+          "xiaomi": "IoT 收入 1,232 亿元、+18.3%；汽车收入 1,033 亿元，但扩张更重资产。",
+          "moutai": "核心茅台酒占 86.8%；系列酒收入 -9.76%，延展证据偏弱。"
+        }
+      },
+      {
+        "dimension": "销售负担变化",
+        "comparability": "广义费用率，不等于广告费",
+        "cells": {
+          "popmart": "28.00%→21.77%，下降 6.23pct；唯一显著下降。",
+          "tencent": "5.51%→5.55%，基本持平；AI 应用与游戏推广增加。",
+          "xiaomi": "6.94%→7.26%；费用 +30.8%，快于收入 +25.0%。",
+          "moutai": "3.30%→4.30%；费用 +28.62%，公司归因于广告宣传及市场费用增加。"
+        }
+      },
+      {
+        "dimension": "利润 / 现金兑现",
+        "comparability": "行业结构差异大，只看各自变化",
+        "cells": {
+          "popmart": "毛利率 72.1%，+5.3pct；经调整净利率 35.2%，+9.1pct。",
+          "tencent": "毛利率 56%，+3pct；经营现金流净额约为收入的 40.3%。",
+          "xiaomi": "毛利率 22.3%，+1.3pct；经调整净利率 8.6%，经营现金流约为收入的 7.5%。",
+          "moutai": "毛利率 91.23%，-0.78pct；归母净利率 48.8%，经营现金流约为收入的 36.4%。"
+        }
+      },
+      {
+        "dimension": "最强反证",
+        "comparability": "用于防止只挑支持材料",
+        "cells": {
+          "popmart": "THE MONSTERS 占 38.1%，爆款集中度高；没有 cohort、CAC 或 LTV。",
+          "tencent": "QQ MAU -3%；情绪认同、习惯和结构性切换成本无法区分。",
+          "xiaomi": "销售费用与研发投入快于收入，品类延展尚未变成轻资产心智货架。",
+          "moutai": "收入 -1.21%、销售费用 +28.62%、系列酒 -9.76%，低广告依赖与品类延展均受挑战。"
+        }
+      }
+    ]
+  },
+  "companies": [
+    {
+      "id": "popmart",
+      "name": "泡泡玛特",
+      "ticker": "9992.HK",
+      "accent": "#c93672",
+      "role": "IP 心智货架",
+      "question": "复购、载体迁移与销售杠杆是否同时成立？",
+      "verdict": "中等支持",
+      "verdictTone": "support",
+      "summary": "四家公司里，泡泡玛特最接近可直接检验你的原始感知：它披露真实会员复购，并且能观察同一 IP 从手办向毛绒迁移。",
+      "metrics": [
+        {"label": "2025 收入", "value": "371.20 亿元", "delta": "+184.7%", "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 6}]},
+        {"label": "会员复购率", "value": "55.7%", "delta": "+6.3pct", "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 17}, {"sourceId": "popmart-2024-results", "page": 22}]},
+        {"label": "毛绒占比", "value": "50.4%", "delta": "+28.7pct", "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 28}]},
+        {"label": "广义销售费用率", "value": "21.77%", "delta": "-6.23pct", "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 29}]},
+        {"label": "经调整净利率", "value": "35.2%", "delta": "+9.1pct", "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 6}]},
+        {"label": "最大 IP 集中度", "value": "38.1%", "delta": "风险", "sourceRefs": [{"sourceId": "popmart-2025-ar", "page": 27}]}
+      ],
+      "supports": ["复购率和会员销售贡献连续提升。", "毛绒成为第一大品类，IP 已跨越原始手办载体。", "收入增速快于分销及销售费用，毛利和净利率同步扩张。"],
+      "counters": ["THE MONSTERS 一项收入已超过公司上一年度总收入，超级爆款解释力很强。", "没有按获客年份、IP 和品类拆分的 cohort 留存、CAC、LTV。", "销售费用率下降不能排除规模、海外结构和供应链效率。"]
+    },
+    {
+      "id": "tencent",
+      "name": "腾讯",
+      "ticker": "0700.HK",
+      "accent": "#1672b8",
+      "role": "平台关系货架",
+      "question": "用户关系能否在同一平台内反复承接新场景？",
+      "verdict": "经营层面支持，情绪层面未证",
+      "verdictTone": "mixed",
+      "summary": "腾讯更像结构性的心智货架：用户规模增幅不大，但视频号时长、营销服务和高毛利业务增长更快。数据能证明平台深度，不能证明用户因为品味或情感留下。",
+      "metrics": [
+        {"label": "微信及 WeChat MAU", "value": "14.18 亿", "delta": "+2%", "sourceRefs": [{"sourceId": "tencent-2025-ar", "page": 4}]},
+        {"label": "视频号总使用时长", "value": "+20%", "delta": "同比超过", "sourceRefs": [{"sourceId": "tencent-2025-ar", "page": 5}]},
+        {"label": "营销服务收入", "value": "1,449.73 亿元", "delta": "+19%", "sourceRefs": [{"sourceId": "tencent-2025-ar", "page": 8}]},
+        {"label": "毛利率", "value": "56%", "delta": "+3pct", "sourceRefs": [{"sourceId": "tencent-2025-ar", "page": 9}]},
+        {"label": "广义销售费用率", "value": "5.55%", "delta": "+0.04pct", "sourceRefs": [{"sourceId": "tencent-2025-ar", "page": 10}]},
+        {"label": "经营现金流 / 收入", "value": "40.3%", "delta": "约数", "sourceRefs": [{"sourceId": "tencent-2025-ar", "page": 138}]}
+      ],
+      "supports": ["MAU +2% 时，视频号总使用时长同比增长超过 20%。", "闭环广告把点击导向小程序、小店和小游戏，营销服务收入 +19%。", "毛利率从 53% 升至 56%，核心业务能为新 AI 投资供血。"],
+      "counters": ["QQ 移动 MAU 同比 -3%，关系货架并非所有产品都稳定。", "销售及营销费用 +15%，用于推动 AI 原生应用与游戏增长。", "平台黏性可能来自网络效应与切换成本，而不是情绪价值。"]
+    },
+    {
+      "id": "xiaomi",
+      "name": "小米",
+      "ticker": "1810.HK",
+      "accent": "#e45b20",
+      "role": "产品生态货架",
+      "question": "产品与创始人好感是否已经沉淀为轻量的生态复利？",
+      "verdict": "延展成立，轻资产复利未成立",
+      "verdictTone": "mixed",
+      "summary": "联网设备与深度设备用户快速增长，IoT 和高端手机也有进展；但销售、研发与资本开支仍随新品类更快上升。小米证明了品类延展，尚未证明延展会自动降低获客和制造成本。",
+      "metrics": [
+        {"label": "联网 AIoT 设备", "value": "10.792 亿", "delta": "+19.3%", "sourceRefs": [{"sourceId": "xiaomi-2025-presentation", "page": 5}]},
+        {"label": "五台以上设备用户", "value": "2,270 万", "delta": "+24.0%", "sourceRefs": [{"sourceId": "xiaomi-2025-presentation", "page": 5}]},
+        {"label": "IoT 与生活消费品收入", "value": "1,232 亿元", "delta": "+18.3%", "sourceRefs": [{"sourceId": "xiaomi-2025-presentation", "page": 31}]},
+        {"label": "中国高端手机占比", "value": "27.1%", "delta": "+3.8pct", "sourceRefs": [{"sourceId": "xiaomi-2025-presentation", "page": 4}]},
+        {"label": "广义销售费用率", "value": "7.26%", "delta": "+0.32pct", "sourceRefs": [{"sourceId": "xiaomi-2025-announcement", "page": 10}]},
+        {"label": "研发 + 资本开支 / 收入", "value": "11.23%", "delta": "投入上升", "sourceRefs": [{"sourceId": "xiaomi-2025-presentation", "page": 6}, {"sourceId": "xiaomi-2025-presentation", "page": 35}]}
+      ],
+      "supports": ["五台以上设备用户增速快于联网设备总量，生态深度在增加。", "IoT 收入 +18.3%，IoT 毛利率从 20.3% 升至 23.1%。", "中国内地高端手机销量占比提升 3.8pct 至 27.1%。"],
+      "counters": ["销售及营销费用 +30.8%，快于收入 +25.0%，并未出现获客负担下降。", "研发 +37.8%、资本开支 +73%，汽车与 AI 扩张仍需要重投入。", "手机收入 -2.8%，创始人好感对溢价和留存的因果没有披露数据。"]
+    },
+    {
+      "id": "moutai",
+      "name": "茅台",
+      "ticker": "600519.SH",
+      "accent": "#9d3034",
+      "role": "稀缺与仪式货架",
+      "question": "文化认同能否从高毛利、渠道拉力和时间结构中被观察？",
+      "verdict": "品牌拉力强，情绪因果与品类延展弱",
+      "verdictTone": "mixed",
+      "summary": "极高毛利、直接渠道增长和五年生产周期能观察到稀缺性与品牌拉力；但 2025 年收入下滑、销售费用上升、系列酒走弱，说明强品牌不等于无需营销，也不等于可随意延展。",
+      "metrics": [
+        {"label": "酒类毛利率", "value": "91.23%", "delta": "-0.78pct", "sourceRefs": [{"sourceId": "moutai-2025-ar", "page": 10}]},
+        {"label": "直销收入占比", "value": "50.1%", "delta": "+6.2pct", "sourceRefs": [{"sourceId": "moutai-2025-ar", "page": 10}]},
+        {"label": "核心茅台酒占比", "value": "86.8%", "delta": "集中", "sourceRefs": [{"sourceId": "moutai-2025-ar", "page": 10}]},
+        {"label": "广义销售费用率", "value": "4.30%", "delta": "+1.00pct", "sourceRefs": [{"sourceId": "moutai-2025-ar", "page": 9}]},
+        {"label": "存货 / 年收入", "value": "36.4%", "delta": "+4.6pct", "sourceRefs": [{"sourceId": "moutai-2025-ar", "page": 13}]},
+        {"label": "归母净利率", "value": "48.8%", "delta": "-1.7pct", "sourceRefs": [{"sourceId": "moutai-2025-ar", "page": 6}]}
+      ],
+      "supports": ["核心茅台酒毛利率 93.53%，直接渠道毛利率 94.58%。", "直销收入 +12.96%，批发代理 -12.05%，品牌控制渠道的能力增强。", "从生产到出厂至少五年，基酒储备把时间直接写进供给结构。"],
+      "counters": ["2025 年收入 -1.21%，销售费用 +28.62%，广告宣传及市场费用反而增加。", "系列酒收入 -9.76%、毛利率下降 3.76pct，品牌跨品类延展受限。", "账面存货按成本计量，不能证明二级市场升值，更不能直接证明仪式或身份认同。"]
+    }
+  ],
+  "limitations": {
+    "title": "这份报告还不能回答什么？",
+    "items": [
+      {"missing": "长期 cohort", "why": "只有年度复购，没有“2023 年买家在 2025 年仍活跃”的留存曲线。", "needed": "按获客年份、IP、地区和品类拆分 12/24/36 月留存。"},
+      {"missing": "CAC 与 LTV", "why": "广义销售费用包含物流、佣金、门店和人员，无法还原每个新客的真实获客成本。", "needed": "付费媒体、自然流量、新客数、首购毛利与终身价值。"},
+      {"missing": "情绪因果", "why": "财报只能看见行为，无法区分喜欢、习惯、网络效应、稀缺机制和切换成本。", "needed": "品牌追踪、NPS、购买动机调查与同类非 IP 对照组。"},
+      {"missing": "IP 级复购", "why": "会员复购没有说明用户是在同一 IP 内复购，还是被不断推出的新 IP 拉回。", "needed": "每个 IP 的新客、复购频次、跨载体迁移和流失率。"}
+    ],
+    "nextTest": "真正能验证“永久货架”的不是下一年收入，而是同一批用户跨三至五年、跨载体、在减少付费触达后仍然回来的比例。"
+  },
+  "sources": [
+    {"id": "personal-ppmt-note", "index": "P0", "kind": "个人原话", "title": "IP 是更贵的广告，也是更便宜的广告", "publisher": "reGeorge", "date": "2026-08-27", "path": "dailyNote/生活/2026-08-27-IP是更贵的广告也是更便宜的广告.md", "scope": "研究问题与原始感知；不作为经营事实来源。"},
+    {"id": "popmart-2025-ar", "index": "S1", "kind": "经审计年报", "title": "POP MART Annual Report 2025", "publisher": "POP MART International Group Limited", "date": "2026", "url": "https://prod-out-res.popmart.com/cms/ANNUAL_REPORT_2025_bd4e173872.pdf", "scope": "收入、会员、复购、IP 与品类、地区、费用、利润。"},
+    {"id": "popmart-2024-results", "index": "S2", "kind": "年度业绩公告", "title": "截至 2024 年 12 月 31 日止年度的年度业绩公布", "publisher": "香港交易所 / POP MART", "date": "2025-03-26", "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2025/0326/2025032600228_c.pdf", "scope": "2024 年会员贡献与复购基线、财务基线。"},
+    {"id": "tencent-2025-ar", "index": "S3", "kind": "经审计年报", "title": "Tencent 2025 Annual Report", "publisher": "Tencent Holdings Limited", "date": "2026-04-09", "url": "https://static.www.tencent.com/uploads/2026/04/09/62d786fcf3d3c8cb7e54791ee95439ac.pdf", "scope": "用户、使用时长、业务分部、销售费用、利润与现金流。"},
+    {"id": "xiaomi-2025-presentation", "index": "S4", "kind": "年度业绩演示", "title": "Xiaomi 2025 Fourth Quarter and Annual Results", "publisher": "Xiaomi Corporation", "date": "2026-03-24", "url": "https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/6-20-53/Xiaomi%20Corp_25Q4_ER_ENG%20vF.pdf", "scope": "用户与设备、品类收入、高端化、研发与资本开支。"},
+    {"id": "xiaomi-2025-announcement", "index": "S5", "kind": "年度业绩公告", "title": "Xiaomi Annual Results Announcement for FY2025", "publisher": "Xiaomi Corporation", "date": "2026-03-24", "url": "https://ir.mi.com/system/files-encrypted/nasdaq_kms/assets/2026/03/24/5-35-03/25Q4%20EN%20AC%20Xiaomi.pdf", "scope": "毛利、分部利润率、销售费用、研发费用、经营现金流。"},
+    {"id": "moutai-2025-ar", "index": "S6", "kind": "经审计年报", "title": "贵州茅台酒股份有限公司 2025 年年度报告", "publisher": "贵州茅台酒股份有限公司", "date": "2026-04-17", "url": "https://www.moutai.com.cn/mtgf/articleFileDir/2026-04/17/07cf01cc11a14ea18cfadf9ebe2a4eb3.pdf", "scope": "收入、产品与渠道毛利、销售费用、库存与生产周期、现金流。"}
+  ]
+}

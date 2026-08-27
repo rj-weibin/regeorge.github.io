@@ -33,6 +33,7 @@ const projects = readJson('data/projects/projects.json');
 const personalEngineeringThesis = readJson('data/projects/personal-engineering-thesis.json');
 const highQualityInvisibleContext = readJson('data/concepts/high-quality-invisible-context.json');
 const lifeInsights = readJson('data/projects/life-insights.json');
+const emotionalValueBusinesses = readJson('data/projects/emotional-value-businesses.json');
 const skills = readJson('data/skills/skills-index.json');
 const pingpongCards = readJson('data/memory/sports/pingpong-cards.json');
 fs.writeFileSync(path.join(pages, 'data', 'knowledge-graph.json'), JSON.stringify(graph, null, 2) + '\n');
@@ -43,6 +44,7 @@ fs.writeFileSync(path.join(pages, 'data', 'projects.json'), JSON.stringify(proje
 fs.writeFileSync(path.join(pages, 'data', 'personal-engineering-thesis.json'), JSON.stringify(personalEngineeringThesis, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'high-quality-invisible-context.json'), JSON.stringify(highQualityInvisibleContext, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'life-insights.json'), JSON.stringify(lifeInsights, null, 2) + '\n');
+fs.writeFileSync(path.join(pages, 'data', 'emotional-value-businesses.json'), JSON.stringify(emotionalValueBusinesses, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'skills-index.json'), JSON.stringify(skills, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'pingpong-cards.json'), JSON.stringify(pingpongCards, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'books-data.js'), `window.READING_SHELF_BOOKS = ${JSON.stringify(books, null, 2)};\n`);
