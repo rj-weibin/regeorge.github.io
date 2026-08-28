@@ -14,7 +14,9 @@
       "links": [],
       "tags": [
         "乒乓"
-      ]
+      ],
+      "authorship": "user",
+      "evidenceType": "practice"
     },
     {
       "id": "card-08",
@@ -29,7 +31,9 @@
       "links": [],
       "tags": [
         "乒乓"
-      ]
+      ],
+      "authorship": "user",
+      "evidenceType": "practice"
     },
     {
       "id": "card-09",
@@ -44,7 +48,9 @@
       "links": [],
       "tags": [
         "乒乓"
-      ]
+      ],
+      "authorship": "user",
+      "evidenceType": "practice"
     },
     {
       "id": "card-10",
@@ -59,7 +65,10 @@
       "links": [],
       "tags": [
         "乒乓"
-      ]
+      ],
+      "authorship": "user",
+      "evidenceType": "practice",
+      "visibility": "hidden"
     },
     {
       "id": "card-18",
@@ -75,7 +84,9 @@
       "tags": [
         "乒乓",
         "战术体系"
-      ]
+      ],
+      "authorship": "user",
+      "evidenceType": "practice"
     },
     {
       "id": "card-19",
@@ -90,7 +101,9 @@
       "links": [],
       "tags": [
         "乒乓"
-      ]
+      ],
+      "authorship": "user",
+      "evidenceType": "practice"
     }
   ]
 }

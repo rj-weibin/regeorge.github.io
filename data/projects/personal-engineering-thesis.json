@@ -39,16 +39,23 @@
       "value": "1300+",
       "label": "阶段性自动化用例",
       "qualification": "规模指标，不单独作为个人价值证明"
+    }
+  ],
+  "measurementDirections": [
+    {
+      "value": "首次有效假设耗时",
+      "label": "从拿到问题到提出第一个可验证假设的时间",
+      "qualification": "度量方向：尚未形成基线"
     },
     {
-      "value": "约 85%",
-      "label": "自动化率",
-      "qualification": "与高置信案例共同展示"
+      "value": "证据化归因覆盖率",
+      "label": "失败归因里附了真实系统证据的比例",
+      "qualification": "度量方向：尚未形成基线"
     },
     {
-      "value": "约 94%",
-      "label": "CI 成功率",
-      "qualification": "阶段性质量指标"
+      "value": "误判修正率",
+      "label": "归因后被发现是误判并被修正的次数占比",
+      "qualification": "度量方向：尚未形成基线"
     }
   ],
   "thinkingShifts": [
@@ -142,7 +149,7 @@
       "title": "从脚本到测试生产线",
       "insight": "重复前置步骤和平台怪癖阻碍规模化。",
       "decision": "用公共用例、PlatformClient、Phase 0 和 Knowledge 组合出有门禁的测试生产线。",
-      "impact": "形成 1300+ 条用例、约 85% 自动化率和约 94% CI 成功率的阶段性规模结果。",
+      "impact": "形成 1300+ 条用例的阶段性规模；质量以 56/56、82 条全量审计、89 条串行复检等原始计数为准。",
       "evidence": ["费用管理 56/56 全量调试通过", "运营商 VLAN 82 条全量审计", "SMP+ 89 条串行复检 100% PASS", "接入时段 46 条全部 PASS", "简网络界面 34/34 PASS"]
     },
     {

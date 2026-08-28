@@ -166,14 +166,8 @@ body.site-page.site-reading .page-shell {
   padding: 24px 0 64px;
 }
 
-/* 独立成行的返回链接才需要下边距。 */
 body.site-page.site-reading .back-link {
   margin-bottom: 24px;
-}
-
-/* topbar 里的返回链接是 flex 居中项，下边距会把它顶上去。 */
-body.site-page.site-reading .topbar .back-link {
-  margin-bottom: 0;
 }
 
 body.site-page.site-reading .hero {

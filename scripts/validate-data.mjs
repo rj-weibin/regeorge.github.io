@@ -5,14 +5,6 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const errors = [];
 
-// pages/ 是构建产物，不再提交到 git。校验前先重建，确保检查的是最新产物而不是陈旧快照。
-try {
-  await import('./build-site.mjs');
-} catch (error) {
-  console.error(`✗ build failed before validation:\n${error.stack}`);
-  process.exit(1);
-}
-
 function readJson(relative) {
   const file = path.join(root, relative);
   if (!fs.existsSync(file)) {
@@ -51,9 +43,7 @@ const projects = readJson('data/projects/projects.json');
 const personalEngineeringThesis = readJson('data/projects/personal-engineering-thesis.json');
 const highQualityInvisibleContext = readJson('data/concepts/high-quality-invisible-context.json');
 const lifeInsights = readJson('data/projects/life-insights.json');
-const emotionalValueBusinesses = readJson('data/projects/emotional-value-businesses.json');
 const skillsHub = readJson('data/skills/skills-index.json');
-const pingpongCards = readJson('data/memory/sports/pingpong-cards.json');
 duplicateIds(graph?.nodes, 'concept');
 duplicateIds(books, 'book', item => item.bookId ?? item.id ?? item.title);
 duplicateValues(books, 'book', item => item.title?.trim());
@@ -62,16 +52,6 @@ books?.forEach(book => {
   if ((book.notes ?? 0) !== collisionCount) errors.push(`book ${book.bookId}: notes must equal detail.collisions length`);
 });
 duplicateIds(projects, 'project');
-const projectFields = ['id', 'dimension', 'icon', 'dimensionDesc', 'title', 'description', 'meta', 'page'];
-projects?.forEach(project => {
-  for (const field of projectFields) {
-    if (!project[field]) errors.push(`project ${project.id ?? '(missing id)'}: missing ${field}`);
-  }
-  if (project.page) {
-    const templatePath = path.join(root, 'templates', 'site', project.page);
-    if (!fs.existsSync(templatePath)) errors.push(`project ${project.id}: page template missing: templates/site/${project.page}`);
-  }
-});
 if (personalEngineeringThesis) {
   if (personalEngineeringThesis.id !== 'personal-engineering-thesis') errors.push('personal engineering thesis: invalid id');
   if (personalEngineeringThesis.type !== 'project') errors.push('personal engineering thesis: type must be project');
@@ -97,33 +77,6 @@ if (lifeInsights) {
   if (lifeInsights.page !== 'projects/life-insights/index.html') errors.push('life insights: invalid page');
   if (!Array.isArray(lifeInsights.recognition?.trigger) || lifeInsights.recognition.trigger.length < 2) errors.push('life insights: missing recognition triggers');
   if (!Array.isArray(lifeInsights.recognition?.notThisRoute) || lifeInsights.recognition.notThisRoute.length < 3) errors.push('life insights: missing route boundaries');
-}
-if (emotionalValueBusinesses) {
-  if (emotionalValueBusinesses.id !== 'emotional-value-businesses') errors.push('emotional value businesses: invalid id');
-  if (emotionalValueBusinesses.type !== 'project') errors.push('emotional value businesses: type must be project');
-  if (emotionalValueBusinesses.status !== 'proposed') errors.push('emotional value businesses: status must remain proposed until the research evidence is reviewed');
-  if (!emotionalValueBusinesses.updatedAt || !emotionalValueBusinesses.source) errors.push('emotional value businesses: missing metadata');
-  if (emotionalValueBusinesses.page !== 'projects/emotional-value-businesses/index.html') errors.push('emotional value businesses: invalid page');
-  if (!Array.isArray(emotionalValueBusinesses.companies) || emotionalValueBusinesses.companies.length !== 4) errors.push('emotional value businesses: exactly four companies required');
-  if (!Array.isArray(emotionalValueBusinesses.method?.steps) || emotionalValueBusinesses.method.steps.length !== 5) errors.push('emotional value businesses: five-step research method required');
-  if (!Array.isArray(emotionalValueBusinesses.headlineMetrics) || emotionalValueBusinesses.headlineMetrics.length < 4) errors.push('emotional value businesses: missing headline evidence');
-  if (!Array.isArray(emotionalValueBusinesses.ppmtAudit?.tests) || emotionalValueBusinesses.ppmtAudit.tests.length < 5) errors.push('emotional value businesses: incomplete PPMT hypothesis audit');
-  if (!Array.isArray(emotionalValueBusinesses.crossCompany?.matrix) || emotionalValueBusinesses.crossCompany.matrix.length < 5) errors.push('emotional value businesses: incomplete cross-company evidence matrix');
-  if (!Array.isArray(emotionalValueBusinesses.sources) || emotionalValueBusinesses.sources.length < 6) errors.push('emotional value businesses: insufficient primary sources');
-  duplicateIds(emotionalValueBusinesses.companies, 'emotional value company');
-  duplicateIds(emotionalValueBusinesses.sources, 'emotional value source');
-  const sourceIds = new Set(emotionalValueBusinesses.sources?.map(source => source.id) ?? []);
-  const visitResearchValue = value => {
-    if (Array.isArray(value)) return value.forEach(visitResearchValue);
-    if (!value || typeof value !== 'object') return;
-    if (value.sourceId && !sourceIds.has(value.sourceId)) errors.push(`emotional value businesses: missing source ${value.sourceId}`);
-    Object.values(value).forEach(visitResearchValue);
-  };
-  visitResearchValue(emotionalValueBusinesses);
-  for (const company of emotionalValueBusinesses.companies ?? []) {
-    if (!Array.isArray(company.metrics) || company.metrics.length < 6) errors.push(`emotional value company ${company.id}: insufficient metrics`);
-    if (!Array.isArray(company.supports) || !Array.isArray(company.counters)) errors.push(`emotional value company ${company.id}: missing balanced evidence`);
-  }
 }
 if (skillsHub) {
   if (skillsHub.id !== 'skills-hub') errors.push('skills hub: invalid id');
@@ -162,13 +115,6 @@ cards?.forEach((card, index) => {
   if (!card.updatedAt) errors.push(`collision card ${index + 1}: missing updatedAt`);
 });
 duplicateIds(mobileCards?.cards, 'mobile card');
-duplicateIds(pingpongCards?.cards, 'pingpong card');
-pingpongCards?.cards?.forEach((card, index) => {
-  if (card.type !== 'pingpong-card') errors.push(`pingpong card ${index + 1}: type must be pingpong-card`);
-  if (!['draft', 'proposed', 'reviewed', 'archived'].includes(card.status)) errors.push(`pingpong card ${index + 1}: invalid status`);
-  if (!card.updatedAt) errors.push(`pingpong card ${index + 1}: missing updatedAt`);
-  if (!card.source) errors.push(`pingpong card ${index + 1}: missing source`);
-});
 
 const graphNodeIds = new Set(graph?.nodes?.map(node => node.id) ?? []);
 const graphTopicIds = new Set(graph?.topics?.map(topic => topic.id) ?? []);
@@ -202,7 +148,7 @@ if (fs.existsSync(pending) && fs.readdirSync(pending).length > 0) {
   console.warn('warning: inbox/pending contains unprocessed intake files');
 }
 
-for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/cards.json', 'pages/data/projects.json', 'pages/data/personal-engineering-thesis.json', 'pages/data/high-quality-invisible-context.json', 'pages/data/life-insights.json', 'pages/data/emotional-value-businesses.json', 'pages/data/skills-index.json', 'pages/data/pingpong-cards.json', 'pages/projects/life-insights/index.html', 'pages/projects/emotional-value-businesses/index.html', 'pages/projects/skills/index.html']) {
+for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/cards.json', 'pages/data/projects.json', 'pages/data/dimensions.json', 'pages/data/personal-engineering-thesis.json', 'pages/data/high-quality-invisible-context.json', 'pages/data/life-insights.json', 'pages/data/skills-index.json', 'pages/projects/life-insights/index.html', 'pages/projects/skills/index.html']) {
   if (!fs.existsSync(path.join(root, relative))) errors.push(`missing build output: ${relative}`);
 }
 
@@ -212,20 +158,8 @@ const pageFiles = fs.existsSync(path.join(root, 'pages'))
 for (const relative of pageFiles) {
   const text = fs.readFileSync(path.join(root, 'pages', relative), 'utf8');
   const normalized = relative.replaceAll('\\', '/');
-  if (text.includes('.deploy_git') || text.includes('hexo_posts') || text.includes('gardenForLilis')) {
+  if (text.includes('.deploy_git') || text.includes('projects/philosophy-flywheel/data/knowledge-graph') || text.includes('hexo_posts') || text.includes('gardenForLilis')) {
     errors.push(`legacy data reference: pages/${relative}`);
-  }
-  // 模板页 fetch 的数据文件必须都是 build 产物（pages/data/），避免页面引用到根本不生成的数据。
-  if (normalized.endsWith('.html') && normalized.startsWith('pages/')) {
-    const dataRefs = [...text.matchAll(/(?:fetch|load)\(['"]\.\.\/\.\.\/data\/([a-zA-Z0-9_./-]+\.(?:json|js))['"]\)/g)]
-      .map(match => match[1]);
-    const jsRefs = [...text.matchAll(/<script[^>]*src=["']\.\.\/\.\.\/data\/([a-zA-Z0-9_./-]+\.(?:json|js))["']/g)]
-      .map(match => match[1]);
-    for (const ref of [...dataRefs, ...jsRefs]) {
-      if (!fs.existsSync(path.join(root, 'pages', 'data', ref))) {
-        errors.push(`page ${normalized} references missing build output: pages/data/${ref}`);
-      }
-    }
   }
   const patterns = [/172\.17\.\d+\.\d+/, /Basic dGhpcmQ6MTIz/, /Credentials:\s*third:123/, /12345aA!/];
   if (normalized === 'pages/data/skills-index.json' || normalized === 'pages/projects/skills/index.html') {

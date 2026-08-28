@@ -14,9 +14,7 @@
             --text-tertiary: #6e7681;
             --border: rgba(240,246,252,0.08);
             --border-strong: rgba(240,246,252,0.14);
-            --accent: #66805c;
-            /* 鼠尾草绿，与 life-insights / table-tennis 同款暗绿色系 */
-            --accent-soft: rgba(102,128,92,0.18);
+            --accent: #58a6ff;
             --buy: #3fb950;
             --buy-bg: rgba(63,185,80,0.12);
             --hold: #d29922;
@@ -26,7 +24,6 @@
             --tencent: #00d46a;
             --xiaomi: #ff6b35;
             --moutai: #e64040;
-            --popmart: #c93672;
             --radius: 10px;
             --radius-sm: 6px;
         }
@@ -44,7 +41,7 @@
             padding: 48px 20px 80px;
         }
 
-        .container { max-width: 720px; width: 100%; margin: 0 auto; }
+        .container { max-width: 720px; width: 100%; }
 
         .back-link {
             display: inline-flex;
@@ -130,7 +127,7 @@
             letter-spacing: 0.02em;
         }
         .filter-chip:hover { border-color: var(--accent); color: var(--text); }
-        .filter-chip.active { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); font-weight: 600; }
+        .filter-chip.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
         /* ── Timeline ── */
         .timeline { display: flex; flex-direction: column; gap: 20px; }
@@ -162,7 +159,6 @@
         .entry-card[data-company="tencent"]:hover::before { opacity: 1; background: var(--tencent); }
         .entry-card[data-company="xiaomi"]:hover::before  { opacity: 1; background: var(--xiaomi); }
         .entry-card[data-company="moutai"]::before { opacity: 1; background: var(--moutai); }
-        .entry-card[data-company="popmart"]::before { opacity: 1; background: var(--popmart); }
 
         .entry-meta {
             display: flex;
@@ -214,7 +210,6 @@
         .company-tag.tencent { background: rgba(0,212,106,0.12); color: var(--tencent); }
         .company-tag.xiaomi  { background: rgba(255,107,53,0.12); color: var(--xiaomi); }
         .company-tag.moutai { background: rgba(230,64,64,0.12); color: var(--moutai); }
-        .company-tag.popmart { background: rgba(201,54,114,0.12); color: var(--popmart); }
 
         .rating {
             font-size: 0.7rem;
@@ -280,16 +275,6 @@
             top: 2px;
         }
 
-        .research-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: var(--popmart);
-            font-size: 0.78rem;
-            font-weight: 600;
-            text-decoration: none;
-        }
-        .research-link:hover { text-decoration: underline; }
-
         .entry-card.is-hidden { display: none; }
 
         .empty-state {
@@ -336,7 +321,7 @@
                 <span class="summary-label">买入</span>
             </div>
             <div class="summary-item">
-                <span class="summary-num hold-color">3</span>
+                <span class="summary-num hold-color">2</span>
                 <span class="summary-label">持有</span>
             </div>
             <div class="summary-item">
@@ -350,33 +335,9 @@
             <span class="filter-chip" data-filter="tencent">腾讯</span>
             <span class="filter-chip" data-filter="xiaomi">小米</span>
             <span class="filter-chip" data-filter="moutai">茅台</span>
-            <span class="filter-chip" data-filter="popmart">泡泡玛特</span>
         </div>
 
         <div class="timeline" id="timeline">
-
-            <!-- 2026-08-27 泡泡玛特 -->
-            <div class="entry-card" data-company="popmart">
-                <div class="entry-meta">
-                    <span class="entry-date">2026-08-27</span>
-                    <span class="company-tag popmart">泡泡玛特</span>
-                    <span class="rating hold">持有</span>
-                </div>
-                <div class="ticker">
-                    <span class="ticker-price">9992.HK</span>
-                    <span class="ticker-pe">数据 <span>FY</span> 2025</span>
-                </div>
-                <div class="entry-view">
-                    我对 PPMT 的核心判断不是“盲盒卖得好”，而是 IP 能否在用户心智中形成一个可以反复上新的永久货架。2025 年数据提供了中等支持：会员复购率从 49.4% 升至 55.7%，毛绒收入占比从 21.7% 升至 50.4%，广义销售费用率从 28.00% 降至 21.77%，经调整净利率升至 35.2%。但 THE MONSTERS 已占总收入 38.1%，目前仍需区分可复制的 IP 系统与单一超级爆款。持有，继续观察。
-                </div>
-                <div class="entry-variables">
-                    <h4>关键变量</h4>
-                    <div class="variable-item">长期 cohort——同一批用户跨三至五年、跨载体后是否仍会回来</div>
-                    <div class="variable-item">IP 集中度——THE MONSTERS 之外能否持续长出第二、第三个长期 IP</div>
-                    <div class="variable-item">获客效率——销售费用率下降能否在增长降速后继续成立，并由 CAC/LTV 证实</div>
-                    <a class="research-link" href="../emotional-value-businesses/index.html">查看量化研究 →</a>
-                </div>
-            </div>
 
             <!-- 2026-04-23 茅台 -->
             <div class="entry-card" data-company="moutai">

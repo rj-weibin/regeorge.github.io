@@ -23,6 +23,8 @@ remove(pages);
 fs.mkdirSync(pages, { recursive: true });
 copy(template, pages);
 copy(path.join(root, 'assets'), path.join(pages, 'assets'));
+remove(path.join(pages, 'projects', 'reading-shelf', 'scripts'));
+remove(path.join(pages, 'projects', 'philosophy-flywheel', 'REVIEW.md'));
 fs.mkdirSync(path.join(pages, 'data'), { recursive: true });
 
 const graph = readJson('data/knowledge-graph.json');
@@ -30,23 +32,21 @@ const books = readJson('data/books/books.json');
 const cards = readJson('data/concepts/collisions.json');
 const mobileCards = readJson('data/concepts/mobile-cards.json');
 const projects = readJson('data/projects/projects.json');
+const dimensions = readJson('data/projects/dimensions.json');
 const personalEngineeringThesis = readJson('data/projects/personal-engineering-thesis.json');
 const highQualityInvisibleContext = readJson('data/concepts/high-quality-invisible-context.json');
 const lifeInsights = readJson('data/projects/life-insights.json');
-const emotionalValueBusinesses = readJson('data/projects/emotional-value-businesses.json');
 const skills = readJson('data/skills/skills-index.json');
-const pingpongCards = readJson('data/memory/sports/pingpong-cards.json');
 fs.writeFileSync(path.join(pages, 'data', 'knowledge-graph.json'), JSON.stringify(graph, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'books.json'), JSON.stringify(books, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'philosophy-cards.json'), JSON.stringify(cards, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'cards.json'), JSON.stringify(mobileCards, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'projects.json'), JSON.stringify(projects, null, 2) + '\n');
+fs.writeFileSync(path.join(pages, 'data', 'dimensions.json'), JSON.stringify(dimensions, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'personal-engineering-thesis.json'), JSON.stringify(personalEngineeringThesis, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'high-quality-invisible-context.json'), JSON.stringify(highQualityInvisibleContext, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'life-insights.json'), JSON.stringify(lifeInsights, null, 2) + '\n');
-fs.writeFileSync(path.join(pages, 'data', 'emotional-value-businesses.json'), JSON.stringify(emotionalValueBusinesses, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'skills-index.json'), JSON.stringify(skills, null, 2) + '\n');
-fs.writeFileSync(path.join(pages, 'data', 'pingpong-cards.json'), JSON.stringify(pingpongCards, null, 2) + '\n');
 fs.writeFileSync(path.join(pages, 'data', 'books-data.js'), `window.READING_SHELF_BOOKS = ${JSON.stringify(books, null, 2)};\n`);
 
 const registry = {
@@ -57,10 +57,9 @@ const registry = {
     books: books.length,
     collisionCards: cards.length,
     mobileCards: mobileCards.cards?.length ?? 0,
-    pingpongCards: pingpongCards.cards?.length ?? 0,
     projects: projects.length,
     skills: skills.skills?.length ?? 0,
   },
 };
 fs.writeFileSync(path.join(pages, 'data', 'registry.json'), JSON.stringify(registry, null, 2) + '\n');
-console.log(`Built pages/ (${registry.counts.concepts} concepts, ${registry.counts.books} books, ${registry.counts.collisionCards} collision cards, ${registry.counts.mobileCards} mobile cards, ${registry.counts.pingpongCards} pingpong cards, ${registry.counts.skills} skills)`);
+console.log(`Built pages/ (${registry.counts.concepts} concepts, ${registry.counts.books} books, ${registry.counts.collisionCards} collision cards, ${registry.counts.skills} skills)`);

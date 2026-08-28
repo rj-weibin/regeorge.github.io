@@ -1,0 +1,54 @@
+[
+  {
+    "id": "reading",
+    "icon": "📖",
+    "title": "阅读",
+    "intro": "只为需要做的事做知识储备。读完一本书，留下它改变了我的哪个判断。",
+    "problem": "批量同步进来的书远多于真正改变过判断的书，阅读页需要把两者分开。",
+    "evidence": "14 本书留下过笔记或碰撞（如《看见孩子》《清晰思考》）；从碰撞卡往回能找到每本书改变过的具体判断。",
+    "next": "把书分为「收藏 / 浏览 / 改变过判断」，首页只展示第三类。",
+    "pages": [
+      {"title": "阅读记录", "href": "projects/reading-shelf/reading-roadmap.html"},
+      {"title": "投资观点笔记", "href": "projects/invest-journal/index.html"}
+    ]
+  },
+  {
+    "id": "work",
+    "icon": "⚙️",
+    "title": "工作",
+    "intro": "把模糊问题变成可执行、可验证、可追踪的系统。当前重点是自然语言执行与失败诊断。",
+    "problem": "自动化建设里仍有用无日期、无范围的百分比描述成果的惯性，需要换成可验证的度量。",
+    "evidence": "Phase 0、真实抓包、失败归因、自然语言执行与执行报告证据，已沉淀进个人工程论。",
+    "next": "开始度量：首次有效假设耗时、证据化归因覆盖率、误判修正率。",
+    "pages": [
+      {"title": "个人工程论", "href": "projects/personal-engineering-thesis/index.html"},
+      {"title": "自动化测试生产线", "href": "projects/autoTestStation/index.html"},
+      {"title": "工程 Skills", "href": "projects/skills/index.html"}
+    ]
+  },
+  {
+    "id": "life",
+    "icon": "🌿",
+    "title": "生活",
+    "intro": "粗糙的开始，胜过周全的计划。少解释一点，先回到正在发生的事。",
+    "problem": "太快把体验解释成模型——INTJ 成熟论、Agent 式哲学归纳正在覆盖亲历原话。",
+    "evidence": "焦急、少年心气、粗糙开始、正念书写、心脏复查等亲历原话仍保留在记录里。",
+    "next": "暂停制造新概念，只记录发生了什么、做了什么、结果怎样。",
+    "pages": [
+      {"title": "生活感悟", "href": "projects/life-insights/index.html"},
+      {"title": "磁贴成长纪", "href": "projects/stickergotaro/index.html"}
+    ]
+  },
+  {
+    "id": "pingpong",
+    "icon": "🏓",
+    "title": "乒乓",
+    "intro": "脚步不到位，就会用手够球，框架就散。当前只练脚步到位后的稳定击球。",
+    "problem": "脚步不到位 → 用手够球 → 框架散；小臂打不开；抢点迎前。",
+    "evidence": "训练记录里的错题集：脚步不到位时用手围/绕够球，框架散了，练不出正反馈。",
+    "next": "连续两周只验证脚步能否稳定把身体送进击球窗口。",
+    "pages": [
+      {"title": "乒乓训练记录", "href": "projects/project-table-tennis/index.html"}
+    ]
+  }
+]

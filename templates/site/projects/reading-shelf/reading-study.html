@@ -646,8 +646,13 @@ try {
 
 function initPhilosophyCards() {
   if (bookId !== 'SELF_BIN' || !PHILOSOPHY_CARDS || !PHILOSOPHY_CARDS.length) return;
+  var visibleCards = PHILOSOPHY_CARDS.filter(function(card){
+    // 隐藏没有明确来源的 proposed 内容（AI 归纳降权，不删除原始记录）
+    return card.visibility !== 'hidden' && !(card.status === 'proposed' && !card.source);
+  });
+  if (!visibleCards.length) return;
   q('philosophyCardsSection').style.display = '';
-  var html = PHILOSOPHY_CARDS.map(function(card, i){
+  var html = visibleCards.map(function(card, i){
     var summary = esc(card.summary || '');
     var dialogue = esc(card.dialogue || '');
     var bodyFeeling = esc(card.bodyFeeling || '');
