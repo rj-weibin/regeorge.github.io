@@ -1,0 +1,357 @@
+:root {
+  --site-bg: #f3efe7;
+  --site-paper: #fffdf8;
+  --site-panel: #faf5eb;
+  --site-ink: #2d2924;
+  --site-muted: #756c61;
+  --site-subtle: #9a8f80;
+  --site-line: #ded5c8;
+  --site-line-strong: #cbbcab;
+  --site-accent: #a8583f;
+  --site-teal: #226b68;
+  --site-shadow: 0 18px 46px rgba(71, 51, 30, .09);
+  --site-serif: Georgia, "Songti SC", serif;
+  --site-sans: "Segoe UI Variable Text", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --site-mono: Consolas, "SFMono-Regular", monospace;
+}
+
+body.site-page {
+  color: var(--site-ink) !important;
+  font-family: var(--site-sans) !important;
+  background:
+    radial-gradient(circle at 6% 0%, #ead9c7 0, transparent 28%),
+    linear-gradient(180deg, #f9f6ef, #eee7dc) !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.site-page.site-reading,
+body.site-page.site-reading-detail {
+  --bg: var(--site-bg);
+  --paper: var(--site-paper);
+  --card: var(--site-paper);
+  --panel: var(--site-panel);
+  --ink: var(--site-ink);
+  --text: var(--site-ink);
+  --text2: var(--site-muted);
+  --text-secondary: var(--site-muted);
+  --text3: var(--site-subtle);
+  --text-tertiary: var(--site-subtle);
+  --muted: var(--site-muted);
+  --border: var(--site-line);
+  --border2: var(--site-line-strong);
+  --border-strong: var(--site-line-strong);
+  --shadow: var(--site-shadow);
+  --serif: var(--site-serif);
+  --sans: var(--site-sans);
+}
+
+body.site-page.site-reading {
+  padding: 0 !important;
+}
+
+body.site-page.site-reading-detail {
+  padding: 0 !important;
+}
+
+body.site-page.site-life,
+body.site-page.site-engineering {
+  --bg: var(--site-bg);
+  --paper: var(--site-paper);
+  --panel: var(--site-panel);
+  --ink: var(--site-ink);
+  --muted: var(--site-muted);
+  --line: var(--site-line);
+  --shadow: var(--site-shadow);
+  --serif: var(--site-serif);
+  --sans: var(--site-sans);
+  --mono: var(--site-mono);
+  --coral: var(--site-accent);
+  --teal: var(--site-teal);
+}
+
+body.site-page.site-life {
+  --warm: var(--site-accent);
+}
+
+body.site-page.site-invest {
+  --bg: var(--site-bg);
+  --surface: var(--site-paper);
+  --surface-raised: var(--site-panel);
+  --text: var(--site-ink);
+  --text-secondary: var(--site-muted);
+  --text-tertiary: var(--site-subtle);
+  --border: var(--site-line);
+  --border-strong: var(--site-line-strong);
+  --radius: 16px;
+  --radius-sm: 10px;
+  display: block !important;
+  padding: 0 20px 72px !important;
+}
+
+body.site-page.site-invest .container,
+body.site-page.site-sport .container {
+  max-width: 920px;
+  padding-top: 28px;
+}
+
+body.site-page.site-sport {
+  --bg: var(--site-bg);
+  --surface: var(--site-paper);
+  --surface-raised: var(--site-panel);
+  --claude-beige: var(--site-bg);
+  --claude-text: var(--site-ink);
+  --claude-sub: var(--site-muted);
+  --border: var(--site-line);
+  --border-strong: var(--site-line-strong);
+  --card-bg: var(--site-paper);
+  --node-bg: var(--site-panel);
+  --dialogue-bg: rgba(45, 41, 36, .04);
+  --filter-color: var(--site-subtle);
+  --action-color: #28796c;
+  display: block !important;
+  padding: 0 20px 72px !important;
+}
+
+body.site-page .topbar,
+body.site-page .back-link {
+  color: var(--site-muted) !important;
+}
+
+body.site-page .topbar {
+  border-color: var(--site-line) !important;
+}
+
+body.site-page .topbar a:hover,
+body.site-page .back-link:hover {
+  color: var(--site-accent) !important;
+}
+
+body.site-page .brand {
+  color: var(--site-ink) !important;
+}
+
+body.site-page .footer {
+  border-color: var(--site-line) !important;
+  color: var(--site-muted) !important;
+}
+
+body.site-page.site-life .hero,
+body.site-page.site-life .hero-card,
+body.site-page.site-life .panel,
+body.site-page.site-engineering .hero-card,
+body.site-page.site-engineering .panel {
+  background: rgba(255, 253, 248, .9) !important;
+  border-color: var(--site-line) !important;
+  box-shadow: var(--site-shadow) !important;
+}
+
+body.site-page.site-engineering .hero {
+  background: linear-gradient(145deg, rgba(255, 253, 248, .97), rgba(249, 242, 231, .9)) !important;
+  border-color: var(--site-line) !important;
+  box-shadow: var(--site-shadow) !important;
+}
+
+body.site-page.site-life .rail-card,
+body.site-page.site-engineering .rail-card,
+body.site-page.site-life .card,
+body.site-page.site-engineering .card,
+body.site-page.site-life .detail-card,
+body.site-page.site-engineering .detail-card {
+  border-color: var(--site-line) !important;
+}
+
+/* 阅读路线图：保留书架工作台布局，统一页面表面和文字系统。 */
+body.site-page.site-reading .page-shell {
+  width: min(1480px, calc(100% - 40px));
+  padding: 24px 0 64px;
+}
+
+/* 独立成行的返回链接才需要下边距。 */
+body.site-page.site-reading .back-link {
+  margin-bottom: 24px;
+}
+
+/* topbar 里的返回链接是 flex 居中项，下边距会把它顶上去。 */
+body.site-page.site-reading .topbar .back-link {
+  margin-bottom: 0;
+}
+
+body.site-page.site-reading .hero {
+  background: rgba(255, 253, 248, .94) !important;
+  border-color: var(--site-line) !important;
+  border-radius: 24px !important;
+  box-shadow: var(--site-shadow) !important;
+}
+
+body.site-page.site-reading .shelf,
+body.site-page.site-reading .book-card {
+  border-color: var(--site-line) !important;
+}
+
+body.site-page.site-reading .shelf {
+  background: rgba(255, 253, 248, .78) !important;
+  box-shadow: var(--site-shadow) !important;
+}
+
+body.site-page.site-reading .book-card {
+  background: var(--site-paper) !important;
+  box-shadow: 0 8px 18px rgba(71, 51, 30, .08) !important;
+}
+
+body.site-page.site-reading .eyebrow,
+body.site-page.site-reading .meta-pill {
+  border-color: var(--site-line) !important;
+}
+
+/* 阅读详情：把绿色顶栏纳入统一页面骨架，书籍封面仍保留主题色。 */
+body.site-page.site-reading-detail .topbar {
+  background: rgba(255, 253, 248, .96) !important;
+  color: var(--site-ink) !important;
+  border-bottom: 1px solid var(--site-line) !important;
+  box-shadow: 0 4px 18px rgba(71, 51, 30, .06);
+}
+
+body.site-page.site-reading-detail .topbar-back {
+  color: var(--site-muted) !important;
+  border-color: var(--site-line-strong) !important;
+  background: transparent !important;
+}
+
+body.site-page.site-reading-detail .topbar-title {
+  color: var(--site-ink) !important;
+}
+
+body.site-page.site-reading-detail .topbar-sub {
+  color: var(--site-muted) !important;
+}
+
+body.site-page.site-reading-detail .mode-chip {
+  color: var(--site-muted) !important;
+  border-color: var(--site-line-strong) !important;
+}
+
+body.site-page.site-reading-detail .mode-chip:hover {
+  background: var(--site-panel) !important;
+}
+
+body.site-page.site-reading-detail .mode-chip.on {
+  color: #fff !important;
+  background: var(--site-teal) !important;
+  border-color: var(--site-teal) !important;
+}
+
+/* 投资页：保留买入、持有、卖出语义色，只替换深色表面。 */
+body.site-page.site-invest .back-link {
+  margin-bottom: 30px;
+}
+
+body.site-page.site-invest h1,
+body.site-page.site-invest .ticker-price {
+  color: var(--site-ink) !important;
+}
+
+body.site-page.site-invest .summary-bar,
+body.site-page.site-invest header,
+body.site-page.site-invest .entry-variables {
+  border-color: var(--site-line) !important;
+}
+
+body.site-page.site-invest .filter-chip,
+body.site-page.site-invest .entry-card {
+  background: var(--site-paper) !important;
+  border-color: var(--site-line) !important;
+}
+
+body.site-page.site-invest .filter-chip:hover {
+  border-color: var(--site-accent) !important;
+}
+
+body.site-page.site-invest .entry-card {
+  box-shadow: 0 10px 24px rgba(71, 51, 30, .07);
+}
+
+body.site-page.site-invest .entry-card:hover {
+  background: var(--site-panel) !important;
+  border-color: var(--site-line-strong) !important;
+}
+
+body.site-page.site-invest .sparkline-row {
+  background: rgba(71, 51, 30, .045) !important;
+}
+
+/* 乒乓页：保留绿色/橙色训练语义，统一卡片、文字和页面背景。 */
+body.site-page.site-sport h1,
+body.site-page.site-sport .core-statement {
+  color: var(--site-ink) !important;
+}
+
+body.site-page.site-sport .architecture,
+body.site-page.site-sport .insight-card,
+body.site-page.site-sport .format-note {
+  border-color: var(--site-line) !important;
+  box-shadow: var(--site-shadow);
+}
+
+body.site-page.site-sport .architecture,
+body.site-page.site-sport .insight-card {
+  background: var(--site-paper) !important;
+}
+
+body.site-page.site-sport .format-note,
+body.site-page.site-sport .dialogue-block,
+body.site-page.site-sport .redundancy-section,
+body.site-page.site-sport .card-shot-btn {
+  background: var(--site-panel) !important;
+}
+
+body.site-page.site-sport .core-node {
+  color: var(--site-ink) !important;
+  background: linear-gradient(135deg, #e7f0ed, #f1e4d8) !important;
+  border-color: rgba(34, 107, 104, .28) !important;
+}
+
+body.site-page.site-sport .pillar-card {
+  background: var(--site-panel) !important;
+  color: var(--site-ink) !important;
+  border-color: var(--site-line) !important;
+}
+
+body.site-page.site-sport .pillar-card:hover {
+  background: var(--site-paper) !important;
+}
+
+body.site-page.site-sport .process-section p,
+body.site-page.site-sport .process-section ul,
+body.site-page.site-sport .dialogue-block .a,
+body.site-page.site-sport .aha-block p,
+body.site-page.site-sport .error-list li {
+  color: var(--site-ink) !important;
+}
+
+body.site-page.site-sport .card-shot-btn {
+  color: var(--site-muted) !important;
+  border-color: var(--site-line-strong) !important;
+  box-shadow: 0 4px 12px rgba(71, 51, 30, .12) !important;
+}
+
+body.site-page.site-sport .card-shot-btn:hover {
+  color: var(--site-teal) !important;
+  border-color: var(--site-teal) !important;
+}
+
+@media (max-width: 760px) {
+  body.site-page.site-invest,
+  body.site-page.site-sport {
+    padding: 0 14px 56px !important;
+  }
+
+  body.site-page.site-invest .container,
+  body.site-page.site-sport .container {
+    padding-top: 20px;
+  }
+
+  body.site-page.site-reading .page-shell {
+    width: min(100% - 24px, 1480px);
+    padding-top: 16px;
+  }
+}

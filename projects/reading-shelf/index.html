@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阅读记录</title>
+    <meta http-equiv="refresh" content="0; url=reading-roadmap.html">
+    <script>
+        location.replace("reading-roadmap.html");
+    </script>
+    <style>
+        :root {
+            --ink: #2e241f;
+            --muted: rgba(46, 36, 31, 0.66);
+            --paper: #efe5d6;
+            --card: rgba(255, 250, 243, 0.94);
+            --line: rgba(46, 36, 31, 0.1);
+            --shadow: 0 12px 28px rgba(91, 63, 42, 0.1);
+            --accent: #b16b43;
+            --accent-soft: rgba(177, 107, 67, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--ink);
+            font-family: "Trebuchet MS", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: var(--paper);
+        }
+
+        .page-shell {
+            width: min(1480px, calc(100% - 28px));
+            margin: 0 auto;
+            padding: 20px 0 36px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.94rem;
+            margin-bottom: 18px;
+        }
+
+        .back-link:hover {
+            color: var(--ink);
+        }
+
+        .hero {
+            margin-bottom: 18px;
+            padding: 24px 26px;
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            background: rgba(255, 251, 246, 0.9);
+            box-shadow: var(--shadow);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.76);
+            border: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 0.84rem;
+        }
+
+        h1 {
+            margin: 14px 0 10px;
+            font-size: clamp(2.2rem, 5vw, 4.6rem);
+            line-height: 0.96;
+        }
+
+        .subtitle {
+            max-width: 760px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .meta-pill {
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid var(--line);
+            font-size: 0.9rem;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .status-text {
+            color: var(--muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .ghost-button {
+            appearance: none;
+            border: 0;
+            border-radius: 12px;
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.76);
+            box-shadow: inset 0 0 0 1px var(--line);
+            color: var(--ink);
+            font: inherit;
+            cursor: pointer;
+            transition: transform 0.18s ease, background 0.18s ease;
+        }
+
+        .ghost-button:hover {
+            transform: translateY(-1px);
+            background: rgba(255, 255, 255, 0.92);
+        }
+
+        .shelf {
+            padding: 16px;
+            border-radius: 28px;
+            background: rgba(255, 251, 246, 0.82);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--line);
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        @media (min-width: 760px) {
+            .book-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 1040px) {
+            .book-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 1320px) {
+            .book-grid {
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+            }
+        }
+
+        .book-card {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            background: var(--card);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(88, 62, 41, 0.08);
+        }
+
+        .book-cover {
+            position: relative;
+            aspect-ratio: 2 / 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: #fff;
+            text-align: center;
+        }
+
+        .book-cover.has-image {
+            background: linear-gradient(145deg, #f5ede1, #e3d2bb) !important;
+        }
+
+        .book-cover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .cover-fallback {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 1.6rem 0.9rem 1.2rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            user-select: none;
+        }
+
+        .cover-fallback[hidden] {
+            display: none;
+        }
+
+        .cover-series,
+        .cover-publisher {
+            font-size: 0.72rem;
+            opacity: 0.9;
+            letter-spacing: 0.04em;
+        }
+
+        .cover-title {
+            margin: 10px 0;
+            font-size: 1.22rem;
+            line-height: 1.18;
+            font-weight: 700;
+            white-space: pre-line;
+        }
+
+        .cover-author {
+            font-size: 0.82rem;
+            opacity: 0.88;
+        }
+
+        .book-copy {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .book-card h2 {
+            margin: 0;
+            font-size: 0.98rem;
+            line-height: 1.32;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .book-meta {
+            color: var(--muted);
+            font-size: 0.83rem;
+            line-height: 1.55;
+        }
+
+        .progress-topline {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            align-items: baseline;
+        }
+
+        .progress-topline strong {
+            font-size: 0.82rem;
+        }
+
+        .progress-topline span {
+            color: var(--muted);
+            font-size: 0.78rem;
+        }
+
+        .progress-track {
+            height: 7px;
+            border-radius: 999px;
+            background: rgba(46, 36, 31, 0.08);
+            overflow: hidden;
+        }
+
+        .progress-value {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #d89a5b, var(--accent));
+        }
+
+        .progress-editor {
+            display: grid;
+            grid-template-columns: 1fr 76px;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .progress-range {
+            width: 100%;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        .progress-number {
+            width: 100%;
+            border: 1px solid rgba(46, 36, 31, 0.12);
+            border-radius: 10px;
+            background: #fff;
+            color: var(--ink);
+            font: inherit;
+            padding: 9px 10px;
+            text-align: center;
+        }
+
+        .progress-caption {
+            color: var(--muted);
+            font-size: 0.76rem;
+            line-height: 1.5;
+        }
+
+        .empty-state {
+            display: none;
+            padding: 32px 16px 8px;
+            text-align: center;
+            color: var(--muted);
+        }
+
+        @media (max-width: 760px) {
+            .page-shell {
+                width: min(100% - 18px, 1480px);
+                padding-top: 16px;
+            }
+
+            .hero {
+                padding: 18px 16px 20px;
+            }
+
+            .toolbar {
+                align-items: flex-start;
+            }
+
+            .status-text {
+                width: 100%;
+            }
+
+            .shelf {
+                padding: 14px 10px 16px;
+            }
+
+            .book-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .book-copy {
+                padding: 10px;
+                gap: 8px;
+            }
+
+            .book-card h2 {
+                font-size: 0.82rem;
+            }
+
+            .book-meta {
+                font-size: 0.76rem;
+            }
+
+            .progress-editor {
+                grid-template-columns: 1fr 68px;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page-shell">
+        <a href="../../index.html" class="back-link" aria-label="返回首页">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
+            返回首页
+        </a>
+
+        <header class="hero">
+            <span class="eyebrow">Reading Record</span>
+            <h1>阅读记录</h1>
+            <p class="subtitle">旧书架页已经并入阅读记录，页面会自动跳转到新的主题入口。</p>
+            <div class="hero-meta" id="heroMeta"></div>
+        </header>
+
+        <section class="toolbar" aria-label="书架工具栏">
+            <div class="status-text" id="statusText">正在整理书架。</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <a class="ghost-button" href="reading-roadmap.html" style="text-decoration:none;display:inline-flex;align-items:center;gap:6px">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 12h18M3 6h18M3 18h12"/></svg>
+                    阅读记录
+                </a>
+                <button class="ghost-button" id="exportProgressButton" type="button">导出进度</button>
+            </div>
+        </section>
+
+        <section class="shelf" aria-label="书架内容区">
+            <div class="book-grid" id="bookGrid"></div>
+            <div class="empty-state" id="emptyState">暂时没有书籍可显示。</div>
+        </section>
+    </main>
+
+    <script src="../../data/books-data.js"></script>
+    <script>
+        const baseBooks = window.READING_SHELF_BOOKS || [];
+        const coverCandidates = window.READING_SHELF_COVERS || {};
+        const STORAGE_KEY = "reading-shelf-progress-v2";
+
+        const bookGrid = document.getElementById("bookGrid");
+        const emptyState = document.getElementById("emptyState");
+        const heroMeta = document.getElementById("heroMeta");
+        const statusText = document.getElementById("statusText");
+        const exportProgressButton = document.getElementById("exportProgressButton");
+
+        const progressState = loadProgressState();
+
+        function getBookKey(book) {
+            return book.bookId || [book.title, book.author].filter(Boolean).join("__");
+        }
+
+        function clampProgress(value) {
+            return Math.max(0, Math.min(100, Number(value) || 0));
+        }
+
+        function loadProgressState() {
+            try {
+                const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+                return parsed && typeof parsed === "object" && parsed.books ? parsed : { books: {} };
+            } catch (error) {
+                return { books: {} };
+            }
+        }
+
+        function persistProgressState() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(progressState));
+        }
+
+        function resolveCoverUrl(book) {
+            if (book.cover) {
+                return book.cover;
+            }
+            const resolved = coverCandidates[book.title];
+            return resolved && resolved.cover ? resolved.cover : "";
+        }
+
+        function getMergedBook(book) {
+            const bookKey = getBookKey(book);
+            const override = progressState.books[bookKey];
+            return {
+                ...book,
+                progress: override ? clampProgress(override.progress) : clampProgress(book.progress)
+            };
+        }
+
+        function getBooks() {
+            return baseBooks.map((book) => getMergedBook(book));
+        }
+
+        function getProgressStatus(progress) {
+            if (progress >= 100) {
+                return "已读";
+            }
+            if (progress <= 0) {
+                return "未读";
+            }
+            return "在读";
+        }
+
+        function createGeneratedCover(book, theme) {
+            return `
+                <div class="book-cover" style="background:${theme}">
+                    <div class="cover-fallback">
+                        <div>
+                            <div class="cover-series">${book.edition || "阅读记录"}</div>
+                            <div class="cover-title">${book.coverTitle || book.title}</div>
+                            <div class="cover-author">${book.author || "作者待补"}</div>
+                        </div>
+                        <div class="cover-publisher">${book.publisher || "出版信息待补"}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function createRemoteCover(book, theme) {
+            const coverUrl = resolveCoverUrl(book);
+            if (!coverUrl) {
+                return createGeneratedCover(book, theme);
+            }
+
+            return `
+                <div class="book-cover has-image" style="background:${theme}">
+                    <img class="book-cover-image" src="${coverUrl}" alt="${book.title} 封面" loading="lazy"
+                        onerror="this.hidden=true; this.nextElementSibling.hidden=false; this.parentElement.classList.remove('has-image');">
+                    <div class="cover-fallback" hidden>
+                        <div>
+                            <div class="cover-series">${book.edition || "阅读记录"}</div>
+                            <div class="cover-title">${book.coverTitle || book.title}</div>
+                            <div class="cover-author">${book.author || "作者待补"}</div>
+                        </div>
+                        <div class="cover-publisher">${book.publisher || "出版信息待补"}</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderHeroMeta() {
+            const books = getBooks();
+            const totalProgress = books.reduce((sum, book) => sum + clampProgress(book.progress), 0);
+            const averageProgress = books.length ? Math.round(totalProgress / books.length) : 0;
+            const completed = books.filter((book) => clampProgress(book.progress) >= 100).length;
+            const inProgress = books.filter((book) => clampProgress(book.progress) > 0 && clampProgress(book.progress) < 100).length;
+
+            heroMeta.innerHTML = [
+                '<span class="meta-pill">共 ' + books.length + ' 本</span>',
+                '<span class="meta-pill">平均进度 ' + averageProgress + '%</span>',
+                '<span class="meta-pill">已读 ' + completed + ' 本</span>',
+                '<span class="meta-pill">在读 ' + inProgress + ' 本</span>'
+            ].join("");
+        }
+
+        function renderStatus() {
+            const changed = Object.keys(progressState.books).length;
+            statusText.textContent = changed
+                ? '当前有 ' + changed + ' 本书的进度与仓库数据不同。导出后可用脚本落库。'
+                : '修改会自动保存在当前浏览器。导出进度后可写回仓库。';
+        }
+
+        function buildExportPayload() {
+            const payload = { books: {} };
+            baseBooks.forEach((book) => {
+                const bookKey = getBookKey(book);
+                const baseProgress = clampProgress(book.progress);
+                const currentProgress = clampProgress((progressState.books[bookKey] || {}).progress ?? baseProgress);
+                if (currentProgress !== baseProgress) {
+                    payload.books[bookKey] = { progress: currentProgress };
+                }
+            });
+            return {
+                storageKey: STORAGE_KEY,
+                exportedAt: new Date().toISOString(),
+                books: payload.books
+            };
+        }
+
+        function exportProgressState() {
+            const payload = buildExportPayload();
+            const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            const dateTag = payload.exportedAt.slice(0, 19).replace(/[-:T]/g, "");
+            link.href = url;
+            link.download = `reading-shelf-progress-${dateTag}.json`;
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(url);
+        }
+
+        function updateProgress(bookKey, nextValue) {
+            const baseBook = baseBooks.find((book) => getBookKey(book) === bookKey);
+            if (!baseBook) {
+                return;
+            }
+
+            const normalized = clampProgress(nextValue);
+            const baseProgress = clampProgress(baseBook.progress);
+
+            if (normalized === baseProgress) {
+                delete progressState.books[bookKey];
+            } else {
+                progressState.books[bookKey] = { progress: normalized };
+            }
+
+            persistProgressState();
+            renderHeroMeta();
+            renderStatus();
+            renderBooks();
+        }
+
+        function createBookCard(book) {
+            const card = document.createElement("article");
+            const progress = clampProgress(book.progress);
+            const bookKey = getBookKey(book);
+            const theme = 'linear-gradient(145deg, ' + book.theme[0] + ', ' + book.theme[1] + ')';
+            const status = getProgressStatus(progress);
+
+            card.className = "book-card";
+            card.innerHTML = `
+                ${createRemoteCover(book, theme)}
+                <div class="book-copy">
+                    <h2>${book.title}</h2>
+                    <div class="book-meta">${book.author || '作者待补'}<br>${book.publisher || '出版信息待补'}</div>
+                    <div class="progress-topline">
+                        <strong>阅读进度</strong>
+                        <span>${progress}% · ${status}</span>
+                    </div>
+                    <div class="progress-track"><div class="progress-value" style="width:${progress}%"></div></div>
+                    <div class="progress-editor">
+                        <input class="progress-range" type="range" min="0" max="100" step="1" value="${progress}">
+                        <input class="progress-number" type="number" min="0" max="100" step="1" value="${progress}">
+                    </div>
+                    <div class="progress-caption">0 表示未开始，100 表示已读完，中间值自动视为在读。</div>
+                </div>
+            `;
+
+            const rangeInput = card.querySelector(".progress-range");
+            const numberInput = card.querySelector(".progress-number");
+
+            function syncInputs(value) {
+                const normalized = clampProgress(value);
+                rangeInput.value = normalized;
+                numberInput.value = normalized;
+                updateProgress(bookKey, normalized);
+            }
+
+            rangeInput.addEventListener("input", (event) => {
+                numberInput.value = clampProgress(event.target.value);
+            });
+
+            rangeInput.addEventListener("change", (event) => {
+                syncInputs(event.target.value);
+            });
+
+            numberInput.addEventListener("change", (event) => {
+                syncInputs(event.target.value);
+            });
+
+            return card;
+        }
+
+        function renderBooks() {
+            const books = getBooks();
+            bookGrid.innerHTML = "";
+            books.forEach((book) => {
+                bookGrid.appendChild(createBookCard(book));
+            });
+            emptyState.style.display = books.length ? "none" : "block";
+        }
+
+        exportProgressButton.addEventListener("click", exportProgressState);
+
+        renderHeroMeta();
+        renderStatus();
+        renderBooks();
+    </script>
+</body>
+</html>
