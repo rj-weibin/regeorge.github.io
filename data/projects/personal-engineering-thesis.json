@@ -2,8 +2,8 @@
   "id": "personal-engineering-thesis",
   "type": "project",
   "status": "draft",
-  "updatedAt": "2026-08-05",
-  "source": "caseHelper/knowledge/tomyself/personal-engineering-thesis.md",
+  "updatedAt": "2026-08-28",
+  "source": "caseHelper/knowledge/tomyself/personal-engineering-thesis.md; data/memory/work/2026-08-28-自然语言驱动自动化执行与诊断.md",
   "links": [
     {
       "target": "auto-test-station",
@@ -20,7 +20,8 @@
   "title": "个人工程论",
   "subtitle": "把个人判断沉淀为可验证、可复用、可由 Agent 协作的工程能力。",
   "originalWords": [
-    "> 用真实系统证据收敛业务意图，再把验证过的判断封装成可复用、可审计、可由 Agent 执行的工程能力。"
+    "> 用真实系统证据收敛业务意图，再把验证过的判断封装成可复用、可审计、可由 Agent 执行的工程能力。",
+    "> 近期我的自动化工作流中，支持自然语言驱动 指定环境执行自动化任务，并自动分析执行报告，找出问题分布，前置失败、疑似业务问题等，对于非结构化的问题快速定位有提效作用。"
   ],
   "thesis": {
     "insight": "AI 时代，代码只是中间过程；真正需要积累的是问题洞察、关键判断、协作方式和业务影响。",
@@ -92,6 +93,13 @@
       "insight": "自动化建设的瓶颈不只在编码，还在用例分析、能力检索、页面实证、数据设计、调试和经验整理。",
       "decision": "让 Agent 并行处理用例、代码、浏览器、API、数据库和知识检索；人工负责定义目标、验证结果和优化流程。",
       "evidence": ["data/memory/work/2026-08-05-AI Agent驱动的自动化建设效率提升.md"]
+    },
+    {
+      "id": "from-building-cases-to-operating-diagnosis",
+      "title": "从建设自动化到自然语言运行与诊断",
+      "insight": "用例建成后，指定环境执行、识别有效结果并从大批失败中找到第一批该查的问题，仍包含大量非结构化判断。",
+      "decision": "以自然语言表达环境、范围和问题，让 Agent 路由环境触发、报告聚合与失败分析能力；先用确定性统计和业务聚类压缩搜索面，再用步骤、日志和代码证据确认根因。",
+      "evidence": ["data/memory/work/2026-08-28-自然语言驱动自动化执行与诊断.md", "env-trigger", "env-report", "failure-analyzer"]
     }
   ],
   "engineeringTheses": [
