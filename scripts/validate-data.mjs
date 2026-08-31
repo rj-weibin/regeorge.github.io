@@ -148,7 +148,7 @@ if (fs.existsSync(pending) && fs.readdirSync(pending).length > 0) {
   console.warn('warning: inbox/pending contains unprocessed intake files');
 }
 
-for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/cards.json', 'pages/data/projects.json', 'pages/data/dimensions.json', 'pages/data/personal-engineering-thesis.json', 'pages/data/high-quality-invisible-context.json', 'pages/data/life-insights.json', 'pages/data/skills-index.json', 'pages/projects/life-insights/index.html', 'pages/projects/skills/index.html']) {
+for (const relative of ['pages/index.html', 'pages/data/knowledge-graph.json', 'pages/data/books-data.js', 'pages/data/philosophy-cards.json', 'pages/data/cards.json', 'pages/data/projects.json', 'pages/data/dimensions.json', 'pages/data/personal-engineering-thesis.json', 'pages/data/high-quality-invisible-context.json', 'pages/data/life-insights.json', 'pages/data/skills-index.json', 'pages/projects/life-insights/index.html', 'pages/projects/autoTestStation/index.html']) {
   if (!fs.existsSync(path.join(root, relative))) errors.push(`missing build output: ${relative}`);
 }
 
@@ -162,7 +162,7 @@ for (const relative of pageFiles) {
     errors.push(`legacy data reference: pages/${relative}`);
   }
   const patterns = [/172\.17\.\d+\.\d+/, /Basic dGhpcmQ6MTIz/, /Credentials:\s*third:123/, /12345aA!/];
-  if (normalized === 'pages/data/skills-index.json' || normalized === 'pages/projects/skills/index.html') {
+  if (normalized === 'pages/data/skills-index.json' || normalized === 'pages/projects/autoTestStation/index.html') {
     patterns.push(...publicSensitivePatterns);
   }
   for (const pattern of patterns) {

@@ -21,9 +21,7 @@
     "evidence": "Phase 0、真实抓包、失败归因、自然语言执行与执行报告证据，已沉淀进个人工程论。",
     "next": "开始度量：首次有效假设耗时、证据化归因覆盖率、误判修正率。",
     "pages": [
-      {"title": "个人工程论", "href": "projects/personal-engineering-thesis/index.html"},
-      {"title": "自动化测试生产线", "href": "projects/autoTestStation/index.html"},
-      {"title": "工程 Skills", "href": "projects/skills/index.html"}
+      {"title": "caseHelper 能帮上什么忙", "href": "projects/autoTestStation/index.html"}
     ]
   },
   {
